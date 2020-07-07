@@ -13,6 +13,10 @@ def scale_plot_size(x, y):
 
 
 def calc_additive_values(df):
+    for i in ("search_abs_top_is", "search_top_is", "search_impression_share",
+              "avg_impression_pos", "avg_traffic_vol", "avg_click_pos"):
+        df[i] = df[i].apply(pd.to_numeric)
+
     # приводим метрики к аддитивным величинам для расчетов взвешенным значениям сводных таблицах
     # https://support.google.com/google-ads/answer/7501826?hl=en
     # https://support.google.com/google-ads/answer/2497703?hl=en
