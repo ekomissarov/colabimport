@@ -1,6 +1,12 @@
 #import pandas as pd
 #import matplotlib as mpl
 
+
+def cry_qkrq():
+    print("qkrq!")
+    return "qkrq!"
+
+
 def scale_plot_size(x, y):
     #default_figsize = mpl.rcParamsDefault['figure.figsize']
     mpl.rcParams['figure.figsize'] = [x, y]
