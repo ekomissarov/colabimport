@@ -1,0 +1,10 @@
+.idea/
+__pycache__/
+venv/
+credentials/
+alldata/
+*.log
+*.jpg
+*.png
+*.ttf
+*.jpeg
