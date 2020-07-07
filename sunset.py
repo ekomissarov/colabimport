@@ -1,5 +1,5 @@
-#import pandas as pd
-#import matplotlib as mpl
+import pandas as pd
+import matplotlib as mpl
 
 
 def cry_qkrq():
