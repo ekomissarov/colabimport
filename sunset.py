@@ -12,6 +12,20 @@ def scale_plot_size(x, y):
     mpl.rcParams['figure.figsize'] = [x, y]
 
 
+def calc_additive_values(df):
+    # приводим метрики к аддитивным величинам для расчетов взвешенным значениям сводных таблицах
+    # https://support.google.com/google-ads/answer/7501826?hl=en
+    # https://support.google.com/google-ads/answer/2497703?hl=en
+    df["eligible_impressions"] = df["impressions"]/(df['search_impression_share']/100)
+    df["search_abs_top_is"] *= df["eligible_impressions"]/100
+    df["search_top_is"] *= df["eligible_impressions"]/100
+    # https://yandex.ru/dev/direct/doc/reports/report-format-docpage/
+    df['avg_impression_pos'] *= df["impressions"]
+    df['avg_traffic_vol'] *= df["impressions"]
+    df['avg_click_pos'] *= df["clicks"]
+    return df
+
+
 def calc_base_values(tt):
     tt['cost'] /= 1000000
 
@@ -32,7 +46,7 @@ def calc_base_values(tt):
     return tt
 
 
-def basic_dynamics_plot(df, region_filters=None, campaign_filters=None, system_filters=None):
+def plot_basic_dynamics(df, region_filters=None, campaign_filters=None, system_filters=None):
     grp = ['date']
 
     if region_filters:
@@ -66,7 +80,7 @@ def basic_dynamics_plot(df, region_filters=None, campaign_filters=None, system_f
     tt.loc[:, plots].plot(subplots=True)
 
 
-def avg_position_yandex_plot(df, region_filters=None, campaign_filters=None):
+def plot_avg_position_yandex(df, region_filters=None, campaign_filters=None):
     grp = ['date']
     df = df[df.system == "y"]
 
@@ -92,7 +106,7 @@ def avg_position_yandex_plot(df, region_filters=None, campaign_filters=None):
     tt.loc[:, plots].plot(subplots=True)
 
 
-def top_is_position_google_plot(df, region_filters=None, campaign_filters=None):
+def plot_top_is_position_google(df, region_filters=None, campaign_filters=None):
     grp = ['date']
     df = df[df.system == "g"]
 
