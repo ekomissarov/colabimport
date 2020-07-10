@@ -44,9 +44,9 @@ def calc_base_values(tt):
     tt['cpc'] = tt['cost'] / tt['clicks']
     tt['ctr'] = tt['clicks'] / tt['impressions']
 
-    tt['conv_ev'] = tt['clicks'] / (tt['total_events'] + tt['total_events_app'])
-    tt['conv_ad'] = tt['clicks'] / (tt['total_b2bevents'] + tt['total_b2bevents_app'])
-    tt['conv_ipotek'] = tt['clicks'] / (tt['uniq_ipotek_events'] + tt['uniq_ipotek_events_app'])
+    tt['conv_ev'] = (tt['total_events'] + tt['total_events_app']) / tt['clicks']
+    tt['conv_ad'] = (tt['total_b2bevents'] + tt['total_b2bevents_app']) / tt['clicks']
+    tt['conv_ipotek'] = (tt['uniq_ipotek_events'] + tt['uniq_ipotek_events_app']) / tt['clicks']
     return tt
 
 
