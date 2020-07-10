@@ -1267,6 +1267,81 @@ class MP:
         return False
 
 
+class GroupsRegions:
+    regs = [
+        {"descr": 'msk', "fltrs": ["_msk_", "_mo_", "_dmo_", "_bmo_", "_mskmo_"]},
+        {"descr": 'spb', "fltrs": ["_spb_", "_spblo_"]},
+        {"descr": 'p4c', "fltrs": ["_kazan_", "_nn_", "_krasnoyarsk_", "voronezh"]},
+        {"descr": '18reg', "fltrs": ['ufa',
+                                     'krasnodar',
+                                     'sochi',
+                                     'rostov',
+                                     'samara',
+                                     'ekb',
+                                     'novosibirsk',
+                                     'chelyabinsk',
+                                     'tyumen',
+                                     'stavropol',
+                                     'yalta',
+                                     'omsk',
+                                     'volgograd',
+                                     'kemerovo',
+                                     'irkutsk',
+                                     'sevastopol',
+                                     'kaliningrad',
+                                     'perm']},
+
+        {"descr": 'oth', "fltrs": ['rf',
+                                 'arhangelsk',
+                                 'astrahan',
+                                 'barnaul',
+                                 'belgorod',
+                                 'bryansk',
+                                 'cheboksary',
+                                 'habarovsk',
+                                 'ivanovo',
+                                 'izhevsk',
+                                 'kaluga',
+                                 'kirov',
+                                 'kostroma',
+                                 'kurgan',
+                                 'kursk',
+                                 'lipetsk',
+                                 'mahachkala',
+                                 'novgorod',
+                                 'orel',
+                                 'orenburg',
+                                 'penza',
+                                 'pskov',
+                                 'ryazan',
+                                 'saratov',
+                                 'smolensk',
+                                 'surgut',
+                                 'tambov',
+                                 'tomsk',
+                                 'tula',
+                                 'tver',
+                                 'ulanude',
+                                 'ulyanovsk',
+                                 'vladimir',
+                                 'vladivostok',
+                                 'yaroslavl']},
+
+    ]
+
+    def __init__(self):
+        for i in self.regs:
+            i['fltrs'] = [re.compile(j) for j in i['fltrs']]
+
+    def __getitem__(self, item):
+        for i in self.regs:
+            for j in i['fltrs']:
+                if j.search(item):
+                    return i['descr']
+
+        return False
+
+
 if __name__ == '__main__':
     mp = MP()
     print(mp["b2b_ekb_general_null_own_desk_search"])
