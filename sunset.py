@@ -2,11 +2,6 @@ import pandas as pd
 import matplotlib as mpl
 
 
-def cry_qkrq():
-    print("qkrq!")
-    return "qkrq!"
-
-
 def scale_plot_size(x, y):
     #default_figsize = mpl.rcParamsDefault['figure.figsize']
     mpl.rcParams['figure.figsize'] = [x, y]
@@ -36,17 +31,20 @@ def calc_base_values(tt):
     tt['events'] = tt['total_events'] + tt['total_events_app']
     tt['ads'] = tt['total_b2bevents'] + tt['total_b2bevents_app']
     tt['ipotek'] = tt['uniq_ipotek_events'] + tt['uniq_ipotek_events_app']
+    tt['ct'] = tt['total_ct_events'] + 0
 
     tt['cpa'] = tt['cost'] / tt['events']
     tt['cpad'] = tt['cost'] / tt['ads']
     tt['cpa_ipotek'] = tt['cost'] / tt['ipotek']
+    tt['cpa_ct'] = tt['cost'] / tt['total_ct_events']
 
     tt['cpc'] = tt['cost'] / tt['clicks']
     tt['ctr'] = tt['clicks'] / tt['impressions']
 
-    tt['conv_ev'] = (tt['total_events'] + tt['total_events_app']) / tt['clicks']
-    tt['conv_ad'] = (tt['total_b2bevents'] + tt['total_b2bevents_app']) / tt['clicks']
-    tt['conv_ipotek'] = (tt['uniq_ipotek_events'] + tt['uniq_ipotek_events_app']) / tt['clicks']
+    tt['ev_per_click'] = (tt['total_events'] + tt['total_events_app']) / tt['clicks']
+    tt['ad_per_click'] = (tt['total_b2bevents'] + tt['total_b2bevents_app']) / tt['clicks']
+    tt['ipotek_per_click'] = (tt['uniq_ipotek_events'] + tt['uniq_ipotek_events_app']) / tt['clicks']
+    tt['ct_per_click'] = tt['total_ct_events'] / tt['clicks']
     return tt
 
 
@@ -70,7 +68,8 @@ def plot_basic_dynamics(df, region_filters=None, campaign_filters=None, system_f
              'impressions', 'clicks',
              'total_events', 'total_events_app',
              'total_b2bevents', 'total_b2bevents_app',
-             'uniq_ipotek_events', 'uniq_ipotek_events_app', ]].sum()
+             'uniq_ipotek_events', 'uniq_ipotek_events_app',
+             'total_ct_events']].sum()
     tt = calc_base_values(tt)
 
     scale_plot_size(12, 12)
@@ -79,6 +78,8 @@ def plot_basic_dynamics(df, region_filters=None, campaign_filters=None, system_f
     plots = ["ads", "cpad"]
     tt.loc[:, plots].plot(subplots=True)
     plots = ["ipotek", "cpa_ipotek"]
+    tt.loc[:, plots].plot(subplots=True)
+    plots = ["ct", "cpa_ct"]
     tt.loc[:, plots].plot(subplots=True)
     plots = ["cost", "cpc", "ctr", "clicks"]
     tt.loc[:, plots].plot(subplots=True)
