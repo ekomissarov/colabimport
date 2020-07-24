@@ -48,8 +48,10 @@ def calc_base_values(tt):
     return tt
 
 
-def plot_basic_dynamics(df, region_filters=None, campaign_filters=None, system_filters=None):
+def plot_basic_dynamics(df, what=None, region_filters=None, campaign_filters=None, system_filters=None):
     grp = ['date']
+    if what == None:
+        what = {"events", "ads", "ipotek", "ct", "common"}
 
     if region_filters:
         df = df[df.region.isin(region_filters)]
@@ -73,16 +75,21 @@ def plot_basic_dynamics(df, region_filters=None, campaign_filters=None, system_f
     tt = calc_base_values(tt)
 
     scale_plot_size(12, 12)
-    plots = ["events", "cpa"]
-    tt.loc[:, plots].plot(subplots=True)
-    plots = ["ads", "cpad"]
-    tt.loc[:, plots].plot(subplots=True)
-    plots = ["ipotek", "cpa_ipotek"]
-    tt.loc[:, plots].plot(subplots=True)
-    plots = ["ct", "cpa_ct"]
-    tt.loc[:, plots].plot(subplots=True)
-    plots = ["cost", "cpc", "ctr", "clicks"]
-    tt.loc[:, plots].plot(subplots=True)
+    if "events" in what:
+        plots = ["events", "cpa"]
+        tt.loc[:, plots].plot(subplots=True)
+    if "ads" in what:
+        plots = ["ads", "cpad"]
+        tt.loc[:, plots].plot(subplots=True)
+    if "ipotek" in what:
+        plots = ["ipotek", "cpa_ipotek"]
+        tt.loc[:, plots].plot(subplots=True)
+    if "ct" in what:
+        plots = ["ct", "cpa_ct"]
+        tt.loc[:, plots].plot(subplots=True)
+    if "common" in what:
+        plots = ["cost", "cpc", "ctr", "clicks"]
+        tt.loc[:, plots].plot(subplots=True)
 
 
 def plot_avg_position_yandex(df, region_filters=None, campaign_filters=None):
