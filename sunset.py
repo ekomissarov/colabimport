@@ -140,3 +140,36 @@ def plot_top_is_position_google(df, region_filters=None, campaign_filters=None):
     scale_plot_size(12, 12)
     plots = ["top_is", "abstop_is"]
     tt.loc[:, plots].plot(subplots=True)
+
+
+def plot_compare_base(df, y_value='ad_per_click', group_by_plot='regclass', plot_set=['msk', 'spb', 'p4c', '18reg'],
+                 region_filters=None, campaign_filters=None, system_filters=None):
+    reg_classes = pd.DataFrame([{"campaignname": i, "regclass": regions_map[i]} for i in set(df.campaignname.unique())])
+    data = pd.merge(df, reg_classes)
+
+    if region_filters:
+        df = df[df.region.isin(region_filters)]
+
+    if system_filters:
+        df = df[df.system.isin(system_filters)]
+
+    if campaign_filters:
+        campaign_mask = pd.Series(False, index=df.index)
+        for i in campaign_filters:
+            campaign_mask = campaign_mask | (df.campaignname.str.contains(i))
+        df = df[campaign_mask]
+
+    tt = data.groupby([group_by_plot] + ['date']).sum()
+    tt = sunset.calc_base_values(tt)
+
+    plotdata = pd.DataFrame({i: tt.loc[i][y_value] for i in plot_set})
+    for i in plotdata:
+        plt.plot(plotdata.index, plotdata[i], label="{}: {}".format(group_by_plot, i))
+
+    plt.plot()
+
+    plt.xlabel("дата")
+    plt.ylabel(y_value)
+    plt.title("график сравнение")
+    plt.legend()
+    plt.show()
