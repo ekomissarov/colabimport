@@ -182,7 +182,7 @@ def plot_compare_base(df, y_value='ad_per_click', group_by_plot='regclass', plot
     plt.plot()
 
     plt.xlabel("дата")
-    plt.ylabel(y_value)
+    plt.ylabel(", ".join(y_value))
     plt.title("график сравнение")
     plt.legend()
     plt.show()
