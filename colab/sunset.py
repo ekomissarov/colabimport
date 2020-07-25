@@ -1,5 +1,6 @@
 import pandas as pd
 import matplotlib as mpl
+import matplotlib.pyplot as plt
 from colabimport.colab import mediaplan
 
 def scale_plot_size(x, y):
