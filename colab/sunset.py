@@ -1,6 +1,6 @@
 import pandas as pd
 import matplotlib as mpl
-from colab.mediaplan import GroupsRegions
+from mediaplan import GroupsRegions
 
 def scale_plot_size(x, y):
     #default_figsize = mpl.rcParamsDefault['figure.figsize']
