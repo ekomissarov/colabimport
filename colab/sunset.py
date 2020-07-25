@@ -163,11 +163,11 @@ def plot_compare_base(df, y_value='ad_per_click', group_by_plot='regclass', plot
 
     tt = data.groupby([group_by_plot] + ['date']).sum()
     tt = calc_base_values(tt)
-    if system_filters[0] == "y" and len(system_filters) == 1:
+    if system_filters and system_filters[0] == "y" and len(system_filters) == 1:
         tt['impr_pos'] = tt['avg_impression_pos'] / tt['impressions']
         tt['click_pos'] = tt['avg_click_pos'] / tt['clicks']
         tt['traffic_vol'] = tt['avg_traffic_vol'] / tt['impressions']
-    elif system_filters[0] == "g" and len(system_filters) == 1:
+    elif system_filters and system_filters[0] == "g" and len(system_filters) == 1:
         tt['top_is'] = tt['search_top_is'] / tt['eligible_impressions']
         tt['abstop_is'] = tt['search_abs_top_is'] / tt['eligible_impressions']
 
