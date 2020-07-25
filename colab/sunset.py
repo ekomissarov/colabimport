@@ -171,9 +171,13 @@ def plot_compare_base(df, y_value='ad_per_click', group_by_plot='regclass', plot
         tt['top_is'] = tt['search_top_is'] / tt['eligible_impressions']
         tt['abstop_is'] = tt['search_abs_top_is'] / tt['eligible_impressions']
 
-    plotdata = pd.DataFrame({i: tt.loc[i][y_value] for i in plot_set})
-    for i in plotdata:
-        plt.plot(plotdata.index, plotdata[i], label="{}: {}".format(group_by_plot, i))
+    if type(y_value) is not list:
+        y_value = [y_value]
+
+    for j in y_value:
+        plotdata = pd.DataFrame({i: tt.loc[i][j] for i in plot_set})
+        for i in plotdata:
+            plt.plot(plotdata.index, plotdata[i], label="{} {}: {}".format(j, group_by_plot, i))
 
     plt.plot()
 
