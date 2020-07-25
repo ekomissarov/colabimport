@@ -150,16 +150,16 @@ def plot_compare_base(df, y_value='ad_per_click', group_by_plot='regclass', plot
     data = pd.merge(df, reg_classes)
 
     if region_filters:
-        df = df[df.region.isin(region_filters)]
+        data = data[data.region.isin(region_filters)]
 
     if system_filters:
-        df = df[df.system.isin(system_filters)]
+        data = data[data.system.isin(system_filters)]
 
     if campaign_filters:
-        campaign_mask = pd.Series(False, index=df.index)
+        campaign_mask = pd.Series(False, index=data.index)
         for i in campaign_filters:
-            campaign_mask = campaign_mask | (df.campaignname.str.contains(i))
-        df = df[campaign_mask]
+            campaign_mask = campaign_mask | (data.campaignname.str.contains(i))
+        data = data[campaign_mask]
 
     tt = data.groupby([group_by_plot] + ['date']).sum()
     tt = calc_base_values(tt)
