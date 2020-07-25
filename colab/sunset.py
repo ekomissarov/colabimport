@@ -167,7 +167,7 @@ def plot_compare_base(df, y_value='ad_per_click', group_by_plot='regclass', plot
         data['impr_pos'] = data['avg_impression_pos'] / data['impressions']
         data['click_pos'] = data['avg_click_pos'] / data['clicks']
         data['traffic_vol'] = data['avg_traffic_vol'] / data['impressions']
-    elif system_filters[0] == "y" and len(system_filters) == 1:
+    elif system_filters[0] == "g" and len(system_filters) == 1:
         data['top_is'] = data['search_top_is'] / data['eligible_impressions']
         data['abstop_is'] = data['search_abs_top_is'] / data['eligible_impressions']
 
