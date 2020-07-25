@@ -161,7 +161,7 @@ def plot_compare_base(df, y_value='ad_per_click', group_by_plot='regclass', plot
         df = df[campaign_mask]
 
     tt = data.groupby([group_by_plot] + ['date']).sum()
-    tt = sunset.calc_base_values(tt)
+    tt = calc_base_values(tt)
 
     plotdata = pd.DataFrame({i: tt.loc[i][y_value] for i in plot_set})
     for i in plotdata:
