@@ -46,6 +46,11 @@ def calc_base_values(tt):
     tt['ad_per_click'] = (tt['total_b2bevents'] + tt['total_b2bevents_app']) / tt['clicks']
     tt['ipotek_per_click'] = (tt['uniq_ipotek_events'] + tt['uniq_ipotek_events_app']) / tt['clicks']
     tt['ct_per_click'] = tt['total_ct_events'] / tt['clicks']
+
+    tt['assisted_ev_per_click'] = tt['assisted_conv_phones'] / tt['clicks']
+    tt['assisted_ad_per_click'] = tt['assisted_conv_ads'] / tt['clicks']
+    tt['assisted_ipotek_per_click'] = tt['assisted_conv_mortgage'] / tt['clicks']
+    tt['assisted_ct_per_click'] = tt['assisted_conv_ct'] / tt['clicks']
     return tt
 
 
