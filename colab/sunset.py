@@ -13,7 +13,11 @@ def calc_additive_values(df):
     # приводим метрики к аддитивным величинам для расчетов взвешенным значениям сводных таблицах
     # https://support.google.com/google-ads/answer/7501826?hl=en
     # https://support.google.com/google-ads/answer/2497703?hl=en
-    df["eligible_impressions"] = df["impressions"]/(df['search_impression_share']/100)
+    for i in ('search_abs_top_is', 'search_top_is', 'search_impression_share',
+              'avg_impression_pos', 'avg_traffic_vol', 'avg_click_pos'):
+        df[i] = df[i].apply(pd.to_numeric)
+
+    df["eligible_impressions"] = np.round(df["impressions"]/(df['search_impression_share']/100), 4)
     df["search_abs_top_is"] = np.round(df["search_abs_top_is"] * (df["eligible_impressions"]/100), 4)
     df["search_top_is"] = np.round(df["search_top_is"] * (df["eligible_impressions"]/100), 4)
     # https://yandex.ru/dev/direct/doc/reports/report-format-docpage/
