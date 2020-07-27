@@ -1,5 +1,6 @@
 import pandas as pd
 import matplotlib as mpl
+import numpy as np
 import matplotlib.pyplot as plt
 from colabimport.colab import mediaplan
 
@@ -9,48 +10,46 @@ def scale_plot_size(x, y):
 
 
 def calc_additive_values(df):
-    for i in ("search_abs_top_is", "search_top_is", "search_impression_share",
-              "avg_impression_pos", "avg_traffic_vol", "avg_click_pos"):
-        df[i] = df[i].apply(pd.to_numeric)
-
     # приводим метрики к аддитивным величинам для расчетов взвешенным значениям сводных таблицах
     # https://support.google.com/google-ads/answer/7501826?hl=en
     # https://support.google.com/google-ads/answer/2497703?hl=en
     df["eligible_impressions"] = df["impressions"]/(df['search_impression_share']/100)
-    df["search_abs_top_is"] *= df["eligible_impressions"]/100
-    df["search_top_is"] *= df["eligible_impressions"]/100
+    df["search_abs_top_is"] = df["search_abs_top_is"] * df["eligible_impressions"]/100
+    df["search_top_is"] = df["search_top_is"] * df["eligible_impressions"]/100
     # https://yandex.ru/dev/direct/doc/reports/report-format-docpage/
-    df['avg_impression_pos'] *= df["impressions"]
-    df['avg_traffic_vol'] *= df["impressions"]
-    df['avg_click_pos'] *= df["clicks"]
+    df['avg_impression_pos'] = df['avg_impression_pos'] * df["impressions"]
+    df['avg_traffic_vol'] = df['avg_traffic_vol'] * df["impressions"]
+    df['avg_click_pos'] = df['avg_click_pos'] * df["clicks"]
     return df
 
 
 def calc_base_values(tt):
-    tt['cost'] /= 1000000
+    tt['cost'] = tt['cost'] / 1000000
 
     tt['events'] = tt['total_events'] + tt['total_events_app']
     tt['ads'] = tt['total_b2bevents'] + tt['total_b2bevents_app']
     tt['ipotek'] = tt['uniq_ipotek_events'] + tt['uniq_ipotek_events_app']
     tt['ct'] = tt['total_ct_events'] + 0
 
-    tt['cpa'] = tt['cost'] / tt['events']
-    tt['cpad'] = tt['cost'] / tt['ads']
-    tt['cpa_ipotek'] = tt['cost'] / tt['ipotek']
-    tt['cpa_ct'] = tt['cost'] / tt['total_ct_events']
+    tt['cpa'] = np.round(tt['cost'] / tt['events'], 2)
+    tt['cpad'] = np.round(tt['cost'] / tt['ads'], 2)
+    tt['cpa_ipotek'] = np.round(tt['cost'] / tt['ipotek'], 2)
+    tt['cpa_ct'] = np.round(tt['cost'] / tt['total_ct_events'], 2)
 
-    tt['cpc'] = tt['cost'] / tt['clicks']
-    tt['ctr'] = tt['clicks'] / tt['impressions']
+    tt['cpc'] = np.round(tt['cost'] / tt['clicks'], 2)
+    tt['ctr'] = np.round(tt['clicks'] / tt['impressions'], 4)
 
-    tt['ev_per_click'] = (tt['total_events'] + tt['total_events_app']) / tt['clicks']
-    tt['ad_per_click'] = (tt['total_b2bevents'] + tt['total_b2bevents_app']) / tt['clicks']
-    tt['ipotek_per_click'] = (tt['uniq_ipotek_events'] + tt['uniq_ipotek_events_app']) / tt['clicks']
-    tt['ct_per_click'] = tt['total_ct_events'] / tt['clicks']
+    tt['ev_per_click'] = np.round((tt['total_events'] + tt['total_events_app']) / tt['clicks'], 4)
+    tt['ad_per_click'] = np.round((tt['total_b2bevents'] + tt['total_b2bevents_app']) / tt['clicks'], 4)
+    tt['ipotek_per_click'] = np.round((tt['uniq_ipotek_events'] + tt['uniq_ipotek_events_app']) / tt['clicks'], 4)
+    tt['ct_per_click'] = np.round(tt['total_ct_events'] / tt['clicks'], 4)
 
-    tt['assisted_ev_per_click'] = tt['assisted_conv_phones'] / tt['clicks']
-    tt['assisted_ad_per_click'] = tt['assisted_conv_ads'] / tt['clicks']
-    tt['assisted_ipotek_per_click'] = tt['assisted_conv_mortgage'] / tt['clicks']
-    tt['assisted_ct_per_click'] = tt['assisted_conv_ct'] / tt['clicks']
+    tt['assisted_ev_per_click'] = np.round(tt['assisted_conv_phones'] / tt['clicks'], 4)
+    tt['assisted_ad_per_click'] = np.round(tt['assisted_conv_ads'] / tt['clicks'], 4)
+    tt['assisted_ipotek_per_click'] = np.round(tt['assisted_conv_mortgage'] / tt['clicks'], 4)
+    tt['assisted_ct_per_click'] = np.round(tt['assisted_conv_ct'] / tt['clicks'], 4)
+
+    tt['cost'] = tt['cost'].apply(pd.to_numeric)
     return tt
 
 
