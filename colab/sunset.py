@@ -14,12 +14,12 @@ def calc_additive_values(df):
     # https://support.google.com/google-ads/answer/7501826?hl=en
     # https://support.google.com/google-ads/answer/2497703?hl=en
     df["eligible_impressions"] = df["impressions"]/(df['search_impression_share']/100)
-    df["search_abs_top_is"] = df["search_abs_top_is"] * df["eligible_impressions"]/100
-    df["search_top_is"] = df["search_top_is"] * df["eligible_impressions"]/100
+    df["search_abs_top_is"] = np.round(df["search_abs_top_is"] * (df["eligible_impressions"]/100), 4)
+    df["search_top_is"] = np.round(df["search_top_is"] * (df["eligible_impressions"]/100), 4)
     # https://yandex.ru/dev/direct/doc/reports/report-format-docpage/
-    df['avg_impression_pos'] = df['avg_impression_pos'] * df["impressions"]
-    df['avg_traffic_vol'] = df['avg_traffic_vol'] * df["impressions"]
-    df['avg_click_pos'] = df['avg_click_pos'] * df["clicks"]
+    df['avg_impression_pos'] = np.round(df['avg_impression_pos'] * df["impressions"], 4)
+    df['avg_traffic_vol'] = np.round(df['avg_traffic_vol'] * df["impressions"], 4)
+    df['avg_click_pos'] = np.round(df['avg_click_pos'] * df["clicks"], 4)
     return df
 
 
