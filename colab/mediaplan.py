@@ -1348,65 +1348,49 @@ class GroupsRegions:
         return False
 
 
-class GroupsRegions:
+class GroupsVerticalExt:
     regs = [
-        {"descr": 'msk', "fltrs": ["_msk_", "_mo_", "_dmo_", "_bmo_", "_mskmo_"]},
-        {"descr": 'spb', "fltrs": ["_spb_", "_spblo_"]},
-        {"descr": 'p4c', "fltrs": ["_kazan_", "_nn_", "_krasnoyarsk_", "voronezh"]},
-        {"descr": '18reg', "fltrs": ['ufa',
-                                     'krasnodar',
-                                     'sochi',
-                                     'rostov',
-                                     'samara',
-                                     'ekb',
-                                     'novosibirsk',
-                                     'chelyabinsk',
-                                     'tyumen',
-                                     'stavropol',
-                                     'yalta',
-                                     'omsk',
-                                     'volgograd',
-                                     'kemerovo',
-                                     'irkutsk',
-                                     'sevastopol',
-                                     'kaliningrad',
-                                     'perm']},
 
-        {"descr": 'oth', "fltrs": ['rf',
-                                 'arhangelsk',
-                                 'astrahan',
-                                 'barnaul',
-                                 'belgorod',
-                                 'bryansk',
-                                 'cheboksary',
-                                 'habarovsk',
-                                 'ivanovo',
-                                 'izhevsk',
-                                 'kaluga',
-                                 'kirov',
-                                 'kostroma',
-                                 'kurgan',
-                                 'kursk',
-                                 'lipetsk',
-                                 'mahachkala',
-                                 'novgorod',
-                                 'orel',
-                                 'orenburg',
-                                 'penza',
-                                 'pskov',
-                                 'ryazan',
-                                 'saratov',
-                                 'smolensk',
-                                 'surgut',
-                                 'tambov',
-                                 'tomsk',
-                                 'tula',
-                                 'tver',
-                                 'ulanude',
-                                 'ulyanovsk',
-                                 'vladimir',
-                                 'vladivostok',
-                                 'yaroslavl']},
+        {"descr": 'rtg', "fltrs": ["_rtg_"]},
+        {"descr": 'drtg_nov', "fltrs": ["_drtg_jk_nov_"]},
+        {"descr": 'drtg_com', "fltrs": ["_drtg_com_"]},
+        {"descr": 'ipoteka', "fltrs": ["_ipoteka_"]},
+
+        {"descr": 'own', "fltrs": ["_b2b_own_"]},
+        {"descr": 'commerce', "fltrs": ["_com_"]},
+        {"descr": 'sub', "fltrs": ["_sub_"]},
+        {"descr": 'rentsec', "fltrs": ["_rentsec_"]},
+        {"descr": 'salesec', "fltrs": ["_salesec_"]},
+        {"descr": 'brand_cian', "fltrs": ["_brand_cian"]},
+        {"descr": 'competitors', "fltrs": ["competitors", "brand"]},
+        {"descr": 'nov', "fltrs": ["_nov_"]},
+
+    ]
+
+    def __init__(self):
+        for i in self.regs:
+            i['fltrs'] = [re.compile(j) for j in i['fltrs']]
+
+    def __getitem__(self, item):
+        for i in self.regs:
+            for j in i['fltrs']:
+                if j.search(item):
+                    return i['descr']
+
+        return False
+
+
+class GroupsVerticalCommon:
+    regs = [
+        {"descr": 'ipoteka', "fltrs": ["_ipoteka_"]},
+        {"descr": 'own', "fltrs": ["_b2b_own_"]},
+        {"descr": 'commerce', "fltrs": ["_com_"]},
+        {"descr": 'sub', "fltrs": ["_sub_"]},
+        {"descr": 'rentsec', "fltrs": ["_rentsec_"]},
+        {"descr": 'salesec', "fltrs": ["_salesec_"]},
+        {"descr": 'brand_cian', "fltrs": ["_brand_cian"]},
+        {"descr": 'competitors', "fltrs": ["competitors", "brand"]},
+        {"descr": 'nov', "fltrs": ["_nov_"]},
 
     ]
 
@@ -1444,7 +1428,7 @@ if __name__ == '__main__':
 # Пакет: RTG sub #########################################################################
 
 # Пакет: DRTG NOV #########################################################################
-
+# Пакет: DRTG COM #########################################################################
 
 # Пакет: test ########################################################################
 # Пакет: ipoteka #####################################################################
