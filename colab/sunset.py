@@ -53,7 +53,7 @@ def calc_base_values(tt):
     tt['assisted_ipotek_per_click'] = np.round(tt['assisted_conv_mortgage'] / tt['clicks'], 4)
     tt['assisted_ct_per_click'] = np.round(tt['assisted_conv_ct'] / tt['clicks'], 4)
 
-    tt['cost'] = tt['cost'].apply(pd.to_numeric, downcast='integer')
+    tt['cost'] = tt['cost'].astype(np.int64)
     return tt
 
 
