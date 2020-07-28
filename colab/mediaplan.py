@@ -265,7 +265,7 @@ class MP:
         {"descr": 'p4c_com_mix_network_bdg',
          "fltrs": ["b2b_(kazan|nn|krasnoyarsk|voronezh)_general_main_com_mix_network", ]},
         {"descr": 'reg18_com_mix_network_bdg', "fltrs": ["b2b_chelyabinsk_general_main_com_mix_network",
-                                                         "b2b_ekb_general_main_com_mix_networkh",
+                                                         "b2b_ekb_general_main_com_mix_network",
                                                          "b2b_irkutsk_general_main_com_mix_network",
                                                          "b2b_kaliningrad_general_main_com_mix_network",
                                                          "b2b_kemerovo_general_main_com_mix_network",
@@ -280,7 +280,7 @@ class MP:
                                                          "b2b_stavropol_general_main_com_mix_network",
                                                          "b2b_tyumen_general_main_com_mix_network",
                                                          "b2b_ufa_general_main_com_mix_network",
-                                                         "b2b_volgograd_general_main_com_mix_networkh",
+                                                         "b2b_volgograd_general_main_com_mix_network",
                                                          "b2b_yalta_general_main_com_mix_network",
                                                          ]},
 
