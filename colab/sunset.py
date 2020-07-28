@@ -74,13 +74,7 @@ def plot_basic_dynamics(df, what=None, region_filters=None, campaign_filters=Non
             campaign_mask = campaign_mask | (df.campaignname.str.contains(i))
         df = df[campaign_mask]
 
-    df = df.groupby(grp)
-    tt = df[['cost',
-             'impressions', 'clicks',
-             'total_events', 'total_events_app',
-             'total_b2bevents', 'total_b2bevents_app',
-             'uniq_ipotek_events', 'uniq_ipotek_events_app',
-             'total_ct_events']].sum()
+    df = df.groupby(grp).sum()
     tt = calc_base_values(tt)
 
     scale_plot_size(12, 12)
