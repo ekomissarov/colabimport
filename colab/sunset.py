@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib as mpl
 import numpy as np
 import matplotlib.pyplot as plt
-from colabimport.colab import mediaplan
+from . import mediaplan
 
 def scale_plot_size(x, y):
     #default_figsize = mpl.rcParamsDefault['figure.figsize']
