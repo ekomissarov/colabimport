@@ -28,19 +28,19 @@ def calc_additive_values(df):
 
 
 def calc_base_values(tt):
-    tt['cost'] = tt['cost'] / 1000000
+    tt['cost_rur'] = tt['cost'] / 1000000
 
     tt['events'] = tt['total_events'] + tt['total_events_app']
     tt['ads'] = tt['total_b2bevents'] + tt['total_b2bevents_app']
     tt['ipotek'] = tt['uniq_ipotek_events'] + tt['uniq_ipotek_events_app']
     tt['ct'] = tt['total_ct_events'] + 0
 
-    tt['cpa'] = np.round(tt['cost'] / tt['events'], 2)
-    tt['cpad'] = np.round(tt['cost'] / tt['ads'], 2)
-    tt['cpa_ipotek'] = np.round(tt['cost'] / tt['ipotek'], 2)
-    tt['cpa_ct'] = np.round(tt['cost'] / tt['total_ct_events'], 2)
+    tt['cpa'] = np.round(tt['cost_rur'] / tt['events'], 2)
+    tt['cpad'] = np.round(tt['cost_rur'] / tt['ads'], 2)
+    tt['cpa_ipotek'] = np.round(tt['cost_rur'] / tt['ipotek'], 2)
+    tt['cpa_ct'] = np.round(tt['cost_rur'] / tt['total_ct_events'], 2)
 
-    tt['cpc'] = np.round(tt['cost'] / tt['clicks'], 2)
+    tt['cpc'] = np.round(tt['cost_rur'] / tt['clicks'], 2)
     tt['ctr'] = np.round(tt['clicks'] / tt['impressions'], 4)
 
     tt['ev_per_click'] = np.round((tt['total_events'] + tt['total_events_app']) / tt['clicks'], 4)
@@ -53,7 +53,7 @@ def calc_base_values(tt):
     tt['assisted_ipotek_per_click'] = np.round(tt['assisted_conv_mortgage'] / tt['clicks'], 4)
     tt['assisted_ct_per_click'] = np.round(tt['assisted_conv_ct'] / tt['clicks'], 4)
 
-    tt['cost'] = tt['cost'].astype(np.int64)
+    tt['cost_rur'] = tt['cost_rur'].astype(np.int64)
     return tt
 
 
@@ -91,7 +91,7 @@ def plot_basic_dynamics(df, what=None, region_filters=None, campaign_filters=Non
         plots = ["ct", "cpa_ct"]
         tt.loc[:, plots].plot(subplots=True)
     if "common" in what:
-        plots = ["cost", "cpc", "ctr", "clicks"]
+        plots = ["cost_rur", "cpc", "ctr", "clicks"]
         tt.loc[:, plots].plot(subplots=True)
 
 
