@@ -31,11 +31,13 @@ def calc_base_values(tt):
     tt['cost_rur'] = tt['cost'] / 1000000
 
     tt['events'] = tt['total_events'] + tt['total_events_app']
+    tt['events_fdv'] = tt['total_events_fdv'] + tt['total_events_app_fdv']
     tt['ads'] = tt['total_b2bevents'] + tt['total_b2bevents_app']
     tt['ipotek'] = tt['uniq_ipotek_events'] + tt['uniq_ipotek_events_app']
     tt['ct'] = tt['total_ct_events'] + 0
 
     tt['cpa'] = np.round(tt['cost_rur'] / tt['events'], 2)
+    tt['cpa_fdv'] = np.round(tt['cost_rur'] / tt['events_fdv'], 2)
     tt['cpad'] = np.round(tt['cost_rur'] / tt['ads'], 2)
     tt['cpa_ipotek'] = np.round(tt['cost_rur'] / tt['ipotek'], 2)
     tt['cpa_ct'] = np.round(tt['cost_rur'] / tt['total_ct_events'], 2)
