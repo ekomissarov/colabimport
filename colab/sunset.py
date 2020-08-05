@@ -40,7 +40,7 @@ def calc_base_values(tt):
     tt['cpa_fdv'] = np.round(tt['cost_rur'] / tt['events_fdv'], 2)
     tt['cpad'] = np.round(tt['cost_rur'] / tt['ads'], 2)
     tt['cpa_ipotek'] = np.round(tt['cost_rur'] / tt['ipotek'], 2)
-    tt['cpa_ct'] = np.round(tt['cost_rur'] / tt['total_ct_events'], 2)
+    tt['cpa_ct'] = np.round(tt['cost_rur'] / tt['ct'], 2)
 
     tt['cpc'] = np.round(tt['cost_rur'] / tt['clicks'], 2)
     tt['ctr'] = np.round(tt['clicks'] / tt['impressions'], 4)
