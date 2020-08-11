@@ -29,31 +29,40 @@ def calc_additive_values(df):
 
 def calc_base_values(tt):
     tt['cost_rur'] = tt['cost'] / 1000000
+    tt['cpc'] = np.round(tt['cost_rur'] / tt['clicks'], 2)
+    tt['ctr'] = np.round(tt['clicks'] / tt['impressions'], 4)
 
+    # конверсии объем
     tt['events'] = tt['total_events'] + tt['total_events_app']
     tt['events_fdv'] = tt['total_events_fdv'] + tt['total_events_app_fdv']
     tt['ads'] = tt['total_b2bevents'] + tt['total_b2bevents_app']
     tt['ipotek'] = tt['uniq_ipotek_events'] + tt['uniq_ipotek_events_app']
     tt['ct'] = tt['total_ct_events'] + 0
 
+    # конверсии стоимости
     tt['cpa'] = np.round(tt['cost_rur'] / tt['events'], 2)
     tt['cpa_fdv'] = np.round(tt['cost_rur'] / tt['events_fdv'], 2)
     tt['cpad'] = np.round(tt['cost_rur'] / tt['ads'], 2)
     tt['cpa_ipotek'] = np.round(tt['cost_rur'] / tt['ipotek'], 2)
     tt['cpa_ct'] = np.round(tt['cost_rur'] / tt['ct'], 2)
 
-    tt['cpc'] = np.round(tt['cost_rur'] / tt['clicks'], 2)
-    tt['ctr'] = np.round(tt['clicks'] / tt['impressions'], 4)
-
+    # %конверсии на клик
     tt['ev_per_click'] = np.round((tt['total_events'] + tt['total_events_app']) / tt['clicks'], 4)
     tt['ad_per_click'] = np.round((tt['total_b2bevents'] + tt['total_b2bevents_app']) / tt['clicks'], 4)
     tt['ipotek_per_click'] = np.round((tt['uniq_ipotek_events'] + tt['uniq_ipotek_events_app']) / tt['clicks'], 4)
     tt['ct_per_click'] = np.round(tt['total_ct_events'] / tt['clicks'], 4)
 
+    # конверсии стоимости
     tt['assisted_ev_per_click'] = np.round(tt['assisted_conv_phones'] / tt['clicks'], 4)
     tt['assisted_ad_per_click'] = np.round(tt['assisted_conv_ads'] / tt['clicks'], 4)
     tt['assisted_ipotek_per_click'] = np.round(tt['assisted_conv_mortgage'] / tt['clicks'], 4)
     tt['assisted_ct_per_click'] = np.round(tt['assisted_conv_ct'] / tt['clicks'], 4)
+
+    # агрегаты конверсии объем
+    tt['conv_agg_full'] = tt['events'] + tt['ads'] + tt['ipotek'] + tt['ct']
+
+    # агрегаты конверсии стоимости
+    tt['cp_agg_full'] = np.round(tt['cost_rur'] / tt['conv_agg_full'], 2)
 
     tt['cost_rur'] = tt['cost_rur'].astype(np.int64)
     return tt
