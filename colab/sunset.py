@@ -47,22 +47,25 @@ def calc_base_values(tt):
     tt['cpa_ct'] = np.round(tt['cost_rur'] / tt['ct'], 2)
 
     # %конверсии на клик
-    tt['ev_per_click'] = np.round((tt['total_events'] + tt['total_events_app']) / tt['clicks'], 4)
-    tt['ad_per_click'] = np.round((tt['total_b2bevents'] + tt['total_b2bevents_app']) / tt['clicks'], 4)
-    tt['ipotek_per_click'] = np.round((tt['uniq_ipotek_events'] + tt['uniq_ipotek_events_app']) / tt['clicks'], 4)
-    tt['ct_per_click'] = np.round(tt['total_ct_events'] / tt['clicks'], 4)
+    tt['ev_per_click'] = np.round(tt['events'] / tt['clicks'], 4)
+    tt['ad_per_click'] = np.round(tt['ads'] / tt['clicks'], 4)
+    tt['ipotek_per_click'] = np.round(tt['ipotek'] / tt['clicks'], 4)
+    tt['ct_per_click'] = np.round(tt['ct'] / tt['clicks'], 4)
 
-    # конверсии стоимости
+    # %ассоциированные конверсии на клик
     tt['assisted_ev_per_click'] = np.round(tt['assisted_conv_phones'] / tt['clicks'], 4)
     tt['assisted_ad_per_click'] = np.round(tt['assisted_conv_ads'] / tt['clicks'], 4)
     tt['assisted_ipotek_per_click'] = np.round(tt['assisted_conv_mortgage'] / tt['clicks'], 4)
     tt['assisted_ct_per_click'] = np.round(tt['assisted_conv_ct'] / tt['clicks'], 4)
 
-    # агрегаты конверсии объем
+    # агрегаты: конверсии объем
     tt['conv_agg_full'] = tt['events'] + tt['ads'] + tt['ipotek'] + tt['ct']
 
-    # агрегаты конверсии стоимости
+    # агрегаты: конверсии стоимости
     tt['cp_agg_full'] = np.round(tt['cost_rur'] / tt['conv_agg_full'], 2)
+
+    # агрегаты: %конверсии на клик
+    tt['agg_full_per_click'] = np.round(tt['conv_agg_full'] / tt['clicks'], 4)
 
     tt['cost_rur'] = tt['cost_rur'].astype(np.int64)
     return tt
