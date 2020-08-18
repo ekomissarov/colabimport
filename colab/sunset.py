@@ -48,6 +48,7 @@ def calc_base_values(tt):
 
     # %конверсии на клик
     tt['ev_per_click'] = np.round(tt['events'] / tt['clicks'], 4)
+    tt['ev_fdv_per_click'] = np.round(tt['events_fdv'] / tt['clicks'], 4)
     tt['ad_per_click'] = np.round(tt['ads'] / tt['clicks'], 4)
     tt['ipotek_per_click'] = np.round(tt['ipotek'] / tt['clicks'], 4)
     tt['ct_per_click'] = np.round(tt['ct'] / tt['clicks'], 4)
