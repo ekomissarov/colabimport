@@ -1406,6 +1406,29 @@ class GroupsVerticalCommon:
         return False
 
 
+class SearchOrNetwork:
+    regs = [
+        {"descr": 'search', "fltrs": ["_search"]},
+        {"descr": 'ci_network', "fltrs": ["_ci_"]},
+        {"descr": 'rtg_network', "fltrs": ["_rtg_"]},
+        {"descr": 'drtg_network', "fltrs": ["_drtg_"]},
+        {"descr": 'other_network', "fltrs": ["_network"]},
+        {"descr": 'discovery', "fltrs": ["discovery"]},
+    ]
+
+    def __init__(self):
+        for i in self.regs:
+            i['fltrs'] = [re.compile(j) for j in i['fltrs']]
+
+    def __getitem__(self, item):
+        for i in self.regs:
+            for j in i['fltrs']:
+                if j.search(item):
+                    return i['descr']
+
+        return False
+
+
 if __name__ == '__main__':
     mp = MP()
     print(mp["b2b_ekb_general_null_own_desk_search"])
