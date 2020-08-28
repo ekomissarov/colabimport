@@ -1,5 +1,6 @@
 import pandas as pd
 import matplotlib as mpl
+import matplotlib.dates as mdates
 import numpy as np
 import matplotlib.pyplot as plt
 from . import mediaplan
@@ -72,6 +73,33 @@ def calc_base_values(tt):
     return tt
 
 
+def plot_basic_rolling(events, cpas, items=["events", "cpa"]):
+    fig, (ax1, ax2) = plt.subplots(2, 1)
+
+    ax1.plot(events.index, events['values'], '-')
+    ax1.plot(events.index, events['rolling_mean'], '--', color='gray')
+    ax1.plot(events.index, events['rolling_std'], ':', color='gray')
+    ax1.lines[1].set_alpha(0.5)
+    ax1.lines[2].set_alpha(0.5)
+    locator = mdates.AutoDateLocator(minticks=0, maxticks=3)
+    formatter = mdates.ConciseDateFormatter(locator)
+    ax1.xaxis.set_major_locator(locator)
+    ax1.xaxis.set_major_formatter(formatter)
+    ax1.legend([items[0], 'rolling_mean', 'rolling_std'])
+
+    ax2.plot(cpas.index, cpas['values'], '-', color='orange')
+    ax2.plot(cpas.index, cpas['rolling_mean'], '--', color='gray')
+    ax2.plot(cpas.index, cpas['rolling_std'], ':', color='gray')
+    ax2.lines[1].set_alpha(0.5)
+    ax2.lines[2].set_alpha(0.5)
+    locator = mdates.AutoDateLocator(minticks=5, maxticks=20)
+    formatter = mdates.ConciseDateFormatter(locator)
+    ax2.xaxis.set_major_locator(locator)
+    ax2.xaxis.set_major_formatter(formatter)
+    ax2.legend([items[1], 'rolling_mean', 'rolling_std'])
+    plt.show()
+
+
 def plot_basic_dynamics(df, what=None, region_filters=None, campaign_filters=None, system_filters=None):
     grp = ['date']
     if what == None:
@@ -91,20 +119,42 @@ def plot_basic_dynamics(df, what=None, region_filters=None, campaign_filters=Non
 
     tt = df.groupby(grp).sum()
     tt = calc_base_values(tt)
+    tt.index = pd.to_datetime(tt.index)
 
     scale_plot_size(12, 12)
     if "events" in what:
-        plots = ["events", "cpa"]
-        tt.loc[:, plots].plot(subplots=True)
+        events = tt.loc[:, "events"]
+        cpas = tt.loc[:, "cpa"]
+        rolling_ev = events.rolling(7, center=True)
+        rolling_cpas = cpas.rolling(7, center=True)
+        events = pd.DataFrame({'values': events, 'rolling_mean': rolling_ev.mean(), 'rolling_std': rolling_ev.std()})
+        cpas = pd.DataFrame({'values': cpas, 'rolling_mean': rolling_cpas.mean(), 'rolling_std': rolling_cpas.std()})
+        plot_basic_rolling(events, cpas, ["phone events", "cpa"])
     if "ads" in what:
-        plots = ["ads", "cpad"]
-        tt.loc[:, plots].plot(subplots=True)
+        events = tt.loc[:, "ads"]
+        cpas = tt.loc[:, "cpad"]
+        rolling_ev = events.rolling(7, center=True)
+        rolling_cpas = cpas.rolling(7, center=True)
+        events = pd.DataFrame({'values': events, 'rolling_mean': rolling_ev.mean(), 'rolling_std': rolling_ev.std()})
+        cpas = pd.DataFrame({'values': cpas, 'rolling_mean': rolling_cpas.mean(), 'rolling_std': rolling_cpas.std()})
+        plot_basic_rolling(events, cpas, ["ads", "cpad"])
     if "ipotek" in what:
-        plots = ["ipotek", "cpa_ipotek"]
-        tt.loc[:, plots].plot(subplots=True)
+        events = tt.loc[:, "ipotek"]
+        cpas = tt.loc[:, "cpa_ipotek"]
+        rolling_ev = events.rolling(7, center=True)
+        rolling_cpas = cpas.rolling(7, center=True)
+        events = pd.DataFrame({'values': events, 'rolling_mean': rolling_ev.mean(), 'rolling_std': rolling_ev.std()})
+        cpas = pd.DataFrame({'values': cpas, 'rolling_mean': rolling_cpas.mean(), 'rolling_std': rolling_cpas.std()})
+        plot_basic_rolling(events, cpas, ["ipotek", "cpa_ipotek"])
     if "ct" in what:
         plots = ["ct", "cpa_ct"]
-        tt.loc[:, plots].plot(subplots=True)
+        events = tt.loc[:, "ct"]
+        cpas = tt.loc[:, "cpa_ct"]
+        rolling_ev = events.rolling(7, center=True)
+        rolling_cpas = cpas.rolling(7, center=True)
+        events = pd.DataFrame({'values': events, 'rolling_mean': rolling_ev.mean(), 'rolling_std': rolling_ev.std()})
+        cpas = pd.DataFrame({'values': cpas, 'rolling_mean': rolling_cpas.mean(), 'rolling_std': rolling_cpas.std()})
+        plot_basic_rolling(events, cpas, ["ct", "cpa_ct"])
     if "common" in what:
         plots = ["cost_rur", "cpc", "ctr", "clicks"]
         tt.loc[:, plots].plot(subplots=True)
