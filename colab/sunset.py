@@ -14,13 +14,22 @@ def calc_additive_values(df):
     # приводим метрики к аддитивным величинам для расчетов взвешенным значениям сводных таблицах
     # https://support.google.com/google-ads/answer/7501826?hl=en
     # https://support.google.com/google-ads/answer/2497703?hl=en
-    for i in ('search_abs_top_is', 'search_top_is', 'search_impression_share',
+    for i in ('impr_top_percent', 'impr_abs_top_percent',
+              'search_abs_top_is', 'search_top_is', 'search_impression_share',
               'avg_impression_pos', 'avg_traffic_vol', 'avg_click_pos'):
-        df[i] = df[i].apply(pd.to_numeric)
+        if i in df.columns:
+            df[i] = df[i].apply(pd.to_numeric)
 
-    df["eligible_impressions"] = np.round(df["impressions"]/(df['search_impression_share']/100), 4)
-    df["search_abs_top_is"] = np.round(df["search_abs_top_is"] * (df["eligible_impressions"]/100), 4)
-    df["search_top_is"] = np.round(df["search_top_is"] * (df["eligible_impressions"]/100), 4)
+    if 'search_impression_share' in df.columns:
+        df["eligible_impressions"] = np.round(df["impressions"]/(df['search_impression_share'] / 100), 4)
+        df["search_abs_top_is"] = np.round(df["search_abs_top_is"] * df["eligible_impressions"] / 100, 4)
+        df["search_top_is"] = np.round(df["search_top_is"] * df["eligible_impressions"] / 100, 4)
+
+    if 'impr_top_percent' in df.columns:
+        df["impr_top_percent"] = np.round(df["impr_top_percent"] * df["impressions"] / 100, 4)
+    if 'impr_abs_top_percent' in df.columns:
+        df["impr_abs_top_percent"] = np.round(df["impr_abs_top_percent"] * df["impressions"] / 100, 4)
+
     # https://yandex.ru/dev/direct/doc/reports/report-format-docpage/
     df['avg_impression_pos'] = np.round(df['avg_impression_pos'] * df["impressions"], 4)
     df['avg_traffic_vol'] = np.round(df['avg_traffic_vol'] * df["impressions"], 4)
