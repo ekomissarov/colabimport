@@ -1265,10 +1265,11 @@ class MP:
             i['fltrs'] = [re.compile(j) for j in i['fltrs']]
 
     def __getitem__(self, item):
-        for i in self.mp_map:
-            for j in i['fltrs']:
-                if j.search(item):
-                    return i['descr']
+        if item:
+            for i in self.mp_map:
+                for j in i['fltrs']:
+                    if j.search(item):
+                        return i['descr']
 
         return False
 
@@ -1340,10 +1341,11 @@ class GroupsRegions:
             i['fltrs'] = [re.compile(j) for j in i['fltrs']]
 
     def __getitem__(self, item):
-        for i in self.regs:
-            for j in i['fltrs']:
-                if j.search(item):
-                    return i['descr']
+        if item:
+            for i in self.regs:
+                for j in i['fltrs']:
+                    if j.search(item):
+                        return i['descr']
 
         return False
 
@@ -1372,10 +1374,11 @@ class GroupsVerticalExt:
             i['fltrs'] = [re.compile(j) for j in i['fltrs']]
 
     def __getitem__(self, item):
-        for i in self.regs:
-            for j in i['fltrs']:
-                if j.search(item):
-                    return i['descr']
+        if item:
+            for i in self.regs:
+                for j in i['fltrs']:
+                    if j.search(item):
+                        return i['descr']
 
         return False
 
@@ -1399,10 +1402,11 @@ class GroupsVerticalCommon:
             i['fltrs'] = [re.compile(j) for j in i['fltrs']]
 
     def __getitem__(self, item):
-        for i in self.regs:
-            for j in i['fltrs']:
-                if j.search(item):
-                    return i['descr']
+        if item:
+            for i in self.regs:
+                for j in i['fltrs']:
+                    if j.search(item):
+                        return i['descr']
 
         return False
 
@@ -1432,24 +1436,24 @@ class SearchOrNetwork:
 
 def all_classificators_join(tt):
     mp_map = MP()
-    bdg_classes = pd.DataFrame([{"campaignname": i, "budget_class": mp_map[i]} for i in set(tt.campaignname.unique())])
-    tt = pd.merge(tt, bdg_classes)
+    classificator_join = pd.DataFrame([{"campaignname": i, "budget_class": mp_map[i]} for i in set(tt.campaignname.unique())])
+    tt = pd.merge(tt, classificator_join)
 
     regions_map = GroupsRegions()
-    classificator = pd.DataFrame([{"campaignname": i, "region_class": regions_map[i]} for i in set(tt.campaignname.unique())])
-    tt = pd.merge(tt, classificator)
+    classificator_join = pd.DataFrame([{"campaignname": i, "region_class": regions_map[i]} for i in set(tt.campaignname.unique())])
+    tt = pd.merge(tt, classificator_join)
 
     searchornetwork_map = SearchOrNetwork()
-    classificator = pd.DataFrame([{"campaignname": i, "network_class": searchornetwork_map[i]} for i in set(tt.campaignname.unique())])
-    tt = pd.merge(tt, classificator)
+    classificator_join = pd.DataFrame([{"campaignname": i, "network_class": searchornetwork_map[i]} for i in set(tt.campaignname.unique())])
+    tt = pd.merge(tt, classificator_join)
 
     vert_map = GroupsVerticalCommon()
-    classificator = pd.DataFrame([{"budget_class": i, "vertical_class": vert_map[i]} for i in set(tt.budget_class.unique())])
-    tt = pd.merge(tt, classificator)
+    classificator_join = pd.DataFrame([{"budget_class": i, "vertical_class": vert_map[i]} for i in set(tt.budget_class.unique())])
+    tt = pd.merge(tt, classificator_join)
 
     vertex_map = GroupsVerticalExt()
-    classificator = pd.DataFrame([{"budget_class": i, "verticalext_class": vertex_map[i]} for i in set(tt.budget_class.unique())])
-    tt = pd.merge(tt, classificator)
+    classificator_join = pd.DataFrame([{"budget_class": i, "verticalext_class": vertex_map[i]} for i in set(tt.budget_class.unique())])
+    tt = pd.merge(tt, classificator_join)
     return tt
 
 
