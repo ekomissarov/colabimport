@@ -1429,6 +1429,29 @@ class SearchOrNetwork:
         return False
 
 
+def all_classificators_join(tt):
+    mp_map = MP()
+    bdg_classes = pd.DataFrame([{"campaignname": i, "budget_class": mp_map[i]} for i in set(tt.campaignname.unique())])
+    tt = pd.merge(tt, bdg_classes)
+
+    regions_map = GroupsRegions()
+    classificator = pd.DataFrame([{"campaignname": i, "region_class": regions_map[i]} for i in set(tt.campaignname.unique())])
+    tt = pd.merge(tt, classificator)
+
+    searchornetwork_map = SearchOrNetwork()
+    classificator = pd.DataFrame([{"campaignname": i, "network_class": searchornetwork_map[i]} for i in set(tt.campaignname.unique())])
+    tt = pd.merge(tt, classificator)
+
+    vert_map = GroupsVerticalCommon()
+    classificator = pd.DataFrame([{"budget_class": i, "vertical_class": vert_map[i]} for i in set(tt.budget_class.unique())])
+    tt = pd.merge(tt, classificator)
+
+    vertex_map = GroupsVerticalExt()
+    classificator = pd.DataFrame([{"budget_class": i, "verticalext_class": vertex_map[i]} for i in set(tt.budget_class.unique())])
+    tt = pd.merge(tt, classificator)
+    return tt
+
+
 if __name__ == '__main__':
     mp = MP()
     print(mp["b2b_ekb_general_null_own_desk_search"])
