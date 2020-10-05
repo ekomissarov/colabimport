@@ -70,7 +70,7 @@ def calc_base_values(tt):
     tt['assisted_ct_per_click'] = np.round(tt['assisted_conv_ct'] / tt['clicks'], 4)
 
     # агрегаты: конверсии объем
-    tt['conv_agg_full'] = tt['events'] + tt['ads'] + tt['ipotek'] + tt['ct']
+    tt['conv_agg_full'] = tt['events'] + (8 * tt['ads']) + (500 * tt['ipotek']) + (500 * tt['ct'])
 
     # агрегаты: конверсии стоимости
     tt['cp_agg_full'] = np.round(tt['cost_rur'] / tt['conv_agg_full'], 2)
