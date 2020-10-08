@@ -82,30 +82,25 @@ def calc_base_values(tt):
     return tt
 
 
-def plot_basic_rolling(events, cpas, items=["events", "cpa"]):
-    fig, (ax1, ax2) = plt.subplots(2, 1)
+def plot_basic_rolling(*lines, items=["events", "cpa"], line_colors=["darkblue", "orange"]):
+    fig, axN = plt.subplots(len(lines), 1)
 
-    ax1.plot(events.index, events['values'], '-')
-    ax1.plot(events.index, events['rolling_mean'], '--', color='gray')
-    ax1.plot(events.index, events['rolling_std'], ':', color='gray')
-    ax1.lines[1].set_alpha(0.5)
-    ax1.lines[2].set_alpha(0.5)
-    locator = mdates.AutoDateLocator(minticks=0, maxticks=3)
-    formatter = mdates.ConciseDateFormatter(locator)
-    ax1.xaxis.set_major_locator(locator)
-    ax1.xaxis.set_major_formatter(formatter)
-    ax1.legend([items[0], 'rolling_mean', 'rolling_std'])
+    for i, line in enumerate(lines):
+        axN[i].plot(line.index, line['values'], '-', color=line_colors[i])
+        axN[i].plot(line.index, line['rolling_mean'], '--', color='gray')
+        axN[i].plot(line.index, line['rolling_std'], ':', color='gray')
+        axN[i].lines[1].set_alpha(0.5)
+        axN[i].lines[2].set_alpha(0.5)
+        locator = mdates.AutoDateLocator(minticks=0, maxticks=3)
+        formatter = mdates.ConciseDateFormatter(locator)
+        axN[i].legend([items[i], 'rolling_mean', 'rolling_std'])
+        axN[i].xaxis.set_major_locator(locator)
+        axN[i].xaxis.set_major_formatter(formatter)
 
-    ax2.plot(cpas.index, cpas['values'], '-', color='orange')
-    ax2.plot(cpas.index, cpas['rolling_mean'], '--', color='gray')
-    ax2.plot(cpas.index, cpas['rolling_std'], ':', color='gray')
-    ax2.lines[1].set_alpha(0.5)
-    ax2.lines[2].set_alpha(0.5)
     locator = mdates.AutoDateLocator(minticks=5, maxticks=20)
     formatter = mdates.ConciseDateFormatter(locator)
-    ax2.xaxis.set_major_locator(locator)
-    ax2.xaxis.set_major_formatter(formatter)
-    ax2.legend([items[1], 'rolling_mean', 'rolling_std'])
+    axN[i].xaxis.set_major_locator(locator)
+    axN[i].xaxis.set_major_formatter(formatter)
     plt.show()
 
 
@@ -138,7 +133,7 @@ def plot_basic_dynamics(df, what=None, region_filters=None, campaign_filters=Non
         rolling_cpas = cpas.rolling(7, center=True)
         events = pd.DataFrame({'values': events, 'rolling_mean': rolling_ev.mean(), 'rolling_std': rolling_ev.std()})
         cpas = pd.DataFrame({'values': cpas, 'rolling_mean': rolling_cpas.mean(), 'rolling_std': rolling_cpas.std()})
-        plot_basic_rolling(events, cpas, ["phone events", "cpa"])
+        plot_basic_rolling(events, cpas, items=["phone events", "cpa"])
     if "ads" in what:
         events = tt.loc[:, "ads"]
         cpas = tt.loc[:, "cpad"]
@@ -146,7 +141,7 @@ def plot_basic_dynamics(df, what=None, region_filters=None, campaign_filters=Non
         rolling_cpas = cpas.rolling(7, center=True)
         events = pd.DataFrame({'values': events, 'rolling_mean': rolling_ev.mean(), 'rolling_std': rolling_ev.std()})
         cpas = pd.DataFrame({'values': cpas, 'rolling_mean': rolling_cpas.mean(), 'rolling_std': rolling_cpas.std()})
-        plot_basic_rolling(events, cpas, ["ads", "cpad"])
+        plot_basic_rolling(events, cpas, items=["ads", "cpad"])
     if "ipotek" in what:
         events = tt.loc[:, "ipotek"]
         cpas = tt.loc[:, "cpa_ipotek"]
@@ -154,19 +149,31 @@ def plot_basic_dynamics(df, what=None, region_filters=None, campaign_filters=Non
         rolling_cpas = cpas.rolling(7, center=True)
         events = pd.DataFrame({'values': events, 'rolling_mean': rolling_ev.mean(), 'rolling_std': rolling_ev.std()})
         cpas = pd.DataFrame({'values': cpas, 'rolling_mean': rolling_cpas.mean(), 'rolling_std': rolling_cpas.std()})
-        plot_basic_rolling(events, cpas, ["ipotek", "cpa_ipotek"])
+        plot_basic_rolling(events, cpas, items=["ipotek", "cpa_ipotek"])
     if "ct" in what:
-        plots = ["ct", "cpa_ct"]
         events = tt.loc[:, "ct"]
         cpas = tt.loc[:, "cpa_ct"]
         rolling_ev = events.rolling(7, center=True)
         rolling_cpas = cpas.rolling(7, center=True)
         events = pd.DataFrame({'values': events, 'rolling_mean': rolling_ev.mean(), 'rolling_std': rolling_ev.std()})
         cpas = pd.DataFrame({'values': cpas, 'rolling_mean': rolling_cpas.mean(), 'rolling_std': rolling_cpas.std()})
-        plot_basic_rolling(events, cpas, ["ct", "cpa_ct"])
+        plot_basic_rolling(events, cpas, items=["ct", "cpa_ct"])
     if "common" in what:
-        plots = ["cost_rur", "cpc", "ctr", "clicks"]
-        tt.loc[:, plots].plot(subplots=True)
+        cost_rur = tt.loc[:, "cost_rur"]
+        cpc = tt.loc[:, "cpc"]
+        ctr = tt.loc[:, "ctr"]
+        clicks = tt.loc[:, "clicks"]
+        rolling_cost_rur = cost_rur.rolling(7, center=True)
+        rolling_cpc = cpc.rolling(7, center=True)
+        rolling_ctr = ctr.rolling(7, center=True)
+        rolling_clicks = clicks.rolling(7, center=True)
+        cost_rur = pd.DataFrame({'values': cost_rur, 'rolling_mean': rolling_cost_rur.mean(), 'rolling_std': rolling_cost_rur.std()})
+        cpc = pd.DataFrame({'values': cpc, 'rolling_mean': rolling_cpc.mean(), 'rolling_std': rolling_cpc.std()})
+        ctr = pd.DataFrame({'values': ctr, 'rolling_mean': rolling_ctr.mean(), 'rolling_std': rolling_ctr.std()})
+        clicks = pd.DataFrame({'values': clicks, 'rolling_mean': rolling_clicks.mean(), 'rolling_std': rolling_clicks.std()})
+        plot_basic_rolling(cost_rur, cpc, ctr, clicks,
+                           items=["cost_rur", "cpc", "ctr", "clicks"],
+                           line_colors=["darkblue", "orange", "green", "red"])
 
 
 def plot_avg_position_yandex(df, region_filters=None, campaign_filters=None):
