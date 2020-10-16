@@ -125,7 +125,7 @@ def plot_basic_dynamics(df, what=None, region_filters=None, campaign_filters=Non
     tt = calc_base_values(tt)
     tt.index = pd.to_datetime(tt.index)
 
-    scale_plot_size(12, 12)
+    scale_plot_size(12, 16)
     if "events" in what:
         events = tt.loc[:, "events"]
         cpas = tt.loc[:, "cpa"]
