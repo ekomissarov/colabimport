@@ -152,7 +152,7 @@ def plot_basic_dynamics(df, what=None, region_filters=None, campaign_filters=Non
             ev_per_click = tt.loc[:, "ad_per_click"]
             rolling_convsperclick = ev_per_click.rolling(7, center=True)
             ev_per_click = pd.DataFrame({'values': ev_per_click, 'rolling_mean': rolling_convsperclick.mean(), 'rolling_std': rolling_convsperclick.std()})
-            plot_basic_rolling(events, cpas, ev_per_click, items=["phone events", "cpa", "conv%"],
+            plot_basic_rolling(events, cpas, ev_per_click, items=["ads", "cpad", "conv%"],
                                line_colors=["darkblue", "orange", "darkgreen"])
         else:
             plot_basic_rolling(events, cpas, items=["ads", "cpad"])
@@ -167,7 +167,7 @@ def plot_basic_dynamics(df, what=None, region_filters=None, campaign_filters=Non
             ev_per_click = tt.loc[:, "ipotek_per_click"]
             rolling_convsperclick = ev_per_click.rolling(7, center=True)
             ev_per_click = pd.DataFrame({'values': ev_per_click, 'rolling_mean': rolling_convsperclick.mean(), 'rolling_std': rolling_convsperclick.std()})
-            plot_basic_rolling(events, cpas, ev_per_click, items=["phone events", "cpa", "conv%"],
+            plot_basic_rolling(events, cpas, ev_per_click, items=["ipotek", "cpa_ipotek", "conv%"],
                                line_colors=["darkblue", "orange", "darkgreen"])
         else:
             plot_basic_rolling(events, cpas, items=["ipotek", "cpa_ipotek"])
@@ -182,7 +182,7 @@ def plot_basic_dynamics(df, what=None, region_filters=None, campaign_filters=Non
             ev_per_click = tt.loc[:, "ct_per_click"]
             rolling_convsperclick = ev_per_click.rolling(7, center=True)
             ev_per_click = pd.DataFrame({'values': ev_per_click, 'rolling_mean': rolling_convsperclick.mean(), 'rolling_std': rolling_convsperclick.std()})
-            plot_basic_rolling(events, cpas, ev_per_click, items=["phone events", "cpa", "conv%"],
+            plot_basic_rolling(events, cpas, ev_per_click, items=["ct", "cpa_ct", "conv%"],
                                line_colors=["darkblue", "orange", "darkgreen"])
         else:
             plot_basic_rolling(events, cpas, items=["ct", "cpa_ct"])
