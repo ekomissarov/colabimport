@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="pysea-colabimport", # Replace with your own username
-    version="0.0.30",
+    version="0.0.31",
     author="Eugene Komissarov",
     author_email="ekom@cian.ru",
     description="Colab functions base",
