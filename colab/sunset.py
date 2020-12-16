@@ -72,7 +72,7 @@ def calc_base_values(tt):
     tt['ev_commercial_per_click'] = np.round(tt['events_commercial'] / tt['clicks'], 4)
     tt['ev_salesub_per_click'] = np.round(tt['events_salesub'] / tt['clicks'], 4)
     tt['ev_rentsub_per_click'] = np.round(tt['events_rentsub'] / tt['clicks'], 4)
-    tt['ev_saleflats_per_click'] = np.round(tt['events_saleflatsv'] / tt['clicks'], 4)
+    tt['ev_saleflats_per_click'] = np.round(tt['events_saleflats'] / tt['clicks'], 4)
     tt['ev_rentflats_per_click'] = np.round(tt['events_rentflats'] / tt['clicks'], 4)
     tt['ad_per_click'] = np.round(tt['ads'] / tt['clicks'], 4)
     tt['ipotek_per_click'] = np.round(tt['ipotek'] / tt['clicks'], 4)
