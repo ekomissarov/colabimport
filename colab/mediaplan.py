@@ -1877,8 +1877,7 @@ class GroupsRegionsFinance:
     regs = [
         {"descr": 'msk', "fltrs": ["_msk_", "_mo_", "_dmo_", "_bmo_", "_mskmo_"]},
         {"descr": 'spb', "fltrs": ["_spb_", "_spblo_"]},
-        {"descr": 'prior', "fltrs": [
-                                     '_kazan_", "_nn_", "_krasnoyarsk_", "_voronezh_',
+        {"descr": 'prior', "fltrs": ['_kazan_', '_nn_', '_krasnoyarsk_', '_voronezh_',
                                      '_ufa_',
                                      '_krasnodar_',
                                      '_sochi_',
@@ -2172,13 +2171,14 @@ def all_classificators_join(tt):
     tt = pd.merge(tt, classificator_join)
     return tt
 
+
 def finance_classificators_join(tt):
-    reglite_map = GroupsRegionsFinance()
-    classificator_join = pd.DataFrame([{"campaignname": i, "region_finance_class": reglite_map[i]} for i in set(tt.campaignname.unique())])
+    regfinance_map = GroupsRegionsFinance()
+    classificator_join = pd.DataFrame([{"campaignname": i, "region_finance_class": regfinance_map[i]} for i in set(tt.campaignname.unique())])
     tt = pd.merge(tt, classificator_join)
 
-    vert_map = GroupsVerticalFinance()
-    classificator_join = pd.DataFrame([{"vertical_class": i, "vertical_finance_class": vert_map[i]} for i in set(tt.vertical_class.unique())])
+    vertfinance_map = GroupsVerticalFinance()
+    classificator_join = pd.DataFrame([{"vertical_class": i, "vertical_finance_class": vertfinance_map[i]} for i in set(tt.vertical_class.unique())])
     tt = pd.merge(tt, classificator_join)
 
     return tt
