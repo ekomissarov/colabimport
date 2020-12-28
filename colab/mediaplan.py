@@ -1873,6 +1873,83 @@ class GroupsRegions:
         return False
 
 
+class GroupsRegionsFinance:
+    regs = [
+        {"descr": 'msk', "fltrs": ["_msk_", "_mo_", "_dmo_", "_bmo_", "_mskmo_"]},
+        {"descr": 'spb', "fltrs": ["_spb_", "_spblo_"]},
+        {"descr": 'prior', "fltrs": [
+                                     '_kazan_", "_nn_", "_krasnoyarsk_", "_voronezh_',
+                                     '_ufa_',
+                                     '_krasnodar_',
+                                     '_sochi_',
+                                     '_rostov_',
+                                     '_samara_',
+                                     '_ekb_',
+                                     '_novosibirsk_',
+                                     '_chelyabinsk_',
+                                     '_tyumen_',
+                                     '_stavropol_',
+                                     '_yalta_',
+                                     '_omsk_',
+                                     '_volgograd_',
+                                     '_kemerovo_',
+                                     '_irkutsk_',
+                                     '_sevastopol_',
+                                     '_kaliningrad_',
+                                     '_perm_']},
+
+        {"descr": 'other', "fltrs": ['_rf_',
+                                 '_arhangelsk_',
+                                 '_astrahan_',
+                                 '_barnaul_',
+                                 '_belgorod_',
+                                 '_bryansk_',
+                                 '_cheboksary_',
+                                 '_habarovsk_',
+                                 '_ivanovo_',
+                                 '_izhevsk_',
+                                 '_kaluga_',
+                                 '_kirov_',
+                                 '_kostroma_',
+                                 '_kurgan_',
+                                 '_kursk_',
+                                 '_lipetsk_',
+                                 '_mahachkala_',
+                                 '_novgorod_',
+                                 '_orel_',
+                                 '_orenburg_',
+                                 '_penza_',
+                                 '_pskov_',
+                                 '_ryazan_',
+                                 '_saratov_',
+                                 '_smolensk_',
+                                 '_surgut_',
+                                 '_tambov_',
+                                 '_tomsk_',
+                                 '_tula_',
+                                 '_tver_',
+                                 '_ulanude_',
+                                 '_ulyanovsk_',
+                                 '_vladimir_',
+                                 '_vladivostok_',
+                                 '_yaroslavl_']},
+
+    ]
+
+    def __init__(self):
+        for i in self.regs:
+            i['fltrs'] = [re.compile(j) for j in i['fltrs']]
+
+    def __getitem__(self, item):
+        if item:
+            for i in self.regs:
+                for j in i['fltrs']:
+                    if j.search(item):
+                        return i['descr']
+
+        return False
+
+
 class GroupsRegionsLite:
     regs = [
         {"descr": 'cap', "fltrs": ["_msk_", "_mo_", "_dmo_", "_bmo_", "_mskmo_",
@@ -2019,6 +2096,33 @@ class GroupsVerticalCommon:
         return False
 
 
+class GroupsVerticalFinance:
+    regs = [
+        {"descr": 'BYUF', "fltrs": ["ipoteka"]},
+        {"descr": 'BYUKI', "fltrs": ["commerce"]},
+        {"descr": 'PERVICHKA', "fltrs": ["nov"]},
+        {"descr": 'VTORICHKA', "fltrs": ["rentsec",
+                                         "salesec",
+                                         "own"]},
+        {"descr": 'ZAGORODKA', "fltrs": ["sub"]},
+        {"descr": 'MARKETING', "fltrs": ["brand_cian",
+                                         "competitors"]},
+    ]
+
+    def __init__(self):
+        for i in self.regs:
+            i['fltrs'] = [re.compile(j) for j in i['fltrs']]
+
+    def __getitem__(self, item):
+        if item:
+            for i in self.regs:
+                for j in i['fltrs']:
+                    if j.search(item):
+                        return i['descr']
+
+        return False
+
+
 class SearchOrNetwork:
     regs = [
         {"descr": 'search', "fltrs": ["_search"]},
@@ -2066,6 +2170,17 @@ def all_classificators_join(tt):
     vertex_map = GroupsVerticalExt()
     classificator_join = pd.DataFrame([{"budget_class": i, "verticalext_class": vertex_map[i]} for i in set(tt.budget_class.unique())])
     tt = pd.merge(tt, classificator_join)
+    return tt
+
+def finance_classificators_join(tt):
+    reglite_map = GroupsRegionsFinance()
+    classificator_join = pd.DataFrame([{"campaignname": i, "region_finance_class": reglite_map[i]} for i in set(tt.campaignname.unique())])
+    tt = pd.merge(tt, classificator_join)
+
+    vert_map = GroupsVerticalFinance()
+    classificator_join = pd.DataFrame([{"vertical_class": i, "vertical_finance_class": vert_map[i]} for i in set(tt.budget_class.unique())])
+    tt = pd.merge(tt, classificator_join)
+
     return tt
 
 
