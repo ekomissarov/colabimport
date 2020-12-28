@@ -2178,7 +2178,7 @@ def finance_classificators_join(tt):
     tt = pd.merge(tt, classificator_join)
 
     vert_map = GroupsVerticalFinance()
-    classificator_join = pd.DataFrame([{"vertical_class": i, "vertical_finance_class": vert_map[i]} for i in set(tt.budget_class.unique())])
+    classificator_join = pd.DataFrame([{"vertical_class": i, "vertical_finance_class": vert_map[i]} for i in set(tt.vertical_class.unique())])
     tt = pd.merge(tt, classificator_join)
 
     return tt
