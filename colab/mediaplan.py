@@ -926,7 +926,7 @@ class MP:
 
         {"descr": 'msk_dsa_rentsec_mix_search_bdg', "fltrs": ["b2c_(mo|msk)_dsa_subreg_rentsec_mix_search", ]},
         {"descr": 'spb_dsa_rentsec_mix_search_bdg', "fltrs": ["b2c_spb_dsa_subreg_rentsec_mix_search", ]},
-        {"descr": 'oth_dsa_rentsec_mix_search_bdg', "fltrs": ["b2c_krasnodar_dsa_subreg_rentsec_mix_search", ]},
+        {"descr": 'reg18_dsa_rentsec_mix_search_bdg', "fltrs": ["b2c_krasnodar_dsa_subreg_rentsec_mix_search", ]},
 
         {"descr": 'msk_rentsec_mix_network_bdg', "fltrs": ["b2c_(mo|msk)_general_main_rentsec_mix_network", ]},
         {"descr": 'spb_rentsec_mix_network_bdg', "fltrs": ["b2c_spb_general_main_rentsec_mix_network", ]},
@@ -1051,7 +1051,7 @@ class MP:
 
         {"descr": 'msk_dsa_salesec_mix_search_bdg', "fltrs": ["b2c_(mo|msk)_dsa_subreg_salesec_mix_search", ]},
         {"descr": 'spb_dsa_salesec_mix_search_bdg', "fltrs": ["b2c_spb_dsa_subreg_salesec_mix_search", ]},
-        {"descr": 'oth_dsa_salesec_mix_search_bdg', "fltrs": ["b2c_krasnodar_dsa_subreg_salesec_mix_search", ]},
+        {"descr": 'reg18_dsa_salesec_mix_search_bdg', "fltrs": ["b2c_krasnodar_dsa_subreg_salesec_mix_search", ]},
 
         {"descr": 'msk_salesec_mix_network_bdg', "fltrs": ["b2c_(mo|msk)_general_main_salesec_mix_network", ]},
         {"descr": 'spb_salesec_mix_network_bdg', "fltrs": ["b2c_spb_general_main_salesec_mix_network", ]},
