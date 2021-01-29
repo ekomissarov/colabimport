@@ -50,6 +50,7 @@ def calc_base_values(tt):
     tt['events_rentsub'] = tt['total_events_rentsub'] + tt['total_events_app_rentsub']
     tt['events_saleflats'] = tt['total_events_saleflats'] + tt['total_events_app_saleflats']
     tt['events_rentflats'] = tt['total_events_rentflats'] + tt['total_events_app_rentflats']
+    tt['events_applications'] = tt['total_applications_re_events'] + tt['total_applications_re_events_app']
     tt['ads'] = tt['total_b2bevents'] + tt['total_b2bevents_app']
     tt['ipotek'] = tt['uniq_ipotek_events'] + tt['uniq_ipotek_events_app']
     tt['ct'] = tt['total_ct_events'] + 0
@@ -62,6 +63,7 @@ def calc_base_values(tt):
     tt['cpa_rentsub'] = np.round(tt['cost_rur'] / tt['events_rentsub'], 2)
     tt['cpa_saleflats'] = np.round(tt['cost_rur'] / tt['events_saleflats'], 2)
     tt['cpa_rentflats'] = np.round(tt['cost_rur'] / tt['events_rentflats'], 2)
+    tt['cpa_applications'] = np.round(tt['cost_rur'] / tt['events_applications'], 2)
     tt['cpad'] = np.round(tt['cost_rur'] / tt['ads'], 2)
     tt['cpa_ipotek'] = np.round(tt['cost_rur'] / tt['ipotek'], 2)
     tt['cpa_ct'] = np.round(tt['cost_rur'] / tt['ct'], 2)
@@ -74,6 +76,7 @@ def calc_base_values(tt):
     tt['ev_rentsub_per_click'] = np.round(tt['events_rentsub'] / tt['clicks'], 4)
     tt['ev_saleflats_per_click'] = np.round(tt['events_saleflats'] / tt['clicks'], 4)
     tt['ev_rentflats_per_click'] = np.round(tt['events_rentflats'] / tt['clicks'], 4)
+    tt['ev_applications_per_click'] = np.round(tt['events_applications'] / tt['clicks'], 4)
     tt['ad_per_click'] = np.round(tt['ads'] / tt['clicks'], 4)
     tt['ipotek_per_click'] = np.round(tt['ipotek'] / tt['clicks'], 4)
     tt['ct_per_click'] = np.round(tt['ct'] / tt['clicks'], 4)
@@ -85,14 +88,18 @@ def calc_base_values(tt):
     tt['assisted_ct_per_click'] = np.round(tt['assisted_conv_ct'] / tt['clicks'], 4)
 
     # агрегаты: конверсии объем
-    tt['conv_agg_full'] = tt['events'] + (8 * tt['ads']) + (500 * tt['ipotek']) + (500 * tt['ct'])
+    tt['conv_agg_full'] = tt['events'] + (8 * tt['ads']) + (500 * tt['ipotek']) + (500 * tt['ct']) + (8 * tt['events_applications'])
+    tt['conv_agg_owners'] = tt['ads'] + tt['events_applications']
 
     # агрегаты: конверсии стоимости
     tt['cp_agg_full'] = np.round(tt['cost_rur'] / tt['conv_agg_full'], 2)
+    tt['cp_agg_owners'] = np.round(tt['cost_rur'] / tt['conv_agg_owners'], 2)
 
     # агрегаты: %конверсии на клик
     tt['agg_full_per_click'] = np.round(tt['conv_agg_full'] / tt['clicks'], 4)
+    tt['agg_owners_per_click'] = np.round(tt['conv_agg_owners'] / tt['clicks'], 4)
 
+    ##########################################
     tt['cost_rur'] = tt['cost_rur'].astype(np.int64)
     return tt
 
@@ -123,7 +130,8 @@ def plot_basic_dynamics(df, what=None, region_filters=None, campaign_filters=Non
     grp = ['date']
     if what == None:
         what = {"events", "events_fdv", "ads", "ipotek", "ct", "common",
-                "events_commercial", "events_salesub", "events_rentsub", "events_saleflats", "events_rentflats",}
+                "events_commercial", "events_salesub", "events_rentsub", "events_saleflats", "events_rentflats",
+                "events_applications", }
 
     if region_filters:
         df = df[df.region.isin(region_filters)]
@@ -247,6 +255,21 @@ def plot_basic_dynamics(df, what=None, region_filters=None, campaign_filters=Non
                                line_colors=["darkblue", "orange", "darkgreen"])
         else:
             plot_basic_rolling(events, cpas, items=["rentflats phone events", "cpa_rentflats",])
+    if "events_applications" in what:
+        events = tt.loc[:, "events_applications"]
+        cpas = tt.loc[:, "cpa_applications"]
+        rolling_ev = events.rolling(7, center=True)
+        rolling_cpas = cpas.rolling(7, center=True)
+        events = pd.DataFrame({'values': events, 'rolling_mean': rolling_ev.mean(), 'rolling_std': rolling_ev.std()})
+        cpas = pd.DataFrame({'values': cpas, 'rolling_mean': rolling_cpas.mean(), 'rolling_std': rolling_cpas.std()})
+        if plot_ev_per_click:
+            ev_per_click = tt.loc[:, "ev_applications_per_click"]
+            rolling_convsperclick = ev_per_click.rolling(7, center=True)
+            ev_per_click = pd.DataFrame({'values': ev_per_click, 'rolling_mean': rolling_convsperclick.mean(), 'rolling_std': rolling_convsperclick.std()})
+            plot_basic_rolling(events, cpas, ev_per_click, items=["applications realtors events", "cpa_applications", "conv%"],
+                               line_colors=["darkblue", "orange", "darkgreen"])
+        else:
+            plot_basic_rolling(events, cpas, items=["applications realtors events", "cpa_applications",])
     if "ads" in what:
         events = tt.loc[:, "ads"]
         cpas = tt.loc[:, "cpad"]
