@@ -3,6 +3,7 @@ import pandas as pd
 
 
 class MP:
+    filter_field = "campaignname"
     mp_map = [
         ######################################################################################
         # Пакет: test ########################################################################
@@ -1745,6 +1746,7 @@ class MP:
 
 
 class GroupsRegions:
+    filter_field = "campaignname"
     regs = [
         {"descr": 'msk', "fltrs": ["_msk_", "_mo_", "_dmo_", "_bmo_", "_mskmo_"]},
         {"descr": 'spb', "fltrs": ["_spb_", "_spblo_"]},
@@ -1821,6 +1823,7 @@ class GroupsRegions:
 
 
 class GroupsRegionsFinance:
+    filter_field = "campaignname"
     regs = [
         {"descr": 'msk', "fltrs": ["_msk_", "_mo_", "_dmo_", "_bmo_", "_mskmo_"]},
         {"descr": 'spb', "fltrs": ["_spb_", "_spblo_"]},
@@ -1897,6 +1900,7 @@ class GroupsRegionsFinance:
 
 
 class GroupsRegionsLite:
+    filter_field = "campaignname"
     regs = [
         {"descr": 'cap', "fltrs": ["_msk_", "_mo_", "_dmo_", "_bmo_", "_mskmo_",
                                    "_spb_", "_spblo_"]},
@@ -1973,6 +1977,7 @@ class GroupsRegionsLite:
 
 
 class GroupsVerticalExt:
+    filter_field = "budget_class"
     regs = [
 
         {"descr": 'rtg', "fltrs": ["_rtg_"]},
@@ -1987,7 +1992,9 @@ class GroupsVerticalExt:
         {"descr": 'own', "fltrs": ["_b2b_own_",
                                    "_b2b_compet_"]},
         {"descr": 'commerce', "fltrs": ["_com_"]},
-        {"descr": 'sub', "fltrs": ["_sub_"]},
+        {"descr": 'sub', "fltrs": ["_sub_",
+                                   "_rentsub_mix_search_bdg",
+                                   "_salesub_mix_search_bdg"]},
         {"descr": 'rentsec', "fltrs": ["_rentsec_"]},
         {"descr": 'salesec', "fltrs": ["_salesec_"]},
         {"descr": 'brand_cian_mob', "fltrs": ["_brand_cian_mob_bdg"]},
@@ -2012,6 +2019,7 @@ class GroupsVerticalExt:
 
 
 class GroupsVerticalCommon:
+    filter_field = "budget_class"
     regs = [
         {"descr": 'ipoteka', "fltrs": ["_ipoteka_"]},
         {"descr": 'own', "fltrs": ["_b2b_own_",
@@ -2043,6 +2051,7 @@ class GroupsVerticalCommon:
 
 
 class GroupsVerticalFinance:
+    filter_field = "budget_class"
     regs = [
         {"descr": 'BYUF', "fltrs": ["ipoteka"]},
         {"descr": 'BYUKI', "fltrs": ["commerce"]},
@@ -2070,6 +2079,7 @@ class GroupsVerticalFinance:
 
 
 class SearchOrNetwork:
+    filter_field = "campaignname"
     regs = [
         {"descr": 'search', "fltrs": ["_search"]},
         {"descr": 'ci_network', "fltrs": ["_ci_"]},
@@ -2094,38 +2104,38 @@ class SearchOrNetwork:
 
 def all_classificators_join(tt):
     mp_map = MP()
-    classificator_join = pd.DataFrame([{"campaignname": i, "budget_class": mp_map[i]} for i in set(tt.campaignname.unique())])
+    classificator_join = pd.DataFrame([{mp_map.filter_field: i, "budget_class": mp_map[i]} for i in set(tt.campaignname.unique())])
     tt = pd.merge(tt, classificator_join)
 
     regions_map = GroupsRegions()
-    classificator_join = pd.DataFrame([{"campaignname": i, "region_class": regions_map[i]} for i in set(tt.campaignname.unique())])
+    classificator_join = pd.DataFrame([{regions_map.filter_field: i, "region_class": regions_map[i]} for i in set(tt.campaignname.unique())])
     tt = pd.merge(tt, classificator_join)
 
     reglite_map = GroupsRegionsLite()
-    classificator_join = pd.DataFrame([{"campaignname": i, "reglite_class": reglite_map[i]} for i in set(tt.campaignname.unique())])
+    classificator_join = pd.DataFrame([{reglite_map.filter_field: i, "reglite_class": reglite_map[i]} for i in set(tt.campaignname.unique())])
     tt = pd.merge(tt, classificator_join)
 
     searchornetwork_map = SearchOrNetwork()
-    classificator_join = pd.DataFrame([{"campaignname": i, "network_class": searchornetwork_map[i]} for i in set(tt.campaignname.unique())])
+    classificator_join = pd.DataFrame([{searchornetwork_map.filter_field: i, "network_class": searchornetwork_map[i]} for i in set(tt.campaignname.unique())])
     tt = pd.merge(tt, classificator_join)
 
     vert_map = GroupsVerticalCommon()
-    classificator_join = pd.DataFrame([{"budget_class": i, "vertical_class": vert_map[i]} for i in set(tt.budget_class.unique())])
+    classificator_join = pd.DataFrame([{vert_map.filter_field: i, "vertical_class": vert_map[i]} for i in set(tt.budget_class.unique())])
     tt = pd.merge(tt, classificator_join)
 
     vertex_map = GroupsVerticalExt()
-    classificator_join = pd.DataFrame([{"budget_class": i, "verticalext_class": vertex_map[i]} for i in set(tt.budget_class.unique())])
+    classificator_join = pd.DataFrame([{vertex_map.filter_field: i, "verticalext_class": vertex_map[i]} for i in set(tt.budget_class.unique())])
     tt = pd.merge(tt, classificator_join)
     return tt
 
 
 def finance_classificators_join(tt):
     regfinance_map = GroupsRegionsFinance()
-    classificator_join = pd.DataFrame([{"campaignname": i, "region_finance_class": regfinance_map[i]} for i in set(tt.campaignname.unique())])
+    classificator_join = pd.DataFrame([{regfinance_map.filter_field: i, "region_finance_class": regfinance_map[i]} for i in set(tt.campaignname.unique())])
     tt = pd.merge(tt, classificator_join)
 
     vertfinance_map = GroupsVerticalFinance()
-    classificator_join = pd.DataFrame([{"vertical_class": i, "vertical_finance_class": vertfinance_map[i]} for i in set(tt.vertical_class.unique())])
+    classificator_join = pd.DataFrame([{vertfinance_map.filter_field: i, "vertical_finance_class": vertfinance_map[i]} for i in set(tt.vertical_class.unique())])
     tt = pd.merge(tt, classificator_join)
 
     return tt
