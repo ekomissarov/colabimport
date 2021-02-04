@@ -1115,8 +1115,12 @@ class MP:
         ######################################################################################
         # Пакет: sub #########################################################################
         ######################################################################################
-        {"descr": 'msk_sub_mix_search_bdg', "fltrs": ["b2c_(bmo|dmo|msk)_general_(null|geo)_sub_mix_search", ]},
-        {"descr": 'spb_sub_mix_search_bdg', "fltrs": ["b2c_spb_general_null_sub_mix_search", ]},
+        {"descr": 'msk_rentsub_mix_search_bdg', "fltrs": ["b2c_(bmo|dmo|msk)_general_null_rentsub_mix_search", ]},
+        {"descr": 'spb_rentsub_mix_search_bdg', "fltrs": ["b2c_spb_general_null_rentsub_mix_search", ]},
+
+        {"descr": 'msk_salesub_mix_search_bdg', "fltrs": ["b2c_(bmo|dmo|msk)_general_(null_salesub|geo_sub)_mix_search", ]},
+        {"descr": 'spb_salesub_mix_search_bdg', "fltrs": ["b2c_spb_general_null_salesub_mix_search", ]},
+
         {"descr": 'p4c_sub_mix_search_bdg', "fltrs": ["b2c_(kazan|nn|krasnoyarsk|voronezh)_general_null_sub_mix_search", ]},
         {"descr": 'reg18_sub_mix_search_bdg', "fltrs": ["b2c_chelyabinsk_general_null_sub_mix_search",
                                                         "b2c_ekb_general_null_sub_mix_search",
