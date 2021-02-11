@@ -2020,6 +2020,56 @@ class GroupsVerticalFinance:
         return False
 
 
+class GroupsYAccFinance:
+    filter_field = "campaignname"
+    regs = [
+        {"descr": 'Ипотека', "fltrs": ["_ipoteka_"]},
+        {"descr": 'Новостройки', "fltrs": ["_nov_"]},
+        {"descr": 'Коммерческая', "fltrs": ["_com_"]},
+        {"descr": 'Москва', "fltrs": ["_msk_", "_mo_", "_dmo_", "_bmo_", "_mskmo_"]},
+    ]
+
+    def __init__(self):
+        for i in self.regs:
+            i['fltrs'] = [re.compile(j) for j in i['fltrs']]
+
+    def __getitem__(self, item):
+        if item:
+            for i in self.regs:
+                for j in i['fltrs']:
+                    if j.search(item):
+                        return i['descr']
+
+        return False
+
+
+class GroupsGAccFinance:
+    filter_field = "campaignname"
+    regs = [
+        {"descr": 'Ипотека', "fltrs": ["_ipoteka_"]},
+        {"descr": 'Новостройки', "fltrs": ["_nov_"]},
+        {"descr": 'Коммерческая', "fltrs": ["_com_"]},
+        {"descr": 'Собственники', "fltrs": ["_own_"]},
+        {"descr": 'Бренд', "fltrs": ["_compet_", "_brand_"]},
+        {"descr": 'Вторичка', "fltrs": ["_rentsec_", "_salesec_",
+                                        "_rentsub_", "_salesub_",
+                                        "_sub_"]},
+    ]
+
+    def __init__(self):
+        for i in self.regs:
+            i['fltrs'] = [re.compile(j) for j in i['fltrs']]
+
+    def __getitem__(self, item):
+        if item:
+            for i in self.regs:
+                for j in i['fltrs']:
+                    if j.search(item):
+                        return i['descr']
+
+        return False
+
+
 class SearchOrNetwork:
     filter_field = "campaignname"
     regs = [
@@ -2078,6 +2128,14 @@ def finance_classificators_join(tt):
 
     vertfinance_map = GroupsVerticalFinance()
     classificator_join = pd.DataFrame([{vertfinance_map.filter_field: i, "vertical_finance_class": vertfinance_map[i]} for i in set(tt.budget_class.unique())])
+    tt = pd.merge(tt, classificator_join)
+
+    yfinance_map = GroupsYAccFinance()
+    classificator_join = pd.DataFrame([{yfinance_map.filter_field: i, "y_finance_class": yfinance_map[i]} for i in set(tt.campaignname.unique())])
+    tt = pd.merge(tt, classificator_join)
+
+    gfinance_map = GroupsGAccFinance()
+    classificator_join = pd.DataFrame([{gfinance_map.filter_field: i, "g_finance_class": gfinance_map[i]} for i in set(tt.campaignname.unique())])
     tt = pd.merge(tt, classificator_join)
 
     return tt
