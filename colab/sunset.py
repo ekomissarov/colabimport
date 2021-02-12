@@ -146,7 +146,7 @@ def _plt_basic_dyn(df, ev, cpa, ev_per_click, item_labels, plot_ev_per_click = F
 
 def plot_basic_dynamics(df, what=None, region_filters=None, campaign_filters=None, system_filters=None, plot_ev_per_click = False):
     grp = ['date']
-    if what == None:
+    if what is None:
         what = {"events", "events_fdv", "ads", "ipotek", "ct", "common",
                 "events_commercial", "events_salesub", "events_rentsub", "events_saleflats", "events_rentflats",
                 "events_applications", }
