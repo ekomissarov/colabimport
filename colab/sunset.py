@@ -126,15 +126,15 @@ def plot_basic_rolling(*lines, items=["events", "cpa"], line_colors=["darkblue",
     plt.show()
 
 
-def _plt_basic_dyn(df, ev, cpa, ev_per_click, item_labels, plot_ev_per_click = False):
-    events = df.loc[:, ev]
-    cpas = df.loc[:, cpa]
+def _plt_basic_dyn(tt, ev, cpa, ev_per_click, item_labels, plot_ev_per_click = False):
+    events = tt.loc[:, ev]
+    cpas = tt.loc[:, cpa]
     rolling_ev = events.rolling(7, center=True)
     rolling_cpas = cpas.rolling(7, center=True)
     events = pd.DataFrame({'values': events, 'rolling_mean': rolling_ev.mean(), 'rolling_std': rolling_ev.std()})
     cpas = pd.DataFrame({'values': cpas, 'rolling_mean': rolling_cpas.mean(), 'rolling_std': rolling_cpas.std()})
     if plot_ev_per_click:
-        ev_per_click = df.loc[:, ev_per_click]
+        ev_per_click = tt.loc[:, ev_per_click]
         rolling_convsperclick = ev_per_click.rolling(7, center=True)
         ev_per_click = pd.DataFrame({'values': ev_per_click, 'rolling_mean': rolling_convsperclick.mean(),
                                      'rolling_std': rolling_convsperclick.std()})
@@ -146,60 +146,61 @@ def _plt_basic_dyn(df, ev, cpa, ev_per_click, item_labels, plot_ev_per_click = F
 
 def plot_basic_dynamics(df, what=None, region_filters=None, campaign_filters=None, system_filters=None, plot_ev_per_click = False):
     grp = ['date']
+    tt = df.copy()
     if what is None:
         what = {"events", "events_fdv", "ads", "ipotek", "ct", "common",
                 "events_commercial", "events_salesub", "events_rentsub", "events_saleflats", "events_rentflats",
                 "events_applications", }
 
     if region_filters:
-        df = df[df.region.isin(region_filters)]
+        tt = tt[tt.region.isin(region_filters)]
 
     if system_filters:
-        df = df[df.system.isin(system_filters)]
+        tt = tt[tt.system.isin(system_filters)]
 
     if campaign_filters:
-        campaign_mask = pd.Series(False, index=df.index)
+        campaign_mask = pd.Series(False, index=tt.index)
         for i in campaign_filters:
-            campaign_mask = campaign_mask | (df.campaignname.str.contains(i))
-        df = df[campaign_mask]
+            campaign_mask = campaign_mask | (tt.campaignname.str.contains(i))
+        tt = tt[campaign_mask]
 
-    tt = df.groupby(grp).sum()
+    tt = tt.groupby(grp).sum()
     tt = calc_base_values(tt)
     tt.index = pd.to_datetime(tt.index)
 
     scale_plot_size(12, 14)
     if "events" in what:
-        _plt_basic_dyn(df, ev="events", cpa="cpa", ev_per_click="ev_per_click",
+        _plt_basic_dyn(tt, ev="events", cpa="cpa", ev_per_click="ev_per_click",
                        item_labels=["phone events", "cpa", "conv%"], plot_ev_per_click=plot_ev_per_click)
     if "events_fdv" in what:
-        _plt_basic_dyn(df, ev="events_fdv", cpa="cpa_fdv", ev_per_click="ev_fdv_per_click",
+        _plt_basic_dyn(tt, ev="events_fdv", cpa="cpa_fdv", ev_per_click="ev_fdv_per_click",
                        item_labels=["fdv phone events", "cpa_fdv", "conv%"], plot_ev_per_click=plot_ev_per_click)
     if "events_commercial" in what:
-        _plt_basic_dyn(df, ev="events_commercial", cpa="cpa_commercial", ev_per_click="ev_commercial_per_click",
+        _plt_basic_dyn(tt, ev="events_commercial", cpa="cpa_commercial", ev_per_click="ev_commercial_per_click",
                        item_labels=["commercial phone events", "cpa_commercial", "conv%"], plot_ev_per_click=plot_ev_per_click)
     if "events_salesub" in what:
-        _plt_basic_dyn(df, ev="events_salesub", cpa="cpa_salesub", ev_per_click="ev_salesub_per_click",
+        _plt_basic_dyn(tt, ev="events_salesub", cpa="cpa_salesub", ev_per_click="ev_salesub_per_click",
                        item_labels=["salesub phone events", "cpa_salesub", "conv%"], plot_ev_per_click=plot_ev_per_click)
     if "events_rentsub" in what:
-        _plt_basic_dyn(df, ev="events_rentsub", cpa="cpa_rentsub", ev_per_click="ev_rentsub_per_click",
+        _plt_basic_dyn(tt, ev="events_rentsub", cpa="cpa_rentsub", ev_per_click="ev_rentsub_per_click",
                        item_labels=["rentsub phone events", "cpa_rentsub", "conv%"], plot_ev_per_click=plot_ev_per_click)
     if "events_saleflats" in what:
-        _plt_basic_dyn(df, ev="events_saleflats", cpa="cpa_saleflats", ev_per_click="ev_saleflats_per_click",
+        _plt_basic_dyn(tt, ev="events_saleflats", cpa="cpa_saleflats", ev_per_click="ev_saleflats_per_click",
                        item_labels=["saleflats phone events", "cpa_saleflats", "conv%"], plot_ev_per_click=plot_ev_per_click)
     if "events_rentflats" in what:
-        _plt_basic_dyn(df, ev="events_rentflats", cpa="cpa_rentflats", ev_per_click="ev_rentflats_per_click",
+        _plt_basic_dyn(tt, ev="events_rentflats", cpa="cpa_rentflats", ev_per_click="ev_rentflats_per_click",
                        item_labels=["rentflats phone events", "cpa_rentflats", "conv%"], plot_ev_per_click=plot_ev_per_click)
     if "events_applications" in what:
-        _plt_basic_dyn(df, ev="events_applications", cpa="cpa_applications", ev_per_click="ev_applications_per_click",
+        _plt_basic_dyn(tt, ev="events_applications", cpa="cpa_applications", ev_per_click="ev_applications_per_click",
                        item_labels=["applications realtors events", "cpa_applications", "conv%"], plot_ev_per_click=plot_ev_per_click)
     if "ads" in what:
-        _plt_basic_dyn(df, ev="ads", cpa="cpad", ev_per_click="ad_per_click",
+        _plt_basic_dyn(tt, ev="ads", cpa="cpad", ev_per_click="ad_per_click",
                        item_labels=["ads", "cpad", "conv%"], plot_ev_per_click=plot_ev_per_click)
     if "ipotek" in what:
-        _plt_basic_dyn(df, ev="ipotek", cpa="cpa_ipotek", ev_per_click="ipotek_per_click",
+        _plt_basic_dyn(tt, ev="ipotek", cpa="cpa_ipotek", ev_per_click="ipotek_per_click",
                        item_labels=["ipotek", "cpa_ipotek", "conv%"], plot_ev_per_click=plot_ev_per_click)
     if "ct" in what:
-        _plt_basic_dyn(df, ev="ct", cpa="cpa_ct", ev_per_click="ct_per_click",
+        _plt_basic_dyn(tt, ev="ct", cpa="cpa_ct", ev_per_click="ct_per_click",
                        item_labels=["ct", "cpa_ct", "conv%"], plot_ev_per_click=plot_ev_per_click)
 
     if "common" in what:
