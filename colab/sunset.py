@@ -150,7 +150,8 @@ def plot_basic_dynamics(df, what=None, region_filters=None, campaign_filters=Non
     if what is None:
         what = {"events", "events_fdv", "ads", "ipotek", "ct", "common",
                 "events_commercial", "events_salesub", "events_rentsub", "events_saleflats", "events_rentflats",
-                "events_applications", }
+                "events_applications",
+                "conv_agg_full", "conv_agg_owners"}
 
     if region_filters:
         tt = tt[tt.region.isin(region_filters)]
@@ -196,12 +197,18 @@ def plot_basic_dynamics(df, what=None, region_filters=None, campaign_filters=Non
     if "ads" in what:
         _plt_basic_dyn(tt, ev="ads", cpa="cpad", ev_per_click="ad_per_click",
                        item_labels=["ads", "cpad", "conv%"], plot_ev_per_click=plot_ev_per_click)
+    if "conv_agg_owners" in what:
+        _plt_basic_dyn(tt, ev="conv_agg_owners", cpa="cp_agg_owners", ev_per_click="agg_owners_per_click",
+                       item_labels=["ads+appl", "cpad", "conv%"], plot_ev_per_click=plot_ev_per_click)
     if "ipotek" in what:
         _plt_basic_dyn(tt, ev="ipotek", cpa="cpa_ipotek", ev_per_click="ipotek_per_click",
                        item_labels=["ipotek", "cpa_ipotek", "conv%"], plot_ev_per_click=plot_ev_per_click)
     if "ct" in what:
         _plt_basic_dyn(tt, ev="ct", cpa="cpa_ct", ev_per_click="ct_per_click",
                        item_labels=["ct", "cpa_ct", "conv%"], plot_ev_per_click=plot_ev_per_click)
+    if "conv_agg_full" in what:
+        _plt_basic_dyn(tt, ev="conv_agg_full", cpa="cp_agg_full", ev_per_click="agg_full_per_click",
+                       item_labels=["aggregate", "cpa", "conv%"], plot_ev_per_click=plot_ev_per_click)
 
     if "common" in what:
         cost_rur = tt.loc[:, "cost_rur"]
