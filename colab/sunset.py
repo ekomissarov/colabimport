@@ -252,6 +252,7 @@ def plot_avg_position_yandex(df, region_filters=None, campaign_filters=None):
     scale_plot_size(12, 12)
     plots = ["impr_pos", "click_pos", "traffic_vol"]
     tt.loc[:, plots].plot(subplots=True)
+    plt.show()
 
 
 def plot_top_is_position_google(df, region_filters=None, campaign_filters=None):
@@ -276,6 +277,7 @@ def plot_top_is_position_google(df, region_filters=None, campaign_filters=None):
     scale_plot_size(12, 12)
     plots = ["top_is", "abstop_is"]
     tt.loc[:, plots].plot(subplots=True)
+    plt.show()
 
 
 def plot_compare_base(df, y_value='ad_per_click', group_by_plot='regclass', plot_set=['msk', 'spb', 'p4c', '18reg'],
