@@ -380,6 +380,8 @@ class MP:
         ######################################################################################
         {"descr": 'msk_cwrk_com_search_bdg', "fltrs": ["b2b_(bmo|dmo|msk)_general_cwrk_com_mix_search", ]},
         {"descr": 'spb_cwrk_com_search_bdg', "fltrs": ["b2b_spb_general_cwrk_com_mix_search", ]},
+        {"descr": 'msk_cwrk_com_network_bdg', "fltrs": ["b2b_(bmo|dmo|msk)_general_cwrk_com_mix_network", ]},
+
         {"descr": 'msk_com_mix_search_bdg', "fltrs": ["b2b_(bmo|dmo|msk)_general_null_com_mix_search", ]},
         {"descr": 'spb_com_mix_search_bdg', "fltrs": ["b2b_spb_general_null_com_mix_search", ]},
         {"descr": 'p4c_com_mix_search_bdg', "fltrs": ["b2b_(kazan|nn|krasnoyarsk|voronezh)_general_null_com_mix_search", ]},
