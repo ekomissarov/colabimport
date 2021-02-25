@@ -133,6 +133,8 @@ def _plt_basic_dyn(tt, ev, cpa, ev_per_click, item_labels, plot_ev_per_click = F
     rolling_cpas = cpas.rolling(7, center=True)
     events = pd.DataFrame({'values': events, 'rolling_mean': rolling_ev.mean(), 'rolling_std': rolling_ev.std()})
     cpas = pd.DataFrame({'values': cpas, 'rolling_mean': rolling_cpas.mean(), 'rolling_std': rolling_cpas.std()})
+    if np.isinf(cpas.iloc[0]['values']):
+        cpas.iloc[0]['values'] = 0
     if plot_ev_per_click:
         ev_per_click = tt.loc[:, ev_per_click]
         rolling_convsperclick = ev_per_click.rolling(7, center=True)
