@@ -198,10 +198,15 @@ class MP:
         {"descr": 'msk_b2b_own_rtg_network_bdg', "fltrs": ["b2b_(dmo|bmo|mo|msk)_rtg_site_own_mix_network", ]},
         {"descr": 'spb_b2b_own_rtg_network_bdg', "fltrs": ["b2b_spb_rtg_site_own_mix_network", ]},
         {"descr": 'reg18_b2b_own_rtg_network_bdg', "fltrs": ["b2b_rf_rtg_site_own_mix_network", ]},
-        {"descr": 'msk_b2b_own_network_bdg', "fltrs": ["b2b_(dmo|bmo|mo|msk)_.*_own_desk_network", ]},
-        {"descr": 'spb_b2b_own_network_bdg', "fltrs": ["b2b_spb_.*_own_desk_network", ]},
+
+        # пока ci кампании отключены, но в будущем здесь требуется разделение бюджетных пакетов
+        {"descr": 'msk_b2b_own_network_bdg', "fltrs": ["b2b_msk_gmail_main_own_desk_network",
+                                                       "b2b_(dmo|bmo|mo|msk)_.*_own_desk_network", ]},
+        {"descr": 'spb_b2b_own_network_bdg', "fltrs": ["b2b_spb_gmail_main_own_desk_network",
+                                                       "b2b_spb_.*_own_desk_network", ]},
         {"descr": 'p4c_b2b_own_network_bdg', "fltrs": ["b2b_(kazan|nn|krasnoyarsk|voronezh)_.*_own_desk_network", ]},
-        {"descr": 'reg18_b2b_own_network_bdg', "fltrs": ["b2b_chelyabinsk_.*_own_desk_network",
+        {"descr": 'reg18_b2b_own_network_bdg', "fltrs": ["b2b_rf_gmail_main_own_desk_network",
+                                                         "b2b_chelyabinsk_.*_own_desk_network",
                                                          "b2b_ekb_.*_own_desk_network",
                                                          "b2b_irkutsk_.*_own_desk_network",
                                                          "b2b_kaliningrad_.*_own_desk_network",
