@@ -197,7 +197,7 @@ class MP:
 
         {"descr": 'msk_b2b_own_rtg_network_bdg', "fltrs": ["b2b_(dmo|bmo|mo|msk)_rtg_site_own_mix_network", ]},
         {"descr": 'spb_b2b_own_rtg_network_bdg', "fltrs": ["b2b_spb_rtg_site_own_mix_network", ]},
-        {"descr": 'reg18_b2b_own_rtg_network_bdg', "fltrs": ["b2b_rf_rtg_site_own_mix_network", ]},
+        {"descr": 'reg22_b2b_own_rtg_network_bdg', "fltrs": ["b2b_22reg_rtg_site_own_mix_network",]},
 
         # пока ci кампании отключены, но в будущем здесь требуется разделение бюджетных пакетов
         {"descr": 'msk_b2b_own_network_bdg', "fltrs": ["b2b_msk_gmail_main_own_desk_network",
@@ -205,6 +205,9 @@ class MP:
         {"descr": 'spb_b2b_own_network_bdg', "fltrs": ["b2b_spb_gmail_main_own_desk_network",
                                                        "b2b_spb_.*_own_desk_network", ]},
         {"descr": 'p4c_b2b_own_network_bdg', "fltrs": ["b2b_(kazan|nn|krasnoyarsk|voronezh)_.*_own_desk_network", ]},
+
+        {"descr": 'reg22_b2b_own_network_bdg', "fltrs": ["b2b_22reg_gmail_main_own_desk_network", ]},
+
         {"descr": 'reg18_b2b_own_network_bdg', "fltrs": ["b2b_rf_gmail_main_own_desk_network",
                                                          "b2b_chelyabinsk_.*_own_desk_network",
                                                          "b2b_ekb_.*_own_desk_network",
@@ -1703,7 +1706,7 @@ class GroupsRegions:
     regs = [
         {"descr": 'msk', "fltrs": ["_msk_", "_mo_", "_dmo_", "_bmo_", "_mskmo_"]},
         {"descr": 'spb', "fltrs": ["_spb_", "_spblo_"]},
-        {"descr": 'p4c', "fltrs": ["_kazan_", "_nn_", "_krasnoyarsk_", "_voronezh_"]},
+        {"descr": 'p4c', "fltrs": ["_kazan_", "_nn_", "_krasnoyarsk_", "_voronezh_", "_p4c_",]},
         {"descr": '18reg', "fltrs": ['_ufa_',
                                      '_krasnodar_',
                                      '_sochi_',
@@ -1721,7 +1724,9 @@ class GroupsRegions:
                                      '_irkutsk_',
                                      '_sevastopol_',
                                      '_kaliningrad_',
-                                     '_perm_']},
+                                     '_perm_',
+                                     '_22reg_',
+                                     '_18reg_',]},
 
         {"descr": 'oth', "fltrs": ['_rf_',
                                  '_arhangelsk_',
@@ -1757,7 +1762,9 @@ class GroupsRegions:
                                  '_ulyanovsk_',
                                  '_vladimir_',
                                  '_vladivostok_',
-                                 '_yaroslavl_']},
+                                 '_yaroslavl_',
+                                 '_oth_',
+                                ]},
 
     ]
 
@@ -1798,7 +1805,11 @@ class GroupsRegionsFinance:
                                      '_irkutsk_',
                                      '_sevastopol_',
                                      '_kaliningrad_',
-                                     '_perm_']},
+                                     '_perm_',
+                                     '_22reg_',
+                                     '_18reg_',
+                                     '_p4c_',
+                                     ]},
 
         {"descr": 'other', "fltrs": ['_rf_',
                                  '_arhangelsk_',
@@ -1834,7 +1845,9 @@ class GroupsRegionsFinance:
                                  '_ulyanovsk_',
                                  '_vladimir_',
                                  '_vladivostok_',
-                                 '_yaroslavl_']},
+                                 '_yaroslavl_',
+                                 '_oth_',
+                                ]},
 
     ]
 
@@ -1875,7 +1888,10 @@ class GroupsRegionsLite:
                                      '_irkutsk_',
                                      '_sevastopol_',
                                      '_kaliningrad_',
-                                     '_perm_'
+                                     '_perm_',
+                                     '_22reg_',
+                                     '_18reg_',
+                                     '_p4c_',
                                      ]},
         {"descr": 'oth', "fltrs": ['_rf_',
                                  '_arhangelsk_',
@@ -1911,7 +1927,9 @@ class GroupsRegionsLite:
                                  '_ulyanovsk_',
                                  '_vladimir_',
                                  '_vladivostok_',
-                                 '_yaroslavl_']},
+                                 '_yaroslavl_',
+                                 '_oth_',
+                                ]},
 
     ]
 
