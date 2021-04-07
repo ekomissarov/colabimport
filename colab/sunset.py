@@ -53,7 +53,7 @@ def calc_base_values(tt):
     tt['events_applications'] = tt['total_applications_re_events'] + tt['total_applications_re_events_app']
     tt['ads'] = tt['total_b2bevents'] + tt['total_b2bevents_app']
     tt['ipotek'] = tt['uniq_ipotek_events'] + tt['uniq_ipotek_events_app']
-    tt['ct'] = tt['total_ct_events'] + 0
+    tt['ct'] = tt['total_ct_events'] + tt['total_ct_events_app']
 
     # конверсии стоимости
     tt['cpa'] = np.round(tt['cost_rur'] / tt['events'], 2)
