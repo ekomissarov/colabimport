@@ -16,6 +16,7 @@ class MP:
         {"descr": 'b2c_all_ipoteka_bdg', "fltrs": ["b2c_.*_general_main_ipoteka_mix_search", ]},
         {"descr": 'b2c_all_rlsa_ipoteka_bdg', "fltrs": ["b2c_.*_rlsa_main_ipoteka_mix_search", ]},
         {"descr": 'b2c_rf_rtg_site_ipoteka_mix_network', "fltrs": ["b2c_rf_rtg_site_ipoteka_mix_network", ]},
+        {"descr": 'b2c_rf_rtg_test_ipoteka_mix_network', "fltrs": ["b2c_rf_rtg_test_ipoteka_mix_network", ]},
 
         ######################################################################################
         # Пакет: b2b #########################################################################
