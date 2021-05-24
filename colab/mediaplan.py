@@ -8,19 +8,22 @@ class MP:
         ######################################################################################
         # Пакет: test ########################################################################
         ######################################################################################
-        {"descr": 'test_bdg', "fltrs": ["_mobapptest_", "_test_"]},
+        #{"descr": 'test_bdg', "fltrs": ["_mobapptest_", "_test_"]},
 
         ######################################################################################
         # Пакет: ipoteka #####################################################################
         ######################################################################################
         {"descr": 'b2c_all_ipoteka_bdg', "fltrs": ["b2c_.*_general_main_ipoteka_mix_search", ]},
         {"descr": 'b2c_all_rlsa_ipoteka_bdg', "fltrs": ["b2c_.*_rlsa_main_ipoteka_mix_search", ]},
-        {"descr": 'b2c_rf_rtg_site_ipoteka_mix_network', "fltrs": ["b2c_rf_rtg_site_ipoteka_mix_network", ]},
-        #{"descr": 'b2c_rf_rtg_test_ipoteka_mix_network', "fltrs": ["b2c_rf_rtg_test_ipoteka_mix_network", ]},
+        {"descr": 'b2c_rf_rtg_site_ipoteka_mix_network', "fltrs": ["b2c_rf_rtg_site_ipoteka_mix_network", ]},  # not a bdg
+        {"descr": 'b2c_rf_rtg_test_ipoteka_mix_network', "fltrs": ["b2c_rf_rtg_test_ipoteka_mix_network", ]},  # not a bdg
 
         ######################################################################################
         # Пакет: b2b #########################################################################
         ######################################################################################
+        {"descr": 'b2b_22reg_rtg_ocenka_own_mix_network', "fltrs": ["b2b_22reg_rtg_ocenka_own_mix_network", ]},  # not a bdg
+        {"descr": 'b2b_spb_rtg_ocenka_own_mix_network', "fltrs": ["b2b_spb_rtg_ocenka_own_mix_network", ]},  # not a bdg
+
         {"descr": 'msk_b2b_own_rlsa_search_bdg', "fltrs": ["b2b_(dmo|bmo|mo|msk)_rlsa_site_own_desk_search", ]},
         {"descr": 'spb_b2b_own_rlsa_search_bdg', "fltrs": ["b2b_spb_rlsa_site_own_desk_search", ]},
         {"descr": 'p4c_b2b_own_rlsa_search_bdg', "fltrs": ["b2b_(kazan|nn|krasnoyarsk|voronezh)_rlsa_site_own_desk_search", ]},
@@ -393,9 +396,10 @@ class MP:
         ######################################################################################
         {"descr": 'msk_cwrk_com_search_bdg', "fltrs": ["b2b_(bmo|dmo|msk)_general_cwrk_com_mix_search", ]},
         {"descr": 'spb_cwrk_com_search_bdg', "fltrs": ["b2b_spb_general_cwrk_com_mix_search", ]},
-        {"descr": 'msk_cwrk_com_network_bdg', "fltrs": ["b2b_(bmo|dmo|msk)_general_cwrk_com_mix_network",
-                                                        "b2b_msk_ci_cwrk_com_mix_network",]},
-        {"descr": 'msk_cwrk_com_rtg_bdg', "fltrs": ["b2b_msk_rtg_cwrk_com_mix_network", ]},
+        {"descr": 'msk_cwrk_com_network_bdg', "fltrs": ["b2b_(bmo|dmo|msk)_general_cwrk_com_mix_network", ]},
+
+        {"descr": 'b2b_msk_ci_cwrk_com_mix_network', "fltrs": ["b2b_msk_ci_cwrk_com_mix_network", ]},  # not a bdg
+        {"descr": 'b2b_msk_rtg_cwrk_com_mix_network', "fltrs": ["b2b_msk_rtg_cwrk_com_mix_network", ]},  # not a bdg
 
         {"descr": 'msk_com_mix_search_bdg', "fltrs": ["b2b_(bmo|dmo|msk)_general_null_com_mix_search", ]},
         {"descr": 'spb_com_mix_search_bdg', "fltrs": ["b2b_spb_general_null_com_mix_search", ]},
@@ -1563,8 +1567,8 @@ class MP:
         ######################################################################################
         # Пакет: DRTG COM #########################################################################
         ######################################################################################
-        {"descr": 'msk_drtg_com_bdg', "fltrs": ["b2c_(msk|mo)_drtg_site_com_mix_network", ]},
-        {"descr": 'spb_drtg_com_bdg', "fltrs": ["b2c_spb_drtg_site_com_mix_network", ]},
+        {"descr": 'b2c_msk_drtg_site_com_mix_network', "fltrs": ["b2c_msk_drtg_site_com_mix_network", ]},  # not a bdg
+        {"descr": 'b2c_spb_drtg_site_com_mix_network', "fltrs": ["b2c_spb_drtg_site_com_mix_network", ]},  # not a bdg
 
         ######################################################################################
         # Пакет: RTG salesec #########################################################################
