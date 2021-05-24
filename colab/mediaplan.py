@@ -2001,7 +2001,8 @@ class GroupsVerticalCommon:
     regs = [
         {"descr": 'ipoteka', "fltrs": ["_ipoteka_"]},
         {"descr": 'own', "fltrs": ["_b2b_own_",
-                                   "_b2b_compet_"]},
+                                   "_b2b_compet_",
+                                   "_ocenka_own_"]},
         {"descr": 'commerce', "fltrs": ["_com_",
                                         "_cwrk_"]},
         {"descr": 'sub', "fltrs": ["_sub_",
