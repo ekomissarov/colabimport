@@ -394,12 +394,17 @@ class MP:
         ######################################################################################
         # Пакет: commerce ####################################################################
         ######################################################################################
-        {"descr": 'msk_cwrk_com_search_bdg', "fltrs": ["b2b_(bmo|dmo|msk)_general_cwrk_com_mix_search", ]},
-        {"descr": 'spb_cwrk_com_search_bdg', "fltrs": ["b2b_spb_general_cwrk_com_mix_search", ]},
-        {"descr": 'msk_cwrk_com_network_bdg', "fltrs": ["b2b_(bmo|dmo|msk)_general_cwrk_com_mix_network", ]},
+        {"descr": 'msk_cwrk_com_search_bdg', "fltrs": ["b2b_(bmo|dmo|msk)_general_cwrk_com_mix_search",
+                                                       "b2b_(bmo|dmo|msk)_general_null_cwrkcom_mix_search",]},
+        {"descr": 'spb_cwrk_com_search_bdg', "fltrs": ["b2b_spb_general_cwrk_com_mix_search",
+                                                       "b2b_spb_general_null_cwrkcom_mix_search", ]},
+        {"descr": 'msk_cwrk_com_network_bdg', "fltrs": ["b2b_(bmo|dmo|msk)_general_cwrk_com_mix_network",
+                                                        "b2b_(bmo|dmo|msk)_general_null_cwrkcom_mix_network",]},
 
-        {"descr": 'b2b_msk_ci_cwrk_com_mix_network', "fltrs": ["b2b_msk_ci_cwrk_com_mix_network", ]},  # not_a_bdg
-        {"descr": 'b2b_msk_rtg_cwrk_com_mix_network', "fltrs": ["b2b_msk_rtg_cwrk_com_mix_network", ]},  # not_a_bdg
+        {"descr": 'b2b_msk_ci_cwrk_com_mix_network', "fltrs": ["b2b_msk_ci_cwrk_com_mix_network",
+                                                               "b2b_msk_ci_null_cwrkcom_mix_network",]},  # not_a_bdg
+        {"descr": 'b2b_msk_rtg_cwrk_com_mix_network', "fltrs": ["b2b_msk_rtg_cwrk_com_mix_network",
+                                                                "b2b_msk_rtg_null_cwrkcom_mix_network",]},  # not_a_bdg
 
         {"descr": 'msk_com_mix_search_bdg', "fltrs": ["b2b_(bmo|dmo|msk)_general_null_com_mix_search", ]},
         {"descr": 'spb_com_mix_search_bdg', "fltrs": ["b2b_spb_general_null_com_mix_search", ]},
@@ -1969,7 +1974,7 @@ class GroupsVerticalExt:
         {"descr": 'own', "fltrs": ["_b2b_own_",
                                    "_b2b_compet_"]},
         {"descr": 'commerce', "fltrs": ["_com_",
-                                        "_cwrk_"]},
+                                        "_cwrk_", "_cwrkcom_"]},
         {"descr": 'sub', "fltrs": ["_sub_",
                                    "_rentsub_mix_search_bdg",
                                    "_salesub_mix_search_bdg"]},
@@ -2004,7 +2009,7 @@ class GroupsVerticalCommon:
                                    "_b2b_compet_",
                                    "_ocenka_own_"]},
         {"descr": 'commerce', "fltrs": ["_com_",
-                                        "_cwrk_"]},
+                                        "_cwrk_", "_cwrkcom_"]},
         {"descr": 'sub', "fltrs": ["_sub_",
                                    "_salesub_",
                                    "_rentsub_"]},
@@ -2035,7 +2040,7 @@ class GroupsVerticalFinance:
     regs = [
         {"descr": 'BYUF', "fltrs": ["ipoteka"]},
         {"descr": 'BYUKI', "fltrs": ["_com_",
-                                     "_cwrk_"]},
+                                     "_cwrk_", "_cwrkcom_"]},
         {"descr": 'PERVICHKA', "fltrs": ["nov"]},
         {"descr": 'VTORICHKA', "fltrs": ["rentsec",
                                          "salesec",
@@ -2064,7 +2069,7 @@ class GroupsYAccFinance:
     regs = [
         {"descr": 'Ипотека', "fltrs": ["_ipoteka_"]},
         {"descr": 'Новостройки', "fltrs": ["_nov_"]},
-        {"descr": 'Коммерческая', "fltrs": ["_com_", "_cwrk_"]},
+        {"descr": 'Коммерческая', "fltrs": ["_com_", "_cwrk_", "_cwrkcom_"]},
         {"descr": 'Москва', "fltrs": ["_msk_", "_mo_", "_dmo_", "_bmo_", "_mskmo_"]},
     ]
 
@@ -2087,7 +2092,7 @@ class GroupsGAccFinance:
     regs = [
         {"descr": 'Ипотека', "fltrs": ["_ipoteka_"]},
         {"descr": 'Новостройки', "fltrs": ["_nov_"]},
-        {"descr": 'Коммерческая', "fltrs": ["_com_", "_cwrk_"]},
+        {"descr": 'Коммерческая', "fltrs": ["_com_", "_cwrk_", "_cwrkcom_"]},
         {"descr": 'Собственники', "fltrs": ["_own_"]},
         {"descr": 'Бренд', "fltrs": ["_compet_", "_brand_"]},
         {"descr": 'Вторичка', "fltrs": ["_rentsec_", "_salesec_",
