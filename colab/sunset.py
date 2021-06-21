@@ -359,6 +359,7 @@ def plot_compare_base(df, y_value='ad_per_click', group_by_plot='regclass', plot
 
     tt = data.groupby([group_by_plot] + ['date']).sum()
     tt = calc_base_values(tt)
+    tt = calc_base_values_with_assisted(tt)
     if system_filters and system_filters[0] == "y" and len(system_filters) == 1:
         tt['impr_pos'] = tt['avg_impression_pos'] / tt['impressions']
         tt['click_pos'] = tt['avg_click_pos'] / tt['clicks']
