@@ -650,8 +650,9 @@ class MP:
 
         {"descr": 'msk_brand_network_bdg', "fltrs": ["b2c_(mo|msk)_brand_main_all_mix_network", ]},
         {"descr": 'spb_brand_network_bdg', "fltrs": ["b2c_spb_brand_main_all_mix_network", ]},
-        {"descr": 'p4c_brand_network_bdg', "fltrs": ["b2c_(kazan|nn|krasnoyarsk|voronezh)_brand_main_all_mix_network", ]},
-        {"descr": 'reg18_brand_network_bdg', "fltrs": ["b2c_chelyabinsk_brand_main_all_mix_network",
+        #{"descr": 'p4c_brand_network_bdg', "fltrs": ["b2c_(kazan|nn|krasnoyarsk|voronezh)_brand_main_all_mix_network", ]},
+        {"descr": 'reg22_brand_network_bdg', "fltrs": ["b2c_(kazan|nn|krasnoyarsk|voronezh)_brand_main_all_mix_network",
+                                                       "b2c_chelyabinsk_brand_main_all_mix_network",
                                                        "b2c_ekb_brand_main_all_mix_network",
                                                        "b2c_irkutsk_brand_main_all_mix_network",
                                                        "b2c_kaliningrad_brand_main_all_mix_network",
@@ -1276,7 +1277,7 @@ class MP:
         {"descr": 'msk_sub_network_bdg', "fltrs": ["b2c_(mo|msk)_(ci|general)_main_sub_mix_network", ]},
         {"descr": 'spb_sub_network_bdg', "fltrs": ["b2c_spb_(ci|general)_main_sub_mix_network", ]},
         #{"descr": 'p4c_sub_network_bdg', "fltrs": ["b2c_(kazan|nn|krasnoyarsk|voronezh)_(ci|general)_main_sub_mix_network", ]},
-        {"descr": 'reg18_sub_network_bdg', "fltrs": [
+        {"descr": 'reg22_sub_network_bdg', "fltrs": [
                                                          "b2c_(kazan|nn|krasnoyarsk|voronezh)_(ci|general)_main_sub_mix_network",
                                                          "b2c_chelyabinsk_(ci|general)_main_sub_mix_network",
                                                          "b2c_ekb_(ci|general)_main_sub_mix_network",
