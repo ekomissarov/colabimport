@@ -2116,7 +2116,8 @@ class GroupsVerticalFinance:
                                          "own"]},
         {"descr": 'ZAGORODKA', "fltrs": ["sub"]},
         {"descr": 'MARKETING', "fltrs": ["brand_cian",
-                                         "competitors"]},
+                                         "competitors",
+                                         "brand"]},
     ]
 
     def __init__(self):
