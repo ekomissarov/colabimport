@@ -2163,7 +2163,8 @@ class GroupsVerticalExt:
         {"descr": 'salesec', "fltrs": ["_salesec_"]},
         {"descr": 'brand_cian_mob', "fltrs": ["_brand_cian_mob_bdg"]},
         {"descr": 'brand_cian_web', "fltrs": ["_brand_cian_bdg"]},
-        {"descr": 'competitors', "fltrs": ["competitors", "brand"]},
+        {"descr": 'competitors', "fltrs": ["competitors"]},
+        {"descr": 'brand_network', "fltrs": ["brand"]},
         {"descr": 'nov', "fltrs": ["_nov_"]},
 
     ]
