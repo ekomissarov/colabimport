@@ -161,6 +161,40 @@ def calc_base_values_with_assisted(tt):
     return tt
 
 
+def triad(item):
+    t = [
+        {"vol": "clicks", "conv": "1", "cost_per": "cpc"},
+        {"vol": "events", "conv": "ev_per_click", "cost_per": "cpa"},
+        {"vol": "events_fdv", "conv": "ev_fdv_per_click", "cost_per": "cpa_fdv"},
+        {"vol": "events_commercial", "conv": "ev_commercial_per_click", "cost_per": "cpa_commercial"},
+        {"vol": "events_salesub", "conv": "ev_salesub_per_click", "cost_per": "cpa_salesub"},
+        {"vol": "events_rentsub", "conv": "ev_rentsub_per_click", "cost_per": "cpa_rentsub"},
+        {"vol": "events_saleflats", "conv": "ev_saleflats_per_click", "cost_per": "cpa_saleflats"},
+        {"vol": "events_rentflats", "conv": "ev_applications_per_click", "cost_per": "cpa_rentflats"},
+        {"vol": "events_applications", "conv": "ev_applications_per_click", "cost_per": "cpa_applications"},
+        {"vol": "ads", "conv": "ad_per_click", "cost_per": "cpad"},
+        {"vol": "ipotek", "conv": "ipotek_per_click", "cost_per": "cpa_ipotek"},
+        {"vol": "ct", "conv": "ct_per_click", "cost_per": "cpa_ct"},
+
+        {"vol": "assisted_conv_phones", "conv": "", "cost_per": "assisted_ev_per_click"},
+        {"vol": "assisted_conv_reappl", "conv": "", "cost_per": "assisted_reappl_per_click"},
+        {"vol": "assisted_conv_ads", "conv": "", "cost_per": "assisted_ad_per_click"},
+        {"vol": "assisted_conv_mortgage", "conv": "", "cost_per": "assisted_ipotek_per_click"},
+        {"vol": "assisted_conv_ct", "conv": "", "cost_per": "assisted_ct_per_click"},
+
+        {"vol": "conv_agg_full", "conv": "agg_full_per_click", "cost_per": "cp_agg_full"},
+        {"vol": "conv_agg_owners", "conv": "agg_owners_per_click", "cost_per": "cp_agg_owners"},
+    ]
+    a_flag = ""
+    if item.startswith("A_"):
+        a_flag = "A_"
+        item = item.replace("A_", "")
+
+    for i in t:
+        if item in set(i.values()):
+            return {k[0]: f"{a_flag}{k[1]}" for k in i.items()}
+
+
 def plot_basic_rolling(*lines, items=["events", "cpa"], line_colors=["darkblue", "orange"]):
     fig, axN = plt.subplots(len(lines), 1)
 
