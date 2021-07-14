@@ -480,6 +480,9 @@ class MP:
         {"descr": 'kazan_com_mix_search_bdg', "fltrs": ["b2b_kazan_general_null_com_mix_search", ]},
         {"descr": 'tyumen_com_mix_search_bdg', "fltrs": ["b2b_tyumen_general_null_com_mix_search", ]},
 
+        {"descr": 'msk_com_mix_network_bdg', "fltrs": ["b2b_(mo|msk)_general_main_com_mix_network", ]},
+        {"descr": 'spb_com_mix_network_bdg', "fltrs": ["b2b_spb_general_main_com_mix_network", ]},
+
         ######################################################################################
         # Пакет: competitors #################################################################
         ######################################################################################
