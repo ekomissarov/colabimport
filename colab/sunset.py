@@ -250,7 +250,7 @@ def plot_basic_dynamics(df, what=None, region_filters=None, campaign_filters=Non
     grp = ['date']
     tt = df.copy()
     if what is None:
-        what = {"events", "events_fdv", "ads", "ipotek", "ct", "common",
+        what = {"events", "events_ss", "events_fdv", "ads", "ipotek", "ct", "common",
                 "events_commercial", "events_salesub", "events_rentsub", "events_saleflats", "events_rentflats",
                 "events_applications",
                 "conv_agg_full", "conv_agg_owners"}
@@ -275,6 +275,9 @@ def plot_basic_dynamics(df, what=None, region_filters=None, campaign_filters=Non
     if "events" in what:
         _plt_basic_dyn(tt, ev="events", cpa="cpa", ev_per_click="ev_per_click",
                        item_labels=["phone events", "cpa", "conv%"], plot_ev_per_click=plot_ev_per_click)
+    if "events_ss" in what:
+        _plt_basic_dyn(tt, ev="events_ss", cpa="cpa_ss", ev_per_click="ev_ss_per_click",
+                       item_labels=["ss uniq events", "cpa_ss", "conv%"], plot_ev_per_click=plot_ev_per_click)
     if "events_fdv" in what:
         _plt_basic_dyn(tt, ev="events_fdv", cpa="cpa_fdv", ev_per_click="ev_fdv_per_click",
                        item_labels=["fdv phone events", "cpa_fdv", "conv%"], plot_ev_per_click=plot_ev_per_click)
