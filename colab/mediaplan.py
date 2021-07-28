@@ -264,6 +264,7 @@ class MP:
                                                         "b2b_yaroslavl_general_null_own_desk_search",
         ]},
 
+        {"descr": 'rf_b2b_own_rtg_phonefeed_network_bdg', "fltrs": ["b2b_rf_rtg_phonefeed_own_mix_network", ]},
         {"descr": 'msk_b2b_own_rtg_network_bdg', "fltrs": ["b2b_(dmo|bmo|mo|msk)_rtg_site_own_mix_network", ]},
         {"descr": 'spb_b2b_own_rtg_network_bdg', "fltrs": ["b2b_spb_rtg_site_own_mix_network", ]},
         {"descr": 'reg22_b2b_own_rtg_network_bdg', "fltrs": ["b2b_22reg_rtg_site_own_mix_network",]},
