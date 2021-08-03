@@ -425,8 +425,8 @@ def plot_compare_base(df, y_value='ad_per_click', group_by_plot='regclass', plot
     if ymax is not None:
         #plt.xlim(right=xmax)  # xmax is your value
         #plt.xlim(left=xmin)  # xmin is your value
-        plt.ylim(top=ymax)  # ymax is your value
-        #plt.ylim(bottom=ymin)  # ymin is your value
+        plt.ylim(top=ymax[1])  # ymax is your value
+        plt.ylim(bottom=ymax[0])  # ymin is your value
 
     plt.plot()
 
