@@ -386,7 +386,7 @@ def plot_top_is_position_google(df, region_filters=None, campaign_filters=None):
 
 
 def plot_compare_base(df, y_value='ad_per_click', group_by_plot='regclass', plot_set=['msk', 'spb', 'p4c', '18reg'],
-                 region_filters=None, campaign_filters=None, system_filters=None):
+                 region_filters=None, campaign_filters=None, system_filters=None, ymax=None):
     regions_map = mediaplan.GroupsRegions()
     reg_classes = pd.DataFrame([{regions_map.filter_field: i, "regclass": regions_map[i]} for i in set(df.campaignname.unique())])
     data = pd.merge(df, reg_classes)
@@ -421,6 +421,12 @@ def plot_compare_base(df, y_value='ad_per_click', group_by_plot='regclass', plot
         plotdata = pd.DataFrame({i: tt.loc[i][j] for i in plot_set})
         for i in plotdata:
             plt.plot(plotdata.index, plotdata[i], label="{} {}: {}".format(j, group_by_plot, i))
+
+    if ymax is not None:
+        #plt.xlim(right=xmax)  # xmax is your value
+        #plt.xlim(left=xmin)  # xmin is your value
+        plt.ylim(top=ymax)  # ymax is your value
+        #plt.ylim(bottom=ymin)  # ymin is your value
 
     plt.plot()
 
