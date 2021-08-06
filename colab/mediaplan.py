@@ -13,8 +13,7 @@ class MP:
         {"descr": 'msk_sdaisnimi_bdg', "fltrs": ["b2b_msk_rtg_null_ownsdaisnimi_mix_network",
                                                  "b2b_msk_ci_null_ownsdaisnimi_mix_network", ]},
 
-        {"descr": 'rf_rtg_phonefeed_own_mix_network_bdg', "fltrs": ["b2b_rf_rtg_phonefeed_own_mix_network", ]},
-
+        {"descr": 'rf_b2b_own_rtg_phonefeed_network_bdg', "fltrs": ["b2b_rf_rtg_phonefeed_own_mix_network", ]},
 
 
         ######################################################################################
