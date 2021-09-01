@@ -9,6 +9,7 @@ class MP:
         # Пакет: test ########################################################################
         ######################################################################################
         #{"descr": 'test_bdg', "fltrs": ["_mobapptest_", "_test_"]},
+        {"descr": 'special_project_bdg', "fltrs": ["_specproj"]},
 
         {"descr": 'msk_sdaisnimi_bdg', "fltrs": ["b2b_msk_rtg_null_ownsdaisnimi_mix_network",
                                                  "b2b_msk_ci_null_ownsdaisnimi_mix_network", ]},
