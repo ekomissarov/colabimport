@@ -499,6 +499,7 @@ class MP:
         {"descr": 'yalta_com_mix_search_bdg', "fltrs": ["b2b_yalta_general_null_com_mix_search", ]},
         {"descr": 'krasnoyarsk_com_mix_search_bdg', "fltrs": ["b2b_krasnoyarsk_general_null_com_mix_search", ]},
         {"descr": 'perm_com_mix_search_bdg', "fltrs": ["b2b_perm_general_null_com_mix_search", ]},
+        {"descr": 'omsk_com_mix_search_bdg', "fltrs": ["b2b_omsk_general_null_com_mix_search", ]},
 
         {"descr": 'msk_com_mix_network_bdg', "fltrs": ["b2b_(mo|msk)_general_main_com_mix_network", ]},
         {"descr": 'spb_com_mix_network_bdg', "fltrs": ["b2b_spb_general_main_com_mix_network", ]},
