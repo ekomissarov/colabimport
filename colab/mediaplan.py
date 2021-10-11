@@ -469,7 +469,8 @@ class MP:
         {"descr": 'msk_drtg_com_bdg', "fltrs": ["b2c_msk_drtg_site_com_mix_network", ]},
         {"descr": 'spb_drtg_com_bdg', "fltrs": ["b2c_spb_drtg_site_com_mix_network", ]},
 
-
+        {"descr": 'msk_readybusiness_com_search_bdg', "fltrs": ["b2b_msk_readybusiness_null_com_mix_search", ]},
+        {"descr": 'spb_readybusiness_com_search_bdg', "fltrs": ["b2b_spb_readybusiness_null_com_mix_search", ]},
         {"descr": 'msk_cwrk_com_search_bdg', "fltrs": ["b2b_(bmo|dmo|msk)_general_cwrk_com_mix_search",
                                                        "b2b_(bmo|dmo|msk)_general_null_cwrkcom_mix_search",]},
         {"descr": 'spb_cwrk_com_search_bdg', "fltrs": ["b2b_spb_general_cwrk_com_mix_search",
