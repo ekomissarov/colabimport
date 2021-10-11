@@ -1720,7 +1720,9 @@ class MP:
                                                     "b2c_yaroslavl_drtg_jk_nov_mix_network",
         ]},
 
-        {"descr": 'rf_sbyndx_jk_nov_bdg', "fltrs": ["b2b_.*_rtg_smart_nov_mix_network", ]},
+        {"descr": 'rf_sbyndx_jk_nov_bdg', "fltrs": ["b2b_.*_rtg_smart_nov_mix_network",
+                                                    "b2с_.*_rtg_smart_nov_mix_network",
+                                                    "b2с_.*_rtg_smartlal_nov_mix_network", ]},
 
         ######################################################################################
         # Пакет: DRTG salesec ################################################################
