@@ -253,7 +253,8 @@ def plot_basic_dynamics(df, what=None, region_filters=None, campaign_filters=Non
         what = {"events", "events_ss", "events_fdv", "ads", "ipotek", "ct", "common",
                 "events_commercial", "events_salesub", "events_rentsub", "events_saleflats", "events_rentflats",
                 "events_applications",
-                "conv_agg_full", "conv_agg_owners"}
+                "conv_agg_full", "conv_agg_owners",
+                "impressions"}
 
     if region_filters:
         tt = tt[tt.region.isin(region_filters)]
@@ -314,6 +315,12 @@ def plot_basic_dynamics(df, what=None, region_filters=None, campaign_filters=Non
     if "conv_agg_full" in what:
         _plt_basic_dyn(tt, ev="conv_agg_full", cpa="cp_agg_full", ev_per_click="agg_full_per_click",
                        item_labels=["aggregate", "cpa", "conv%"], plot_ev_per_click=plot_ev_per_click)
+
+    if "impressions" in what:
+        impressions = tt.loc[:, "impressions"]
+        rolling_impressions = impressions.rolling(7, center=True)
+        impressions = pd.DataFrame({'values': impressions, 'rolling_mean': rolling_impressions.mean(), 'rolling_std': rolling_impressions.std()})
+        plot_basic_rolling(impressions, items=["impressions"], line_colors=["pink"])
 
     if "common" in what:
         cost_rur = tt.loc[:, "cost_rur"]
