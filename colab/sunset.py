@@ -40,6 +40,7 @@ def calc_additive_values(df):
 def calc_base_values(tt):
     tt['cost_rur'] = tt['cost'] / 1000000
     tt['cpc'] = np.round(tt['cost_rur'] / tt['clicks'], 2)
+    tt['cpm'] = np.round(tt['cost_rur'] / (tt['impressions']/1000), 2)
     tt['ctr'] = np.round(tt['clicks'] / tt['impressions'], 4)
 
     # конверсии объем
@@ -317,10 +318,9 @@ def plot_basic_dynamics(df, what=None, region_filters=None, campaign_filters=Non
                        item_labels=["aggregate", "cpa", "conv%"], plot_ev_per_click=plot_ev_per_click)
 
     if "impressions" in what:
-        impressions = tt.loc[:, "impressions"]
-        rolling_impressions = impressions.rolling(7, center=True)
-        impressions = pd.DataFrame({'values': impressions, 'rolling_mean': rolling_impressions.mean(), 'rolling_std': rolling_impressions.std()})
-        plot_basic_rolling(impressions, items=["impressions"], line_colors=["pink"])
+        _plt_basic_dyn(tt, ev="impressions", cpa="cpm", ev_per_click="ctr",
+                       item_labels=["impressions", "cpm", "ctr"],
+                       plot_ev_per_click=plot_ev_per_click)
 
     if "common" in what:
         cost_rur = tt.loc[:, "cost_rur"]
