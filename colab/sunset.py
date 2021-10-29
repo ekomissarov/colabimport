@@ -392,11 +392,8 @@ def plot_top_is_position_google(df, region_filters=None, campaign_filters=None):
     plt.show()
 
 
-def plot_compare_base(df, y_value='ad_per_click', group_by_plot='regclass', plot_set=['msk', 'spb', 'p4c', '18reg'],
+def plot_compare_base(data, y_value, group_by_plot, plot_set,
                  region_filters=None, campaign_filters=None, system_filters=None, ymax=None):
-    regions_map = mediaplan.GroupsRegions()
-    reg_classes = pd.DataFrame([{regions_map.filter_field: i, "regclass": regions_map[i]} for i in set(df.campaignname.unique())])
-    data = pd.merge(df, reg_classes)
 
     if region_filters:
         data = data[data.region.isin(region_filters)]
@@ -442,3 +439,16 @@ def plot_compare_base(df, y_value='ad_per_click', group_by_plot='regclass', plot
     plt.title("график сравнение")
     plt.legend()
     plt.show()
+
+
+def resample_df(df, dimension="campaignname", resample_period="M"):
+    df['date'] = pd.to_datetime(df['date'])
+    result = pd.DataFrame()
+    for i in df[dimension].unique():
+        tmp = df[df[dimension] == i].copy()
+        tmp = tmp.groupby(['date']).sum()
+        tmp = tmp.resample(resample_period).sum().reset_index()
+        tmp[dimension] = i
+        result = pd.concat([result, tmp])
+
+    return result
