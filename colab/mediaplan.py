@@ -706,6 +706,7 @@ class MP:
                                                        "b2c_ufa_discovery_main_brand_mix_network",
                                                        "b2c_volgograd_discovery_main_brand_mix_network",
                                                        "b2c_yalta_discovery_main_brand_mix_network",
+                                                       "b2c_22reg_discovery_main_brand_mix_network",
                                                        ]},
         {"descr": 'oth_discovery_brand_network_bdg', "fltrs": [
                                                         "b2c_arhangelsk_discovery_main_brand_mix_network",
@@ -742,6 +743,7 @@ class MP:
                                                         "b2c_vladimir_discovery_main_brand_mix_network",
                                                         "b2c_vladivostok_discovery_main_brand_mix_network",
                                                         "b2c_yaroslavl_discovery_main_brand_mix_network",
+                                                        "b2c_oth_discovery_main_brand_mix_network",
         ]},
 
         ######################################################################################
@@ -947,7 +949,8 @@ class MP:
                                                                "b2c_ufa_discovery_general_nov_mix_network",
                                                                "b2c_volgograd_discovery_general_nov_mix_network",
                                                                "b2c_yalta_discovery_general_nov_mix_network",
-                   ]},
+                                                               "b2c_22reg_discovery_general_nov_mix_network",
+                                                               ]},
         {"descr": 'oth_discovery_nov_network_bdg', "fltrs": [
                                                             "b2c_arhangelsk_discovery_general_nov_mix_network",
                                                             "b2c_astrahan_discovery_general_nov_mix_network",
@@ -983,6 +986,7 @@ class MP:
                                                             "b2c_vladimir_discovery_general_nov_mix_network",
                                                             "b2c_vladivostok_discovery_general_nov_mix_network",
                                                             "b2c_yaroslavl_discovery_general_nov_mix_network",
+                                                            "b2c_oth_discovery_general_nov_mix_network",
         ]},
 
         ######################################################################################
@@ -1323,6 +1327,7 @@ class MP:
                                                                "b2c_ufa_discovery_main_salesec_mix_network",
                                                                "b2c_volgograd_discovery_main_salesec_mix_network",
                                                                "b2c_yalta_discovery_main_salesec_mix_network",
+                                                               "b2b_22reg_discovery_main_salesec_mix_network",
                    ]},
         {"descr": 'oth_discovery_salesec_network_bdg', "fltrs": [
                                                             "b2c_arhangelsk_discovery_main_salesec_mix_network",
@@ -1359,6 +1364,7 @@ class MP:
                                                             "b2c_vladimir_discovery_main_salesec_mix_network",
                                                             "b2c_vladivostok_discovery_main_salesec_mix_network",
                                                             "b2c_yaroslavl_discovery_main_salesec_mix_network",
+                                                            "b2b_oth_discovery_main_salesec_mix_network",
         ]},
 
         ######################################################################################
@@ -1624,7 +1630,8 @@ class MP:
                                                                "b2c_ufa_discovery_main_sub_mix_network",
                                                                "b2c_volgograd_discovery_main_sub_mix_network",
                                                                "b2c_yalta_discovery_main_sub_mix_network",
-                   ]},
+                                                               "b2c_22reg_discovery_main_sub_mix_network",
+                                                               ]},
         {"descr": 'oth_discovery_sub_network_bdg', "fltrs": [
                                                             "b2c_arhangelsk_discovery_main_sub_mix_network",
                                                             "b2c_astrahan_discovery_main_sub_mix_network",
@@ -1660,6 +1667,7 @@ class MP:
                                                             "b2c_vladimir_discovery_main_sub_mix_network",
                                                             "b2c_vladivostok_discovery_main_sub_mix_network",
                                                             "b2c_yaroslavl_discovery_main_sub_mix_network",
+                                                            "b2c_oth_discovery_main_sub_mix_network",
         ]},
 
         ######################################################################################
