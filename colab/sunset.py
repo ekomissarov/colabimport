@@ -395,6 +395,12 @@ def plot_top_is_position_google(df, region_filters=None, campaign_filters=None):
 def plot_compare_base(data, y_value, group_by_plot, plot_set,
                  region_filters=None, campaign_filters=None, system_filters=None, ymax=None):
 
+    if type(y_value) is not list:
+        y_value = [y_value]
+
+    if {'impr_pos', 'click_pos', 'traffic_vol', 'top_is', 'abstop_is'} & set(y_value):
+        data = data[data.campaignname.str.contains("_search")]
+
     if region_filters:
         data = data[data.region.isin(region_filters)]
 
@@ -417,9 +423,6 @@ def plot_compare_base(data, y_value, group_by_plot, plot_set,
     elif system_filters and system_filters[0] == "g" and len(system_filters) == 1:
         tt['top_is'] = tt['search_top_is'] / tt['eligible_impressions']
         tt['abstop_is'] = tt['search_abs_top_is'] / tt['eligible_impressions']
-
-    if type(y_value) is not list:
-        y_value = [y_value]
 
     for j in y_value:
         plotdata = pd.DataFrame({i: tt.loc[i][j] for i in plot_set})
