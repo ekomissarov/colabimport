@@ -342,7 +342,7 @@ def plot_basic_dynamics(df, what=None, region_filters=None, campaign_filters=Non
 
 def plot_avg_position_yandex(df, region_filters=None, campaign_filters=None):
     grp = ['date']
-    df = df[df.system == "y"]
+    df = df[(df.system == "y") & (df.campaignname.str.contains("_search"))]
 
     if region_filters:
         df = df[df.region.isin(region_filters)]
@@ -369,7 +369,7 @@ def plot_avg_position_yandex(df, region_filters=None, campaign_filters=None):
 
 def plot_top_is_position_google(df, region_filters=None, campaign_filters=None):
     grp = ['date']
-    df = df[df.system == "g"]
+    df = df[(df.system == "g") & (df.campaignname.str.contains("_search"))]
 
     if region_filters:
         df = df[df.region.isin(region_filters)]
