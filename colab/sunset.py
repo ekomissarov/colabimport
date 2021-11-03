@@ -454,4 +454,6 @@ def resample_df(df, dimension="campaignname", resample_period="M"):
         tmp[dimension] = i
         result = pd.concat([result, tmp])
 
+    result = calc_base_values(result)
+    result = calc_base_values_with_assisted(result)
     return result
