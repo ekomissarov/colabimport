@@ -1305,8 +1305,8 @@ class MP:
                                                             "b2c_yaroslavl_(ci|general)_main_salesec_mix_network",
         ]},
 
-        {"descr": 'msk_discovery_salesec_network_bdg', "fltrs": ["b2c_(mo|msk)_discovery_main_salesec_mix_network", ]},
-        {"descr": 'spb_discovery_salesec_network_bdg', "fltrs": ["b2c_spb_discovery_main_salesec_mix_network", ]},
+        {"descr": 'msk_discovery_salesec_network_bdg', "fltrs": ["(b2c|b2b)_(mo|msk)_discovery_main_salesec_mix_network", ]},
+        {"descr": 'spb_discovery_salesec_network_bdg', "fltrs": ["(b2c|b2b)_spb_discovery_main_salesec_mix_network", ]},
         # {"descr": 'p4c_discovery_salesec_network_bdg', "fltrs": ["b2c_(kazan|nn|krasnoyarsk|voronezh)_discovery_main_salesec_mix_network", ]},
         {"descr": 'reg22_discovery_salesec_network_bdg', "fltrs": ["b2c_(kazan|nn|krasnoyarsk|voronezh)_discovery_main_salesec_mix_network",
                                                                "b2c_chelyabinsk_discovery_main_salesec_mix_network",
@@ -1327,7 +1327,7 @@ class MP:
                                                                "b2c_ufa_discovery_main_salesec_mix_network",
                                                                "b2c_volgograd_discovery_main_salesec_mix_network",
                                                                "b2c_yalta_discovery_main_salesec_mix_network",
-                                                               "b2b_22reg_discovery_main_salesec_mix_network",
+                                                               "(b2c|b2b)_22reg_discovery_main_salesec_mix_network",
                    ]},
         {"descr": 'oth_discovery_salesec_network_bdg', "fltrs": [
                                                             "b2c_arhangelsk_discovery_main_salesec_mix_network",
