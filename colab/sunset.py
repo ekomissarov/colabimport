@@ -393,7 +393,7 @@ def plot_top_is_position_google(df, region_filters=None, campaign_filters=None):
 
 
 def plot_compare_base(data, y_value, group_by_plot, plot_set,
-                 region_filters=None, campaign_filters=None, system_filters=None, ymax=None):
+                 region_filters=None, campaign_filters=None, system_filters=None, ymax=None, vert_lines=None):
 
     if type(y_value) is not list:
         y_value = [y_value]
@@ -434,6 +434,9 @@ def plot_compare_base(data, y_value, group_by_plot, plot_set,
         #plt.xlim(left=xmin)  # xmin is your value
         plt.ylim(top=ymax[1])  # ymax is your value
         plt.ylim(bottom=ymax[0])  # ymin is your value
+    if vert_lines:
+        for i in vert_lines:
+            plt.axvline(x=i)
 
     plt.plot()
 
