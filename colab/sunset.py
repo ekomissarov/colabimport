@@ -218,10 +218,6 @@ class BasicDynamics:
                     "conv_agg_full", "conv_agg_owners",
                     "impressions"}
 
-    @staticmethod
-    def scale_plot_size(w=12, h=14):
-        scale_plot_size(w, h)
-
     def run_plot(self):
         if "events" in self.what:
             self._plt_basic_dyn(ev="events", cpa="cpa", ev_per_click="ev_per_click",
@@ -321,8 +317,9 @@ class BasicDynamics:
             axN[i].legend([items[i], 'rolling_mean', 'rolling_std'])
             axN[i].xaxis.set_major_locator(locator)
             axN[i].xaxis.set_major_formatter(formatter)
-            for j in self.vert_lines:
-                axN[i].axvline(x=j, color='gray')
+            if self.vert_lines:
+                for j in self.vert_lines:
+                    axN[i].axvline(x=j, color='gray')
 
         locator = mdates.AutoDateLocator(minticks=5, maxticks=20)
         formatter = mdates.ConciseDateFormatter(locator)
@@ -374,7 +371,6 @@ def plot_avg_position_yandex(df, region_filters=None, campaign_filters=None, ver
     tt['click_pos'] = tt['avg_click_pos'] / tt['clicks']
     tt['traffic_vol'] = tt['avg_traffic_vol'] / tt['impressions']
 
-    scale_plot_size(12, 12)
     plots = ["impr_pos", "click_pos", "traffic_vol"]
     ax = tt.loc[:, plots].plot(subplots=True)
     if vert_lines:
@@ -403,7 +399,6 @@ def plot_top_is_position_google(df, region_filters=None, campaign_filters=None, 
     tt['top_is'] = tt['search_top_is'] / tt['eligible_impressions']
     tt['abstop_is'] = tt['search_abs_top_is'] / tt['eligible_impressions']
 
-    scale_plot_size(12, 12)
     plots = ["top_is", "abstop_is"]
     ax = tt.loc[:, plots].plot(subplots=True)
     if vert_lines:
