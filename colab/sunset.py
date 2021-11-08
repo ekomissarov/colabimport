@@ -436,7 +436,7 @@ def plot_compare_base(data, y_value, group_by_plot, plot_set,
         plt.ylim(bottom=ymax[0])  # ymin is your value
     if vert_lines:
         for i in vert_lines:
-            plt.axvline(x=i)
+            plt.axvline(x=i, color='gray')
 
     plt.plot()
 
