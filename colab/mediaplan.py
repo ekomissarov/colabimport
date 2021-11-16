@@ -469,6 +469,8 @@ class MP:
         {"descr": 'msk_drtg_com_bdg', "fltrs": ["b2c_msk_drtg_site_com_mix_network", ]},
         {"descr": 'spb_drtg_com_bdg', "fltrs": ["b2c_spb_drtg_site_com_mix_network", ]},
 
+        {"descr": 'mskmo_crmrtg_null_iapcom_mix_network_bdg', "fltrs": ["b2b_mskmo_crmrtg_null_iapcom_mix_network",]},
+
         {"descr": 'msk_readybusiness_com_search_bdg', "fltrs": ["b2b_msk_readybusiness_null_com_mix_search",
                                                                 "b2b_msk_general_null_gbcom_mix_search"]},
         {"descr": 'spb_readybusiness_com_search_bdg', "fltrs": ["b2b_spb_readybusiness_null_com_mix_search",
@@ -2494,8 +2496,7 @@ class GroupsVerticalExt:
         {"descr": 'own', "fltrs": ["_b2b_own_",
                                    "_b2b_compet_",
                                    "_sdaisnimi_"]},
-        {"descr": 'commerce', "fltrs": ["_com_",
-                                        "_cwrk_", "_cwrkcom_", "_gbcom_"]},
+        {"descr": 'commerce', "fltrs": ["_com_", "_cwrk_", "_cwrkcom_", "_gbcom_", "_iapcom_"]},
         {"descr": 'sub', "fltrs": ["_sub_",
                                    "_rentsub_mix_search_bdg",
                                    "_salesub_mix_search_bdg"]},
@@ -2531,8 +2532,7 @@ class GroupsVerticalCommon:
                                    "_b2b_compet_",
                                    "_ocenka_own_",
                                    "_sdaisnimi_"]},
-        {"descr": 'commerce', "fltrs": ["_com_",
-                                        "_cwrk_", "_cwrkcom_", "_gbcom_"]},
+        {"descr": 'commerce', "fltrs": ["_com_", "_cwrk_", "_cwrkcom_", "_gbcom_", "_iapcom_"]},
         {"descr": 'sub', "fltrs": ["_sub_",
                                    "_salesub_",
                                    "_rentsub_"]},
@@ -2562,8 +2562,7 @@ class GroupsVerticalFinance:
     filter_field = "budget_class"
     regs = [
         {"descr": 'BYUF', "fltrs": ["ipoteka"]},
-        {"descr": 'BYUKI', "fltrs": ["_com_",
-                                     "_cwrk_", "_cwrkcom_", "_gbcom_"]},
+        {"descr": 'BYUKI', "fltrs": ["_com_", "_cwrk_", "_cwrkcom_", "_gbcom_", "_iapcom_"]},
         {"descr": 'PERVICHKA', "fltrs": ["nov"]},
         {"descr": 'VTORICHKA', "fltrs": ["rentsec",
                                          "salesec",
@@ -2595,7 +2594,7 @@ class GroupsYAccFinance:
     regs = [
         {"descr": 'Ипотека', "fltrs": ["_ipoteka_"]},
         {"descr": 'Новостройки', "fltrs": ["_nov_"]},
-        {"descr": 'Коммерческая', "fltrs": ["_com_", "_cwrk_", "_cwrkcom_", "_gbcom_"]},
+        {"descr": 'Коммерческая', "fltrs": ["_com_", "_cwrk_", "_cwrkcom_", "_gbcom_", "_iapcom_"]},
         {"descr": 'Москва', "fltrs": ["_msk_", "_mo_", "_dmo_", "_bmo_", "_mskmo_"]},
     ]
 
@@ -2618,7 +2617,7 @@ class GroupsGAccFinance:
     regs = [
         {"descr": 'Ипотека', "fltrs": ["_ipoteka_"]},
         {"descr": 'Новостройки', "fltrs": ["_nov_"]},
-        {"descr": 'Коммерческая', "fltrs": ["_com_", "_cwrk_", "_cwrkcom_", "_gbcom_"]},
+        {"descr": 'Коммерческая', "fltrs": ["_com_", "_cwrk_", "_cwrkcom_", "_gbcom_", "_iapcom_"]},
         {"descr": 'Собственники', "fltrs": ["_own_", "_ownsdaisnimi_"]},
         {"descr": 'Бренд', "fltrs": ["_compet_", "_brand_"]},
         {"descr": 'Вторичка', "fltrs": ["_rentsec_", "_salesec_",
