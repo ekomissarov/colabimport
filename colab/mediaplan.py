@@ -2563,7 +2563,8 @@ class GroupsVerticalFinance:
     filter_field = "budget_class"
     regs = [
         {"descr": 'BYUF', "fltrs": ["ipoteka"]},
-        {"descr": 'BYUKI', "fltrs": ["_com_", "_cwrk_", "_cwrkcom_", "_gbcom_", "_iapcom_"]},
+        {"descr": 'BYUKI', "fltrs": ["_com_", "_cwrk_", "_cwrkcom_", "_gbcom_",]},
+        {"descr": 'IAPCOM', "fltrs": ["_iapcom_"]},
         {"descr": 'PERVICHKA', "fltrs": ["nov"]},
         {"descr": 'VTORICHKA', "fltrs": ["rentsec",
                                          "salesec",
