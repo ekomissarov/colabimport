@@ -2596,7 +2596,8 @@ class GroupsYAccFinance:
     regs = [
         {"descr": 'Ипотека', "fltrs": ["_ipoteka_"]},
         {"descr": 'Новостройки', "fltrs": ["_nov_"]},
-        {"descr": 'Коммерческая', "fltrs": ["_com_", "_cwrk_", "_cwrkcom_", "_gbcom_", "_iapcom_"]},
+        {"descr": 'Коммерческая', "fltrs": ["_com_", "_cwrk_", "_cwrkcom_", "_gbcom_",]},
+        {"descr": 'ИАП', "fltrs": ["_iapcom_"]},
         {"descr": 'Москва', "fltrs": ["_msk_", "_mo_", "_dmo_", "_bmo_", "_mskmo_"]},
     ]
 
@@ -2619,7 +2620,8 @@ class GroupsGAccFinance:
     regs = [
         {"descr": 'Ипотека', "fltrs": ["_ipoteka_"]},
         {"descr": 'Новостройки', "fltrs": ["_nov_"]},
-        {"descr": 'Коммерческая', "fltrs": ["_com_", "_cwrk_", "_cwrkcom_", "_gbcom_", "_iapcom_"]},
+        {"descr": 'Коммерческая', "fltrs": ["_com_", "_cwrk_", "_cwrkcom_", "_gbcom_",]},
+        {"descr": 'ИАП', "fltrs": ["_iapcom_"]},
         {"descr": 'Собственники', "fltrs": ["_own_", "_ownsdaisnimi_"]},
         {"descr": 'Бренд', "fltrs": ["_compet_", "_brand_"]},
         {"descr": 'Вторичка', "fltrs": ["_rentsec_", "_salesec_",
