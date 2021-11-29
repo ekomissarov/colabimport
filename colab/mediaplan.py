@@ -470,6 +470,7 @@ class MP:
         {"descr": 'spb_drtg_com_bdg', "fltrs": ["b2c_spb_drtg_site_com_mix_network", ]},
 
         {"descr": 'mskmo_crmrtg_null_iapcom_mix_network_bdg', "fltrs": ["b2b_mskmo_crmrtg_null_iapcom_mix_network",]},
+        {"descr": 'rf_crm_null_iapcom_mix_network_bdg', "fltrs": ["b2b_rf_crm_null_iapcom_mix_network", ]},
 
         {"descr": 'msk_readybusiness_com_search_bdg', "fltrs": ["b2b_msk_readybusiness_null_com_mix_search",
                                                                 "b2b_msk_general_null_gbcom_mix_search"]},
