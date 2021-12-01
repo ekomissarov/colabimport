@@ -1801,8 +1801,8 @@ class MP:
 
         {"descr": 'msk_dynprosp_salesec_bdg', "fltrs": ["b2c_(mo|msk)_dynprosp_site_salesec_mix_network", ]},
         {"descr": 'spb_dynprosp_salesec_bdg', "fltrs": ["b2c_spb_dynprosp_site_salesec_mix_network", ]},
-        {"descr": 'p4c_dynprosp_salesec_bdg', "fltrs": ["b2c_(kazan|nn|krasnoyarsk|voronezh)_dynprosp_site_salesec_mix_network", ]},
-        {"descr": 'reg18_dynprosp_salesec_bdg', "fltrs": ["b2c_chelyabinsk_dynprosp_site_salesec_mix_network",
+        {"descr": '22reg_dynprosp_salesec_bdg', "fltrs": ["b2c_(kazan|nn|krasnoyarsk|voronezh)_dynprosp_site_salesec_mix_network",
+                                                          "b2c_chelyabinsk_dynprosp_site_salesec_mix_network",
                                                       "b2c_ekb_dynprosp_site_salesec_mix_network",
                                                       "b2c_irkutsk_dynprosp_site_salesec_mix_network",
                                                       "b2c_kaliningrad_dynprosp_site_salesec_mix_network",
@@ -1920,8 +1920,8 @@ class MP:
 
         {"descr": 'msk_dynprosp_rentsec_bdg', "fltrs": ["b2c_(mo|msk)_dynprosp_site_rentsec_mix_network", ]},
         {"descr": 'spb_dynprosp_rentsec_bdg', "fltrs": ["b2c_spb_dynprosp_site_rentsec_mix_network", ]},
-        {"descr": 'p4c_dynprosp_rentsec_bdg', "fltrs": ["b2c_(kazan|nn|krasnoyarsk|voronezh)_dynprosp_site_rentsec_mix_network", ]},
-        {"descr": 'reg18_dynprosp_rentsec_bdg', "fltrs": ["b2c_chelyabinsk_dynprosp_site_rentsec_mix_network",
+        {"descr": '22reg_dynprosp_rentsec_bdg', "fltrs": ["b2c_(kazan|nn|krasnoyarsk|voronezh)_dynprosp_site_rentsec_mix_network",
+                                                      "b2c_chelyabinsk_dynprosp_site_rentsec_mix_network",
                                                       "b2c_ekb_dynprosp_site_rentsec_mix_network",
                                                       "b2c_irkutsk_dynprosp_site_rentsec_mix_network",
                                                       "b2c_kaliningrad_dynprosp_site_rentsec_mix_network",
