@@ -478,10 +478,10 @@ class MP:
                                                                      "b2b_spb_general_null_gbcom_mix_search"]},
         {"descr": 'b2b_msk_general_null_cwrkcom_mix_search', "fltrs": ["b2b_(bmo|dmo|msk)_general_cwrk_com_mix_search",
                                                                        "b2b_msk_general_null_cwrkcom_mix_search",]},
-        {"descr": 'b2b_spb_general_cwrk_com_mix_search', "fltrs": ["b2b_spb_general_cwrk_com_mix_search",
+        {"descr": 'b2b_spb_general_null_cwrkcom_mix_search', "fltrs": ["b2b_spb_general_cwrk_com_mix_search",
                                                                    "b2b_spb_general_null_cwrkcom_mix_search", ]},
-        {"descr": 'msk_cwrk_com_network_bdg', "fltrs": ["b2b_(bmo|dmo|msk)_general_cwrk_com_mix_network",
-                                                        "b2b_(bmo|dmo|msk)_general_null_cwrkcom_mix_network",]},
+        {"descr": 'b2b_msk_general_null_cwrkcom_mix_network', "fltrs": ["b2b_msk_general_cwrk_com_mix_network",
+                                                        "b2b_msk_general_null_cwrkcom_mix_network",]},
 
         {"descr": 'b2b_msk_ci_null_cwrkcom_mix_network', "fltrs": ["b2b_msk_ci_cwrk_com_mix_network",
                                                                    "b2b_msk_ci_null_cwrkcom_mix_network",]},
