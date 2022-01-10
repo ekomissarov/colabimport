@@ -2298,7 +2298,7 @@ class GroupsRegions:
                                     '_ivanovo_',
                                     '_arhangelsk_',
                                     '_vologda_',
-                                     '_22reg_', '_18reg_', '_p4c_',
+                                     '_22reg_', '_18reg_', '_p4c_', '_regs_',
         ]},
 
         {"descr": 'oth', "fltrs": ['_rf_',
@@ -2467,7 +2467,7 @@ class GroupsRegionsLite:
                                         '_ivanovo_',
                                         '_arhangelsk_',
                                         '_vologda_',
-                                        '_22reg_', '_18reg_', '_p4c_',
+                                        '_22reg_', '_18reg_', '_p4c_', '_regs_',
                                      ]},
         {"descr": 'oth', "fltrs": ['_rf_',
                                  '_astrahan_',
