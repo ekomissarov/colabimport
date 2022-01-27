@@ -889,6 +889,7 @@ class MP:
                                                             "b2c_vladimir_general_main_nov_mix_search",
                                                             "b2c_vladivostok_general_main_nov_mix_search",
                                                             "b2c_yaroslavl_general_main_nov_mix_search",
+                                                            "b2c_vologda_general_main_nov_mix_search",
         ]},
 
         {"descr": 'msk_rlsa_main_nov_bdg', "fltrs": ["b2c_(bmo|dmo|msk)_rlsa_(main|geo)_nov_mix_search", ]},
@@ -953,6 +954,7 @@ class MP:
                                                         "b2c_vladimir_rlsa_main_nov_mix_search",
                                                         "b2c_vladivostok_rlsa_main_nov_mix_search",
                                                         "b2c_yaroslavl_rlsa_main_nov_mix_search",
+                                                        "b2c_vologda_rlsa_main_nov_mix_search",
         ]},
 
         {"descr": 'msk_general_nov_network_bdg', "fltrs": ["b2c_(mo|msk)_(ci|general)_main_nov_mix_network", ]},
@@ -1694,6 +1696,7 @@ class MP:
                                                     "b2c_vladimir_drtg_jk_nov_mix_network",
                                                     "b2c_vladivostok_drtg_jk_nov_mix_network",
                                                     "b2c_yaroslavl_drtg_jk_nov_mix_network",
+                                                    "b2c_vologda_drtg_jk_nov_mix_network",
         ]},
 
         {"descr": 'rf_sbyndx_jk_nov_bdg', "fltrs": ["b2b_.*_rtg_smart_nov_mix_network",
