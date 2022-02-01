@@ -95,14 +95,17 @@ def calc_base_values(tt):
 
     # агрегаты: конверсии объем
     tt['conv_agg_full'] = tt['events'] + (8 * tt['ads']) + (500 * tt['ipotek']) + (500 * tt['ct']) + (8 * tt['events_applications']) + (10 * tt['events_ss'])
+    tt['conv_agg_base'] = tt['events'] + (2 * tt['ads']) + (5 * tt['ipotek']) + (2 * tt['events_applications'])
     tt['conv_agg_owners'] = tt['ads'] + tt['events_applications'] + tt['events_ss']
 
     # агрегаты: конверсии стоимости
     tt['cp_agg_full'] = np.round(tt['cost_rur'] / tt['conv_agg_full'], 2)
+    tt['cp_agg_base'] = np.round(tt['cost_rur'] / tt['conv_agg_base'], 2)
     tt['cp_agg_owners'] = np.round(tt['cost_rur'] / tt['conv_agg_owners'], 2)
 
     # агрегаты: %конверсии на клик
     tt['agg_full_per_click'] = np.round(tt['conv_agg_full'] / tt['clicks'], 4)
+    tt['agg_base_per_click'] = np.round(tt['conv_agg_base'] / tt['clicks'], 4)
     tt['agg_owners_per_click'] = np.round(tt['conv_agg_owners'] / tt['clicks'], 4)
 
     ##########################################
@@ -156,14 +159,17 @@ def calc_base_values_with_assisted(tt):
 
     # агрегаты: конверсии объем
     tt['A_conv_agg_full'] = tt['A_events'] + (8 * tt['A_ads']) + (500 * tt['A_ipotek']) + (500 * tt['A_ct']) + (8 * tt['A_events_applications']) + (10 * tt['A_events_ss'])
+    tt['A_conv_agg_base'] = tt['A_events'] + (2 * tt['A_ads']) + (5 * tt['A_ipotek']) + (2 * tt['A_events_applications'])
     tt['A_conv_agg_owners'] = tt['A_ads'] + tt['A_events_applications'] + tt['A_events_ss']
 
     # агрегаты: конверсии стоимости
     tt['A_cp_agg_full'] = np.round(tt['cost_rur'] / tt['A_conv_agg_full'], 2)
+    tt['A_cp_agg_base'] = np.round(tt['cost_rur'] / tt['A_conv_agg_base'], 2)
     tt['A_cp_agg_owners'] = np.round(tt['cost_rur'] / tt['A_conv_agg_owners'], 2)
 
     # агрегаты: %конверсии на клик
     tt['A_agg_full_per_click'] = np.round(tt['A_conv_agg_full'] / tt['clicks'], 4)
+    tt['A_agg_base_per_click'] = np.round(tt['A_conv_agg_base'] / tt['clicks'], 4)
     tt['A_agg_owners_per_click'] = np.round(tt['A_conv_agg_owners'] / tt['clicks'], 4)
 
     return tt
