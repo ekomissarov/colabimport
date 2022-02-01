@@ -92,7 +92,7 @@ def calc_base_values(tt):
     tt['assisted_ad_per_click'] = np.round(tt['assisted_conv_ads'] / tt['clicks'], 4)
     tt['assisted_ipotek_per_click'] = np.round(tt['assisted_conv_mortgage'] / tt['clicks'], 4)
     tt['assisted_ct_per_click'] = np.round(tt['assisted_conv_ct'] / tt['clicks'], 4)
-
+    tt = tt.copy()
     # агрегаты: конверсии объем
     tt['conv_agg_full'] = tt['events'] + (8 * tt['ads']) + (500 * tt['ipotek']) + (500 * tt['ct']) + (8 * tt['events_applications']) + (10 * tt['events_ss'])
     tt['conv_agg_base'] = tt['events'] + (2 * tt['ads']) + (5 * tt['ipotek']) + (2 * tt['events_applications'])
@@ -110,7 +110,7 @@ def calc_base_values(tt):
 
     ##########################################
     tt['cost_rur'] = tt['cost_rur'].astype(np.int64)
-    return tt
+    return tt.copy()
 
 
 def calc_base_values_with_assisted(tt):
@@ -156,7 +156,7 @@ def calc_base_values_with_assisted(tt):
     tt['A_ad_per_click'] = np.round(tt['A_ads'] / tt['clicks'], 4)
     tt['A_ipotek_per_click'] = np.round(tt['A_ipotek'] / tt['clicks'], 4)
     tt['A_ct_per_click'] = np.round(tt['A_ct'] / tt['clicks'], 4)
-
+    tt = tt.copy()
     # агрегаты: конверсии объем
     tt['A_conv_agg_full'] = tt['A_events'] + (8 * tt['A_ads']) + (500 * tt['A_ipotek']) + (500 * tt['A_ct']) + (8 * tt['A_events_applications']) + (10 * tt['A_events_ss'])
     tt['A_conv_agg_base'] = tt['A_events'] + (2 * tt['A_ads']) + (5 * tt['A_ipotek']) + (2 * tt['A_events_applications'])
@@ -172,7 +172,7 @@ def calc_base_values_with_assisted(tt):
     tt['A_agg_base_per_click'] = np.round(tt['A_conv_agg_base'] / tt['clicks'], 4)
     tt['A_agg_owners_per_click'] = np.round(tt['A_conv_agg_owners'] / tt['clicks'], 4)
 
-    return tt
+    return tt.copy()
 
 
 def triad(item):
