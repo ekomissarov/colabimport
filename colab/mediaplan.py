@@ -1704,6 +1704,11 @@ class MP:
                                                     "b2c_.*_rtg_smartlal_nov_mix_network", ]},
 
         ######################################################################################
+        # Пакет: PMAX NOV #########################################################################
+        ######################################################################################
+        {"descr": 'spb_pmax_nov_bdg', "fltrs": ["b2c_spb_pmax_general_nov_mix_network", ]},
+
+        ######################################################################################
         # Пакет: DRTG salesec ################################################################
         ######################################################################################
         {"descr": 'msk_drtg_salesec_bdg', "fltrs": ["b2c_(mo|msk)_drtg_site_salesec_mix_network", ]},
@@ -2532,6 +2537,7 @@ class GroupsVerticalExt:
         {"descr": 'drtg_rentsec', "fltrs": ["_drtg_rentsec_"]},
         {"descr": 'drtg_salesub', "fltrs": ["_drtg_salesub_"]},
         {"descr": 'drtg_rentsub', "fltrs": ["_drtg_rentsub_"]},
+        {"descr": 'pmax_nov', "fltrs": ["_pmax_nov_"]},
         {"descr": 'ipoteka', "fltrs": ["_ipoteka_"]},
 
         {"descr": 'own', "fltrs": ["_b2b_own_",
@@ -2689,6 +2695,7 @@ class SearchOrNetwork:
         {"descr": 'ci_network', "fltrs": ["_ci_"]},
         {"descr": 'drtg_network', "fltrs": ["_drtg_",
                                             "_rtg_smart"]},
+        {"descr": 'pmax_network', "fltrs": ["_pmax_"]},
         {"descr": 'rtg_network', "fltrs": ["_rtg_"]},
         {"descr": 'other_network', "fltrs": ["_network"]},
         {"descr": 'discovery', "fltrs": ["discovery"]},
