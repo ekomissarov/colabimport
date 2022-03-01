@@ -43,6 +43,7 @@ def calc_base_values(tt):
     tt['cpm'] = np.round(tt['cost_rur'] / (tt['impressions']/1000), 2)
     tt['cp_session'] = np.round(tt['cost_rur'] / tt['sessions'], 2)
     tt['ctr'] = np.round(tt['clicks'] / tt['impressions'], 4)
+    tt['clicks_per_session'] = np.round(tt['clicks'] / tt['sessions'], 4)
 
     # конверсии объем
     tt['events'] = tt['total_events'] + tt['total_events_app']
