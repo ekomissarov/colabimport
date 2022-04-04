@@ -1709,9 +1709,11 @@ class MP:
                                                     "b2c_vologda_drtg_jk_nov_mix_network",
         ]},
 
-        {"descr": 'rf_sbyndx_jk_nov_bdg', "fltrs": ["b2b_.*_rtg_smart_nov_mix_network",
-                                                    "b2c_.*_rtg_smart_nov_mix_network",
-                                                    "b2c_.*_rtg_smartlal_nov_mix_network", ]},
+        {"descr": 'msk_sbyndx_jk_nov_bdg', "fltrs": ["b2b_rf_rtg_smart_nov_mix_network",
+                                                    "b2c_rf_rtg_smart_nov_mix_network",
+                                                    "b2c_rf_rtg_smartlal_nov_mix_network",
+                                                    "b2c_msk_rtg_smart_nov_mix_network",]},
+        {"descr": 'spb_sbyndx_jk_nov_bdg', "fltrs": ["b2c_spb_rtg_smart_nov_mix_network", ]},
 
         ######################################################################################
         # Пакет: PMAX NOV #########################################################################
