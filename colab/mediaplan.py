@@ -2619,7 +2619,7 @@ class GroupsVerticalFinance:
         {"descr": 'BYUF', "fltrs": ["ipoteka"]},
         {"descr": 'BYUKI', "fltrs": ["_com_", "_cwrk_", "_cwrkcom_", "_gbcom_", "_rentcom_", "_salecom_"]},
         {"descr": 'IAPCOM', "fltrs": ["_iapcom_"]},
-        {"descr": 'PERVICHKA', "fltrs": ["nov"]},
+        {"descr": 'PERVICHKA', "fltrs": ["_nov_"]},
         {"descr": 'VTORICHKA', "fltrs": ["rentsec",
                                          "salesec",
                                          "own",
