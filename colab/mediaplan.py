@@ -1039,6 +1039,9 @@ class MP:
                                                             "b2c_yaroslavl_(ci|general)_main_nov_mix_network",
         ]},
 
+        {"descr": 'msk_nov_rtg_network_bdg', "fltrs": ["b2c_msk_rtg_site_nov_mix_network", ]},
+        {"descr": 'spb_nov_rtg_network_bdg', "fltrs": ["b2c_spb_rtg_site_nov_mix_network", ]},
+
         ######################################################################################
         # Пакет: pysea #######################################################################
         ######################################################################################
@@ -1673,6 +1676,11 @@ class MP:
                                                         "b2c_vladivostok_(ci|general)_main_sub_mix_network",
                                                         "b2c_yaroslavl_(ci|general)_main_sub_mix_network",
         ]},
+
+        {"descr": 'msk_salesub_rtg_network_bdg', "fltrs": ["b2c_msk_rtg_site_salesub_mix_network", ]},
+        {"descr": 'msk_rentsub_rtg_network_bdg', "fltrs": ["b2c_msk_rtg_site_rentsub_mix_network", ]},
+        {"descr": 'spb_salesub_rtg_network_bdg', "fltrs": ["b2c_spb_rtg_site_salesub_mix_network", ]},
+        {"descr": 'spb_rentsub_rtg_network_bdg', "fltrs": ["b2c_spb_rtg_site_rentsub_mix_network", ]},
 
         ######################################################################################
         # Пакет: DRTG NOV #########################################################################
