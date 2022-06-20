@@ -635,6 +635,9 @@ class MP:
         {"descr": 'b2b_perm_brand_cian_com_mix_search', "fltrs": ["b2b_perm_brand_null_com_mix_search", ]},
         {"descr": 'b2b_omsk_brand_cian_com_mix_search', "fltrs": ["b2b_omsk_brand_null_com_mix_search", ]},
 
+        {"descr": 'msk_sbyndx_com_bdg', "fltrs": ["b2b_msk_rtg_smart_com_mix_network", ]},
+        {"descr": 'spb_sbyndx_com_bdg', "fltrs": ["b2b_spb_rtg_smart_com_mix_network", ]},
+
         {"descr": 'msk_com_mix_network_bdg', "fltrs": ["b2b_(mo|msk)_general_main_com_mix_network", ]},
         {"descr": 'spb_com_mix_network_bdg', "fltrs": ["b2b_spb_general_main_com_mix_network", ]},
         {"descr": 'regs_com_mix_network_bdg', "fltrs": [
