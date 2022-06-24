@@ -1051,29 +1051,28 @@ class MP:
         {"descr": 'novosibirsk_jk_pys_nov_mix_search_bdg', "fltrs": ["b2c_novosibirsk_jk_pys(|ea)_nov_mix_search", ]},
         {"descr": 'omskcity_jk_pys_nov_mix_search_bdg', "fltrs": ["b2c_omsk_jk_pys(|ea)_nov_mix_search", ]},
         {"descr": 'regs_jk_pys_nov_mix_search_bdg', "fltrs": [
-                                                            "b2c_kazan_jk_pys(|ea)_nov_mix_search",
-                                                            "b2c_nn_jk_pys(|ea)_nov_mix_search",
-                                                            "b2c_krasnoyarsk_jk_pys(|ea)_nov_mix_search",
-                                                            "b2c_kaliningrad_jk_pys(|ea)_nov_mix_search",
                                                             "b2c_krasnodar_jk_pys(|ea)_nov_mix_search",
                                                             "b2c_rostov_jk_pys(|ea)_nov_mix_search",
-                                                            "b2c_sevastopol_jk_pys(|ea)_nov_mix_search",  ###############################
-                                                            "b2c_sochi_jk_pys(|ea)_nov_mix_search",
+                                                            "b2c_kazan_jk_pys(|ea)_nov_mix_search",
                                                             "b2c_tyumen_jk_pys(|ea)_nov_mix_search",
-                                                            "b2c_yalta_jk_pys(|ea)_nov_mix_search",  ###############################
-                                                            "b2c_simferopol_jk_pys(|ea)_nov_mix_search",  # рк к заведению ###############################
+        ]},
+        {"descr": 'regs_b_jk_pys_nov_mix_search_bdg', "fltrs": [
+                                                            "b2c_krym_jk_pysea_nov_mix_search",
+                                                            "b2c_vologda_jk_pysea_nov_mix_search",
+                                                            "b2c_krasnoyarsk_jk_pys(|ea)_nov_mix_search",
+                                                            "b2c_nn_jk_pys(|ea)_nov_mix_search",
+                                                            "b2c_voronezh_jk_pys(|ea)_nov_mix_search",
+                                                            "b2c_ufa_jk_pys(|ea)_nov_mix_search",
+                                                            "b2c_chelyabinsk_jk_pys(|ea)_nov_mix_search",
+                                                            "b2c_arhangelsk_jk_pys(|ea)_nov_mix_search",
         ]},
         {"descr": 'oth_jk_pys_nov_mix_search_bdg', "fltrs": [
-                                                            "b2c_voronezh_jk_pys(|ea)_nov_mix_search",
-                                                            "b2c_chelyabinsk_jk_pys(|ea)_nov_mix_search",
                                                             "b2c_irkutsk_jk_pys(|ea)_nov_mix_search",
                                                             "b2c_kemerovo_jk_pys(|ea)_nov_mix_search",
                                                             "b2c_perm_jk_pys(|ea)_nov_mix_search",
                                                             "b2c_samara_jk_pys(|ea)_nov_mix_search",
-                                                            "b2c_ufa_jk_pys(|ea)_nov_mix_search",
                                                             "b2c_volgograd_jk_pys(|ea)_nov_mix_search",
                                                             "b2c_stavropol_jk_pys(|ea)_nov_mix_search",
-                                                            "b2c_arhangelsk_jk_pys(|ea)_nov_mix_search",
                                                             "b2c_astrahan_jk_pys(|ea)_nov_mix_search",
                                                             "b2c_barnaul_jk_pys(|ea)_nov_mix_search",
                                                             "b2c_belgorod_jk_pys(|ea)_nov_mix_search",
@@ -1107,6 +1106,11 @@ class MP:
                                                             "b2c_vladimir_jk_pys(|ea)_nov_mix_search",
                                                             "b2c_vladivostok_jk_pys(|ea)_nov_mix_search",
                                                             "b2c_yaroslavl_jk_pys(|ea)_nov_mix_search",
+                                                            "b2c_kaliningrad_jk_pys(|ea)_nov_mix_search",
+                                                            "b2c_sevastopol_jk_pys(|ea)_nov_mix_search",  ###############################
+                                                            "b2c_sochi_jk_pys(|ea)_nov_mix_search",
+                                                            "b2c_yalta_jk_pys(|ea)_nov_mix_search",  ###############################
+                                                            "b2c_simferopol_jk_pys(|ea)_nov_mix_search",  # рк к заведению ###############################
         ]},
 
         ######################################################################################
