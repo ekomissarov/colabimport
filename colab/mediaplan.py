@@ -2363,6 +2363,7 @@ class GroupsRegions:
                                         '_tyumen_',
                                         '_yalta_',
                                         '_simferopol_',
+                                        '_krym_',
                                         ]},
         {"descr": 'sec_regs', "fltrs": [
                                     '_voronezh_',
@@ -2474,6 +2475,8 @@ class GroupsRegionsFinance:
                                      ]},
 
         {"descr": 'other', "fltrs": ['_rf_',
+
+                                 '_krym_',
                                  '_astrahan_',
                                  '_barnaul_',
                                  '_belgorod_',
@@ -2557,6 +2560,7 @@ class GroupsRegionsLite:
                                         '_22reg_', '_18reg_', '_p4c_', '_regs_',
                                      ]},
         {"descr": 'oth', "fltrs": ['_rf_',
+                                 '_krym_',
                                  '_astrahan_',
                                  '_barnaul_',
                                  '_belgorod_',
