@@ -1039,8 +1039,13 @@ class MP:
                                                             "b2c_yaroslavl_(ci|general)_main_nov_mix_network",
         ]},
 
-        {"descr": 'msk_nov_rtg_network_bdg', "fltrs": ["b2c_msk_rtg_site_nov_mix_network", ]},
-        {"descr": 'spb_nov_rtg_network_bdg', "fltrs": ["b2c_spb_rtg_site_nov_mix_network", ]},
+        {"descr": 'msk_nov_rtg_network_bdg', "fltrs": ["b2c_msk_rtg_site_nov_mix_network",
+                                                       "b2c_msk_rtg_withoutlead_nov_mix_network",
+                                                       "b2c_msk_rtg_withlead_nov_mix_network"]},
+        {"descr": 'spb_nov_rtg_network_bdg', "fltrs": ["b2c_spb_rtg_site_nov_mix_network",
+                                                       "b2c_spb_rtg_withoutlead_nov_mix_network",
+                                                       "b2c_spb_rtg_withlead_nov_mix_network"
+                                                       ]},
 
         ######################################################################################
         # Пакет: pysea #######################################################################
@@ -1688,10 +1693,21 @@ class MP:
                                                         "b2c_yaroslavl_(ci|general)_main_sub_mix_network",
         ]},
 
-        {"descr": 'msk_salesub_rtg_network_bdg', "fltrs": ["b2c_msk_rtg_site_salesub_mix_network", ]},
-        {"descr": 'msk_rentsub_rtg_network_bdg', "fltrs": ["b2c_msk_rtg_site_rentsub_mix_network", ]},
-        {"descr": 'spb_salesub_rtg_network_bdg', "fltrs": ["b2c_spb_rtg_site_salesub_mix_network", ]},
-        {"descr": 'spb_rentsub_rtg_network_bdg', "fltrs": ["b2c_spb_rtg_site_rentsub_mix_network", ]},
+        {"descr": 'msk_salesub_rtg_network_bdg', "fltrs": ["b2c_msk_rtg_site_salesub_mix_network",
+                                                           "b2c_msk_rtg_withoutlead_salesub_mix_network",
+                                                           "b2c_msk_rtg_withlead_salesub_mix_network"]},
+        {"descr": 'msk_rentsub_rtg_network_bdg', "fltrs": ["b2c_msk_rtg_site_rentsub_mix_network",
+                                                           "b2c_msk_rtg_withoutlead_rentsub_mix_network",
+                                                           "b2c_msk_rtg_withlead_rentsub_mix_network"
+                                                           ]},
+        {"descr": 'spb_salesub_rtg_network_bdg', "fltrs": ["b2c_spb_rtg_site_salesub_mix_network",
+                                                           "b2c_spb_rtg_withoutlead_salesub_mix_network",
+                                                           "b2c_spb_rtg_withlead_salesub_mix_network"
+                                                           ]},
+        {"descr": 'spb_rentsub_rtg_network_bdg', "fltrs": ["b2c_spb_rtg_site_rentsub_mix_network",
+                                                           "b2c_spb_rtg_withoutlead_rentsub_mix_network",
+                                                           "b2c_spb_rtg_withlead_rentsub_mix_network"
+                                                           ]},
 
         ######################################################################################
         # Пакет: DRTG NOV #########################################################################
@@ -2198,8 +2214,12 @@ class MP:
         ######################################################################################
         # Пакет: RTG salesec #########################################################################
         ######################################################################################
-        {"descr": 'msk_salesec_rtg_network_bdg', "fltrs": ["b2c_(mo|msk)_rtg_site_salesec_mix_network", ]},
-        {"descr": 'spb_salesec_rtg_network_bdg', "fltrs": ["b2c_spb_rtg_site_salesec_mix_network", ]},
+        {"descr": 'msk_salesec_rtg_network_bdg', "fltrs": ["b2c_(mo|msk)_rtg_site_salesec_mix_network",
+                                                           "b2c_msk_rtg_withoutlead_salesec_mix_network",
+                                                           "b2c_msk_rtg_withlead_salesec_mix_network"]},
+        {"descr": 'spb_salesec_rtg_network_bdg', "fltrs": ["b2c_spb_rtg_site_salesec_mix_network",
+                                                           "b2c_spb_rtg_withoutlead_salesec_mix_network",
+                                                           "b2c_spb_rtg_withlead_salesec_mix_network"]},
         {"descr": 'regs_salesec_rtg_network_bdg', "fltrs": [
                                                              "b2c_kazan_rtg_site_salesec_mix_network",
                                                              "b2c_nn_rtg_site_salesec_mix_network",
@@ -2265,8 +2285,13 @@ class MP:
         ######################################################################################
         # Пакет: RTG rentsec #################################################################
         ######################################################################################
-        {"descr": 'msk_rentsec_rtg_network_bdg', "fltrs": ["b2c_(mo|msk)_rtg_site_rentsec_mix_network", ]},
-        {"descr": 'spb_rentsec_rtg_network_bdg', "fltrs": ["b2c_spb_rtg_site_rentsec_mix_network", ]},
+        {"descr": 'msk_rentsec_rtg_network_bdg', "fltrs": ["b2c_(mo|msk)_rtg_site_rentsec_mix_network",
+                                                           "b2c_msk_rtg_withoutlead_rentsec_mix_network",
+                                                           "b2c_msk_rtg_withlead_rentsec_mix_network"]},
+        {"descr": 'spb_rentsec_rtg_network_bdg', "fltrs": ["b2c_msk_rtg_site_rentsec_mix_network",
+                                                           "b2c_spb_rtg_withoutlead_rentsec_mix_network",
+                                                           "b2c_spb_rtg_withlead_rentsec_mix_network"
+                                                           ]},
         {"descr": 'regs_rentsec_rtg_network_bdg', "fltrs": [
                                                              "b2c_kazan_rtg_site_rentsec_mix_network",
                                                              "b2c_nn_rtg_site_rentsec_mix_network",
