@@ -2288,7 +2288,7 @@ class MP:
         {"descr": 'msk_rentsec_rtg_network_bdg', "fltrs": ["b2c_(mo|msk)_rtg_site_rentsec_mix_network",
                                                            "b2c_msk_rtg_withoutlead_rentsec_mix_network",
                                                            "b2c_msk_rtg_withlead_rentsec_mix_network"]},
-        {"descr": 'spb_rentsec_rtg_network_bdg', "fltrs": ["b2c_msk_rtg_site_rentsec_mix_network",
+        {"descr": 'spb_rentsec_rtg_network_bdg', "fltrs": ["b2c_spb_rtg_site_rentsec_mix_network",
                                                            "b2c_spb_rtg_withoutlead_rentsec_mix_network",
                                                            "b2c_spb_rtg_withlead_rentsec_mix_network"
                                                            ]},
