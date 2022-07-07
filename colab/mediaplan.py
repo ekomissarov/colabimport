@@ -1041,10 +1041,15 @@ class MP:
 
         {"descr": 'msk_nov_rtg_network_bdg', "fltrs": ["b2c_msk_rtg_site_nov_mix_network",
                                                        "b2c_msk_rtg_withoutlead_nov_mix_network",
-                                                       "b2c_msk_rtg_withlead_nov_mix_network"]},
+                                                       "b2c_msk_rtg_withlead_nov_mix_network",
+                                                       "b2c_msk_rtg_audiencebasic_nov_mix_network",
+                                                       "b2c_msk_rtg_audiencelal_nov_mix_network",
+                                                       ]},
         {"descr": 'spb_nov_rtg_network_bdg', "fltrs": ["b2c_spb_rtg_site_nov_mix_network",
                                                        "b2c_spb_rtg_withoutlead_nov_mix_network",
-                                                       "b2c_spb_rtg_withlead_nov_mix_network"
+                                                       "b2c_spb_rtg_withlead_nov_mix_network",
+                                                       "b2c_spb_rtg_audiencebasic_nov_mix_network",
+                                                       "b2c_spb_rtg_audiencelal_nov_mix_network",
                                                        ]},
 
         ######################################################################################
