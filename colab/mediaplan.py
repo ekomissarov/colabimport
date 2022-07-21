@@ -1050,6 +1050,7 @@ class MP:
                                                        "b2c_spb_rtg_withlead_nov_mix_network",
                                                        "b2c_spb_rtg_audiencebasic_nov_mix_network",
                                                        "b2c_spb_rtg_audiencelal_nov_mix_network",
+                                                       "b2c_spb_rtg_audiencelal1_nov_mix_network"
                                                        ]},
 
         ######################################################################################
