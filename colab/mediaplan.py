@@ -372,6 +372,7 @@ class MP:
         {"descr": 'ekb_brand_cian_bdg', "fltrs": ["b2c_ekb_brand_cian_all_mix_search", ]},
         {"descr": 'novosibirsk_brand_cian_bdg', "fltrs": ["b2c_novosibirsk_brand_cian_all_mix_search", ]},
         {"descr": 'omskcity_brand_cian_bdg', "fltrs": ["b2c_omsk_brand_cian_all_mix_search", ]},
+        {"descr": 'krasnodar_brand_cian_bdg', "fltrs": ["b2c_krasnodar_brand_cian_all_mix_search", ]},
         {"descr": 'regs_brand_cian_bdg', "fltrs": [
                                                     "b2c_kazan_brand_cian_all_mix_search",
                                                     "b2c_nn_brand_cian_all_mix_search",
@@ -843,12 +844,12 @@ class MP:
         {"descr": 'ekb_general_main_nov_bdg', "fltrs": ["b2c_ekb_general_main_nov_mix_search", ]},
         {"descr": 'novosibirsk_general_main_nov_bdg', "fltrs": ["b2c_novosibirsk_general_main_nov_mix_search", ]},
         {"descr": 'omskcity_general_main_nov_bdg', "fltrs": ["b2c_omsk_general_main_nov_mix_search", ]},
+        {"descr": 'krasnodar_general_main_nov_bdg', "fltrs": ["b2c_krasnodar_general_main_nov_mix_search", ]},
         {"descr": 'regs_general_main_nov_bdg', "fltrs": [
                                                           "b2c_kazan_general_main_nov_mix_search",
                                                           "b2c_nn_general_main_nov_mix_search",
                                                           "b2c_krasnoyarsk_general_main_nov_mix_search",
                                                           "b2c_kaliningrad_general_main_nov_mix_search",
-                                                          "b2c_krasnodar_general_main_nov_mix_search",
                                                           "b2c_rostov_general_main_nov_mix_search",
                                                           "b2c_sevastopol_general_main_nov_mix_search", ###############################
                                                           "b2c_sochi_general_main_nov_mix_search",
@@ -1135,6 +1136,7 @@ class MP:
         {"descr": 'ekb_rentsec_mix_search_bdg', "fltrs": ["b2c_ekb_general_null_rentsec_mix_search", ]},
         {"descr": 'novosibirsk_rentsec_mix_search_bdg', "fltrs": ["b2c_novosibirsk_general_null_rentsec_mix_search", ]},
         {"descr": 'omskcity_rentsec_mix_search_bdg', "fltrs": ["b2c_omsk_general_null_rentsec_mix_search", ]},
+        {"descr": 'krasnodar_rentsec_mix_search_bdg', "fltrs": ["b2c_krasnodar_general_null_rentsec_mix_search", ]},
         {"descr": 'regs_rentsec_mix_search_bdg', "fltrs": [
                                                             "b2c_kazan_general_null_rentsec_mix_search",
                                                             "b2c_nn_general_null_rentsec_mix_search",
@@ -1144,7 +1146,6 @@ class MP:
                                                             "b2c_irkutsk_general_null_rentsec_mix_search",
                                                             "b2c_kaliningrad_general_null_rentsec_mix_search",
                                                             "b2c_kemerovo_general_null_rentsec_mix_search",
-                                                            "b2c_krasnodar_general_null_rentsec_mix_search",
                                                             "b2c_perm_general_null_rentsec_mix_search",
                                                             "b2c_rostov_general_null_rentsec_mix_search",
                                                             "b2c_samara_general_null_rentsec_mix_search",
@@ -1278,6 +1279,7 @@ class MP:
         {"descr": 'ekb_salesec_mix_search_bdg', "fltrs": ["b2c_ekb_general_null_salesec_mix_search", ]},
         {"descr": 'novosibirsk_salesec_mix_search_bdg', "fltrs": ["b2c_novosibirsk_general_null_salesec_mix_search", ]},
         {"descr": 'omskcity_salesec_mix_search_bdg', "fltrs": ["b2c_omsk_general_null_salesec_mix_search", ]},
+        {"descr": 'krasnodar_salesec_mix_search_bdg', "fltrs": ["b2c_krasnodar_general_null_salesec_mix_search", ]},
         {"descr": 'regs_salesec_mix_search_bdg', "fltrs": [
                                                            "b2c_kazan_general_null_salesec_mix_search",
                                                            "b2c_nn_general_null_salesec_mix_search",
@@ -1287,7 +1289,6 @@ class MP:
                                                            "b2c_irkutsk_general_null_salesec_mix_search",
                                                            "b2c_kaliningrad_general_null_salesec_mix_search",
                                                            "b2c_kemerovo_general_null_salesec_mix_search",
-                                                           "b2c_krasnodar_general_null_salesec_mix_search",
                                                            "b2c_perm_general_null_salesec_mix_search",
                                                            "b2c_rostov_general_null_salesec_mix_search",
                                                            "b2c_samara_general_null_salesec_mix_search",
@@ -1428,6 +1429,7 @@ class MP:
         {"descr": 'ekb_rentsub_mix_search_bdg', "fltrs": ["b2c_ekb_general_null_rentsub_mix_search", ]},
         {"descr": 'novosibirsk_rentsub_mix_search_bdg', "fltrs": ["b2c_novosibirsk_general_null_rentsub_mix_search", ]},
         {"descr": 'omskcity_rentsub_mix_search_bdg', "fltrs": ["b2c_omsk_general_null_rentsub_mix_search", ]},
+        {"descr": 'krasnodar_rentsub_mix_search_bdg', "fltrs": ["b2c_krasnodar_general_null_rentsub_mix_search", ]},
         {"descr": 'regs_rentsub_mix_search_bdg', "fltrs": [
                                                                "b2c_kazan_general_null_rentsub_mix_search",
                                                                "b2c_nn_general_null_rentsub_mix_search",
@@ -1437,7 +1439,6 @@ class MP:
                                                                "b2c_irkutsk_general_null_rentsub_mix_search",
                                                                "b2c_kaliningrad_general_null_rentsub_mix_search",
                                                                "b2c_kemerovo_general_null_rentsub_mix_search",
-                                                               "b2c_krasnodar_general_null_rentsub_mix_search",
                                                                "b2c_perm_general_null_rentsub_mix_search",
                                                                "b2c_rostov_general_null_rentsub_mix_search",
                                                                "b2c_samara_general_null_rentsub_mix_search",
@@ -1499,6 +1500,7 @@ class MP:
         {"descr": 'ekb_salesub_mix_search_bdg', "fltrs": ["b2c_ekb_general_null_salesub_mix_search", ]},
         {"descr": 'novosibirsk_salesub_mix_search_bdg', "fltrs": ["b2c_novosibirsk_general_null_salesub_mix_search", ]},
         {"descr": 'omskcity_salesub_mix_search_bdg', "fltrs": ["b2c_omsk_general_null_salesub_mix_search", ]},
+        {"descr": 'krasnodar_salesub_mix_search_bdg', "fltrs": ["b2c_krasnodar_general_null_salesub_mix_search", ]},
         {"descr": 'regs_salesub_mix_search_bdg', "fltrs": [
                                                             "b2c_kazan_general_null_salesub_mix_search",
                                                             "b2c_nn_general_null_salesub_mix_search",
@@ -1508,7 +1510,6 @@ class MP:
                                                             "b2c_irkutsk_general_null_salesub_mix_search",
                                                             "b2c_kaliningrad_general_null_salesub_mix_search",
                                                             "b2c_kemerovo_general_null_salesub_mix_search",
-                                                            "b2c_krasnodar_general_null_salesub_mix_search",
                                                             "b2c_perm_general_null_salesub_mix_search",
                                                             "b2c_rostov_general_null_salesub_mix_search",
                                                             "b2c_samara_general_null_salesub_mix_search",
