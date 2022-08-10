@@ -1862,12 +1862,14 @@ class MP:
         {"descr": 'ekb_sbyndx_jk_nov_bdg', "fltrs": ["b2c_ekb_rtg_smart_nov_mix_network", ]},
 
         {"descr": 'msk_sbyndx_salesec_bdg', "fltrs": ["b2c_msk_rtg_smart_salesec_mix_network", ]},
+        {"descr": 'msk_sbyndxlal_salesec_bdg', "fltrs": ["b2c_msk_rtg_smartlal_salesec_mix_network", ]},
         {"descr": 'spb_sbyndx_salesec_bdg', "fltrs": ["b2c_spb_rtg_smart_salesec_mix_network", ]},
         {"descr": 'novosibirsk_sbyndx_salesec_bdg', "fltrs": ["b2c_novosibirsk_rtg_smart_salesec_mix_network", ]},
         {"descr": 'omskcity_sbyndx_salesec_bdg', "fltrs": ["b2c_omsk_rtg_smart_salesec_mix_network", ]},
         {"descr": 'ekb_sbyndx_salesec_bdg', "fltrs": ["b2c_ekb_rtg_smart_salesec_mix_network", ]},
 
         {"descr": 'msk_sbyndx_salesub_bdg', "fltrs": ["b2c_msk_rtg_smart_salesub_mix_network", ]},
+        {"descr": 'msk_sbyndxlal_salesub_bdg', "fltrs": ["b2c_msk_rtg_smartlal_salesub_mix_network", ]},
         {"descr": 'spb_sbyndx_salesub_bdg', "fltrs": ["b2c_spb_rtg_smart_salesub_mix_network", ]},
         {"descr": 'novosibirsk_sbyndx_salesub_bdg', "fltrs": ["b2c_novosibirsk_rtg_smart_salesub_mix_network", ]},
         {"descr": 'omskcity_sbyndx_salesub_bdg', "fltrs": ["b2c_omsk_rtg_smart_salesub_mix_network", ]},
@@ -2708,14 +2710,14 @@ class GroupsRegionsLite:
 class GroupsVerticalExt:
     filter_field = "budget_class"
     regs = [
-
+        {"descr": 'drtg_nov', "fltrs": ["_drtg_jk_nov_", "_rtg_smart_nov_"]},
+        {"descr": 'drtg_com', "fltrs": ["_drtg_com_", "_rtg_smart_com_"]},
+        {"descr": 'drtg_salesec', "fltrs": ["_drtg_salesec_", "_rtg_smart_salesec_"]},
+        {"descr": 'drtg_rentsec', "fltrs": ["_drtg_rentsec_", "_rtg_smart_rentsec_"]},
+        {"descr": 'drtg_salesub', "fltrs": ["_drtg_salesub_", "_rtg_smart_salesub_"]},
+        {"descr": 'drtg_rentsub', "fltrs": ["_drtg_rentsub_", "_rtg_smart_rentsub_"]},
+        {"descr": 'smartlal', "fltrs": ["_smartlal_",]},
         {"descr": 'rtg', "fltrs": ["_rtg_"]},
-        {"descr": 'drtg_nov', "fltrs": ["_drtg_jk_nov_"]},
-        {"descr": 'drtg_com', "fltrs": ["_drtg_com_"]},
-        {"descr": 'drtg_salesec', "fltrs": ["_drtg_salesec_"]},
-        {"descr": 'drtg_rentsec', "fltrs": ["_drtg_rentsec_"]},
-        {"descr": 'drtg_salesub', "fltrs": ["_drtg_salesub_"]},
-        {"descr": 'drtg_rentsub', "fltrs": ["_drtg_rentsub_"]},
         {"descr": 'pmax_nov', "fltrs": ["_pmax_nov_"]},
         {"descr": 'ipoteka', "fltrs": ["_ipoteka_"]},
 
