@@ -1868,6 +1868,7 @@ class MP:
         {"descr": 'novosibirsk_sbyndx_salesec_bdg', "fltrs": ["b2c_novosibirsk_rtg_smart_salesec_mix_network", ]},
         {"descr": 'omskcity_sbyndx_salesec_bdg', "fltrs": ["b2c_omsk_rtg_smart_salesec_mix_network", ]},
         {"descr": 'ekb_sbyndx_salesec_bdg', "fltrs": ["b2c_ekb_rtg_smart_salesec_mix_network", ]},
+        {"descr": 'krasnodar_sbyndx_salesec_bdg', "fltrs": ["b2c_krasnodar_rtg_smart_salesec_mix_network", ]},
 
         {"descr": 'msk_sbyndx_salesub_bdg', "fltrs": ["b2c_msk_rtg_smart_salesub_mix_network", ]},
         {"descr": 'msk_sbyndxlal_salesub_bdg', "fltrs": ["b2c_msk_rtg_smartlal_salesub_mix_network", ]},
@@ -1875,6 +1876,7 @@ class MP:
         {"descr": 'novosibirsk_sbyndx_salesub_bdg', "fltrs": ["b2c_novosibirsk_rtg_smart_salesub_mix_network", ]},
         {"descr": 'omskcity_sbyndx_salesub_bdg', "fltrs": ["b2c_omsk_rtg_smart_salesub_mix_network", ]},
         {"descr": 'ekb_sbyndx_salesub_bdg', "fltrs": ["b2c_ekb_rtg_smart_salesub_mix_network", ]},
+        {"descr": 'krasnodar_sbyndx_salesub_bdg', "fltrs": ["b2c_krasnodar_rtg_smart_salesub_mix_network", ]},
 
         ######################################################################################
         # Пакет: PMAX NOV #########################################################################
