@@ -201,6 +201,7 @@ def triad(item):
         {"vol": "assisted_conv_ct", "conv": "", "cost_per": "assisted_ct_per_click"},
 
         {"vol": "conv_agg_full", "conv": "agg_full_per_click", "cost_per": "cp_agg_full"},
+        {"vol": "conv_agg_base", "conv": "agg_base_per_click", "cost_per": "cp_agg_base"},
         {"vol": "conv_agg_owners", "conv": "agg_owners_per_click", "cost_per": "cp_agg_owners"},
     ]
     a_flag = ""
