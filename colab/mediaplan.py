@@ -1205,6 +1205,14 @@ class MP:
         {"descr": 'novosibirsk_rentsec_mix_search_bdg', "fltrs": ["b2c_novosibirsk_general_null_rentsec_mix_search", ]},
         {"descr": 'omskcity_rentsec_mix_search_bdg', "fltrs": ["b2c_omsk_general_null_rentsec_mix_search", ]},
         {"descr": 'krasnodar_rentsec_mix_search_bdg', "fltrs": ["b2c_krasnodar_general_null_rentsec_mix_search", ]},
+
+        {"descr": 'msk_dailyrentsec_mix_search_bdg', "fltrs": ["b2c_msk_general_daily_rentsec_mix_search", ]},
+        {"descr": 'spb_dailyrentsec_mix_search_bdg', "fltrs": ["b2c_spb_general_daily_rentsec_mix_search", ]},
+        {"descr": 'ekb_dailyrentsec_mix_search_bdg', "fltrs": ["b2c_ekb_general_daily_rentsec_mix_search", ]},
+        {"descr": 'novosibirsk_dailyrentsec_mix_search_bdg', "fltrs": ["b2c_novosibirsk_general_daily_rentsec_mix_search", ]},
+        {"descr": 'omskcity_dailyrentsec_mix_search_bdg', "fltrs": ["b2c_omsk_general_daily_rentsec_mix_search", ]},
+        {"descr": 'krasnodar_dailyrentsec_mix_search_bdg', "fltrs": ["b2c_krasnodar_general_daily_rentsec_mix_search", ]},
+
         {"descr": 'regs_rentsec_mix_search_bdg', "fltrs": [
                                                             "b2c_kazan_general_null_rentsec_mix_search",
                                                             "b2c_nn_general_null_rentsec_mix_search",
@@ -1498,6 +1506,14 @@ class MP:
         {"descr": 'novosibirsk_rentsub_mix_search_bdg', "fltrs": ["b2c_novosibirsk_general_null_rentsub_mix_search", ]},
         {"descr": 'omskcity_rentsub_mix_search_bdg', "fltrs": ["b2c_omsk_general_null_rentsub_mix_search", ]},
         {"descr": 'krasnodar_rentsub_mix_search_bdg', "fltrs": ["b2c_krasnodar_general_null_rentsub_mix_search", ]},
+
+        {"descr": 'msk_dailyrentsub_mix_search_bdg', "fltrs": ["b2c_(bmo|dmo|msk)_general_daily_rentsub_mix_search", ]},
+        {"descr": 'spb_dailyrentsub_mix_search_bdg', "fltrs": ["b2c_spb_general_daily_rentsub_mix_search", ]},
+        {"descr": 'ekb_dailyrentsub_mix_search_bdg', "fltrs": ["b2c_ekb_general_daily_rentsub_mix_search", ]},
+        {"descr": 'novosibirsk_dailyrentsub_mix_search_bdg', "fltrs": ["b2c_novosibirsk_general_daily_rentsub_mix_search", ]},
+        {"descr": 'omskcity_dailyrentsub_mix_search_bdg', "fltrs": ["b2c_omsk_general_daily_rentsub_mix_search", ]},
+        {"descr": 'krasnodar_dailyrentsub_mix_search_bdg', "fltrs": ["b2c_krasnodar_general_daily_rentsub_mix_search", ]},
+
         {"descr": 'regs_rentsub_mix_search_bdg', "fltrs": [
                                                                "b2c_kazan_general_null_rentsub_mix_search",
                                                                "b2c_nn_general_null_rentsub_mix_search",
@@ -2731,6 +2747,7 @@ class GroupsVerticalExt:
         {"descr": 'sub', "fltrs": ["_sub_",
                                    "_rentsub_mix_search_bdg",
                                    "_salesub_mix_search_bdg"]},
+        {"descr": 'dailyrent', "fltrs": ["_dailyrentsec_", "_dailyrentsub_"]},
         {"descr": 'rentsec', "fltrs": ["_rentsec_"]},
         {"descr": 'salesec', "fltrs": ["_salesec_"]},
         {"descr": 'brand_cian_mob', "fltrs": ["_brand_cian_mob_bdg"]},
@@ -2767,6 +2784,7 @@ class GroupsVerticalCommon:
         {"descr": 'sub', "fltrs": ["_sub_",
                                    "_salesub_",
                                    "_rentsub_"]},
+        {"descr": 'dailyrent', "fltrs": ["_dailyrentsec_", "_dailyrentsub_"]},
         {"descr": 'rentsec', "fltrs": ["_rentsec_"]},
         {"descr": 'salesec', "fltrs": ["_salesec_"]},
         {"descr": 'brand_cian', "fltrs": ["_brand_cian"]},
