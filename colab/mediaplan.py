@@ -712,6 +712,7 @@ class MP:
         {"descr": 'ekb_competitors_bdg', "fltrs": ["b2c_ekb_compet_main_all_mix_search", ]},
         {"descr": 'novosibirsk_competitors_bdg', "fltrs": ["b2c_novosibirsk_compet_main_all_mix_search", ]},
         {"descr": 'omskcity_competitors_bdg', "fltrs": ["b2c_omsk_compet_main_all_mix_search", ]},
+        {"descr": 'krasnodar_competitors_bdg', "fltrs": ["b2c_krasnodar_compet_main_all_mix_search", ]},
         {"descr": 'regs_competitors_bdg', "fltrs": [
                                                      "b2c_kazan_compet_main_all_mix_search",
                                                      "b2c_nn_compet_main_all_mix_search",
@@ -721,7 +722,6 @@ class MP:
                                                      "b2c_irkutsk_compet_main_all_mix_search",
                                                      "b2c_kaliningrad_compet_main_all_mix_search",
                                                      "b2c_kemerovo_compet_main_all_mix_search",
-                                                     "b2c_krasnodar_compet_main_all_mix_search",
                                                      "b2c_perm_compet_main_all_mix_search",
                                                      "b2c_rostov_compet_main_all_mix_search",
                                                      "b2c_samara_compet_main_all_mix_search",
