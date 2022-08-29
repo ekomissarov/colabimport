@@ -1067,7 +1067,7 @@ class MP:
         {"descr": 'rostov_jk_pys_nov_mix_search_bdg', "fltrs": ["b2c_rostov_jk_pys(|ea)_nov_mix_search", ]},
         {"descr": 'kazan_jk_pys_nov_mix_search_bdg', "fltrs": ["b2c_kazan_jk_pys(|ea)_nov_mix_search", ]},
         {"descr": 'krym_jk_pys_nov_mix_search_bdg', "fltrs": ["b2c_krym_jk_pys(|ea)_nov_mix_search", ]},
-        {"descr": 'vologda_jk_pys_nov_mix_search_bdg', "fltrs": ["b2c_vologda_jk_py(|ea)_nov_mix_search", ]},
+        {"descr": 'vologda_jk_pys_nov_mix_search_bdg', "fltrs": ["b2c_vologda_jk_pys(|ea)_nov_mix_search", ]},
         {"descr": 'krasnoyarsk_jk_pys_nov_mix_search_bdg', "fltrs": ["b2c_krasnoyarsk_jk_pys(|ea)_nov_mix_search", ]},
         {"descr": 'nn_jk_pys_nov_mix_search_bdg', "fltrs": ["b2c_nn_jk_pys(|ea)_nov_mix_search", ]},
         {"descr": 'voronezh_jk_pys_nov_mix_search_bdg', "fltrs": ["b2c_voronezh_jk_pys(|ea)_nov_mix_search", ]},
