@@ -548,6 +548,7 @@ class MP:
         {"descr": 'b2b_krasnoyarsk_general_null_com_mix_search', "fltrs": ["b2b_krasnoyarsk_general_null_com_mix_search", ]},
         {"descr": 'b2b_perm_general_null_com_mix_search', "fltrs": ["b2b_perm_general_null_com_mix_search", ]},
         {"descr": 'b2b_omsk_general_null_com_mix_search', "fltrs": ["b2b_omsk_general_null_com_mix_search", ]},
+        {"descr": 'b2b_krym_general_null_com_mix_search', "fltrs": ["b2b_krym_general_null_com_mix_search", ]},
 
         {"descr": 'b2b_msk_general_null_gbcom_mix_search', "fltrs": ["b2b_msk_readybusiness_null_com_mix_search",
                                                                      "b2b_msk_general_null_gbcom_mix_search",
@@ -631,7 +632,7 @@ class MP:
         {"descr": 'b2b_samara_brand_cian_com_mix_search', "fltrs": ["b2b_samara_brand_null_com_mix_search", 'b2b_samara_brand_cian_com_mix_search']},
         {"descr": 'b2b_ufa_brand_cian_com_mix_search', "fltrs": ["b2b_ufa_brand_null_com_mix_search", "b2b_ufa_brand_cian_com_mix_search",]},
         {"descr": 'b2b_krasnodar_brand_cian_com_mix_search', "fltrs": ["b2b_krasnodar_brand_null_com_mix_search", 'b2b_krasnodar_brand_cian_com_mix_search']},
-        {"descr": 'b2b_rostov_brand_cian_com_mix_search', "fltrs": ["b2b_rostov_brand_null_com_mix_search", "b2b_rostov_brand_cianl_com_mix_search",]},
+        {"descr": 'b2b_rostov_brand_cian_com_mix_search', "fltrs": ["b2b_rostov_brand_null_com_mix_search", "b2b_rostov_brand_cian_com_mix_search",]},
         {"descr": 'b2b_yalta_brand_cian_com_mix_search', "fltrs": ["b2b_yalta_brand_null_com_mix_search", "b2b_yalta_brand_cian_com_mix_search",]},
         {"descr": 'b2b_krasnoyarsk_brand_cian_com_mix_search', "fltrs": ["b2b_krasnoyarsk_brand_null_com_mix_search", "b2b_krasnoyarsk_brand_cian_com_mix_search",]},
         {"descr": 'b2b_perm_brand_cian_com_mix_search', "fltrs": ["b2b_perm_brand_null_com_mix_search", "b2b_perm_brand_cian_com_mix_search",]},
