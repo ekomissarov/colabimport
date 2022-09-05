@@ -3,8 +3,9 @@ import pandas as pd
 
 
 class MP:
-    filter_field = "campaignname"
-    mp_map = [
+    filter_column = "campaignname"
+    classificator_column_name = "budget_class"
+    tags = [
         ######################################################################################
         # Пакет: test ########################################################################
         ######################################################################################
@@ -92,9 +93,9 @@ class MP:
                                                         "b2c_yaroslavl_(ci|general)_main_ipoteka_mix_network",
         ]},
 
-        ######################################################################################
-        # Пакет: b2b #########################################################################
-        ######################################################################################
+        #########################################################################################
+        # Пакет: owners #########################################################################
+        #########################################################################################
         {"descr": 'b2b_22reg_rtg_ocenka_own_mix_network', "fltrs": ["b2b_22reg_rtg_ocenka_own_mix_network", ]},  # not_a_bdg
         {"descr": 'b2b_spb_rtg_ocenka_own_mix_network', "fltrs": ["b2b_spb_rtg_ocenka_own_mix_network", ]},  # not_a_bdg
 
@@ -2456,22 +2457,30 @@ class MP:
     ]
 
     def __init__(self):
-        for i in self.mp_map:
+        for i in self.tags:
             i['fltrs'] = [re.compile(j) for j in i['fltrs']]
 
-    def __getitem__(self, item):
+    def search(self, item):
         if item:
-            for i in self.mp_map:
+            for i in self.tags:
                 for j in i['fltrs']:
                     if j.search(item):
-                        return i['descr']
+                        return i['descr']  # поиск до первого совпадения
 
         return False
 
+    def join_classificator(self, df):
+        mapping = []
+        for i in set(df[self.filter_column].unique()):
+            mapping.append({self.filter_column: i, self.classificator_column_name: self.search(i)})
+        df = pd.merge(df, pd.DataFrame(mapping), on=self.filter_column)
+        return df
+
 
 class GroupsRegions:
-    filter_field = "campaignname"
-    regs = [
+    filter_column = "campaignname"
+    classificator_column_name = "region_class"
+    tags = [
         {"descr": 'msk', "fltrs": ["_msk_", "_mo_", "_dmo_", "_bmo_", "_mskmo_", "_cap_"]},
         {"descr": 'spb', "fltrs": ["_spb_", "_spblo_"]},
         {"descr": 'top3_regs', "fltrs": ["_ekb_", "_novosibirsk_", "_omsk_"]},
@@ -2543,250 +2552,37 @@ class GroupsRegions:
     ]
 
     def __init__(self):
-        for i in self.regs:
+        for i in self.tags:
             i['fltrs'] = [re.compile(j) for j in i['fltrs']]
 
-    def __getitem__(self, item):
+    def search(self, item):
         if item:
-            for i in self.regs:
+            for i in self.tags:
                 for j in i['fltrs']:
                     if j.search(item):
-                        return i['descr']
+                        return i['descr']  # поиск до первого совпадения
 
         return False
 
-
-class GroupsRegionsFinance:
-    filter_field = "campaignname"
-    regs = [
-        {"descr": 'msk', "fltrs": ["_msk_", "_mo_", "_dmo_", "_bmo_", "_mskmo_", "_cap_"]},
-        {"descr": 'spb', "fltrs": ["_spb_", "_spblo_"]},
-        {"descr": 'prior', "fltrs": ['_kazan_',
-                                    '_nn_',
-                                    '_krasnoyarsk_',
-                                    '_ekb_',
-                                    '_kaliningrad_',
-                                    '_krasnodar_',
-                                    '_novosibirsk_',
-                                    '_rostov_',
-                                    '_sevastopol_',
-                                    '_sochi_',
-                                    '_tyumen_',
-                                    '_yalta_',
-                                    '_simferopol_',
-                                    '_voronezh_',
-                                    '_chelyabinsk_',
-                                    '_irkutsk_',
-                                    '_kemerovo_',
-                                    '_omsk_',
-                                    '_perm_',
-                                    '_samara_',
-                                    '_stavropol_',
-                                    '_ufa_',
-                                    '_volgograd_',
-                                    '_ulyanovsk_',
-                                    '_tomsk_',
-                                    '_kaluga_',
-                                    '_ryazan_',
-                                    '_tula_',
-                                    '_bryansk_',
-                                    '_kostroma_',
-                                    '_ivanovo_',
-                                    '_arhangelsk_',
-                                    '_vologda_',
-                                     '_22reg_', '_18reg_', '_p4c_', '_regs_',
-                                     ]},
-
-        {"descr": 'other', "fltrs": ['_rf_',
-
-                                 '_krym_',
-                                 '_astrahan_',
-                                 '_barnaul_',
-                                 '_belgorod_',
-                                 '_cheboksary_',
-                                 '_habarovsk_',
-                                 '_izhevsk_',
-                                 '_kirov_',
-                                 '_kurgan_',
-                                 '_kursk_',
-                                 '_lipetsk_',
-                                 '_mahachkala_',
-                                 '_novgorod_',
-                                 '_orel_',
-                                 '_orenburg_',
-                                 '_penza_',
-                                 '_pskov_',
-                                 '_saratov_',
-                                 '_smolensk_',
-                                 '_surgut_',
-                                 '_tambov_',
-                                 '_tver_',
-                                 '_ulanude_',
-                                 '_vladimir_',
-                                 '_vladivostok_',
-                                 '_yaroslavl_',
-                                 '_oth_',
-                                ]},
-
-    ]
-
-    def __init__(self):
-        for i in self.regs:
-            i['fltrs'] = [re.compile(j) for j in i['fltrs']]
-
-    def __getitem__(self, item):
-        if item:
-            for i in self.regs:
-                for j in i['fltrs']:
-                    if j.search(item):
-                        return i['descr']
-
-        return False
-
-
-class GroupsRegionsLite:
-    filter_field = "campaignname"
-    regs = [
-        {"descr": 'cap', "fltrs": ["_msk_", "_mo_", "_dmo_", "_bmo_", "_mskmo_",
-                                   "_spb_", "_spblo_", "_cap_"]},
-        {"descr": 'top3_regs', "fltrs": ["_ekb_", "_novosibirsk_", "_omsk_"]},
-        {"descr": 'regs', "fltrs": ['_kazan_',
-                                        '_nn_',
-                                        '_krasnoyarsk_',
-                                        '_kaliningrad_',
-                                        '_krasnodar_',
-                                        '_rostov_',
-                                        '_sevastopol_',
-                                        '_sochi_',
-                                        '_tyumen_',
-                                        '_yalta_',
-                                        '_simferopol_',
-                                        '_voronezh_',
-                                        '_chelyabinsk_',
-                                        '_irkutsk_',
-                                        '_kemerovo_',
-                                        '_perm_',
-                                        '_samara_',
-                                        '_stavropol_',
-                                        '_ufa_',
-                                        '_volgograd_',
-                                        '_ulyanovsk_',
-                                        '_tomsk_',
-                                        '_kaluga_',
-                                        '_ryazan_',
-                                        '_tula_',
-                                        '_bryansk_',
-                                        '_kostroma_',
-                                        '_ivanovo_',
-                                        '_arhangelsk_',
-                                        '_vologda_',
-                                        '_22reg_', '_18reg_', '_p4c_', '_regs_',
-                                     ]},
-        {"descr": 'oth', "fltrs": ['_rf_',
-                                 '_krym_',
-                                 '_astrahan_',
-                                 '_barnaul_',
-                                 '_belgorod_',
-                                 '_cheboksary_',
-                                 '_habarovsk_',
-                                 '_izhevsk_',
-                                 '_kirov_',
-                                 '_kurgan_',
-                                 '_kursk_',
-                                 '_lipetsk_',
-                                 '_mahachkala_',
-                                 '_novgorod_',
-                                 '_orel_',
-                                 '_orenburg_',
-                                 '_penza_',
-                                 '_pskov_',
-                                 '_saratov_',
-                                 '_smolensk_',
-                                 '_surgut_',
-                                 '_tambov_',
-                                 '_tver_',
-                                 '_ulanude_',
-                                 '_vladimir_',
-                                 '_vladivostok_',
-                                 '_yaroslavl_',
-                                 '_oth_',
-                                ]},
-
-    ]
-
-    def __init__(self):
-        for i in self.regs:
-            i['fltrs'] = [re.compile(j) for j in i['fltrs']]
-
-    def __getitem__(self, item):
-        if item:
-            for i in self.regs:
-                for j in i['fltrs']:
-                    if j.search(item):
-                        return i['descr']
-
-        return False
-
-
-class GroupsVerticalExt:
-    filter_field = "budget_class"
-    regs = [
-        {"descr": 'drtg_nov', "fltrs": ["_drtg_jk_nov_", "_rtg_smart_nov_"]},
-        {"descr": 'drtg_com', "fltrs": ["_drtg_com_", "_rtg_smart_com_"]},
-        {"descr": 'drtg_salesec', "fltrs": ["_drtg_salesec_", "_rtg_smart_salesec_"]},
-        {"descr": 'drtg_rentsec', "fltrs": ["_drtg_rentsec_", "_rtg_smart_rentsec_"]},
-        {"descr": 'drtg_salesub', "fltrs": ["_drtg_salesub_", "_rtg_smart_salesub_"]},
-        {"descr": 'drtg_rentsub', "fltrs": ["_drtg_rentsub_", "_rtg_smart_rentsub_"]},
-        {"descr": 'smartlal', "fltrs": ["_smartlal_",]},
-        {"descr": 'rtg', "fltrs": ["_rtg_"]},
-        {"descr": 'pmax_nov', "fltrs": ["_pmax_nov_"]},
-        {"descr": 'ipoteka', "fltrs": ["_ipoteka_"]},
-
-        {"descr": 'own', "fltrs": ["_b2b_own_",
-                                   "_b2b_compet_",
-                                   "_sdaisnimi_"]},
-        {"descr": 'commerce', "fltrs": ["_com_", "_cwrk_", "_cwrkcom_", "_gbcom_", "_iapcom_", "_rentcom_", "_salecom_"]},
-        {"descr": 'sub', "fltrs": ["_sub_",
-                                   "_rentsub_mix_search_bdg",
-                                   "_salesub_mix_search_bdg"]},
-        {"descr": 'dailyrent', "fltrs": ["_dailyrentsec_", "_dailyrentsub_"]},
-        {"descr": 'rentsec', "fltrs": ["_rentsec_"]},
-        {"descr": 'salesec', "fltrs": ["_salesec_"]},
-        {"descr": 'brand_cian_mob', "fltrs": ["_brand_cian_mob_bdg"]},
-        {"descr": 'brand_cian_web', "fltrs": ["_brand_cian_bdg"]},
-        {"descr": 'competitors', "fltrs": ["competitors"]},
-        {"descr": 'brand_network', "fltrs": ["brand"]},
-        {"descr": 'nov', "fltrs": ["_nov_"]},
-
-    ]
-
-    def __init__(self):
-        for i in self.regs:
-            i['fltrs'] = [re.compile(j) for j in i['fltrs']]
-
-    def __getitem__(self, item):
-        if item:
-            for i in self.regs:
-                for j in i['fltrs']:
-                    if j.search(item):
-                        return i['descr']
-
-        return False
+    def join_classificator(self, df):
+        mapping = []
+        for i in set(df[self.filter_column].unique()):
+            mapping.append({self.filter_column: i, self.classificator_column_name: self.search(i)})
+        df = pd.merge(df, pd.DataFrame(mapping), on=self.filter_column)
+        return df
 
 
 class GroupsVerticalCommon:
-    filter_field = "budget_class"
-    regs = [
+    filter_column = "budget_class"
+    classificator_column_name = "vertical_class"
+    tags = [
         {"descr": 'ipoteka', "fltrs": ["_ipoteka_"]},
-        {"descr": 'own', "fltrs": ["_b2b_own_",
-                                   "_b2b_compet_",
-                                   "_ocenka_own_",
-                                   "_sdaisnimi_"]},
+        {"descr": 'own', "fltrs": ["_b2b_own_", "_b2b_compet_", "_ocenka_own_", "_sdaisnimi_"]},
         {"descr": 'commerce', "fltrs": ["_com_", "_cwrk_", "_cwrkcom_", "_gbcom_", "_iapcom_", "_rentcom_", "_salecom_"]},
-        {"descr": 'sub', "fltrs": ["_sub_",
-                                   "_salesub_",
-                                   "_rentsub_"]},
-        {"descr": 'dailyrent', "fltrs": ["_dailyrentsec_", "_dailyrentsub_"]},
+        {"descr": 'salesub', "fltrs": ["_sub_", "_salesub_",]},
+        {"descr": 'rentsub', "fltrs": ["_rentsub_"]},
+        {"descr": 'dailyrentsub', "fltrs": ["_dailyrentsub_"]},
+        {"descr": 'dailyrentsec', "fltrs": ["_dailyrentsec_"]},
         {"descr": 'rentsec', "fltrs": ["_rentsec_"]},
         {"descr": 'salesec', "fltrs": ["_salesec_"]},
         {"descr": 'brand_cian', "fltrs": ["_brand_cian"]},
@@ -2796,109 +2592,34 @@ class GroupsVerticalCommon:
     ]
 
     def __init__(self):
-        for i in self.regs:
+        for i in self.tags:
             i['fltrs'] = [re.compile(j) for j in i['fltrs']]
 
-    def __getitem__(self, item):
+    def search(self, item):
         if item:
-            for i in self.regs:
+            for i in self.tags:
                 for j in i['fltrs']:
                     if j.search(item):
-                        return i['descr']
+                        return i['descr']  # поиск до первого совпадения
 
         return False
 
-
-class GroupsVerticalFinance:
-    filter_field = "budget_class"
-    regs = [
-        {"descr": 'BYUF', "fltrs": ["ipoteka"]},
-        {"descr": 'BYUKI', "fltrs": ["_com_", "_cwrk_", "_cwrkcom_", "_gbcom_", "_rentcom_", "_salecom_"]},
-        {"descr": 'IAPCOM', "fltrs": ["_iapcom_"]},
-        {"descr": 'PERVICHKA', "fltrs": ["_nov_"]},
-        {"descr": 'VTORICHKA', "fltrs": ["rentsec",
-                                         "salesec",
-                                         "own",
-                                         "_sdaisnimi_"]},
-        {"descr": 'ZAGORODKA', "fltrs": ["sub"]},
-        {"descr": 'MARKETING', "fltrs": ["brand_cian",
-                                         "competitors",
-                                         "brand",
-                                         "special_project"]},
-    ]
-
-    def __init__(self):
-        for i in self.regs:
-            i['fltrs'] = [re.compile(j) for j in i['fltrs']]
-
-    def __getitem__(self, item):
-        if item:
-            for i in self.regs:
-                for j in i['fltrs']:
-                    if j.search(item):
-                        return i['descr']
-
-        return False
-
-
-class GroupsYAccFinance:
-    filter_field = "campaignname"
-    regs = [
-        {"descr": 'Ипотека', "fltrs": ["_ipoteka_"]},
-        {"descr": 'Новостройки', "fltrs": ["_nov_"]},
-        {"descr": 'Коммерческая', "fltrs": ["_com_", "_cwrk_", "_cwrkcom_", "_gbcom_", "_rentcom_", "_salecom_"]},
-        {"descr": 'ИАП', "fltrs": ["_iapcom_"]},
-        {"descr": 'Москва', "fltrs": ["_msk_", "_mo_", "_dmo_", "_bmo_", "_mskmo_"]},
-    ]
-
-    def __init__(self):
-        for i in self.regs:
-            i['fltrs'] = [re.compile(j) for j in i['fltrs']]
-
-    def __getitem__(self, item):
-        if item:
-            for i in self.regs:
-                for j in i['fltrs']:
-                    if j.search(item):
-                        return i['descr']
-
-        return False
-
-
-class GroupsGAccFinance:
-    filter_field = "campaignname"
-    regs = [
-        {"descr": 'Ипотека', "fltrs": ["_ipoteka_"]},
-        {"descr": 'Новостройки', "fltrs": ["_nov_"]},
-        {"descr": 'Коммерческая', "fltrs": ["_com_", "_cwrk_", "_cwrkcom_", "_gbcom_", "_iapcom_", "_rentcom_", "_salecom_"]},
-        {"descr": 'Собственники', "fltrs": ["_own_", "_ownsdaisnimi_"]},
-        {"descr": 'Бренд', "fltrs": ["_compet_", "_brand_"]},
-        {"descr": 'Вторичка', "fltrs": ["_rentsec_", "_salesec_",
-                                        "_rentsub_", "_salesub_",
-                                        "_sub_"]},
-    ]
-
-    def __init__(self):
-        for i in self.regs:
-            i['fltrs'] = [re.compile(j) for j in i['fltrs']]
-
-    def __getitem__(self, item):
-        if item:
-            for i in self.regs:
-                for j in i['fltrs']:
-                    if j.search(item):
-                        return i['descr']
-
-        return False
+    def join_classificator(self, df):
+        mapping = []
+        for i in set(df[self.filter_column].unique()):
+            mapping.append({self.filter_column: i, self.classificator_column_name: self.search(i)})
+        df = pd.merge(df, pd.DataFrame(mapping), on=self.filter_column)
+        return df
 
 
 class SearchOrNetwork:
-    filter_field = "campaignname"
-    regs = [
+    filter_column = "campaignname"
+    classificator_column_name = "network_class"
+    tags = [
         {"descr": 'search', "fltrs": ["_search"]},
         {"descr": 'ci_network', "fltrs": ["_ci_"]},
-        {"descr": 'drtg_network', "fltrs": ["_drtg_",
-                                            "_rtg_smart"]},
+        {"descr": 'lal_network', "fltrs": ["lal", "_custlal_", "smartlal", "audiencelal"]},
+        {"descr": 'drtg_network', "fltrs": ["_drtg_", "_rtg_smart"]},
         {"descr": 'pmax_network', "fltrs": ["_pmax_"]},
         {"descr": 'rtg_network', "fltrs": ["_rtg_"]},
         {"descr": 'other_network', "fltrs": ["_network"]},
@@ -2906,66 +2627,35 @@ class SearchOrNetwork:
     ]
 
     def __init__(self):
-        for i in self.regs:
+        for i in self.tags:
             i['fltrs'] = [re.compile(j) for j in i['fltrs']]
 
-    def __getitem__(self, item):
-        for i in self.regs:
-            for j in i['fltrs']:
-                if j.search(item):
-                    return i['descr']
+    def search(self, item):
+        if item:
+            for i in self.tags:
+                for j in i['fltrs']:
+                    if j.search(item):
+                        return i['descr']  # поиск до первого совпадения
 
         return False
 
-
-def all_classificators_join(tt):
-    mp_map = MP()
-    classificator_join = pd.DataFrame([{mp_map.filter_field: i, "budget_class": mp_map[i]} for i in set(tt.campaignname.unique())])
-    tt = pd.merge(tt, classificator_join)
-
-    regions_map = GroupsRegions()
-    classificator_join = pd.DataFrame([{regions_map.filter_field: i, "region_class": regions_map[i]} for i in set(tt.campaignname.unique())])
-    tt = pd.merge(tt, classificator_join)
-
-    reglite_map = GroupsRegionsLite()
-    classificator_join = pd.DataFrame([{reglite_map.filter_field: i, "reglite_class": reglite_map[i]} for i in set(tt.campaignname.unique())])
-    tt = pd.merge(tt, classificator_join)
-
-    searchornetwork_map = SearchOrNetwork()
-    classificator_join = pd.DataFrame([{searchornetwork_map.filter_field: i, "network_class": searchornetwork_map[i]} for i in set(tt.campaignname.unique())])
-    tt = pd.merge(tt, classificator_join)
-
-    vert_map = GroupsVerticalCommon()
-    classificator_join = pd.DataFrame([{vert_map.filter_field: i, "vertical_class": vert_map[i]} for i in set(tt.budget_class.unique())])
-    tt = pd.merge(tt, classificator_join)
-
-    vertex_map = GroupsVerticalExt()
-    classificator_join = pd.DataFrame([{vertex_map.filter_field: i, "verticalext_class": vertex_map[i]} for i in set(tt.budget_class.unique())])
-    tt = pd.merge(tt, classificator_join)
-    return tt
+    def join_classificator(self, df):
+        mapping = []
+        for i in set(df[self.filter_column].unique()):
+            mapping.append({self.filter_column: i, self.classificator_column_name: self.search(i)})
+        df = pd.merge(df, pd.DataFrame(mapping), on=self.filter_column)
+        return df
 
 
-def finance_classificators_join(tt):
-    regfinance_map = GroupsRegionsFinance()
-    classificator_join = pd.DataFrame([{regfinance_map.filter_field: i, "region_finance_class": regfinance_map[i]} for i in set(tt.campaignname.unique())])
-    tt = pd.merge(tt, classificator_join)
-
-    vertfinance_map = GroupsVerticalFinance()
-    classificator_join = pd.DataFrame([{vertfinance_map.filter_field: i, "vertical_finance_class": vertfinance_map[i]} for i in set(tt.budget_class.unique())])
-    tt = pd.merge(tt, classificator_join)
-
-    yfinance_map = GroupsYAccFinance()
-    classificator_join = pd.DataFrame([{yfinance_map.filter_field: i, "y_finance_class": yfinance_map[i]} for i in set(tt.campaignname.unique())])
-    tt = pd.merge(tt, classificator_join)
-
-    gfinance_map = GroupsGAccFinance()
-    classificator_join = pd.DataFrame([{gfinance_map.filter_field: i, "g_finance_class": gfinance_map[i]} for i in set(tt.campaignname.unique())])
-    tt = pd.merge(tt, classificator_join)
-
-    return tt
+def all_classificators_join(data):
+    for classificator in (MP(), GroupsRegions(), GroupsVerticalCommon(), SearchOrNetwork(),):
+        data = classificator.join_classificator(data)
+    return data
 
 
 if __name__ == '__main__':
-    mp = MP()
-    print(mp["b2b_ekb_general_null_own_desk_search"])
-    print(mp["b2b_ZZZ_general_null_own_desk_search"])
+    df = pd.DataFrame([{"campaignname": "qqq_samara_qqq", "vol": 1},
+                       {"campaignname": "qqq_nn_qqq", "vol": 2},
+                       {"campaignname": "qqq_msk_qqq", "vol": 3},])
+    df = all_classificators_join(df)
+    print(df)
