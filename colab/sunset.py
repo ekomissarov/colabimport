@@ -3,7 +3,7 @@ import matplotlib as mpl
 import matplotlib.dates as mdates
 import numpy as np
 import matplotlib.pyplot as plt
-from . import mediaplan
+from datetime import date
 
 def scale_plot_size(x, y):
     #default_figsize = mpl.rcParamsDefault['figure.figsize']
@@ -486,3 +486,21 @@ def resample_df(df, dimension="campaignname", resample_period="M"):
     result = calc_base_values(result)
     result = calc_base_values_with_assisted(result)
     return result
+
+def cell_dimension(df, metrics, dimension = 'vertical_class', exclude_graphs = None, vert_lines=None):
+    """
+    metrics example: ["cpa", "events"]
+    exclude_graphs example: {"cpa": {"ipoteka", "Undefined"}
+    """
+    if vert_lines is None:
+        vert_lines = [date(*date.today().timetuple()[0:2], 1)]
+    df.loc[df[dimension]==False, dimension] = "Undefined"
+    for i in metrics:
+        plot_set_excl = set()
+        if exclude_graphs and i in exclude_graphs:
+            plot_set_excl = exclude_graphs[i]
+        plot_compare_base(df,
+            y_value = i,
+            group_by_plot = dimension,
+            plot_set = set(df[dimension].unique()) - plot_set_excl,
+            vert_lines=vert_lines)
