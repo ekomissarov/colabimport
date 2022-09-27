@@ -23,12 +23,19 @@ class MP:
         ######################################################################################
         # Пакет: ipoteka #####################################################################
         ######################################################################################
+        {"descr": 'b2c_msk_ipoteka_search_bdg', "fltrs": ["b2c_msk_general_main_ipoteka_mix_search", ]},
+
         {"descr": 'b2c_all_ipoteka_bdg', "fltrs": ["b2c_.*_general_main_ipoteka_mix_search", ]},
         {"descr": 'b2c_all_rlsa_ipoteka_bdg', "fltrs": ["b2c_.*_rlsa_main_ipoteka_mix_search", ]},
         {"descr": 'b2c_rf_rtg_site_ipoteka_mix_network', "fltrs": ["b2c_rf_rtg_site_ipoteka_mix_network", ]},  # not_a_bdg
         {"descr": 'b2c_rf_rtg_test_ipoteka_mix_network', "fltrs": ["b2c_rf_rtg_test_ipoteka_mix_network", ]},  # not_a_bdg
 
-        {"descr": 'msk_ipoteka_network_bdg', "fltrs": ["b2c_(mo|msk)_(ci|general)_main_ipoteka_mix_network", ]},
+        {"descr": 'b2c_msk_ipoteka_mkb_bdg', "fltrs": ["b2c_msk_general_mkb_ipoteka_mix_search", ]},
+        {"descr": 'b2c_msk_rtg_site_ipoteka_mix_network', "fltrs": ["b2c_msk_rtg_site_ipoteka_mix_network", ]},  # not_a_bdg
+        {"descr": 'msk_ipoteka_network_bdg', "fltrs": ["b2c_(mo|msk)_(ci|general)_main_ipoteka_mix_network",
+                                                       "b2c_msk_rtg_interests_ipoteka_mix_network",
+                                                       "b2c_msk_general_main_ipoteka_mix_network",
+                                                       ]},
         {"descr": 'spb_ipoteka_network_bdg', "fltrs": ["b2c_spb_(ci|general)_main_ipoteka_mix_network", ]},
         {"descr": 'regs_ipoteka_network_bdg', "fltrs": [
                                                        "b2c_kazan_(ci|general)_main_ipoteka_mix_network",
