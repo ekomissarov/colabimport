@@ -10,7 +10,13 @@ class MP:
         # Пакет: test ########################################################################
         ######################################################################################
         #{"descr": 'test_bdg', "fltrs": ["_mobapptest_", "_test_"]},
+
+        {"descr": 'spb_findagent_own_search_bdg', "fltrs": ["b2c_spb_general_findagent_own_mix_search_specproj", ]},
+        {"descr": 'spb_findagent_own_network_bdg', "fltrs": ["b2c_spb_general_findagent_own_mix_network_specproj", ]},
+        {"descr": 'spb_findagent_own_rtg_network_bdg', "fltrs": ["b2c_spb_rtg_findagent_own_mix_network_specproj",
+                                                                 "b2c_spb_rtg_findagent_mix_network_specproj"]},
         {"descr": 'special_project_bdg', "fltrs": ["_specproj"]},
+
         {"descr": 'media_banner_bdg', "fltrs": ["_media_", "_banner_"]},
 
         {"descr": 'msk_sdaisnimi_bdg', "fltrs": ["b2b_msk_rtg_null_ownsdaisnimi_mix_network",
@@ -302,11 +308,13 @@ class MP:
         {"descr": 'msk_b2b_own_rtg_network_bdg', "fltrs": ["b2b_(dmo|bmo|mo|msk)_rtg_site_own_mix_network", ]},
         {"descr": 'spb_b2b_own_rtg_network_bdg', "fltrs": ["b2b_spb_rtg_site_own_mix_network", ]},
         {"descr": 'regs_b2b_own_rtg_network_bdg', "fltrs": ["b2b_22reg_rtg_site_own_mix_network",
-                                                            "b2b_regs_rtg_site_own_mix_network"]},
+                                                            "b2b_regs_rtg_site_own_mix_network"
+                                                            "b2b_omsk_rtg_site_own_mix_network"]},
 
         # пока gmail кампании отключены, но в будущем здесь требуется разделение общих дневных бюджетов
         {"descr": 'msk_b2b_own_network_bdg', "fltrs": ["b2b_msk_gmail_main_own_desk_network",
-                                                       "b2b_(dmo|bmo|mo|msk)_(ci|general)_null_own_desk_network", ]},
+                                                       "b2b_(dmo|bmo|mo|msk)_(ci|general)_null_own_desk_network", "b2b_msk_rtg_interests_own_mix_network",
+                                                       ]},
         {"descr": 'spb_b2b_own_network_bdg', "fltrs": ["b2b_spb_gmail_main_own_desk_network",
                                                        "b2b_spb_(ci|general)_null_own_desk_network", ]},
         {"descr": 'regs_b2b_own_network_bdg', "fltrs": ["b2b_rf_gmail_main_own_desk_network",
@@ -322,7 +330,7 @@ class MP:
                                                          "b2b_kemerovo_(ci|general)_null_own_desk_network",
                                                          "b2b_krasnodar_(ci|general)_null_own_desk_network",
                                                          "b2b_novosibirsk_(ci|general)_null_own_desk_network",
-                                                         "b2b_omsk_(ci|general)_null_own_desk_network",
+                                                         "b2b_omsk_(ci|general)_null_own_desk_network", "b2b_omsk_rtg_interests_own_mix_network",
                                                          "b2b_perm_(ci|general)_null_own_desk_network",
                                                          "b2b_rostov_(ci|general)_null_own_desk_network",
                                                          "b2b_samara_(ci|general)_null_own_desk_network",
