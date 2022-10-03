@@ -308,7 +308,7 @@ class MP:
         {"descr": 'msk_b2b_own_rtg_network_bdg', "fltrs": ["b2b_(dmo|bmo|mo|msk)_rtg_site_own_mix_network", ]},
         {"descr": 'spb_b2b_own_rtg_network_bdg', "fltrs": ["b2b_spb_rtg_site_own_mix_network", ]},
         {"descr": 'regs_b2b_own_rtg_network_bdg', "fltrs": ["b2b_22reg_rtg_site_own_mix_network",
-                                                            "b2b_regs_rtg_site_own_mix_network"
+                                                            "b2b_regs_rtg_site_own_mix_network",
                                                             "b2b_omsk_rtg_site_own_mix_network"]},
 
         # пока gmail кампании отключены, но в будущем здесь требуется разделение общих дневных бюджетов
