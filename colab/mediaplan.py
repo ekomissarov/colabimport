@@ -11,10 +11,13 @@ class MP:
         ######################################################################################
         #{"descr": 'test_bdg', "fltrs": ["_mobapptest_", "_test_"]},
 
-        {"descr": 'spb_findagent_own_search_bdg', "fltrs": ["b2c_spb_general_findagent_own_mix_search_specproj", ]},
-        {"descr": 'spb_findagent_own_network_bdg', "fltrs": ["b2c_spb_general_findagent_own_mix_network_specproj", ]},
+        {"descr": 'spb_findagent_own_search_bdg', "fltrs": ["b2c_spb_general_findagent_own_mix_search_specproj",
+                                                            "b2c_spb_general_findagent_specproj_mix_search"]},
+        {"descr": 'spb_findagent_own_network_bdg', "fltrs": ["b2c_spb_general_findagent_own_mix_network_specproj",
+                                                             "b2c_spb_general_findagent_specproj_mix_network"]},
         {"descr": 'spb_findagent_own_rtg_network_bdg', "fltrs": ["b2c_spb_rtg_findagent_own_mix_network_specproj",
-                                                                 "b2c_spb_rtg_findagent_mix_network_specproj"]},
+                                                                 "b2c_spb_rtg_findagent_mix_network_specproj",
+                                                                 "b2c_spb_rtg_findagent_specproj_mix_network"]},
         {"descr": 'special_project_bdg', "fltrs": ["_specproj"]},
 
         {"descr": 'media_banner_bdg', "fltrs": ["_media_", "_banner_"]},
