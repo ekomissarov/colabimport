@@ -33,6 +33,7 @@ class MP:
         # Пакет: ipoteka #####################################################################
         ######################################################################################
         {"descr": 'b2c_msk_ipoteka_search_bdg', "fltrs": ["b2c_msk_general_main_ipoteka_mix_search", ]},
+        {"descr": 'b2c_spb_ipoteka_search_bdg', "fltrs": ["b2c_spb_general_main_ipoteka_mix_search", ]},
 
         {"descr": 'b2c_all_ipoteka_bdg', "fltrs": ["b2c_.*_general_main_ipoteka_mix_search", ]},
         {"descr": 'b2c_all_rlsa_ipoteka_bdg', "fltrs": ["b2c_.*_rlsa_main_ipoteka_mix_search", ]},
