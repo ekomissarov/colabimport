@@ -37,13 +37,6 @@ def calc_additive_values(df):
     return df
 
 
-def do_calculations_test(x):
-    print(x, type(x))
-    x['cost_rur'] = x['cost'] / 1000000
-    x['cpc'] = np.round(x['cost_rur'] / x['clicks'], 2)
-    return x
-
-
 def do_calculations_base_values(x):
     x['cost_rur'] = x['cost'] / 1000000
 
@@ -126,6 +119,7 @@ def do_calculations_base_values(x):
 
 def calc_base_values(tt):
     tt = tt.apply(do_calculations_base_values, axis=1)
+    return tt
 
 
 def do_calculations_base_values_with_assisted(x):
@@ -193,6 +187,7 @@ def do_calculations_base_values_with_assisted(x):
 
 def calc_base_values_with_assisted(tt):
     tt = tt.apply(do_calculations_base_values_with_assisted, axis=1)
+    return tt
 
 
 def triad(item):
