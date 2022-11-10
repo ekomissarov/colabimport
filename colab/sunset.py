@@ -47,6 +47,7 @@ def calc_base_values(tt):
         x['clicks_per_session'] = np.round(x['clicks'] / x['sessions'], 4)
 
         # конверсии объем
+        print("DEBUG", x)
         x['events'] = x['total_events'] + x['total_events_app']
         x['events_ss'] = x['uniq_ss_events'] + x['uniq_ss_events_app']
         x['events_fdv'] = x['total_events_fdv'] + x['total_events_app_fdv']
