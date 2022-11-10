@@ -38,143 +38,145 @@ def calc_additive_values(df):
 
 
 def calc_base_values(tt):
-    tt['cost_rur'] = tt['cost'] / 1000000
-    tt['cpc'] = np.round(tt['cost_rur'] / tt['clicks'], 2)
-    tt['cpm'] = np.round(tt['cost_rur'] / (tt['impressions']/1000), 2)
-    tt['cp_session'] = np.round(tt['cost_rur'] / tt['sessions'], 2)
-    tt['ctr'] = np.round(tt['clicks'] / tt['impressions'], 4)
-    tt['clicks_per_session'] = np.round(tt['clicks'] / tt['sessions'], 4)
+    def do_calculations(x):
+        x['cost_rur'] = x['cost'] / 1000000
+        x['cpc'] = np.round(x['cost_rur'] / x['clicks'], 2)
+        x['cpm'] = np.round(x['cost_rur'] / (x['impressions']/1000), 2)
+        x['cp_session'] = np.round(x['cost_rur'] / x['sessions'], 2)
+        x['ctr'] = np.round(x['clicks'] / x['impressions'], 4)
+        x['clicks_per_session'] = np.round(x['clicks'] / x['sessions'], 4)
 
-    # конверсии объем
-    tt['events'] = tt['total_events'] + tt['total_events_app']
-    tt['events_ss'] = tt['uniq_ss_events'] + tt['uniq_ss_events_app']
-    tt['events_fdv'] = tt['total_events_fdv'] + tt['total_events_app_fdv']
-    tt['events_commercial'] = tt['total_events_commercial'] + tt['total_events_app_commercial']
-    tt['events_salesub'] = tt['total_events_salesub'] + tt['total_events_app_salesub']
-    tt['events_rentsub'] = tt['total_events_rentsub'] + tt['total_events_app_rentsub']
-    tt['events_saleflats'] = tt['total_events_saleflats'] + tt['total_events_app_saleflats']
-    tt['events_rentflats'] = tt['total_events_rentflats'] + tt['total_events_app_rentflats']
-    tt['events_applications'] = tt['total_applications_re_events'] + tt['total_applications_re_events_app']
-    tt['ads'] = tt['total_b2bevents'] + tt['total_b2bevents_app']
-    tt['ipotek'] = tt['uniq_ipotek_events'] + tt['uniq_ipotek_events_app']
-    tt['ct'] = tt['total_ct_events'] + tt['total_ct_events_app']
+        # конверсии объем
+        x['events'] = x['total_events'] + x['total_events_app']
+        x['events_ss'] = x['uniq_ss_events'] + x['uniq_ss_events_app']
+        x['events_fdv'] = x['total_events_fdv'] + x['total_events_app_fdv']
+        x['events_commercial'] = x['total_events_commercial'] + x['total_events_app_commercial']
+        x['events_salesub'] = x['total_events_salesub'] + x['total_events_app_salesub']
+        x['events_rentsub'] = x['total_events_rentsub'] + x['total_events_app_rentsub']
+        x['events_saleflats'] = x['total_events_saleflats'] + x['total_events_app_saleflats']
+        x['events_rentflats'] = x['total_events_rentflats'] + x['total_events_app_rentflats']
+        x['events_applications'] = x['total_applications_re_events'] + x['total_applications_re_events_app']
+        x['ads'] = x['total_b2bevents'] + x['total_b2bevents_app']
+        x['ipotek'] = x['uniq_ipotek_events'] + x['uniq_ipotek_events_app']
+        x['ct'] = x['total_ct_events'] + x['total_ct_events_app']
 
-    # конверсии стоимости
-    tt['cpa'] = np.round(tt['cost_rur'] / tt['events'], 2)
-    tt['cpa_ss'] = np.round(tt['cost_rur'] / tt['events_ss'], 2)
-    tt['cpa_fdv'] = np.round(tt['cost_rur'] / tt['events_fdv'], 2)
-    tt['cpa_commercial'] = np.round(tt['cost_rur'] / tt['events_commercial'], 2)
-    tt['cpa_salesub'] = np.round(tt['cost_rur'] / tt['events_salesub'], 2)
-    tt['cpa_rentsub'] = np.round(tt['cost_rur'] / tt['events_rentsub'], 2)
-    tt['cpa_saleflats'] = np.round(tt['cost_rur'] / tt['events_saleflats'], 2)
-    tt['cpa_rentflats'] = np.round(tt['cost_rur'] / tt['events_rentflats'], 2)
-    tt['cpa_applications'] = np.round(tt['cost_rur'] / tt['events_applications'], 2)
-    tt['cpad'] = np.round(tt['cost_rur'] / tt['ads'], 2)
-    tt['cpa_ipotek'] = np.round(tt['cost_rur'] / tt['ipotek'], 2)
-    tt['cpa_ct'] = np.round(tt['cost_rur'] / tt['ct'], 2)
+        # конверсии стоимости
+        x['cpa'] = np.round(x['cost_rur'] / x['events'], 2)
+        x['cpa_ss'] = np.round(x['cost_rur'] / x['events_ss'], 2)
+        x['cpa_fdv'] = np.round(x['cost_rur'] / x['events_fdv'], 2)
+        x['cpa_commercial'] = np.round(x['cost_rur'] / x['events_commercial'], 2)
+        x['cpa_salesub'] = np.round(x['cost_rur'] / x['events_salesub'], 2)
+        x['cpa_rentsub'] = np.round(x['cost_rur'] / x['events_rentsub'], 2)
+        x['cpa_saleflats'] = np.round(x['cost_rur'] / x['events_saleflats'], 2)
+        x['cpa_rentflats'] = np.round(x['cost_rur'] / x['events_rentflats'], 2)
+        x['cpa_applications'] = np.round(x['cost_rur'] / x['events_applications'], 2)
+        x['cpad'] = np.round(x['cost_rur'] / x['ads'], 2)
+        x['cpa_ipotek'] = np.round(x['cost_rur'] / x['ipotek'], 2)
+        x['cpa_ct'] = np.round(x['cost_rur'] / x['ct'], 2)
 
-    # %конверсии на клик
-    tt['ev_per_click'] = np.round(tt['events'] / tt['clicks'], 4)
-    tt['ev_ss_per_click'] = np.round(tt['events_ss'] / tt['clicks'], 4)
-    tt['ev_fdv_per_click'] = np.round(tt['events_fdv'] / tt['clicks'], 4)
-    tt['ev_commercial_per_click'] = np.round(tt['events_commercial'] / tt['clicks'], 4)
-    tt['ev_salesub_per_click'] = np.round(tt['events_salesub'] / tt['clicks'], 4)
-    tt['ev_rentsub_per_click'] = np.round(tt['events_rentsub'] / tt['clicks'], 4)
-    tt['ev_saleflats_per_click'] = np.round(tt['events_saleflats'] / tt['clicks'], 4)
-    tt['ev_rentflats_per_click'] = np.round(tt['events_rentflats'] / tt['clicks'], 4)
-    tt['ev_applications_per_click'] = np.round(tt['events_applications'] / tt['clicks'], 4)
-    tt['ad_per_click'] = np.round(tt['ads'] / tt['clicks'], 4)
-    tt['ipotek_per_click'] = np.round(tt['ipotek'] / tt['clicks'], 4)
-    tt['ct_per_click'] = np.round(tt['ct'] / tt['clicks'], 4)
+        # %конверсии на клик
+        x['ev_per_click'] = np.round(x['events'] / x['clicks'], 4)
+        x['ev_ss_per_click'] = np.round(x['events_ss'] / x['clicks'], 4)
+        x['ev_fdv_per_click'] = np.round(x['events_fdv'] / x['clicks'], 4)
+        x['ev_commercial_per_click'] = np.round(x['events_commercial'] / x['clicks'], 4)
+        x['ev_salesub_per_click'] = np.round(x['events_salesub'] / x['clicks'], 4)
+        x['ev_rentsub_per_click'] = np.round(x['events_rentsub'] / x['clicks'], 4)
+        x['ev_saleflats_per_click'] = np.round(x['events_saleflats'] / x['clicks'], 4)
+        x['ev_rentflats_per_click'] = np.round(x['events_rentflats'] / x['clicks'], 4)
+        x['ev_applications_per_click'] = np.round(x['events_applications'] / x['clicks'], 4)
+        x['ad_per_click'] = np.round(x['ads'] / x['clicks'], 4)
+        x['ipotek_per_click'] = np.round(x['ipotek'] / x['clicks'], 4)
+        x['ct_per_click'] = np.round(x['ct'] / x['clicks'], 4)
 
-    # %ассоциированные конверсии на клик
-    tt['assisted_ev_per_click'] = np.round(tt['assisted_conv_phones'] / tt['clicks'], 4)
-    tt['assisted_ss_per_click'] = np.round(tt['assisted_conv_ss'] / tt['clicks'], 4)
-    tt['assisted_reappl_per_click'] = np.round(tt['assisted_conv_reappl'] / tt['clicks'], 4)
-    tt['assisted_ad_per_click'] = np.round(tt['assisted_conv_ads'] / tt['clicks'], 4)
-    tt['assisted_ipotek_per_click'] = np.round(tt['assisted_conv_mortgage'] / tt['clicks'], 4)
-    tt['assisted_ct_per_click'] = np.round(tt['assisted_conv_ct'] / tt['clicks'], 4)
-    tt = tt.copy()
-    # агрегаты: конверсии объем
-    tt['conv_agg_full'] = tt['events'] + (8 * tt['ads']) + (500 * tt['ipotek']) + (500 * tt['ct']) + (8 * tt['events_applications']) + (10 * tt['events_ss'])
-    tt['conv_agg_base'] = tt['events'] + (2 * tt['ads']) + (5 * tt['ipotek']) + (2 * tt['events_applications'])
-    tt['conv_agg_owners'] = tt['ads'] + tt['events_applications'] + tt['events_ss']
+        # %ассоциированные конверсии на клик
+        x['assisted_ev_per_click'] = np.round(x['assisted_conv_phones'] / x['clicks'], 4)
+        x['assisted_ss_per_click'] = np.round(x['assisted_conv_ss'] / x['clicks'], 4)
+        x['assisted_reappl_per_click'] = np.round(x['assisted_conv_reappl'] / x['clicks'], 4)
+        x['assisted_ad_per_click'] = np.round(x['assisted_conv_ads'] / x['clicks'], 4)
+        x['assisted_ipotek_per_click'] = np.round(x['assisted_conv_mortgage'] / x['clicks'], 4)
+        x['assisted_ct_per_click'] = np.round(x['assisted_conv_ct'] / x['clicks'], 4)
 
-    # агрегаты: конверсии стоимости
-    tt['cp_agg_full'] = np.round(tt['cost_rur'] / tt['conv_agg_full'], 2)
-    tt['cp_agg_base'] = np.round(tt['cost_rur'] / tt['conv_agg_base'], 2)
-    tt['cp_agg_owners'] = np.round(tt['cost_rur'] / tt['conv_agg_owners'], 2)
+        # агрегаты: конверсии объем
+        x['conv_agg_full'] = x['events'] + (8 * x['ads']) + (500 * x['ipotek']) + (500 * x['ct']) + (8 * x['events_applications']) + (10 * x['events_ss'])
+        x['conv_agg_base'] = x['events'] + (2 * x['ads']) + (5 * x['ipotek']) + (2 * x['events_applications'])
+        x['conv_agg_owners'] = x['ads'] + x['events_applications'] + x['events_ss']
 
-    # агрегаты: %конверсии на клик
-    tt['agg_full_per_click'] = np.round(tt['conv_agg_full'] / tt['clicks'], 4)
-    tt['agg_base_per_click'] = np.round(tt['conv_agg_base'] / tt['clicks'], 4)
-    tt['agg_owners_per_click'] = np.round(tt['conv_agg_owners'] / tt['clicks'], 4)
+        # агрегаты: конверсии стоимости
+        x['cp_agg_full'] = np.round(x['cost_rur'] / x['conv_agg_full'], 2)
+        x['cp_agg_base'] = np.round(x['cost_rur'] / x['conv_agg_base'], 2)
+        x['cp_agg_owners'] = np.round(x['cost_rur'] / x['conv_agg_owners'], 2)
 
-    ##########################################
-    tt['cost_rur'] = tt['cost_rur'].astype(np.int64)
-    return tt.copy()
+        # агрегаты: %конверсии на клик
+        x['agg_full_per_click'] = np.round(x['conv_agg_full'] / x['clicks'], 4)
+        x['agg_base_per_click'] = np.round(x['conv_agg_base'] / x['clicks'], 4)
+        x['agg_owners_per_click'] = np.round(x['conv_agg_owners'] / x['clicks'], 4)
+
+        ##########################################
+        x['cost_rur'] = x['cost_rur'].astype(np.int64)
+        return x
+    tt = tt.apply(do_calculations, axis=1)
 
 
 def calc_base_values_with_assisted(tt):
+    def do_calculations(x):
+        # конверсии объем
+        x['A_events'] = x['total_events'] + x['total_events_app'] + x['assisted_conv_phones']
+        x['A_events_ss'] = x['uniq_ss_events'] + x['uniq_ss_events_app'] + x['assisted_conv_ss']
+        x['A_events_fdv'] = x['total_events_fdv'] + x['total_events_app_fdv'] + x['assisted_conv_phones']
+        x['A_events_commercial'] = x['total_events_commercial'] + x['total_events_app_commercial'] + x['assisted_conv_phones']
+        x['A_events_salesub'] = x['total_events_salesub'] + x['total_events_app_salesub'] + x['assisted_conv_phones']
+        x['A_events_rentsub'] = x['total_events_rentsub'] + x['total_events_app_rentsub'] + x['assisted_conv_phones']
+        x['A_events_saleflats'] = x['total_events_saleflats'] + x['total_events_app_saleflats'] + x['assisted_conv_phones']
+        x['A_events_rentflats'] = x['total_events_rentflats'] + x['total_events_app_rentflats'] + x['assisted_conv_phones']
+        x['A_events_applications'] = x['total_applications_re_events'] + x['total_applications_re_events_app'] + x['assisted_conv_reappl']
+        x['A_ads'] = x['total_b2bevents'] + x['total_b2bevents_app'] + x['assisted_conv_ads']
+        x['A_ipotek'] = x['uniq_ipotek_events'] + x['uniq_ipotek_events_app'] + x['assisted_conv_mortgage']
+        x['A_ct'] = x['total_ct_events'] + x['total_ct_events_app'] + x['assisted_conv_ct']
 
-    # конверсии объем
-    tt['A_events'] = tt['total_events'] + tt['total_events_app'] + tt['assisted_conv_phones']
-    tt['A_events_ss'] = tt['uniq_ss_events'] + tt['uniq_ss_events_app'] + tt['assisted_conv_ss']
-    tt['A_events_fdv'] = tt['total_events_fdv'] + tt['total_events_app_fdv'] + tt['assisted_conv_phones']
-    tt['A_events_commercial'] = tt['total_events_commercial'] + tt['total_events_app_commercial'] + tt['assisted_conv_phones']
-    tt['A_events_salesub'] = tt['total_events_salesub'] + tt['total_events_app_salesub'] + tt['assisted_conv_phones']
-    tt['A_events_rentsub'] = tt['total_events_rentsub'] + tt['total_events_app_rentsub'] + tt['assisted_conv_phones']
-    tt['A_events_saleflats'] = tt['total_events_saleflats'] + tt['total_events_app_saleflats'] + tt['assisted_conv_phones']
-    tt['A_events_rentflats'] = tt['total_events_rentflats'] + tt['total_events_app_rentflats'] + tt['assisted_conv_phones']
-    tt['A_events_applications'] = tt['total_applications_re_events'] + tt['total_applications_re_events_app'] + tt['assisted_conv_reappl']
-    tt['A_ads'] = tt['total_b2bevents'] + tt['total_b2bevents_app'] + tt['assisted_conv_ads']
-    tt['A_ipotek'] = tt['uniq_ipotek_events'] + tt['uniq_ipotek_events_app'] + tt['assisted_conv_mortgage']
-    tt['A_ct'] = tt['total_ct_events'] + tt['total_ct_events_app'] + tt['assisted_conv_ct']
+        # конверсии стоимости
+        x['A_cpa'] = np.round(x['cost_rur'] / x['A_events'], 2)
+        x['A_cpa_ss'] = np.round(x['cost_rur'] / x['A_events_ss'], 2)
+        x['A_cpa_fdv'] = np.round(x['cost_rur'] / x['A_events_fdv'], 2)
+        x['A_cpa_commercial'] = np.round(x['cost_rur'] / x['A_events_commercial'], 2)
+        x['A_cpa_salesub'] = np.round(x['cost_rur'] / x['A_events_salesub'], 2)
+        x['A_cpa_rentsub'] = np.round(x['cost_rur'] / x['A_events_rentsub'], 2)
+        x['A_cpa_saleflats'] = np.round(x['cost_rur'] / x['A_events_saleflats'], 2)
+        x['A_cpa_rentflats'] = np.round(x['cost_rur'] / x['A_events_rentflats'], 2)
+        x['A_cpa_applications'] = np.round(x['cost_rur'] / x['A_events_applications'], 2)
+        x['A_cpad'] = np.round(x['cost_rur'] / x['A_ads'], 2)
+        x['A_cpa_ipotek'] = np.round(x['cost_rur'] / x['A_ipotek'], 2)
+        x['A_cpa_ct'] = np.round(x['cost_rur'] / x['A_ct'], 2)
 
-    # конверсии стоимости
-    tt['A_cpa'] = np.round(tt['cost_rur'] / tt['A_events'], 2)
-    tt['A_cpa_ss'] = np.round(tt['cost_rur'] / tt['A_events_ss'], 2)
-    tt['A_cpa_fdv'] = np.round(tt['cost_rur'] / tt['A_events_fdv'], 2)
-    tt['A_cpa_commercial'] = np.round(tt['cost_rur'] / tt['A_events_commercial'], 2)
-    tt['A_cpa_salesub'] = np.round(tt['cost_rur'] / tt['A_events_salesub'], 2)
-    tt['A_cpa_rentsub'] = np.round(tt['cost_rur'] / tt['A_events_rentsub'], 2)
-    tt['A_cpa_saleflats'] = np.round(tt['cost_rur'] / tt['A_events_saleflats'], 2)
-    tt['A_cpa_rentflats'] = np.round(tt['cost_rur'] / tt['A_events_rentflats'], 2)
-    tt['A_cpa_applications'] = np.round(tt['cost_rur'] / tt['A_events_applications'], 2)
-    tt['A_cpad'] = np.round(tt['cost_rur'] / tt['A_ads'], 2)
-    tt['A_cpa_ipotek'] = np.round(tt['cost_rur'] / tt['A_ipotek'], 2)
-    tt['A_cpa_ct'] = np.round(tt['cost_rur'] / tt['A_ct'], 2)
+        # %конверсии на клик
+        x['A_ev_per_click'] = np.round(x['A_events'] / x['clicks'], 4)
+        x['A_ev_ss_per_click'] = np.round(x['A_events_ss'] / x['clicks'], 4)
+        x['A_ev_fdv_per_click'] = np.round(x['A_events_fdv'] / x['clicks'], 4)
+        x['A_ev_commercial_per_click'] = np.round(x['A_events_commercial'] / x['clicks'], 4)
+        x['A_ev_salesub_per_click'] = np.round(x['A_events_salesub'] / x['clicks'], 4)
+        x['A_ev_rentsub_per_click'] = np.round(x['A_events_rentsub'] / x['clicks'], 4)
+        x['A_ev_saleflats_per_click'] = np.round(x['A_events_saleflats'] / x['clicks'], 4)
+        x['A_ev_rentflats_per_click'] = np.round(x['A_events_rentflats'] / x['clicks'], 4)
+        x['A_ev_applications_per_click'] = np.round(x['A_events_applications'] / x['clicks'], 4)
+        x['A_ad_per_click'] = np.round(x['A_ads'] / x['clicks'], 4)
+        x['A_ipotek_per_click'] = np.round(x['A_ipotek'] / x['clicks'], 4)
+        x['A_ct_per_click'] = np.round(x['A_ct'] / x['clicks'], 4)
+        x = x.copy()
+        # агрегаты: конверсии объем
+        x['A_conv_agg_full'] = x['A_events'] + (8 * x['A_ads']) + (500 * x['A_ipotek']) + (500 * x['A_ct']) + (8 * x['A_events_applications']) + (10 * x['A_events_ss'])
+        x['A_conv_agg_base'] = x['A_events'] + (2 * x['A_ads']) + (5 * x['A_ipotek']) + (2 * x['A_events_applications'])
+        x['A_conv_agg_owners'] = x['A_ads'] + x['A_events_applications'] + x['A_events_ss']
 
-    # %конверсии на клик
-    tt['A_ev_per_click'] = np.round(tt['A_events'] / tt['clicks'], 4)
-    tt['A_ev_ss_per_click'] = np.round(tt['A_events_ss'] / tt['clicks'], 4)
-    tt['A_ev_fdv_per_click'] = np.round(tt['A_events_fdv'] / tt['clicks'], 4)
-    tt['A_ev_commercial_per_click'] = np.round(tt['A_events_commercial'] / tt['clicks'], 4)
-    tt['A_ev_salesub_per_click'] = np.round(tt['A_events_salesub'] / tt['clicks'], 4)
-    tt['A_ev_rentsub_per_click'] = np.round(tt['A_events_rentsub'] / tt['clicks'], 4)
-    tt['A_ev_saleflats_per_click'] = np.round(tt['A_events_saleflats'] / tt['clicks'], 4)
-    tt['A_ev_rentflats_per_click'] = np.round(tt['A_events_rentflats'] / tt['clicks'], 4)
-    tt['A_ev_applications_per_click'] = np.round(tt['A_events_applications'] / tt['clicks'], 4)
-    tt['A_ad_per_click'] = np.round(tt['A_ads'] / tt['clicks'], 4)
-    tt['A_ipotek_per_click'] = np.round(tt['A_ipotek'] / tt['clicks'], 4)
-    tt['A_ct_per_click'] = np.round(tt['A_ct'] / tt['clicks'], 4)
-    tt = tt.copy()
-    # агрегаты: конверсии объем
-    tt['A_conv_agg_full'] = tt['A_events'] + (8 * tt['A_ads']) + (500 * tt['A_ipotek']) + (500 * tt['A_ct']) + (8 * tt['A_events_applications']) + (10 * tt['A_events_ss'])
-    tt['A_conv_agg_base'] = tt['A_events'] + (2 * tt['A_ads']) + (5 * tt['A_ipotek']) + (2 * tt['A_events_applications'])
-    tt['A_conv_agg_owners'] = tt['A_ads'] + tt['A_events_applications'] + tt['A_events_ss']
+        # агрегаты: конверсии стоимости
+        x['A_cp_agg_full'] = np.round(x['cost_rur'] / x['A_conv_agg_full'], 2)
+        x['A_cp_agg_base'] = np.round(x['cost_rur'] / x['A_conv_agg_base'], 2)
+        x['A_cp_agg_owners'] = np.round(x['cost_rur'] / x['A_conv_agg_owners'], 2)
 
-    # агрегаты: конверсии стоимости
-    tt['A_cp_agg_full'] = np.round(tt['cost_rur'] / tt['A_conv_agg_full'], 2)
-    tt['A_cp_agg_base'] = np.round(tt['cost_rur'] / tt['A_conv_agg_base'], 2)
-    tt['A_cp_agg_owners'] = np.round(tt['cost_rur'] / tt['A_conv_agg_owners'], 2)
-
-    # агрегаты: %конверсии на клик
-    tt['A_agg_full_per_click'] = np.round(tt['A_conv_agg_full'] / tt['clicks'], 4)
-    tt['A_agg_base_per_click'] = np.round(tt['A_conv_agg_base'] / tt['clicks'], 4)
-    tt['A_agg_owners_per_click'] = np.round(tt['A_conv_agg_owners'] / tt['clicks'], 4)
-
-    return tt.copy()
+        # агрегаты: %конверсии на клик
+        x['A_agg_full_per_click'] = np.round(x['A_conv_agg_full'] / x['clicks'], 4)
+        x['A_agg_base_per_click'] = np.round(x['A_conv_agg_base'] / x['clicks'], 4)
+        x['A_agg_owners_per_click'] = np.round(x['A_conv_agg_owners'] / x['clicks'], 4)
+        return x
+    tt = tt.apply(do_calculations, axis=1)
 
 
 def triad(item):
