@@ -338,9 +338,9 @@ class BasicDynamics:
         fig, axN = plt.subplots(len(lines), 1)
 
         for i, line in enumerate(lines):
-            axN[i].plot(line.index, line['values'], '-', color=line_colors[i])
-            axN[i].plot(line.index, line['rolling_mean'], '--', color='gray')
-            axN[i].plot(line.index, line['rolling_std'], ':', color='gray')
+            axN[i].plot(line.index, line['values'].to_numpy(), '-', color=line_colors[i])
+            axN[i].plot(line.index, line['rolling_mean'].to_numpy(), '--', color='gray')
+            axN[i].plot(line.index, line['rolling_std'].to_numpy(), ':', color='gray')
             axN[i].lines[1].set_alpha(0.5)
             axN[i].lines[2].set_alpha(0.5)
             locator = mdates.AutoDateLocator(minticks=0, maxticks=3)
