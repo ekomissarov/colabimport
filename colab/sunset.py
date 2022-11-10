@@ -39,10 +39,8 @@ def calc_additive_values(df):
 
 def calc_base_values(tt):
     def do_calculations(x):
-        print("DEBUG1", x)
-
         x['cost_rur'] = x['cost'] / 1000000
-        print("DEBUG2", x)
+        print("DEBUG2", x['cost_rur'], x['clicks'])
 
         x['cpc'] = np.round(x['cost_rur'] / x['clicks'], 2)
         x['cpm'] = np.round(x['cost_rur'] / (x['impressions']/1000), 2)
