@@ -39,7 +39,11 @@ def calc_additive_values(df):
 
 def calc_base_values(tt):
     def do_calculations(x):
+        print("DEBUG1", x)
+
         x['cost_rur'] = x['cost'] / 1000000
+        print("DEBUG2", x)
+
         x['cpc'] = np.round(x['cost_rur'] / x['clicks'], 2)
         x['cpm'] = np.round(x['cost_rur'] / (x['impressions']/1000), 2)
         x['cp_session'] = np.round(x['cost_rur'] / x['sessions'], 2)
@@ -47,7 +51,7 @@ def calc_base_values(tt):
         x['clicks_per_session'] = np.round(x['clicks'] / x['sessions'], 4)
 
         # конверсии объем
-        print("DEBUG", x)
+        print("DEBUG3", x)
         x['events'] = x['total_events'] + x['total_events_app']
         x['events_ss'] = x['uniq_ss_events'] + x['uniq_ss_events_app']
         x['events_fdv'] = x['total_events_fdv'] + x['total_events_app_fdv']
