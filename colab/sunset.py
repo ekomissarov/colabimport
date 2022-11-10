@@ -37,6 +37,13 @@ def calc_additive_values(df):
     return df
 
 
+def do_calculations_test(x):
+    print(x, type(x))
+    x['cost_rur'] = x['cost'] / 1000000
+    x['cpc'] = np.round(x['cost_rur'] / x['clicks'], 2)
+    return x
+
+
 def do_calculations_base_values(x):
     x['cost_rur'] = x['cost'] / 1000000
 
