@@ -505,7 +505,7 @@ def plot_compare_base(data, y_value, group_by_plot, plot_set,
     for j in y_value:
         plotdata = pd.DataFrame({i: tt.loc[i][j] for i in plot_set})
         for i in plotdata:
-            plt.plot(plotdata.index, plotdata[i].to_numpy(), label="{} {}: {}".format(j, group_by_plot, i))
+            plotdata[i].plot(label="{} {}: {}".format(j, group_by_plot, i))
 
     if ymax is not None:
         #plt.xlim(right=xmax)  # xmax is your value
