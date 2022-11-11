@@ -187,7 +187,6 @@ def calc_base_values_with_assisted(tt):
     tt['A_cpa_salesub'] = np.round(tt['cost_rur'] / tt['A_events_salesub'], 2)
     tt['A_cpa_rentsub'] = np.round(tt['cost_rur'] / tt['A_events_rentsub'], 2)
 
-    tt = pd.DataFrame()
     tt['A_cpa_saleflats'] = np.round(tt['cost_rur'] / tt['A_events_saleflats'], 2)
     tt['A_cpa_rentflats'] = np.round(tt['cost_rur'] / tt['A_events_rentflats'], 2)
     tt['A_cpa_applications'] = np.round(tt['cost_rur'] / tt['A_events_applications'], 2)
