@@ -38,89 +38,100 @@ def calc_additive_values(df):
 
 
 def calc_base_values(tt):
-    tt['cost_rur'] = tt['cost'] / 1000000
-    tt['cpc'] = np.round(tt['cost_rur'] / tt['clicks'], 2)
-    tt['cpm'] = np.round(tt['cost_rur'] / (tt['impressions']/1000), 2)
-    tt['cp_session'] = np.round(tt['cost_rur'] / tt['sessions'], 2)
-    tt['ctr'] = np.round(tt['clicks'] / tt['impressions'], 4)
-    tt['clicks_per_session'] = np.round(tt['clicks'] / tt['sessions'], 4)
-    tt = tt.copy()
+    new = pd.DataFrame()
+    new['cost_rur'] = tt['cost'] / 1000000
+    new['cpc'] = np.round(new['cost_rur'] / tt['clicks'], 2)
+    new['cpm'] = np.round(new['cost_rur'] / (tt['impressions']/1000), 2)
+    new['cp_session'] = np.round(new['cost_rur'] / tt['sessions'], 2)
+    new['ctr'] = np.round(tt['clicks'] / tt['impressions'], 4)
+    new['clicks_per_session'] = np.round(tt['clicks'] / tt['sessions'], 4)
+    tt = pd.concat([tt, new], axis=1)
 
     # конверсии объем
-    tt['events'] = tt['total_events'] + tt['total_events_app']
-    tt['events_ss'] = tt['uniq_ss_events'] + tt['uniq_ss_events_app']
-    tt['events_fdv'] = tt['total_events_fdv'] + tt['total_events_app_fdv']
-    tt['events_commercial'] = tt['total_events_commercial'] + tt['total_events_app_commercial']
-    tt['events_salesub'] = tt['total_events_salesub'] + tt['total_events_app_salesub']
-    tt['events_rentsub'] = tt['total_events_rentsub'] + tt['total_events_app_rentsub']
-    tt = tt.copy()
+    new = pd.DataFrame()
+    new['events'] = tt['total_events'] + tt['total_events_app']
+    new['events_ss'] = tt['uniq_ss_events'] + tt['uniq_ss_events_app']
+    new['events_fdv'] = tt['total_events_fdv'] + tt['total_events_app_fdv']
+    new['events_commercial'] = tt['total_events_commercial'] + tt['total_events_app_commercial']
+    new['events_salesub'] = tt['total_events_salesub'] + tt['total_events_app_salesub']
+    new['events_rentsub'] = tt['total_events_rentsub'] + tt['total_events_app_rentsub']
+    tt = pd.concat([tt, new], axis=1)
 
-    tt['events_saleflats'] = tt['total_events_saleflats'] + tt['total_events_app_saleflats']
-    tt['events_rentflats'] = tt['total_events_rentflats'] + tt['total_events_app_rentflats']
-    tt['events_applications'] = tt['total_applications_re_events'] + tt['total_applications_re_events_app']
-    tt['ads'] = tt['total_b2bevents'] + tt['total_b2bevents_app']
-    tt['ipotek'] = tt['uniq_ipotek_events'] + tt['uniq_ipotek_events_app']
-    tt['ct'] = tt['total_ct_events'] + tt['total_ct_events_app']
-    tt = tt.copy()
+    new = pd.DataFrame()
+    new['events_saleflats'] = tt['total_events_saleflats'] + tt['total_events_app_saleflats']
+    new['events_rentflats'] = tt['total_events_rentflats'] + tt['total_events_app_rentflats']
+    new['events_applications'] = tt['total_applications_re_events'] + tt['total_applications_re_events_app']
+    new['ads'] = tt['total_b2bevents'] + tt['total_b2bevents_app']
+    new['ipotek'] = tt['uniq_ipotek_events'] + tt['uniq_ipotek_events_app']
+    new['ct'] = tt['total_ct_events'] + tt['total_ct_events_app']
+    tt = pd.concat([tt, new], axis=1)
 
     # конверсии стоимости
-    tt['cpa'] = np.round(tt['cost_rur'] / tt['events'], 2)
-    tt['cpa_ss'] = np.round(tt['cost_rur'] / tt['events_ss'], 2)
-    tt['cpa_fdv'] = np.round(tt['cost_rur'] / tt['events_fdv'], 2)
-    tt['cpa_commercial'] = np.round(tt['cost_rur'] / tt['events_commercial'], 2)
-    tt['cpa_salesub'] = np.round(tt['cost_rur'] / tt['events_salesub'], 2)
-    tt['cpa_rentsub'] = np.round(tt['cost_rur'] / tt['events_rentsub'], 2)
-    tt = tt.copy()
+    new = pd.DataFrame()
+    new['cpa'] = np.round(tt['cost_rur'] / tt['events'], 2)
+    new['cpa_ss'] = np.round(tt['cost_rur'] / tt['events_ss'], 2)
+    new['cpa_fdv'] = np.round(tt['cost_rur'] / tt['events_fdv'], 2)
+    new['cpa_commercial'] = np.round(tt['cost_rur'] / tt['events_commercial'], 2)
+    new['cpa_salesub'] = np.round(tt['cost_rur'] / tt['events_salesub'], 2)
+    new['cpa_rentsub'] = np.round(tt['cost_rur'] / tt['events_rentsub'], 2)
+    tt = pd.concat([tt, new], axis=1)
 
-    tt['cpa_saleflats'] = np.round(tt['cost_rur'] / tt['events_saleflats'], 2)
-    tt['cpa_rentflats'] = np.round(tt['cost_rur'] / tt['events_rentflats'], 2)
-    tt['cpa_applications'] = np.round(tt['cost_rur'] / tt['events_applications'], 2)
-    tt['cpad'] = np.round(tt['cost_rur'] / tt['ads'], 2)
-    tt['cpa_ipotek'] = np.round(tt['cost_rur'] / tt['ipotek'], 2)
-    tt['cpa_ct'] = np.round(tt['cost_rur'] / tt['ct'], 2)
-    tt = tt.copy()
+    new = pd.DataFrame()
+    new['cpa_saleflats'] = np.round(tt['cost_rur'] / tt['events_saleflats'], 2)
+    new['cpa_rentflats'] = np.round(tt['cost_rur'] / tt['events_rentflats'], 2)
+    new['cpa_applications'] = np.round(tt['cost_rur'] / tt['events_applications'], 2)
+    new['cpad'] = np.round(tt['cost_rur'] / tt['ads'], 2)
+    new['cpa_ipotek'] = np.round(tt['cost_rur'] / tt['ipotek'], 2)
+    new['cpa_ct'] = np.round(tt['cost_rur'] / tt['ct'], 2)
+    tt = pd.concat([tt, new], axis=1)
 
     # %конверсии на клик
-    tt['ev_per_click'] = np.round(tt['events'] / tt['clicks'], 4)
-    tt['ev_ss_per_click'] = np.round(tt['events_ss'] / tt['clicks'], 4)
-    tt['ev_fdv_per_click'] = np.round(tt['events_fdv'] / tt['clicks'], 4)
-    tt['ev_commercial_per_click'] = np.round(tt['events_commercial'] / tt['clicks'], 4)
-    tt['ev_salesub_per_click'] = np.round(tt['events_salesub'] / tt['clicks'], 4)
-    tt['ev_rentsub_per_click'] = np.round(tt['events_rentsub'] / tt['clicks'], 4)
-    tt = tt.copy()
+    new = pd.DataFrame()
+    new['ev_per_click'] = np.round(tt['events'] / tt['clicks'], 4)
+    new['ev_ss_per_click'] = np.round(tt['events_ss'] / tt['clicks'], 4)
+    new['ev_fdv_per_click'] = np.round(tt['events_fdv'] / tt['clicks'], 4)
+    new['ev_commercial_per_click'] = np.round(tt['events_commercial'] / tt['clicks'], 4)
+    new['ev_salesub_per_click'] = np.round(tt['events_salesub'] / tt['clicks'], 4)
+    new['ev_rentsub_per_click'] = np.round(tt['events_rentsub'] / tt['clicks'], 4)
+    tt = pd.concat([tt, new], axis=1)
 
-    tt['ev_saleflats_per_click'] = np.round(tt['events_saleflats'] / tt['clicks'], 4)
-    tt['ev_rentflats_per_click'] = np.round(tt['events_rentflats'] / tt['clicks'], 4)
-    tt['ev_applications_per_click'] = np.round(tt['events_applications'] / tt['clicks'], 4)
-    tt['ad_per_click'] = np.round(tt['ads'] / tt['clicks'], 4)
-    tt['ipotek_per_click'] = np.round(tt['ipotek'] / tt['clicks'], 4)
-    tt['ct_per_click'] = np.round(tt['ct'] / tt['clicks'], 4)
-    tt = tt.copy()
+    new = pd.DataFrame()
+    new['ev_saleflats_per_click'] = np.round(tt['events_saleflats'] / tt['clicks'], 4)
+    new['ev_rentflats_per_click'] = np.round(tt['events_rentflats'] / tt['clicks'], 4)
+    new['ev_applications_per_click'] = np.round(tt['events_applications'] / tt['clicks'], 4)
+    new['ad_per_click'] = np.round(tt['ads'] / tt['clicks'], 4)
+    new['ipotek_per_click'] = np.round(tt['ipotek'] / tt['clicks'], 4)
+    new['ct_per_click'] = np.round(tt['ct'] / tt['clicks'], 4)
+    tt = pd.concat([tt, new], axis=1)
 
     # %ассоциированные конверсии на клик
-    tt['assisted_ev_per_click'] = np.round(tt['assisted_conv_phones'] / tt['clicks'], 4)
-    tt['assisted_ss_per_click'] = np.round(tt['assisted_conv_ss'] / tt['clicks'], 4)
-    tt['assisted_reappl_per_click'] = np.round(tt['assisted_conv_reappl'] / tt['clicks'], 4)
-    tt['assisted_ad_per_click'] = np.round(tt['assisted_conv_ads'] / tt['clicks'], 4)
-    tt['assisted_ipotek_per_click'] = np.round(tt['assisted_conv_mortgage'] / tt['clicks'], 4)
-    tt['assisted_ct_per_click'] = np.round(tt['assisted_conv_ct'] / tt['clicks'], 4)
-    tt = tt.copy()
+    new = pd.DataFrame()
+    new['assisted_ev_per_click'] = np.round(tt['assisted_conv_phones'] / tt['clicks'], 4)
+    new['assisted_ss_per_click'] = np.round(tt['assisted_conv_ss'] / tt['clicks'], 4)
+    new['assisted_reappl_per_click'] = np.round(tt['assisted_conv_reappl'] / tt['clicks'], 4)
+    new['assisted_ad_per_click'] = np.round(tt['assisted_conv_ads'] / tt['clicks'], 4)
+    new['assisted_ipotek_per_click'] = np.round(tt['assisted_conv_mortgage'] / tt['clicks'], 4)
+    new['assisted_ct_per_click'] = np.round(tt['assisted_conv_ct'] / tt['clicks'], 4)
+    tt = pd.concat([tt, new], axis=1)
 
     # агрегаты: конверсии объем
-    tt['conv_agg_full'] = tt['events'] + (8 * tt['ads']) + (500 * tt['ipotek']) + (500 * tt['ct']) + (8 * tt['events_applications']) + (10 * tt['events_ss'])
-    tt['conv_agg_base'] = tt['events'] + (2 * tt['ads']) + (5 * tt['ipotek']) + (2 * tt['events_applications'])
-    tt['conv_agg_owners'] = tt['ads'] + tt['events_applications'] + tt['events_ss']
+    new = pd.DataFrame()
+    new['conv_agg_full'] = tt['events'] + (8 * tt['ads']) + (500 * tt['ipotek']) + (500 * tt['ct']) + (8 * tt['events_applications']) + (10 * tt['events_ss'])
+    new['conv_agg_base'] = tt['events'] + (2 * tt['ads']) + (5 * tt['ipotek']) + (2 * tt['events_applications'])
+    new['conv_agg_owners'] = tt['ads'] + tt['events_applications'] + tt['events_ss']
 
     # агрегаты: конверсии стоимости
-    tt['cp_agg_full'] = np.round(tt['cost_rur'] / tt['conv_agg_full'], 2)
-    tt['cp_agg_base'] = np.round(tt['cost_rur'] / tt['conv_agg_base'], 2)
-    tt['cp_agg_owners'] = np.round(tt['cost_rur'] / tt['conv_agg_owners'], 2)
-    tt = tt.copy()
+    new['cp_agg_full'] = np.round(tt['cost_rur'] / tt['conv_agg_full'], 2)
+    new['cp_agg_base'] = np.round(tt['cost_rur'] / tt['conv_agg_base'], 2)
+    new['cp_agg_owners'] = np.round(tt['cost_rur'] / tt['conv_agg_owners'], 2)
+    tt = pd.concat([tt, new], axis=1)
 
     # агрегаты: %конверсии на клик
-    tt['agg_full_per_click'] = np.round(tt['conv_agg_full'] / tt['clicks'], 4)
-    tt['agg_base_per_click'] = np.round(tt['conv_agg_base'] / tt['clicks'], 4)
-    tt['agg_owners_per_click'] = np.round(tt['conv_agg_owners'] / tt['clicks'], 4)
+    new = pd.DataFrame()
+    new['agg_full_per_click'] = np.round(tt['conv_agg_full'] / tt['clicks'], 4)
+    new['agg_base_per_click'] = np.round(tt['conv_agg_base'] / tt['clicks'], 4)
+    new['agg_owners_per_click'] = np.round(tt['conv_agg_owners'] / tt['clicks'], 4)
+    tt = pd.concat([tt, new], axis=1)
 
     ##########################################
     tt['cost_rur'] = tt['cost_rur'].astype(np.int64)
