@@ -428,6 +428,8 @@ def plot_avg_position_yandex(df, region_filters=None, campaign_filters=None, ver
                                     'avg_impression_pos': 'sum', 'avg_click_pos': 'sum',
                                     'avg_traffic_vol': 'sum'})
     tt = tt.apply(pd.to_numeric)  # Decimal to float
+
+    tt = concat_empty_columns(tt, ["impr_pos", "click_pos", "traffic_vol"])
     tt['impr_pos'] = tt['avg_impression_pos'] / tt['impressions']
     tt['click_pos'] = tt['avg_click_pos'] / tt['clicks']
     tt['traffic_vol'] = tt['avg_traffic_vol'] / tt['impressions']
@@ -457,6 +459,8 @@ def plot_top_is_position_google(df, region_filters=None, campaign_filters=None, 
     tt = df.groupby(grp).aggregate({'search_abs_top_is': 'sum', 'search_top_is': 'sum',
                                     'eligible_impressions': 'sum'})
     tt = tt.apply(pd.to_numeric)  # Decimal to float
+
+    tt = concat_empty_columns(tt, ["top_is", "abstop_is", ])
     tt['top_is'] = tt['search_top_is'] / tt['eligible_impressions']
     tt['abstop_is'] = tt['search_abs_top_is'] / tt['eligible_impressions']
 
@@ -495,10 +499,12 @@ def plot_compare_base(data, y_value, group_by_plot, plot_set,
     tt = calc_base_values(tt)
     tt = calc_base_values_with_assisted(tt)
     if system_filters and system_filters[0] == "y" and len(system_filters) == 1:
+        tt = concat_empty_columns(tt, ["impr_pos", "click_pos", "traffic_vol"])
         tt['impr_pos'] = tt['avg_impression_pos'] / tt['impressions']
         tt['click_pos'] = tt['avg_click_pos'] / tt['clicks']
         tt['traffic_vol'] = tt['avg_traffic_vol'] / tt['impressions']
     elif system_filters and system_filters[0] == "g" and len(system_filters) == 1:
+        tt = concat_empty_columns(tt, ["top_is", "abstop_is", ])
         tt['top_is'] = tt['search_top_is'] / tt['eligible_impressions']
         tt['abstop_is'] = tt['search_abs_top_is'] / tt['eligible_impressions']
 
