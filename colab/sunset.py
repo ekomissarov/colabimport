@@ -46,7 +46,7 @@ def calc_base_values(tt):
         'cpa', 'cpa_ss', 'cpa_fdv', 'cpa_commercial', 'cpa_salesub', 'cpa_rentsub',
         'cpa_saleflats', 'cpa_rentflats', 'cpa_applications', 'cpad', 'cpa_ipotek', 'cpa_ct',
 
-        'ev_per_click', 'ev_ss_per_click', 'ev_fdv_per_click', 'ev_commercial_per_click' 'ev_salesub_per_click', 'ev_rentsub_per_click',
+        'ev_per_click', 'ev_ss_per_click', 'ev_fdv_per_click', 'ev_commercial_per_click', 'ev_salesub_per_click', 'ev_rentsub_per_click',
         'ev_saleflats_per_click', 'ev_rentflats_per_click', 'ev_applications_per_click', 'ad_per_click', 'ipotek_per_click', 'ct_per_click',
 
         'assisted_ev_per_click', 'assisted_ss_per_click', 'assisted_reappl_per_click', 'assisted_ad_per_click',
