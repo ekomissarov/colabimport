@@ -203,9 +203,9 @@ def calc_base_values_with_assisted(tt):
     new['A_conv_agg_owners'] = tt['A_ads'] + tt['A_events_applications'] + tt['A_events_ss']
 
     # агрегаты: конверсии стоимости
-    tt['A_cp_agg_full'] = np.round(tt['cost_rur'] / new['A_conv_agg_full'], 2)
-    tt['A_cp_agg_base'] = np.round(tt['cost_rur'] / new['A_conv_agg_base'], 2)
-    tt['A_cp_agg_owners'] = np.round(tt['cost_rur'] / new['A_conv_agg_owners'], 2)
+    new['A_cp_agg_full'] = np.round(tt['cost_rur'] / new['A_conv_agg_full'], 2)
+    new['A_cp_agg_base'] = np.round(tt['cost_rur'] / new['A_conv_agg_base'], 2)
+    new['A_cp_agg_owners'] = np.round(tt['cost_rur'] / new['A_conv_agg_owners'], 2)
     tt = pd.concat([tt, new], axis=1)
 
     # агрегаты: %конверсии на клик
