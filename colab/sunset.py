@@ -121,9 +121,9 @@ def calc_base_values(tt):
     new['conv_agg_owners'] = tt['ads'] + tt['events_applications'] + tt['events_ss']
 
     # агрегаты: конверсии стоимости
-    new['cp_agg_full'] = np.round(tt['cost_rur'] / tt['conv_agg_full'], 2)
-    new['cp_agg_base'] = np.round(tt['cost_rur'] / tt['conv_agg_base'], 2)
-    new['cp_agg_owners'] = np.round(tt['cost_rur'] / tt['conv_agg_owners'], 2)
+    new['cp_agg_full'] = np.round(tt['cost_rur'] / new['conv_agg_full'], 2)
+    new['cp_agg_base'] = np.round(tt['cost_rur'] / new['conv_agg_base'], 2)
+    new['cp_agg_owners'] = np.round(tt['cost_rur'] / new['conv_agg_owners'], 2)
     tt = pd.concat([tt, new], axis=1)
 
     # агрегаты: %конверсии на клик
