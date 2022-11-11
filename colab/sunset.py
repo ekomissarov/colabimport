@@ -35,8 +35,10 @@ def calc_additive_values(df):
         df["search_top_is"] = np.round(df["search_top_is"] * df["eligible_impressions"] / 100, 4)
 
     if 'impr_top_percent' in df.columns:
+        df = concat_empty_columns(df, ["impr_top_percent",])
         df["impr_top_percent"] = np.round(df["impr_top_percent"] * df["impressions"] / 100, 4)
     if 'impr_abs_top_percent' in df.columns:
+        df = concat_empty_columns(df, ["impr_abs_top_percent",])
         df["impr_abs_top_percent"] = np.round(df["impr_abs_top_percent"] * df["impressions"] / 100, 4)
 
     # https://yandex.ru/dev/direct/doc/reports/report-format-docpage/
