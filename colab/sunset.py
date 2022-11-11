@@ -526,18 +526,24 @@ def plot_compare_base(data, y_value, group_by_plot, plot_set,
 
 
 def resample_df(df, dimension="campaignname", resample_period="M"):
+    if type(dimension) is not list:
+        dimension = [dimension, ]
+
     df['date'] = pd.to_datetime(df['date'])
     result = pd.DataFrame()
-    for i in df[dimension].unique():
-        tmp = df[df[dimension] == i].copy()
-        tmp = tmp.groupby(['date']).sum()
-        tmp = tmp.resample(resample_period).sum().reset_index()
-        tmp[dimension] = i
-        result = pd.concat([result, tmp])
+    for labels, data in df.groupby(dimension):
+        data = data.groupby(['date']).sum().resample("M").sum().reset_index()
+        if type(labels) is not tuple:
+            labels = [labels, ]
+        for col, lbl in zip(dimension, labels):
+            data[col] = lbl
+        result = pd.concat([result, data])
 
+    result = result.reset_index(drop=True)
     result = calc_base_values(result)
     result = calc_base_values_with_assisted(result)
     return result
+
 
 def cell_dimension(df, metrics, dimension = 'vertical_class', exclude_graphs = None, vert_lines=None):
     """
