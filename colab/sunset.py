@@ -38,7 +38,7 @@ def calc_additive_values(df):
 
 
 def calc_base_values(tt):
-    new = pd.DataFrame(columns=[
+    cols = [
         'cost_rur', 'cpc', 'cpm', 'cp_session', 'ctr', 'clicks_per_session',
         'events', 'events_ss', 'events_fdv', 'events_commercial', 'events_salesub', 'events_rentsub',
         'events_saleflats', 'events_rentflats', 'events_applications', 'ads', 'ipotek', 'ct',
@@ -46,18 +46,21 @@ def calc_base_values(tt):
         'cpa', 'cpa_ss', 'cpa_fdv', 'cpa_commercial', 'cpa_salesub', 'cpa_rentsub',
         'cpa_saleflats', 'cpa_rentflats', 'cpa_applications', 'cpad', 'cpa_ipotek', 'cpa_ct',
 
-        'ev_per_click', 'ev_ss_per_click', 'ev_fdv_per_click', 'ev_commercial_per_click', 'ev_salesub_per_click', 'ev_rentsub_per_click',
-        'ev_saleflats_per_click', 'ev_rentflats_per_click', 'ev_applications_per_click', 'ad_per_click', 'ipotek_per_click', 'ct_per_click',
+        'ev_per_click', 'ev_ss_per_click', 'ev_fdv_per_click', 'ev_commercial_per_click', 'ev_salesub_per_click',
+        'ev_rentsub_per_click',
+        'ev_saleflats_per_click', 'ev_rentflats_per_click', 'ev_applications_per_click', 'ad_per_click',
+        'ipotek_per_click', 'ct_per_click',
 
         'assisted_ev_per_click', 'assisted_ss_per_click', 'assisted_reappl_per_click', 'assisted_ad_per_click',
         'assisted_ipotek_per_click', 'assisted_ct_per_click',
 
         'conv_agg_full', 'conv_agg_base', 'conv_agg_owners', 'cp_agg_full', 'cp_agg_base', 'cp_agg_owners',
-        'agg_full_per_click', 'agg_base_per_click',  'agg_owners_per_click'
-
-
-    ])
-    tt = pd.concat([tt, new], axis=1)
+        'agg_full_per_click', 'agg_base_per_click', 'agg_owners_per_click'
+    ]
+    diff = set(cols) - set(tt.columns)
+    if diff:
+        new = pd.DataFrame(columns=list(diff))
+        tt = pd.concat([tt, new], axis=1)
 
     tt['cost_rur'] = tt['cost'] / 1000000
     tt['cpc'] = np.round(tt['cost_rur'] / tt['clicks'], 2)
