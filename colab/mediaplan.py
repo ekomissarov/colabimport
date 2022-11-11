@@ -1,6 +1,13 @@
 import re
 import pandas as pd
-from sunset import concat_empty_columns
+
+
+def concat_empty_columns(tt, cols):
+    diff = set(cols) - set(tt.columns)
+    if diff:
+        new = pd.DataFrame(columns=list(diff))
+        tt = pd.concat([tt, new], axis=1)
+    return tt
 
 
 class MP:
