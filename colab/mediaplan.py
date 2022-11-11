@@ -1,5 +1,6 @@
 import re
 import pandas as pd
+from sunset import concat_empty_columns
 
 
 class MP:
@@ -2686,6 +2687,9 @@ class SearchOrNetwork:
 
 
 def all_classificators_join(data):
+    data = concat_empty_columns(data, ["region"])
+    data["region"] = data["campaignname"].str.split("_").str.get(1)
+
     for classificator in (MP(), GroupsRegions(), GroupsVerticalCommon(), SearchOrNetwork(),):
         data = classificator.join_classificator(data)
     return data

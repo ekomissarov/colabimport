@@ -10,6 +10,14 @@ def scale_plot_size(x, y):
     mpl.rcParams['figure.figsize'] = [x, y]
 
 
+def concat_empty_columns(tt, cols):
+    diff = set(cols) - set(tt.columns)
+    if diff:
+        new = pd.DataFrame(columns=list(diff))
+        tt = pd.concat([tt, new], axis=1)
+    return tt
+
+
 def calc_additive_values(df):
     # приводим метрики к аддитивным величинам для расчетов взвешенным значениям сводных таблицах
     # https://support.google.com/google-ads/answer/7501826?hl=en
@@ -21,6 +29,7 @@ def calc_additive_values(df):
             df[i] = df[i].apply(pd.to_numeric)
 
     if 'search_impression_share' in df.columns:
+        df = concat_empty_columns(df, ["eligible_impressions"])
         df["eligible_impressions"] = np.round(df["impressions"]/(df['search_impression_share'] / 100), 4)
         df["search_abs_top_is"] = np.round(df["search_abs_top_is"] * df["eligible_impressions"] / 100, 4)
         df["search_top_is"] = np.round(df["search_top_is"] * df["eligible_impressions"] / 100, 4)
@@ -38,7 +47,7 @@ def calc_additive_values(df):
 
 
 def calc_base_values(tt):
-    cols = [
+    tt = concat_empty_columns(tt, [
         'cost_rur', 'cpc', 'cpm', 'cp_session', 'ctr', 'clicks_per_session',
         'events', 'events_ss', 'events_fdv', 'events_commercial', 'events_salesub', 'events_rentsub',
         'events_saleflats', 'events_rentflats', 'events_applications', 'ads', 'ipotek', 'ct',
@@ -56,11 +65,7 @@ def calc_base_values(tt):
 
         'conv_agg_full', 'conv_agg_base', 'conv_agg_owners', 'cp_agg_full', 'cp_agg_base', 'cp_agg_owners',
         'agg_full_per_click', 'agg_base_per_click', 'agg_owners_per_click'
-    ]
-    diff = set(cols) - set(tt.columns)
-    if diff:
-        new = pd.DataFrame(columns=list(diff))
-        tt = pd.concat([tt, new], axis=1)
+    ])
 
     tt['cost_rur'] = tt['cost'] / 1000000
     tt['cpc'] = np.round(tt['cost_rur'] / tt['clicks'], 2)
@@ -143,7 +148,7 @@ def calc_base_values(tt):
 
 
 def calc_base_values_with_assisted(tt):
-    cols = [
+    tt = concat_empty_columns(tt, [
         'A_events', 'A_events_ss', 'A_events_fdv', 'A_events_commercial', 'A_events_salesub', 'A_events_rentsub',
         'A_events_saleflats', 'A_events_rentflats', 'A_events_applications', 'A_ads', 'A_ipotek', 'A_ct',
 
@@ -157,12 +162,7 @@ def calc_base_values_with_assisted(tt):
 
         'A_conv_agg_full', 'A_conv_agg_base', 'A_conv_agg_owners', 'A_cp_agg_full', 'A_cp_agg_base', 'A_cp_agg_owners',
         'A_agg_full_per_click', 'A_agg_base_per_click', 'A_agg_owners_per_click'
-    ]
-    diff = set(cols) - set(tt.columns)
-    if diff:
-        new = pd.DataFrame(columns=list(diff))
-        tt = pd.concat([tt, new], axis=1)
-
+    ])
 
     # конверсии объем
     tt['A_events'] = tt['total_events'] + tt['total_events_app'] + tt['assisted_conv_phones']
