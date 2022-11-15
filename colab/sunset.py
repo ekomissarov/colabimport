@@ -51,13 +51,13 @@ def calc_additive_values(df):
 def calc_base_values(tt):
     tt = concat_empty_columns(tt, [
         'cost_rur', 'cpc', 'cpm', 'cp_session', 'ctr', 'clicks_per_session',
-        'events', 'events_ss', 'events_fdv', 'events_commercial', 'events_salesub', 'events_rentsub',
+        'events', 'chats', 'events_ss', 'events_fdv', 'events_commercial', 'events_salesub', 'events_rentsub',
         'events_saleflats', 'events_rentflats', 'events_applications', 'ads', 'ipotek', 'ct',
 
-        'cpa', 'cpa_ss', 'cpa_fdv', 'cpa_commercial', 'cpa_salesub', 'cpa_rentsub',
+        'cpa', 'cp_chat', 'cpa_ss', 'cpa_fdv', 'cpa_commercial', 'cpa_salesub', 'cpa_rentsub',
         'cpa_saleflats', 'cpa_rentflats', 'cpa_applications', 'cpad', 'cpa_ipotek', 'cpa_ct',
 
-        'ev_per_click', 'ev_ss_per_click', 'ev_fdv_per_click', 'ev_commercial_per_click', 'ev_salesub_per_click',
+        'ev_per_click', 'chats_per_click', 'ev_ss_per_click', 'ev_fdv_per_click', 'ev_commercial_per_click', 'ev_salesub_per_click',
         'ev_rentsub_per_click',
         'ev_saleflats_per_click', 'ev_rentflats_per_click', 'ev_applications_per_click', 'ad_per_click',
         'ipotek_per_click', 'ct_per_click',
@@ -78,6 +78,7 @@ def calc_base_values(tt):
 
     # конверсии объем
     tt['events'] = tt['total_events'] + tt['total_events_app']
+    tt['chats'] = tt['total_chats'] + tt['total_chats_app']
     tt['events_ss'] = tt['uniq_ss_events'] + tt['uniq_ss_events_app']
     tt['events_fdv'] = tt['total_events_fdv'] + tt['total_events_app_fdv']
     tt['events_commercial'] = tt['total_events_commercial'] + tt['total_events_app_commercial']
@@ -93,6 +94,7 @@ def calc_base_values(tt):
 
     # конверсии стоимости
     tt['cpa'] = np.round(tt['cost_rur'] / tt['events'], 2)
+    tt['cp_chat'] = np.round(tt['cost_rur'] / tt['events'], 2)
     tt['cpa_ss'] = np.round(tt['cost_rur'] / tt['events_ss'], 2)
     tt['cpa_fdv'] = np.round(tt['cost_rur'] / tt['events_fdv'], 2)
     tt['cpa_commercial'] = np.round(tt['cost_rur'] / tt['events_commercial'], 2)
@@ -108,6 +110,7 @@ def calc_base_values(tt):
 
     # %конверсии на клик
     tt['ev_per_click'] = np.round(tt['events'] / tt['clicks'], 4)
+    tt['chats_per_click'] = np.round(tt['chats'] / tt['clicks'], 4)
     tt['ev_ss_per_click'] = np.round(tt['events_ss'] / tt['clicks'], 4)
     tt['ev_fdv_per_click'] = np.round(tt['events_fdv'] / tt['clicks'], 4)
     tt['ev_commercial_per_click'] = np.round(tt['events_commercial'] / tt['clicks'], 4)
@@ -273,7 +276,7 @@ class BasicDynamics:
         self.plot_ev_per_click = plot_ev_per_click
         self.vert_lines = vert_lines
         if what is None:
-            self.what = {"events", "events_ss", "events_fdv", "ads", "ipotek", "ct", "common",
+            self.what = {"events", "chats", "events_ss", "events_fdv", "ads", "ipotek", "ct", "common",
                     "events_commercial", "events_salesub", "events_rentsub", "events_saleflats", "events_rentflats",
                     "events_applications",
                     "conv_agg_full", "conv_agg_owners",
@@ -283,6 +286,9 @@ class BasicDynamics:
         if "events" in self.what:
             self._plt_basic_dyn(ev="events", cpa="cpa", ev_per_click="ev_per_click",
                                 item_labels=["phone events", "cpa", "conv%"])
+        if "chats" in self.what:
+            self._plt_basic_dyn(ev="chats", cpa="cp_chat", ev_per_click="chats_per_click",
+                                item_labels=["chats", "cpa", "conv%"])
         if "events_ss" in self.what:
             self._plt_basic_dyn(ev="events_ss", cpa="cpa_ss", ev_per_click="ev_ss_per_click",
                                 item_labels=["ss uniq events", "cpa_ss", "conv%"])
