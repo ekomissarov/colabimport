@@ -94,7 +94,7 @@ def calc_base_values(tt):
 
     # конверсии стоимости
     tt['cpa'] = np.round(tt['cost_rur'] / tt['events'], 2)
-    tt['cp_chat'] = np.round(tt['cost_rur'] / tt['events'], 2)
+    tt['cp_chat'] = np.round(tt['cost_rur'] / tt['chats'], 2)
     tt['cpa_ss'] = np.round(tt['cost_rur'] / tt['events_ss'], 2)
     tt['cpa_fdv'] = np.round(tt['cost_rur'] / tt['events_fdv'], 2)
     tt['cpa_commercial'] = np.round(tt['cost_rur'] / tt['events_commercial'], 2)
