@@ -27,6 +27,9 @@ class MP:
                                                                  "b2c_spb_rtg_findagent_mix_network_specproj",
                                                                  "b2c_spb_rtg_findagent_specproj_mix_network"]},
         {"descr": 'special_project_bdg', "fltrs": ["_specproj"]},
+        {"descr": 'testa_yndxbeta_bdg', "fltrs": ["_yndxbeta1"]},
+        {"descr": 'testb_yndxbeta_bdg', "fltrs": ["_yndxbeta2"]},
+        {"descr": 'special_project_bdg', "fltrs": ["_specproj"]},
 
         {"descr": 'media_banner_bdg', "fltrs": ["_media_", "_banner_"]},
 
