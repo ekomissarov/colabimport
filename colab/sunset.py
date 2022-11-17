@@ -65,8 +65,8 @@ def calc_base_values(tt):
         'assisted_ev_per_click', 'assisted_ss_per_click', 'assisted_reappl_per_click', 'assisted_ad_per_click',
         'assisted_ipotek_per_click', 'assisted_ct_per_click',
 
-        'conv_agg_full', 'conv_agg_base', 'conv_agg_owners', 'cp_agg_full', 'cp_agg_base', 'cp_agg_owners',
-        'agg_full_per_click', 'agg_base_per_click', 'agg_owners_per_click'
+        'conv_agg_full', 'ev_contacts', 'conv_agg_owners', 'cp_agg_full', 'cp_contact', 'cp_agg_owners',
+        'agg_full_per_click', 'contacts_per_click', 'agg_owners_per_click'
     ])
 
     tt['cost_rur'] = tt['cost'] / 1000000
@@ -134,17 +134,17 @@ def calc_base_values(tt):
 
     # агрегаты: конверсии объем
     tt['conv_agg_full'] = tt['events'] + (8 * tt['ads']) + (500 * tt['ipotek']) + (500 * tt['ct']) + (8 * tt['events_applications']) + (10 * tt['events_ss'])
-    tt['conv_agg_base'] = tt['events'] + (2 * tt['ads']) + (5 * tt['ipotek']) + (2 * tt['events_applications'])
+    tt['ev_contacts'] = tt['events'] + tt['chats']
     tt['conv_agg_owners'] = tt['ads'] + tt['events_applications'] + tt['events_ss']
 
     # агрегаты: конверсии стоимости
     tt['cp_agg_full'] = np.round(tt['cost_rur'] / tt['conv_agg_full'], 2)
-    tt['cp_agg_base'] = np.round(tt['cost_rur'] / tt['conv_agg_base'], 2)
+    tt['cp_contact'] = np.round(tt['cost_rur'] / tt['ev_contacts'], 2)
     tt['cp_agg_owners'] = np.round(tt['cost_rur'] / tt['conv_agg_owners'], 2)
 
     # агрегаты: %конверсии на клик
     tt['agg_full_per_click'] = np.round(tt['conv_agg_full'] / tt['clicks'], 4)
-    tt['agg_base_per_click'] = np.round(tt['conv_agg_base'] / tt['clicks'], 4)
+    tt['contacts_per_click'] = np.round(tt['ev_contacts'] / tt['clicks'], 4)
     tt['agg_owners_per_click'] = np.round(tt['conv_agg_owners'] / tt['clicks'], 4)
 
     ##########################################
@@ -165,8 +165,8 @@ def calc_base_values_with_assisted(tt):
         'A_ev_saleflats_per_click', 'A_ev_rentflats_per_click', 'A_ev_applications_per_click', 'A_ad_per_click',
         'A_ipotek_per_click', 'A_ct_per_click',
 
-        'A_conv_agg_full', 'A_conv_agg_base', 'A_conv_agg_owners', 'A_cp_agg_full', 'A_cp_agg_base', 'A_cp_agg_owners',
-        'A_agg_full_per_click', 'A_agg_base_per_click', 'A_agg_owners_per_click'
+        'A_conv_agg_full', 'A_ev_contacts', 'A_conv_agg_owners', 'A_cp_agg_full', 'cp_contact', 'A_cp_agg_owners',
+        'A_agg_full_per_click', 'contacts_per_click', 'A_agg_owners_per_click'
     ])
 
     # конверсии объем
@@ -216,17 +216,17 @@ def calc_base_values_with_assisted(tt):
 
     # агрегаты: конверсии объем
     tt['A_conv_agg_full'] = tt['A_events'] + (8 * tt['A_ads']) + (500 * tt['A_ipotek']) + (500 * tt['A_ct']) + (8 * tt['A_events_applications']) + (10 * tt['A_events_ss'])
-    tt['A_conv_agg_base'] = tt['A_events'] + (2 * tt['A_ads']) + (5 * tt['A_ipotek']) + (2 * tt['A_events_applications'])
+    tt['A_ev_contacts'] = tt['A_events'] + tt['chats']  # chats have no assisted convs now
     tt['A_conv_agg_owners'] = tt['A_ads'] + tt['A_events_applications'] + tt['A_events_ss']
 
     # агрегаты: конверсии стоимости
     tt['A_cp_agg_full'] = np.round(tt['cost_rur'] / tt['A_conv_agg_full'], 2)
-    tt['A_cp_agg_base'] = np.round(tt['cost_rur'] / tt['A_conv_agg_base'], 2)
+    tt['cp_contact'] = np.round(tt['cost_rur'] / tt['A_ev_contacts'], 2)
     tt['A_cp_agg_owners'] = np.round(tt['cost_rur'] / tt['A_conv_agg_owners'], 2)
 
     # агрегаты: %конверсии на клик
     tt['A_agg_full_per_click'] = np.round(tt['A_conv_agg_full'] / tt['clicks'], 4)
-    tt['A_agg_base_per_click'] = np.round(tt['A_conv_agg_base'] / tt['clicks'], 4)
+    tt['contacts_per_click'] = np.round(tt['A_ev_contacts'] / tt['clicks'], 4)
     tt['A_agg_owners_per_click'] = np.round(tt['A_conv_agg_owners'] / tt['clicks'], 4)
 
     return tt.copy()
@@ -256,7 +256,7 @@ def triad(item):
         {"vol": "assisted_conv_ct", "conv": "", "cost_per": "assisted_ct_per_click"},
 
         {"vol": "conv_agg_full", "conv": "agg_full_per_click", "cost_per": "cp_agg_full"},
-        {"vol": "conv_agg_base", "conv": "agg_base_per_click", "cost_per": "cp_agg_base"},
+        {"vol": "ev_contacts", "conv": "contacts_per_click", "cost_per": "cp_contact"},
         {"vol": "conv_agg_owners", "conv": "agg_owners_per_click", "cost_per": "cp_agg_owners"},
     ]
     a_flag = ""
