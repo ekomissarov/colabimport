@@ -2595,6 +2595,7 @@ class GroupsRegions:
     filter_column = "campaignname"
     classificator_column_name = "region_class"
     tags = [
+        {"descr": 'abroad', "fltrs": ["_abroad_", ]},
         {"descr": 'msk', "fltrs": ["_msk_", "_mo_", "_dmo_", "_bmo_", "_mskmo_", "_cap_"]},
         {"descr": 'spb', "fltrs": ["_spb_", "_spblo_"]},
         {"descr": 'top3_regs', "fltrs": ["_ekb_", "_novosibirsk_", "_omsk_"]},
