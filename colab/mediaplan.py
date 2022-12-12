@@ -829,6 +829,14 @@ class MP:
         {"descr": 'novosibirsk_brand_network_bdg', "fltrs": ["b2c_novosibirsk_brand_main_all_mix_network", ]},
         {"descr": 'omskcity_brand_network_bdg', "fltrs": ["b2c_omsk_brand_main_all_mix_network", ]},
         {"descr": 'krasnodar_brand_network_bdg', "fltrs": ["b2c_krasnodar_brand_main_all_mix_network", ]},
+
+        {"descr": 'msk_compet_network_bdg', "fltrs": ["b2c_(mo|msk)_compet_main_all_mix_network", ]},
+        {"descr": 'spb_compet_network_bdg', "fltrs": ["b2c_spb_compet_main_all_mix_network", ]},
+        {"descr": 'ekb_compet_network_bdg', "fltrs": ["b2c_ekb_compet_main_all_mix_network", ]},
+        {"descr": 'novosibirsk_compet_network_bdg', "fltrs": ["b2c_novosibirsk_compet_main_all_mix_network", ]},
+        {"descr": 'omskcity_compet_network_bdg', "fltrs": ["b2c_omsk_compet_main_all_mix_network", ]},
+        {"descr": 'krasnodar_compet_network_bdg', "fltrs": ["b2c_krasnodar_compet_main_all_mix_network", ]},
+
         {"descr": 'regs_brand_network_bdg', "fltrs": [
                                                        "b2c_kazan_brand_main_all_mix_network",
                                                        "b2c_nn_brand_main_all_mix_network",
