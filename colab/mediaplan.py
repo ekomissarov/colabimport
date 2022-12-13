@@ -399,6 +399,16 @@ class MP:
         ######################################################################################
         # Пакет: brand_cian ##################################################################
         ######################################################################################
+        {"descr": 'msk_brand_cian_nov_bdg', "fltrs": ["b2c_msk_brand_cian_nov_mix_search", ]},
+        {"descr": 'spb_brand_cian_nov_bdg', "fltrs": ["b2c_spb_brand_cian_nov_mix_search", ]},
+        {"descr": 'ekb_brand_cian_nov_bdg', "fltrs": ["b2c_ekb_brand_cian_nov_mix_search", ]},
+        {"descr": 'novosibirsk_brand_cian_nov_bdg', "fltrs": ["b2c_novosibirsk_brand_cian_nov_mix_search", ]},
+        {"descr": 'omskcity_brand_cian_nov_bdg', "fltrs": ["b2c_omsk_brand_cian_nov_mix_search", ]},
+        {"descr": 'krasnodar_brand_cian_nov_bdg', "fltrs": ["b2c_krasnodar_brand_cian_nov_mix_search", ]},
+        {"descr": 'kazan_brand_cian_nov_bdg', "fltrs": ["b2c_kazan_brand_cian_nov_mix_search", ]},
+        {"descr": 'tyumen_brand_cian_nov_bdg', "fltrs": ["b2c_tyumen_brand_cian_nov_mix_search", ]},
+
+
         {"descr": 'msk_brand_cian_bdg', "fltrs": ["b2c_(dmo|bmo|mo|msk)_brand_cian_all_mix_search", ]},
         {"descr": 'spb_brand_cian_bdg', "fltrs": ["b2c_spb_brand_cian_all_mix_search", ]},
         {"descr": 'ekb_brand_cian_bdg', "fltrs": ["b2c_ekb_brand_cian_all_mix_search", ]},
