@@ -768,6 +768,15 @@ class MP:
         ######################################################################################
         # Пакет: competitors #################################################################
         ######################################################################################
+        {"descr": 'msk_competitors_nov_bdg', "fltrs": ["b2c_msk_competitors_aggregators_nov_mix_search", ]},
+        {"descr": 'spb_competitors_nov_bdg', "fltrs": ["b2c_spb_competitors_aggregators_nov_mix_search", ]},
+        {"descr": 'ekb_competitors_nov_bdg', "fltrs": ["b2c_ekb_competitors_aggregators_nov_mix_search", ]},
+        {"descr": 'novosibirsk_competitors_nov_bdg', "fltrs": ["b2c_novosibirsk_competitors_aggregators_nov_mix_search", ]},
+        {"descr": 'omskcity_competitors_nov_bdg', "fltrs": ["b2c_omsk_competitors_aggregators_nov_mix_search", ]},
+        {"descr": 'krasnodar_competitors_nov_bdg', "fltrs": ["b2c_krasnodar_competitors_aggregators_nov_mix_search", ]},
+        {"descr": 'kazan_competitors_nov_bdg', "fltrs": ["b2c_kazan_competitors_aggregators_nov_mix_search", ]},
+        {"descr": 'tyumen_competitors_nov_bdg', "fltrs": ["b2c_tyumen_competitors_aggregators_nov_mix_search", ]},
+
         {"descr": 'msk_competitors_bdg', "fltrs": ["b2c_(bmo|dmo|msk)_compet_main_all_mix_search", ]},
         {"descr": 'spb_competitors_bdg', "fltrs": ["b2c_spb_compet_main_all_mix_search", ]},
         {"descr": 'ekb_competitors_bdg', "fltrs": ["b2c_ekb_compet_main_all_mix_search", ]},
