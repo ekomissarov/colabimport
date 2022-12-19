@@ -29,6 +29,7 @@ class MP:
         {"descr": 'special_project_bdg', "fltrs": ["_specproj"]},
         {"descr": 'testa_yndxbeta_bdg', "fltrs": ["_yndxbeta1"]},
         {"descr": 'testb_yndxbeta_bdg', "fltrs": ["_yndxbeta2"]},
+        {"descr": 'test_group_bdg', "fltrs": ["_testgrp"]},
         {"descr": 'special_project_bdg', "fltrs": ["_specproj"]},
 
         {"descr": 'media_banner_bdg', "fltrs": ["_media_", "_banner_"]},
@@ -1131,7 +1132,14 @@ class MP:
                                                        "b2c_spb_rtg_audiencebasic_nov_mix_network",
                                                        "b2c_spb_rtg_audiencelal_nov_mix_network",
                                                        "b2c_spb_rtg_audiencelal1_nov_mix_network"
+
                                                        ]},
+
+        {"descr": 'msk_dsa_nov_search_bdg', "fltrs": ["b2c_msk_dsa_serp_nov_mix_search", ]},
+        {"descr": 'spb_dsa_nov_search_bdg', "fltrs": ["b2c_spb_dsa_serp_nov_mix_search", ]},
+        {"descr": 'novosibirsk_dsa_nov_search_bdg', "fltrs": ["b2c_novosibirsk_dsa_serp_nov_mix_search", ]},
+        {"descr": 'omskcity_dsa_nov_search_bdg', "fltrs": ["b2c_omsk_dsa_serp_nov_mix_search", ]},
+        {"descr": 'ekb_dsa_nov_search_bdg', "fltrs": ["b2c_ekb_dsa_dsa_serp_nov_mix_search", ]},
 
         ######################################################################################
         # Пакет: pysea #######################################################################
