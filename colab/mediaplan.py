@@ -1140,6 +1140,9 @@ class MP:
         {"descr": 'novosibirsk_dsa_nov_search_bdg', "fltrs": ["b2c_novosibirsk_dsa_serp_nov_mix_search", ]},
         {"descr": 'omskcity_dsa_nov_search_bdg', "fltrs": ["b2c_omsk_dsa_serp_nov_mix_search", ]},
         {"descr": 'ekb_dsa_nov_search_bdg', "fltrs": ["b2c_ekb_dsa_dsa_serp_nov_mix_search", ]},
+        {"descr": 'krasnodar_dsa_nov_search_bdg', "fltrs": ["b2c_krasnodar_dsa_dsa_serp_nov_mix_search", ]},
+        {"descr": 'tyumen_dsa_nov_search_bdg', "fltrs": ["b2c_tyumen_dsa_dsa_serp_nov_mix_search", ]},
+        {"descr": 'kazan_dsa_nov_search_bdg', "fltrs": ["b2c_kazan_dsa_dsa_serp_nov_mix_search", ]},
 
         ######################################################################################
         # Пакет: pysea #######################################################################
