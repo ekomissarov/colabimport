@@ -1296,6 +1296,11 @@ class MP:
         {"descr": 'novosibirsk_dailyrentsec_mix_search_bdg', "fltrs": ["b2c_novosibirsk_general_daily_rentsec_mix_search", ]},
         {"descr": 'omskcity_dailyrentsec_mix_search_bdg', "fltrs": ["b2c_omsk_general_daily_rentsec_mix_search", ]},
         {"descr": 'krasnodar_dailyrentsec_mix_search_bdg', "fltrs": ["b2c_krasnodar_general_daily_rentsec_mix_search", ]},
+        {"descr": 'samara_dailyrentsec_mix_search_bdg', "fltrs": ["b2c_samara_general_daily_rentsec_mix_search", ]},
+        {"descr": 'nn_dailyrentsec_mix_search_bdg', "fltrs": ["b2c_nn_general_daily_rentsec_mix_search", ]},
+        {"descr": 'kazan_dailyrentsec_mix_search_bdg', "fltrs": ["b2c_kazan_general_daily_rentsec_mix_search", ]},
+        {"descr": 'irkutsk_dailyrentsec_mix_search_bdg', "fltrs": ["b2c_irkutsk_general_daily_rentsec_mix_search", ]},
+        {"descr": 'chelyabinsk_dailyrentsec_mix_search_bdg', "fltrs": ["b2c_chelyabinsk_general_daily_rentsec_mix_search", ]},
 
         {"descr": 'regs_rentsec_mix_search_bdg', "fltrs": [
                                                             "b2c_krasnoyarsk_general_null_rentsec_mix_search",
@@ -1662,6 +1667,11 @@ class MP:
         {"descr": 'novosibirsk_dailyrentsub_mix_search_bdg', "fltrs": ["b2c_novosibirsk_general_daily_rentsub_mix_search", ]},
         {"descr": 'omskcity_dailyrentsub_mix_search_bdg', "fltrs": ["b2c_omsk_general_daily_rentsub_mix_search", ]},
         {"descr": 'krasnodar_dailyrentsub_mix_search_bdg', "fltrs": ["b2c_krasnodar_general_daily_rentsub_mix_search", ]},
+        {"descr": 'samara_dailyrentsub_mix_search_bdg', "fltrs": ["b2c_samara_general_daily_rentsub_mix_search", ]},
+        {"descr": 'nn_dailyrentsub_mix_search_bdg', "fltrs": ["b2c_nn_general_daily_rentsub_mix_search", ]},
+        {"descr": 'kazan_dailyrentsub_mix_search_bdg', "fltrs": ["b2c_kazan_general_daily_rentsub_mix_search", ]},
+        {"descr": 'irkutsk_dailyrentsub_mix_search_bdg', "fltrs": ["b2c_irkutsk_general_daily_rentsub_mix_search", ]},
+        {"descr": 'chelyabinsk_dailyrentsub_mix_search_bdg', "fltrs": ["b2c_chelyabinsk_general_daily_rentsub_mix_search", ]},
 
         {"descr": 'regs_rentsub_mix_search_bdg', "fltrs": [
                                                                "b2c_krasnoyarsk_general_null_rentsub_mix_search",
