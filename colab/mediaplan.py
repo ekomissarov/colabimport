@@ -420,6 +420,7 @@ class MP:
         {"descr": 'nn_brand_cian_bdg', "fltrs": ["b2c_nn_brand_cian_all_mix_search", ]},
         {"descr": 'penza_brand_cian_bdg', "fltrs": ["b2c_penza_brand_cian_all_mix_search", ]},
         {"descr": 'ivanovo_brand_cian_bdg', "fltrs": ["b2c_ivanovo_brand_cian_all_mix_search", ]},
+        {"descr": 'sochi_brand_cian_bdg', "fltrs": ["b2c_sochi_brand_cian_all_mix_search", ]},
         {"descr": 'regs_brand_cian_bdg', "fltrs": [
                                                     "b2c_krasnoyarsk_brand_cian_all_mix_search",
                                                     "b2c_voronezh_brand_cian_all_mix_search",
@@ -447,7 +448,6 @@ class MP:
                                                     "b2c_kostroma_brand_cian_all_mix_search",
                                                     "b2c_arhangelsk_brand_cian_all_mix_search",
                                                     "b2c_vologda_brand_cian_all_mix_search",  # рк к заведению
-                                                    "b2c_sochi_brand_cian_all_mix_search",
         ]},
         {"descr": 'oth_brand_cian_bdg', "fltrs": [
                                                     "b2c_astrahan_brand_cian_all_mix_search",
@@ -1289,6 +1289,7 @@ class MP:
         {"descr": 'nn_rentsec_mix_search_bdg', "fltrs": ["b2c_nn_general_null_rentsec_mix_search", ]},
         {"descr": 'ivanovo_rentsec_mix_search_bdg', "fltrs": ["b2c_ivanovo_general_null_rentsec_mix_search", ]},
         {"descr": 'penza_rentsec_mix_search_bdg', "fltrs": ["b2c_penza_general_null_rentsec_mix_search", ]},
+        {"descr": 'sochi_rentsec_mix_search_bdg', "fltrs": ["b2c_sochi_general_null_rentsec_mix_search", ]},
 
         {"descr": 'msk_dailyrentsec_mix_search_bdg', "fltrs": ["b2c_msk_general_daily_rentsec_mix_search", ]},
         {"descr": 'spb_dailyrentsec_mix_search_bdg', "fltrs": ["b2c_spb_general_daily_rentsec_mix_search", ]},
@@ -1328,7 +1329,6 @@ class MP:
                                                             "b2c_kostroma_general_null_rentsec_mix_search",
                                                             "b2c_arhangelsk_general_null_rentsec_mix_search",
                                                             "b2c_vologda_general_null_rentsec_mix_search",  # рк к заведению
-                                                            "b2c_sochi_general_null_rentsec_mix_search",
         ]},
         {"descr": 'oth_rentsec_mix_search_bdg', "fltrs": [
                                                             "b2c_astrahan_general_null_rentsec_mix_search",
@@ -1510,6 +1510,7 @@ class MP:
         {"descr": 'nn_salesec_mix_search_bdg', "fltrs": ["b2c_nn_general_null_salesec_mix_search", ]},
         {"descr": 'ivanovo_salesec_mix_search_bdg', "fltrs": ["b2c_ivanovo_general_null_salesec_mix_search", ]},
         {"descr": 'penza_salesec_mix_search_bdg', "fltrs": ["b2c_penza_general_null_salesec_mix_search", ]},
+        {"descr": 'sochi_salesec_mix_search_bdg', "fltrs": ["b2c_sochi_general_null_salesec_mix_search", ]},
         {"descr": 'regs_salesec_mix_search_bdg', "fltrs": [
                                                            "b2c_krasnoyarsk_general_null_salesec_mix_search",
                                                            "b2c_voronezh_general_null_salesec_mix_search",
@@ -1536,7 +1537,6 @@ class MP:
                                                            "b2c_kostroma_general_null_salesec_mix_search",
                                                            "b2c_arhangelsk_general_null_salesec_mix_search",
                                                            "b2c_vologda_general_null_salesec_mix_search",  # рк к заведению
-                                                           "b2c_sochi_general_null_salesec_mix_search",
         ]},
         {"descr": 'oth_salesec_mix_search_bdg', "fltrs": [
                                                             "b2c_astrahan_general_null_salesec_mix_search",
@@ -1660,6 +1660,7 @@ class MP:
         {"descr": 'nn_rentsub_mix_search_bdg', "fltrs": ["b2c_nn_general_null_rentsub_mix_search", ]},
         {"descr": 'ivanovo_rentsub_mix_search_bdg', "fltrs": ["b2c_ivanovo_general_null_rentsub_mix_search", ]},
         {"descr": 'penza_rentsub_mix_search_bdg', "fltrs": ["b2c_penza_general_null_rentsub_mix_search", ]},
+        {"descr": 'penza_rentsub_mix_search_bdg', "fltrs": ["b2c_penza_general_null_rentsub_mix_search", ]},
 
         {"descr": 'msk_dailyrentsub_mix_search_bdg', "fltrs": ["b2c_(bmo|dmo|msk)_general_daily_rentsub_mix_search", ]},
         {"descr": 'spb_dailyrentsub_mix_search_bdg', "fltrs": ["b2c_spb_general_daily_rentsub_mix_search", ]},
@@ -1671,7 +1672,7 @@ class MP:
         {"descr": 'nn_dailyrentsub_mix_search_bdg', "fltrs": ["b2c_nn_general_daily_rentsub_mix_search", ]},
         {"descr": 'kazan_dailyrentsub_mix_search_bdg', "fltrs": ["b2c_kazan_general_daily_rentsub_mix_search", ]},
         {"descr": 'irkutsk_dailyrentsub_mix_search_bdg', "fltrs": ["b2c_irkutsk_general_daily_rentsub_mix_search", ]},
-        {"descr": 'chelyabinsk_dailyrentsub_mix_search_bdg', "fltrs": ["b2c_chelyabinsk_general_daily_rentsub_mix_search", ]},
+        {"descr": 'sochi_dailyrentsub_mix_search_bdg', "fltrs": ["b2c_sochi_general_null_rentsub_mix_search", ]},
 
         {"descr": 'regs_rentsub_mix_search_bdg', "fltrs": [
                                                                "b2c_krasnoyarsk_general_null_rentsub_mix_search",
@@ -1699,7 +1700,6 @@ class MP:
                                                                "b2c_kostroma_general_null_rentsub_mix_search",
                                                                "b2c_arhangelsk_general_null_rentsub_mix_search",
                                                                "b2c_vologda_general_null_rentsub_mix_search",  # рк к заведению
-                                                               "b2c_sochi_general_null_rentsub_mix_search",
         ]},
         {"descr": 'oth_rentsub_mix_search_bdg', "fltrs": [
                                                         "b2c_astrahan_general_null_rentsub_mix_search",
@@ -1744,6 +1744,7 @@ class MP:
         {"descr": 'nn_salesub_mix_search_bdg', "fltrs": ["b2c_nn_general_null_salesub_mix_search", ]},
         {"descr": 'ivanovo_salesub_mix_search_bdg', "fltrs": ["b2c_ivanovo_general_null_salesub_mix_search", ]},
         {"descr": 'penza_salesub_mix_search_bdg', "fltrs": ["b2c_penza_general_null_salesub_mix_search", ]},
+        {"descr": 'sochi_salesub_mix_search_bdg', "fltrs": ["b2c_sochi_general_null_salesub_mix_search", ]},
         {"descr": 'regs_salesub_mix_search_bdg', "fltrs": [
                                                             "b2c_krasnoyarsk_general_null_salesub_mix_search",
                                                             "b2c_voronezh_general_null_salesub_mix_search",
@@ -1770,7 +1771,6 @@ class MP:
                                                             "b2c_kostroma_general_null_salesub_mix_search",
                                                             "b2c_arhangelsk_general_null_salesub_mix_search",
                                                             "b2c_vologda_general_null_salesub_mix_search",  # рк к заведению
-                                                            "b2c_sochi_general_null_salesub_mix_search",
         ]},
         {"descr": 'oth_salesub_mix_search_bdg', "fltrs": [
                                                         "b2c_astrahan_general_null_salesub_mix_search",
