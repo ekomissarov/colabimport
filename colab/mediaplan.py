@@ -1661,7 +1661,7 @@ class MP:
         {"descr": 'ivanovo_rentsub_mix_search_bdg', "fltrs": ["b2c_ivanovo_general_null_rentsub_mix_search", ]},
         {"descr": 'penza_rentsub_mix_search_bdg', "fltrs": ["b2c_penza_general_null_rentsub_mix_search", ]},
         {"descr": 'penza_rentsub_mix_search_bdg', "fltrs": ["b2c_penza_general_null_rentsub_mix_search", ]},
-        {"descr": 'sochi_dailyrentsub_mix_search_bdg', "fltrs": ["b2c_sochi_general_null_rentsub_mix_search", ]},
+        {"descr": 'sochi_rentsub_mix_search_bdg', "fltrs": ["b2c_sochi_general_null_rentsub_mix_search", ]},
 
         {"descr": 'msk_dailyrentsub_mix_search_bdg', "fltrs": ["b2c_(bmo|dmo|msk)_general_daily_rentsub_mix_search", ]},
         {"descr": 'spb_dailyrentsub_mix_search_bdg', "fltrs": ["b2c_spb_general_daily_rentsub_mix_search", ]},
