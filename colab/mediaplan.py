@@ -26,13 +26,11 @@ class MP:
         {"descr": 'spb_findagent_own_rtg_network_bdg', "fltrs": ["b2c_spb_rtg_findagent_own_mix_network_specproj",
                                                                  "b2c_spb_rtg_findagent_mix_network_specproj",
                                                                  "b2c_spb_rtg_findagent_specproj_mix_network"]},
-        {"descr": 'special_project_bdg', "fltrs": ["_specproj"]},
-        {"descr": 'testa_yndxbeta_bdg', "fltrs": ["_yndxbeta1"]},
-        {"descr": 'testb_yndxbeta_bdg', "fltrs": ["_yndxbeta2"]},
-        {"descr": 'test_group_bdg', "fltrs": ["_testgrp"]},
-        {"descr": 'special_project_bdg', "fltrs": ["_specproj"]},
-
-        {"descr": 'media_banner_bdg', "fltrs": ["_media_", "_banner_"]},
+        # {"descr": 'special_project_bdg', "fltrs": ["_specproj"]},
+        # {"descr": 'testa_yndxbeta_bdg', "fltrs": ["_yndxbeta1"]},
+        # {"descr": 'testb_yndxbeta_bdg', "fltrs": ["_yndxbeta2"]},
+        # {"descr": 'test_group_bdg', "fltrs": ["_testgrp"]},
+        # {"descr": 'media_banner_bdg', "fltrs": ["_media_", "_banner_"]},
 
         {"descr": 'msk_sdaisnimi_bdg', "fltrs": ["b2b_msk_rtg_null_ownsdaisnimi_mix_network",
                                                  "b2b_msk_ci_null_ownsdaisnimi_mix_network", ]},
