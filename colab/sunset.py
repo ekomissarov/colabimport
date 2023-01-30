@@ -276,7 +276,7 @@ class BasicDynamics:
         self.plot_ev_per_click = plot_ev_per_click
         self.vert_lines = vert_lines
         if what is None:
-            self.what = {"events", "chats", "events_ss", "events_fdv", "ads", "ipotek", "ct", "common",
+            self.what = {"events", "chats", "contacts", "events_ss", "events_fdv", "ads", "ipotek", "ct", "common",
                     "events_commercial", "events_salesub", "events_rentsub", "events_saleflats", "events_rentflats",
                     "events_applications",
                     "conv_agg_full", "conv_agg_owners",
@@ -289,6 +289,9 @@ class BasicDynamics:
         if "chats" in self.what:
             self._plt_basic_dyn(ev="chats", cpa="cp_chat", ev_per_click="chats_per_click",
                                 item_labels=["chats", "cpa", "conv%"])
+        if "contacts" in self.what:
+            self._plt_basic_dyn(ev="ev_contacts", cpa="cp_contact", ev_per_click="contacts_per_click",
+                                item_labels=["contacts", "cpa", "conv%"])
         if "events_ss" in self.what:
             self._plt_basic_dyn(ev="events_ss", cpa="cpa_ss", ev_per_click="ev_ss_per_click",
                                 item_labels=["ss uniq events", "cpa_ss", "conv%"])
