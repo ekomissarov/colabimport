@@ -165,7 +165,7 @@ def calc_base_values_with_assisted(tt):
         'A_ev_saleflats_per_click', 'A_ev_rentflats_per_click', 'A_ev_applications_per_click', 'A_ad_per_click',
         'A_ipotek_per_click', 'A_ct_per_click',
 
-        'A_conv_agg_full', 'A_ev_contacts', 'A_conv_agg_owners', 'A_cp_agg_full', 'cp_contact', 'A_cp_agg_owners',
+        'A_conv_agg_full', 'A_ev_contacts', 'A_conv_agg_owners', 'A_cp_agg_full', 'A_cp_contact', 'A_cp_agg_owners',
         'A_agg_full_per_click', 'contacts_per_click', 'A_agg_owners_per_click'
     ])
 
@@ -221,12 +221,12 @@ def calc_base_values_with_assisted(tt):
 
     # агрегаты: конверсии стоимости
     tt['A_cp_agg_full'] = np.round(tt['cost_rur'] / tt['A_conv_agg_full'], 2)
-    tt['cp_contact'] = np.round(tt['cost_rur'] / tt['A_ev_contacts'], 2)
+    tt['A_cp_contact'] = np.round(tt['cost_rur'] / tt['A_ev_contacts'], 2)
     tt['A_cp_agg_owners'] = np.round(tt['cost_rur'] / tt['A_conv_agg_owners'], 2)
 
     # агрегаты: %конверсии на клик
     tt['A_agg_full_per_click'] = np.round(tt['A_conv_agg_full'] / tt['clicks'], 4)
-    tt['contacts_per_click'] = np.round(tt['A_ev_contacts'] / tt['clicks'], 4)
+    tt['A_contacts_per_click'] = np.round(tt['A_ev_contacts'] / tt['clicks'], 4)
     tt['A_agg_owners_per_click'] = np.round(tt['A_conv_agg_owners'] / tt['clicks'], 4)
 
     return tt.copy()
