@@ -1325,6 +1325,31 @@ class MP:
         {"descr": 'irkutsk_competitors_daily_bdg', "fltrs": ["b2c_irkutsk_compet_main_daily_mix_search", ]},
         {"descr": 'chelyabinsk_competitors_daily_bdg', "fltrs": ["b2c_chelyabinsk_compet_main_daily_mix_search", ]},
 
+        {"descr": 'msk_sbyndx_dailyrentsec_bdg', "fltrs": ["b2c_msk_rtg_smart_dailyrentsec_mix_network", ]},
+        {"descr": 'spb_sbyndx_dailyrentsec_bdg', "fltrs": ["b2c_spb_rtg_smart_dailyrentsec_mix_network", ]},
+        {"descr": 'ekb_sbyndx_dailyrentsec_bdg', "fltrs": ["b2c_ekb_rtg_smart_dailyrentsec_mix_network", ]},
+        {"descr": 'novosibirsk_sbyndx_dailyrentsec_bdg', "fltrs": ["b2c_novosibirsk_rtg_smart_dailyrentsec_mix_network", ]},
+        {"descr": 'omskcity_sbyndx_dailyrentsec_bdg', "fltrs": ["b2c_omsk_rtg_smart_dailyrentsec_mix_network", ]},
+        {"descr": 'krasnodar_sbyndx_dailyrentsec_bdg', "fltrs": ["b2c_krasnodar_rtg_smart_dailyrentsec_mix_network", ]},
+        {"descr": 'samara_sbyndx_dailyrentsec_bdg', "fltrs": ["b2c_samara_rtg_smart_dailyrentsec_mix_network", ]},
+        {"descr": 'nn_sbyndx_dailyrentsec_bdg', "fltrs": ["b2c_nn_rtg_smart_dailyrentsec_mix_network", ]},
+        {"descr": 'kazan_sbyndx_dailyrentsec_bdg', "fltrs": ["b2c_kazan_rtg_smart_dailyrentsec_mix_network", ]},
+        {"descr": 'irkutsk_sbyndx_dailyrentsec_bdg', "fltrs": ["b2c_irkutsk_rtg_smart_dailyrentsec_mix_network", ]},
+        {"descr": 'chelyabinsk_sbyndx_dailyrentsec_bdg', "fltrs": ["b2c_chelyabinsk_rtg_smart_dailyrentsec_mix_network", ]},
+
+        {"descr": 'msk_sbyndxlal_dailyrentsec_bdg', "fltrs": ["b2c_msk_rtg_smartlal_dailyrentsec_mix_network", ]},
+        {"descr": 'spb_sbyndxlal_dailyrentsec_bdg', "fltrs": ["b2c_spb_rtg_smartlal_dailyrentsec_mix_network", ]},
+        {"descr": 'ekb_sbyndxlal_dailyrentsec_bdg', "fltrs": ["b2c_ekb_rtg_smartlal_dailyrentsec_mix_network", ]},
+        {"descr": 'novosibirsk_sbyndxlal_dailyrentsec_bdg', "fltrs": ["b2c_novosibirsk_rtg_smartlal_dailyrentsec_mix_network", ]},
+        {"descr": 'omskcity_sbyndxlal_dailyrentsec_bdg', "fltrs": ["b2c_omsk_rtg_smartlal_dailyrentsec_mix_network", ]},
+        {"descr": 'krasnodar_sbyndxlal_dailyrentsec_bdg', "fltrs": ["b2c_krasnodar_rtg_smartlal_dailyrentsec_mix_network", ]},
+        {"descr": 'samara_sbyndxlal_dailyrentsec_bdg', "fltrs": ["b2c_samara_rtg_smartlal_dailyrentsec_mix_network", ]},
+        {"descr": 'nn_sbyndxlal_dailyrentsec_bdg', "fltrs": ["b2c_nn_rtg_smartlal_dailyrentsec_mix_network", ]},
+        {"descr": 'kazan_sbyndxlal_dailyrentsec_bdg', "fltrs": ["b2c_kazan_rtg_smartlal_dailyrentsec_mix_network", ]},
+        {"descr": 'irkutsk_sbyndxlal_dailyrentsec_bdg', "fltrs": ["b2c_irkutsk_rtg_smartlal_dailyrentsec_mix_network", ]},
+        {"descr": 'chelyabinsk_sbyndxlal_dailyrentsec_bdg', "fltrs": ["b2c_chelyabinsk_rtg_smartlal_dailyrentsec_mix_network", ]},
+
+
         {"descr": 'regs_rentsec_mix_search_bdg', "fltrs": [
                                                             "b2c_krasnoyarsk_general_null_rentsec_mix_search",
                                                             "b2c_voronezh_general_null_rentsec_mix_search",
@@ -1696,6 +1721,31 @@ class MP:
         {"descr": 'kazan_dailyrentsub_mix_search_bdg', "fltrs": ["b2c_kazan_general_daily_rentsub_mix_search", ]},
         {"descr": 'irkutsk_dailyrentsub_mix_search_bdg', "fltrs": ["b2c_irkutsk_general_daily_rentsub_mix_search", ]},
         {"descr": 'chelyabinsk_dailyrentsub_mix_search_bdg', "fltrs": ["b2c_chelyabinsk_general_daily_rentsub_mix_search", ]},
+
+        {"descr": 'msk_sbyndx_dailyrentsub_bdg', "fltrs": ["b2c_msk_rtg_smart_dailyrentsub_mix_network", ]},
+        {"descr": 'spb_sbyndx_dailyrentsub_bdg', "fltrs": ["b2c_spb_rtg_smart_dailyrentsub_mix_network", ]},
+        {"descr": 'ekb_sbyndx_dailyrentsub_bdg', "fltrs": ["b2c_ekb_rtg_smart_dailyrentsub_mix_network", ]},
+        {"descr": 'novosibirsk_sbyndx_dailyrentsub_bdg', "fltrs": ["b2c_novosibirsk_rtg_smart_dailyrentsub_mix_network", ]},
+        {"descr": 'omskcity_sbyndx_dailyrentsub_bdg', "fltrs": ["b2c_omsk_rtg_smart_dailyrentsub_mix_network", ]},
+        {"descr": 'krasnodar_sbyndx_dailyrentsub_bdg', "fltrs": ["b2c_krasnodar_rtg_smart_dailyrentsub_mix_network", ]},
+        {"descr": 'samara_sbyndx_dailyrentsub_bdg', "fltrs": ["b2c_samara_rtg_smart_dailyrentsub_mix_network", ]},
+        {"descr": 'nn_sbyndx_dailyrentsub_bdg', "fltrs": ["b2c_nn_rtg_smart_dailyrentsub_mix_network", ]},
+        {"descr": 'kazan_sbyndx_dailyrentsub_bdg', "fltrs": ["b2c_kazan_rtg_smart_dailyrentsub_mix_network", ]},
+        {"descr": 'irkutsk_sbyndx_dailyrentsub_bdg', "fltrs": ["b2c_irkutsk_rtg_smart_dailyrentsub_mix_network", ]},
+        {"descr": 'chelyabinsk_sbyndx_dailyrentsub_bdg', "fltrs": ["b2c_chelyabinsk_rtg_smart_dailyrentsub_mix_network", ]},
+
+        {"descr": 'msk_sbyndxlal_dailyrentsub_bdg', "fltrs": ["b2c_msk_rtg_smartlal_dailyrentsub_mix_network", ]},
+        {"descr": 'spb_sbyndxlal_dailyrentsub_bdg', "fltrs": ["b2c_spb_rtg_smartlal_dailyrentsub_mix_network", ]},
+        {"descr": 'ekb_sbyndxlal_dailyrentsub_bdg', "fltrs": ["b2c_ekb_rtg_smartlal_dailyrentsub_mix_network", ]},
+        {"descr": 'novosibirsk_sbyndxlal_dailyrentsub_bdg', "fltrs": ["b2c_novosibirsk_rtg_smartlal_dailyrentsub_mix_network", ]},
+        {"descr": 'omskcity_sbyndxlal_dailyrentsub_bdg', "fltrs": ["b2c_omsk_rtg_smartlal_dailyrentsub_mix_network", ]},
+        {"descr": 'krasnodar_sbyndxlal_dailyrentsub_bdg', "fltrs": ["b2c_krasnodar_rtg_smartlal_dailyrentsub_mix_network", ]},
+        {"descr": 'samara_sbyndxlal_dailyrentsub_bdg', "fltrs": ["b2c_samara_rtg_smartlal_dailyrentsub_mix_network", ]},
+        {"descr": 'nn_sbyndxlal_dailyrentsub_bdg', "fltrs": ["b2c_nn_rtg_smartlal_dailyrentsub_mix_network", ]},
+        {"descr": 'kazan_sbyndxlal_dailyrentsub_bdg', "fltrs": ["b2c_kazan_rtg_smartlal_dailyrentsub_mix_network", ]},
+        {"descr": 'irkutsk_sbyndxlal_dailyrentsub_bdg', "fltrs": ["b2c_irkutsk_rtg_smartlal_dailyrentsub_mix_network", ]},
+        {"descr": 'chelyabinsk_sbyndxlal_dailyrentsub_bdg', "fltrs": ["b2c_chelyabinsk_rtg_smartlal_dailyrentsub_mix_network", ]},
+
 
         {"descr": 'regs_rentsub_mix_search_bdg', "fltrs": [
                                                                "b2c_krasnoyarsk_general_null_rentsub_mix_search",
@@ -2075,7 +2125,7 @@ class MP:
         {"descr": 'omskcity_sbyndx_salesec_bdg', "fltrs": ["b2c_omsk_rtg_smart_salesec_mix_network", ]},
         {"descr": 'omskcity_sbyndxlal_salesec_bdg', "fltrs": ["b2c_omsk_rtg_smartlal_salesec_mix_network", ]},
         {"descr": 'ekb_sbyndx_salesec_bdg', "fltrs": ["b2c_ekb_rtg_smart_salesec_mix_network", ]},
-        {"descr": 'ekb_sbyndxlal_salesec_bdg', "fltrs": ["b2c_ekb_rtg_smartlalt_salesec_mix_network", ]},
+        {"descr": 'ekb_sbyndxlal_salesec_bdg', "fltrs": ["b2c_ekb_rtg_smartlal_salesec_mix_network", ]},
         {"descr": 'krasnodar_sbyndx_salesec_bdg', "fltrs": ["b2c_krasnodar_rtg_smart_salesec_mix_network", ]},
         {"descr": 'krasnodar_sbyndxlal_salesec_bdg', "fltrs": ["b2c_krasnodar_rtg_smartlal_salesec_mix_network", ]},
 
