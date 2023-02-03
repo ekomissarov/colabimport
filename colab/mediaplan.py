@@ -2134,7 +2134,7 @@ class MP:
         {"descr": 'spb_sbyndx_salesub_bdg', "fltrs": ["b2c_spb_rtg_smart_salesub_mix_network", ]},
         {"descr": 'spb_sbyndxlal_salesub_bdg', "fltrs": ["b2c_spb_rtg_smartlal_salesub_mix_network", ]},
         {"descr": 'novosibirsk_sbyndx_salesub_bdg', "fltrs": ["b2c_novosibirsk_rtg_smart_salesub_mix_network", ]},
-        {"descr": 'novosibirsk_sbyndxlal_salesub_bdg', "fltrs": ["b2c_novosibirsk_rtg_smartlalt_salesub_mix_network", ]},
+        {"descr": 'novosibirsk_sbyndxlal_salesub_bdg', "fltrs": ["b2c_novosibirsk_rtg_smartlal_salesub_mix_network", ]},
         {"descr": 'omskcity_sbyndx_salesub_bdg', "fltrs": ["b2c_omsk_rtg_smart_salesub_mix_network", ]},
         {"descr": 'omskcity_sbyndxlal_salesub_bdg', "fltrs": ["b2c_omsk_rtg_smartlal_salesub_mix_network", ]},
         {"descr": 'ekb_sbyndx_salesub_bdg', "fltrs": ["b2c_ekb_rtg_smart_salesub_mix_network", ]},
