@@ -42,7 +42,9 @@ class MP:
         ######################################################################################
         # Пакет: ipoteka #####################################################################
         ######################################################################################
-        {"descr": 'b2c_msk_ipoteka_search_bdg', "fltrs": ["b2c_msk_general_main_ipoteka_mix_search", ]},
+        {"descr": 'b2c_msk_ipoteka_search_bdg', "fltrs": ["b2c_msk_general_main_ipoteka_mix_search",
+                                                          "b2c_msk_brand_main_ipoteka_mix_search",
+                                                          "b2c_msk_compet_main_ipoteka_mix_search", ]},
         {"descr": 'b2c_spb_ipoteka_search_bdg', "fltrs": ["b2c_spb_general_main_ipoteka_mix_search", ]},
 
         {"descr": 'b2c_all_ipoteka_bdg', "fltrs": ["b2c_.*_general_main_ipoteka_mix_search", ]},
@@ -254,8 +256,12 @@ class MP:
                                                             "b2b_yaroslavl_rlsa_custlal_own_desk_search",
         ]},
 
-        {"descr": 'msk_b2b_own_search_bdg', "fltrs": ["b2b_(dmo|bmo|mo|msk)_general_null_own_desk_search", ]},
-        {"descr": 'spb_b2b_own_search_bdg', "fltrs": ["b2b_spb_general_null_own_desk_search", ]},
+        {"descr": 'msk_b2b_own_search_bdg', "fltrs": ["b2b_(dmo|bmo|mo|msk)_general_null_own_desk_search",
+                                                      "b2b_msk_general_null_rentown_mix_search",
+                                                      "b2b_msk_general_null_saleown_mix_search",]},
+        {"descr": 'spb_b2b_own_search_bdg', "fltrs": ["b2b_spb_general_null_own_desk_search",
+                                                      "b2b_spb_general_null_rentown_mix_search",
+                                                      "b2b_spb_general_null_saleown_mix_search"]},
         {"descr": 'regs_b2b_own_search_bdg', "fltrs": [
                                                         "b2b_kazan_general_null_own_desk_search",
                                                         "b2b_nn_general_null_own_desk_search",
