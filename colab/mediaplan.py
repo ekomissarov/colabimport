@@ -2834,7 +2834,7 @@ class GroupsVerticalCommon:
         {"descr": 'rentsec', "fltrs": ["_rentsec_"]},
         {"descr": 'salesec', "fltrs": ["_salesec_"]},
         {"descr": 'brand_cian', "fltrs": ["_brand_cian"]},
-        {"descr": 'competitors', "fltrs": ["competitors", "brand"]},
+        {"descr": 'competitors', "fltrs": ["competitors", "brand", "compet"]},
 
     ]
 
