@@ -236,6 +236,7 @@ def triad(item):
     t = [
         {"vol": "clicks", "conv": "1", "cost_per": "cpc"},
         {"vol": "events", "conv": "ev_per_click", "cost_per": "cpa"},
+        {"vol": "ev_contacts", "conv": "contacts_per_click", "cost_per": "cp_contact"},
         {"vol": "events_ss", "conv": "ev_ss_per_click", "cost_per": "cpa_ss"},
         {"vol": "events_fdv", "conv": "ev_fdv_per_click", "cost_per": "cpa_fdv"},
         {"vol": "events_commercial", "conv": "ev_commercial_per_click", "cost_per": "cpa_commercial"},
