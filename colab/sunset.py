@@ -274,7 +274,7 @@ def triad(item):
 
 
 class BasicDynamics:
-    plotly_use = False
+    plotly_use = True
     def __init__(self, df, what, plot_ev_per_click, vert_lines):
         self.data = df
         self.what = what
@@ -491,12 +491,23 @@ def plot_avg_position_yandex(df, region_filters=None, campaign_filters=None, ver
     tt['traffic_vol'] = tt['avg_traffic_vol'] / tt['impressions']
 
     plots = ["impr_pos", "click_pos", "traffic_vol"]
-    ax = tt.loc[:, plots].plot(subplots=True)
+    fig = make_subplots(rows=1, cols=1, shared_xaxes=True, vertical_spacing=0.02, subplot_titles=plots)
+    fig.add_trace(
+        go.Scatter(x=tt.index, y=tt["impr_pos"], mode="lines", line=dict(color="darkblue"), name="impr_pos", opacity=1),
+        row=1, col=1)
+    fig.add_trace(
+        go.Scatter(x=tt.index, y=tt["click_pos"], mode="lines", line=dict(color="orange"), name="click_pos", opacity=1),
+        row=1, col=1)
+    fig.add_trace(
+        go.Scatter(x=tt.index, y=tt["traffic_vol"], mode="lines", line=dict(color="green"), name="traffic_vol", opacity=1),
+        row=1, col=1)
     if vert_lines:
-        for i in ax:
-            for j in vert_lines:
-                i.axvline(x=j, color='gray')
-    plt.show()
+        for j in vert_lines:
+            fig.add_vline(x=j, line_width=1, line_dash="longdash", line_color="darkgreen", )
+
+    fig.update_xaxes(tickangle=45)
+    fig.update_layout(height=200 * len(plots), width=1080, showlegend=False, )  # title_text="specs examples"
+    fig.show()
 
 
 def plot_top_is_position_google(df, region_filters=None, campaign_filters=None, vert_lines=None):
@@ -521,12 +532,20 @@ def plot_top_is_position_google(df, region_filters=None, campaign_filters=None, 
     tt['abstop_is'] = tt['search_abs_top_is'] / tt['eligible_impressions']
 
     plots = ["top_is", "abstop_is"]
-    ax = tt.loc[:, plots].plot(subplots=True)
+    fig = make_subplots(rows=1, cols=1, shared_xaxes=True, vertical_spacing=0.02, subplot_titles=plots)
+    fig.add_trace(
+        go.Scatter(x=tt.index, y=tt["top_is"], mode="lines", line=dict(color="darkblue"), name="top_is", opacity=1),
+        row=1, col=1)
+    fig.add_trace(
+        go.Scatter(x=tt.index, y=tt["abstop_is"], mode="lines", line=dict(color="orange"), name="abstop_is", opacity=1),
+        row=1, col=1)
     if vert_lines:
-        for i in ax:
-            for j in vert_lines:
-                i.axvline(x=j, color='gray')
-    plt.show()
+        for j in vert_lines:
+            fig.add_vline(x=j, line_width=1, line_dash="longdash", line_color="darkgreen", )
+
+    fig.update_xaxes(tickangle=45)
+    fig.update_layout(height=200 * len(plots), width=1080, showlegend=False, )  # title_text="specs examples"
+    fig.show()
 
 
 def plot_compare_base(data, y_value, group_by_plot, plot_set,
