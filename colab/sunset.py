@@ -3,6 +3,9 @@ import matplotlib as mpl
 import matplotlib.dates as mdates
 import numpy as np
 import matplotlib.pyplot as plt
+import plotly.express as px
+from plotly.subplots import make_subplots
+import plotly.graph_objects as go
 from datetime import date
 
 def scale_plot_size(x, y):
@@ -271,6 +274,7 @@ def triad(item):
 
 
 class BasicDynamics:
+    plotly_use = False
     def __init__(self, df, what, plot_ev_per_click, vert_lines):
         self.data = df
         self.what = what
@@ -368,11 +372,19 @@ class BasicDynamics:
             rolling_convsperclick = ev_per_click.rolling(7, center=True)
             ev_per_click = pd.DataFrame({'values': ev_per_click, 'rolling_mean': rolling_convsperclick.mean(),
                                          'rolling_std': rolling_convsperclick.std()})
-            self.plot_basic_rolling(events, cpas, ev_per_click, items=item_labels,
-                                    line_colors=["darkblue", "orange", "darkgreen"])
+            if self.plotly_use:
+                self.plot_plotly_rolling(events, cpas, ev_per_click, items=item_labels,
+                                        line_colors=["darkblue", "orange", "darkgreen"])
+            else:
+                self.plot_basic_rolling(events, cpas, ev_per_click, items=item_labels,
+                                        line_colors=["darkblue", "orange", "darkgreen"])
         else:
-            self.plot_basic_rolling(events, cpas, items=item_labels[:-1],
-                                    line_colors=["darkblue", "orange"])
+            if self.plotly_use:
+                self.plot_plotly_rolling(events, cpas, items=item_labels[:-1],
+                                        line_colors=["darkblue", "orange"])
+            else:
+                self.plot_basic_rolling(events, cpas, items=item_labels[:-1],
+                                        line_colors=["darkblue", "orange"])
 
     def plot_basic_rolling(self, *lines, items=["events", "cpa"], line_colors=["darkblue", "orange"]):
         fig, axN = plt.subplots(len(lines), 1)
@@ -397,6 +409,33 @@ class BasicDynamics:
         axN[i].xaxis.set_major_locator(locator)
         axN[i].xaxis.set_major_formatter(formatter)
         plt.show()
+
+    def plot_plotly_rolling(self, *lines, items=["events", "cpa"], line_colors=["darkblue", "orange"]):
+        fig = make_subplots(rows=len(lines), cols=1,
+                            shared_xaxes=True, vertical_spacing=0.02)
+
+        for i, line in enumerate(lines):
+
+            fig.add_trace(
+                go.Scatter(x=line.index, y=line['values'], mode='line', line=dict(color=line_colors[i]),
+                           name=items[i], opacity=1),
+                row=i, col=1)
+            fig.add_trace(
+                go.Scatter(x=line.index, y=line['rolling_mean'], mode='line', line=dict(color='gray', dash='dash'),
+                           name='rolling_mean', opacity=0.5),
+                row=i, col=1)
+            fig.add_trace(
+                go.Scatter(x=line.index, y=line['rolling_std'], mode='line', line=dict(color='gray', dash='dash'),
+                           name='rolling_std', opacity=0.5),
+                row=i, col=1)
+
+
+            if self.vert_lines:
+                for j in self.vert_lines:
+                    fig.add_vline(x=j, line_width=1, line_dash="longdash", line_color="darkgreen",)
+
+        fig.update_xaxes(tickangle=45)
+        fig.show()
 
 
 def plot_basic_dynamics(df, what=None,
