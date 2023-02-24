@@ -417,15 +417,15 @@ class BasicDynamics:
         for i, line in enumerate(lines):
 
             fig.add_trace(
-                go.Scatter(x=line.index, y=line['values'], mode='line', line=dict(color=line_colors[i]),
+                go.Scatter(x=line.index, y=line['values'], mode='lines', line=dict(color=line_colors[i]),
                            name=items[i], opacity=1),
                 row=i, col=1)
             fig.add_trace(
-                go.Scatter(x=line.index, y=line['rolling_mean'], mode='line', line=dict(color='gray', dash='dash'),
+                go.Scatter(x=line.index, y=line['rolling_mean'], mode='lines', line=dict(color='gray', dash='dash'),
                            name='rolling_mean', opacity=0.5),
                 row=i, col=1)
             fig.add_trace(
-                go.Scatter(x=line.index, y=line['rolling_std'], mode='line', line=dict(color='gray', dash='dash'),
+                go.Scatter(x=line.index, y=line['rolling_std'], mode='lines', line=dict(color='gray', dash='dash'),
                            name='rolling_std', opacity=0.5),
                 row=i, col=1)
 
