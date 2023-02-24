@@ -588,22 +588,12 @@ def plot_compare_base(data, y_value, group_by_plot, plot_set,
         for i in plotdata:
             plotdata[i].plot(label="{} {}: {}".format(j, group_by_plot, i))
 
-    if ymax is not None:
-        #plt.xlim(right=xmax)  # xmax is your value
-        #plt.xlim(left=xmin)  # xmin is your value
-        plt.ylim(top=ymax[1])  # ymax is your value
-        plt.ylim(bottom=ymax[0])  # ymin is your value
-    if vert_lines:
-        for i in vert_lines:
-            plt.axvline(x=i, color='gray')
-
-    plt.plot()
-
-    plt.xlabel("дата")
-    plt.ylabel(", ".join(y_value))
-    plt.title("график сравнение")
-    plt.legend()
-    plt.show()
+        fig = px.line(plotdata, x=plotdata.index, y=list(plot_set), title=f'Сравнение {j}')
+        if vert_lines:
+            for i in vert_lines:
+                fig.add_vline(x=j, line_width=1, line_dash="longdash", line_color="darkgreen", )
+        fig.update_xaxes(tickangle=45)  # повернём подписи по оси X на 45 градусов
+        fig.show()
 
 
 def resample_df(df, dimension="campaignname", resample_period="M"):
