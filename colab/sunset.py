@@ -354,9 +354,14 @@ class BasicDynamics:
             cpc = pd.DataFrame({'values': cpc, 'rolling_mean': rolling_cpc.mean(), 'rolling_std': rolling_cpc.std()})
             ctr = pd.DataFrame({'values': ctr, 'rolling_mean': rolling_ctr.mean(), 'rolling_std': rolling_ctr.std()})
             clicks = pd.DataFrame({'values': clicks, 'rolling_mean': rolling_clicks.mean(), 'rolling_std': rolling_clicks.std()})
-            self.plot_basic_rolling(cost_rur, cpc, ctr, clicks,
-                                    items=["cost_rur", "cpc", "ctr", "clicks"],
-                                    line_colors=["darkblue", "orange", "green", "red"])
+            if self.plotly_use:
+                self.plot_plotly_rolling(cost_rur, cpc, ctr, clicks,
+                                        items=["cost_rur", "cpc", "ctr", "clicks"],
+                                        line_colors=["darkblue", "orange", "green", "red"])
+            else:
+                self.plot_basic_rolling(cost_rur, cpc, ctr, clicks,
+                                        items=["cost_rur", "cpc", "ctr", "clicks"],
+                                        line_colors=["darkblue", "orange", "green", "red"])
 
     def _plt_basic_dyn(self, ev, cpa, ev_per_click, item_labels):
         events = self.data.loc[:, ev]
@@ -412,7 +417,8 @@ class BasicDynamics:
 
     def plot_plotly_rolling(self, *lines, items=["events", "cpa"], line_colors=["darkblue", "orange"]):
         fig = make_subplots(rows=len(lines), cols=1,
-                            shared_xaxes=True, vertical_spacing=0.02)
+                            shared_xaxes=True, vertical_spacing=0.02,
+                            subplot_titles=items)
 
         for i, line in enumerate(lines):
 
@@ -424,10 +430,10 @@ class BasicDynamics:
                 go.Scatter(x=line.index, y=line['rolling_mean'], mode='lines', line=dict(color='gray', dash='dash'),
                            name='rolling_mean', opacity=0.5),
                 row=i+1, col=1)
-            fig.add_trace(
-                go.Scatter(x=line.index, y=line['rolling_std'], mode='lines', line=dict(color='gray', dash='dash'),
-                           name='rolling_std', opacity=0.5),
-                row=i+1, col=1)
+            # fig.add_trace(
+            #     go.Scatter(x=line.index, y=line['rolling_std'], mode='lines', line=dict(color='gray', dash='dash'),
+            #                name='rolling_std', opacity=0.5),
+            #     row=i+1, col=1)
 
 
             if self.vert_lines:
@@ -435,6 +441,7 @@ class BasicDynamics:
                     fig.add_vline(x=j, line_width=1, line_dash="longdash", line_color="darkgreen",)
 
         fig.update_xaxes(tickangle=45)
+        fig.update_layout(height=200*len(lines), width=1080, showlegend=False, ) #title_text="specs examples"
         fig.show()
 
 
