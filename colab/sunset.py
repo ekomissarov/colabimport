@@ -274,7 +274,7 @@ def triad(item):
 
 
 class BasicDynamics:
-    plotly_use = True
+    plotly_use = False
     def __init__(self, df, what, plot_ev_per_click, vert_lines):
         self.data = df
         self.what = what
@@ -467,7 +467,7 @@ def plot_basic_dynamics(df, what=None,
     basicdyn = BasicDynamics(tt, what, plot_ev_per_click, vert_lines)
     basicdyn.run_plot()
 
-def plot_avg_position_yandex(df, region_filters=None, campaign_filters=None, vert_lines=None):
+def plotly_avg_position_yandex(df, region_filters=None, campaign_filters=None, vert_lines=None):
     grp = ['date']
     df = df[(df.system == "y") & (df.campaignname.str.contains("_search"))]
 
@@ -510,7 +510,7 @@ def plot_avg_position_yandex(df, region_filters=None, campaign_filters=None, ver
     fig.show()
 
 
-def plot_top_is_position_google(df, region_filters=None, campaign_filters=None, vert_lines=None):
+def plotly_top_is_position_google(df, region_filters=None, campaign_filters=None, vert_lines=None):
     grp = ['date']
     df = df[(df.system == "g") & (df.campaignname.str.contains("_search"))]
 
@@ -547,8 +547,69 @@ def plot_top_is_position_google(df, region_filters=None, campaign_filters=None, 
     fig.update_layout(height=200 * len(plots), width=1080, showlegend=False, )  # title_text="specs examples"
     fig.show()
 
+def plot_avg_position_yandex(df, region_filters=None, campaign_filters=None, vert_lines=None):
+    grp = ['date']
+    df = df[(df.system == "y") & (df.campaignname.str.contains("_search"))]
 
-def plot_compare_base(data, y_value, group_by_plot, plot_set,
+    if region_filters:
+        df = df[df.region.isin(region_filters)]
+
+    if campaign_filters:
+        campaign_mask = pd.Series(False, index=df.index)
+        for i in campaign_filters:
+            campaign_mask = campaign_mask | (df.campaignname.str.contains(i))
+        df = df[campaign_mask]
+
+    tt = df.groupby(grp).aggregate({'impressions': 'sum', 'clicks': 'sum',
+                                    'avg_impression_pos': 'sum', 'avg_click_pos': 'sum',
+                                    'avg_traffic_vol': 'sum'})
+    tt = tt.apply(pd.to_numeric)  # Decimal to float
+
+    tt = concat_empty_columns(tt, ["impr_pos", "click_pos", "traffic_vol"])
+    tt['impr_pos'] = tt['avg_impression_pos'] / tt['impressions']
+    tt['click_pos'] = tt['avg_click_pos'] / tt['clicks']
+    tt['traffic_vol'] = tt['avg_traffic_vol'] / tt['impressions']
+
+    plots = ["impr_pos", "click_pos", "traffic_vol"]
+    ax = tt.loc[:, plots].plot(subplots=True)
+    if vert_lines:
+        for i in ax:
+            for j in vert_lines:
+                i.axvline(x=j, color='gray')
+    plt.show()
+
+
+def plot_top_is_position_google(df, region_filters=None, campaign_filters=None, vert_lines=None):
+    grp = ['date']
+    df = df[(df.system == "g") & (df.campaignname.str.contains("_search"))]
+
+    if region_filters:
+        df = df[df.region.isin(region_filters)]
+
+    if campaign_filters:
+        campaign_mask = pd.Series(False, index=df.index)
+        for i in campaign_filters:
+            campaign_mask = campaign_mask | (df.campaignname.str.contains(i))
+        df = df[campaign_mask]
+
+    tt = df.groupby(grp).aggregate({'search_abs_top_is': 'sum', 'search_top_is': 'sum',
+                                    'eligible_impressions': 'sum'})
+    tt = tt.apply(pd.to_numeric)  # Decimal to float
+
+    tt = concat_empty_columns(tt, ["top_is", "abstop_is", ])
+    tt['top_is'] = tt['search_top_is'] / tt['eligible_impressions']
+    tt['abstop_is'] = tt['search_abs_top_is'] / tt['eligible_impressions']
+
+    plots = ["top_is", "abstop_is"]
+    ax = tt.loc[:, plots].plot(subplots=True)
+    if vert_lines:
+        for i in ax:
+            for j in vert_lines:
+                i.axvline(x=j, color='gray')
+    plt.show()
+
+
+def plotly_compare_base(data, y_value, group_by_plot, plot_set,
                       region_filters=None, campaign_filters=None, system_filters=None,
                       ymax=None, vert_lines=None):
 
@@ -593,6 +654,64 @@ def plot_compare_base(data, y_value, group_by_plot, plot_set,
         fig.show()
 
 
+def plot_compare_base(data, y_value, group_by_plot, plot_set,
+                      region_filters=None, campaign_filters=None, system_filters=None,
+                      ymax=None, vert_lines=None):
+
+    if type(y_value) is not list:
+        y_value = [y_value]
+
+    if {'impr_pos', 'click_pos', 'traffic_vol', 'top_is', 'abstop_is'} & set(y_value):
+        data = data[data.campaignname.str.contains("_search")]
+
+    if region_filters:
+        data = data[data.region.isin(region_filters)]
+
+    if system_filters:
+        data = data[data.system.isin(system_filters)]
+
+    if campaign_filters:
+        campaign_mask = pd.Series(False, index=data.index)
+        for i in campaign_filters:
+            campaign_mask = campaign_mask | (data.campaignname.str.contains(i))
+        data = data[campaign_mask]
+
+    tt = data.groupby([group_by_plot] + ['date']).sum()
+    tt = calc_base_values(tt)
+    tt = calc_base_values_with_assisted(tt)
+    if system_filters and system_filters[0] == "y" and len(system_filters) == 1:
+        tt = concat_empty_columns(tt, ["impr_pos", "click_pos", "traffic_vol"])
+        tt['impr_pos'] = tt['avg_impression_pos'] / tt['impressions']
+        tt['click_pos'] = tt['avg_click_pos'] / tt['clicks']
+        tt['traffic_vol'] = tt['avg_traffic_vol'] / tt['impressions']
+    elif system_filters and system_filters[0] == "g" and len(system_filters) == 1:
+        tt = concat_empty_columns(tt, ["top_is", "abstop_is", ])
+        tt['top_is'] = tt['search_top_is'] / tt['eligible_impressions']
+        tt['abstop_is'] = tt['search_abs_top_is'] / tt['eligible_impressions']
+
+    for j in y_value:
+        plotdata = pd.DataFrame({i: tt.loc[i][j] for i in plot_set})
+        for i in plotdata:
+            plotdata[i].plot(label="{} {}: {}".format(j, group_by_plot, i))
+
+    if ymax is not None:
+        #plt.xlim(right=xmax)  # xmax is your value
+        #plt.xlim(left=xmin)  # xmin is your value
+        plt.ylim(top=ymax[1])  # ymax is your value
+        plt.ylim(bottom=ymax[0])  # ymin is your value
+    if vert_lines:
+        for i in vert_lines:
+            plt.axvline(x=i, color='gray')
+
+    plt.plot()
+
+    plt.xlabel("дата")
+    plt.ylabel(", ".join(y_value))
+    plt.title("график сравнение")
+    plt.legend()
+    plt.show()
+
+
 def resample_df(df, dimension="campaignname", resample_period="M"):
     if type(dimension) is not list:
         dimension = [dimension, ]
@@ -612,6 +731,24 @@ def resample_df(df, dimension="campaignname", resample_period="M"):
     result = calc_base_values_with_assisted(result)
     return result
 
+
+def cell_plotly_dimension(df, metrics, dimension = 'vertical_class', exclude_graphs = None, vert_lines=None):
+    """
+    metrics example: ["cpa", "events"]
+    exclude_graphs example: {"cpa": {"ipoteka", "Undefined"}
+    """
+    if vert_lines is None:
+        vert_lines = [date(*date.today().timetuple()[0:2], 1)]
+    df.loc[df[dimension]==False, dimension] = "Undefined"
+    for i in metrics:
+        plot_set_excl = set()
+        if exclude_graphs and i in exclude_graphs:
+            plot_set_excl = exclude_graphs[i]
+        plotly_compare_base(df,
+            y_value = i,
+            group_by_plot = dimension,
+            plot_set = set(df[dimension].unique()) - plot_set_excl,
+            vert_lines=vert_lines)
 
 def cell_dimension(df, metrics, dimension = 'vertical_class', exclude_graphs = None, vert_lines=None):
     """
