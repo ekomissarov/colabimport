@@ -1574,6 +1574,8 @@ class MP:
                                                             "b2c_yaroslavl_(ci|general)_daily_rentsec_mix_network",
         ]},
 
+        {"descr": 'msk_dailyrentsec_mk_network_bdg', "fltrs": ["b2c_msk_mk_daily_rentsec_mix_network", ]},
+
         ######################################################################################
         # Пакет: salesec #######################################################################
         ######################################################################################
@@ -1735,6 +1737,8 @@ class MP:
         {"descr": 'b2c_msk_discovery_main_salesec_mix_network', "fltrs": ["(b2c|b2b)_(mo|msk)_discovery_main_salesec_mix_network", ]},
         {"descr": 'b2c_spb_discovery_main_salesec_mix_network', "fltrs": ["(b2c|b2b)_spb_discovery_main_salesec_mix_network", ]},
         {"descr": 'b2c_22reg_discovery_main_salesec_mix_network', "fltrs": ["(b2c|b2b)_22reg_discovery_main_salesec_mix_network", ]},
+
+        {"descr": 'msk_salesec_mk_network_bdg', "fltrs": ["b2c_msk_mk_general_salesec_mix_network", ]},
 
         ######################################################################################
         # Пакет: sub #########################################################################
@@ -2753,6 +2757,10 @@ class MP:
                                                             "b2c_vladivostok_rtg_site_rentsec_mix_network",
                                                             "b2c_yaroslavl_rtg_site_rentsec_mix_network",
         ]},
+
+        {"descr": 'all_other_nov_bdg', "fltrs": ["_nov_",]},
+        {"descr": 'all_other_ipoteka_bdg', "fltrs": ["_ipoteka_", ]},
+        {"descr": 'all_other_own_bdg', "fltrs": ["_own_", ]},
 
     ]
 
