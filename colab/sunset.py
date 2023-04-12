@@ -713,13 +713,10 @@ def plot_compare_base(data, y_value, group_by_plot, plot_set,
 
 
 def resample_df(df, dimension="campaignname", resample_period="M"):
-    if type(dimension) is not list:
-        dimension = [dimension, ]
-
     df['date'] = pd.to_datetime(df['date'])
     result = pd.DataFrame()
     for labels, data in df.groupby(dimension):
-        data = data.groupby(['date']).sum().resample(resample_period).sum().reset_index()
+        data = data.groupby('date').sum().resample(resample_period).sum().reset_index()
         if type(labels) is not tuple:
             labels = [labels, ]
         for col, lbl in zip(dimension, labels):
