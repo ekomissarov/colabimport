@@ -461,7 +461,7 @@ def plot_basic_dynamics(df, what=None,
             campaign_mask = campaign_mask | (tt.campaignname.str.contains(i))
         tt = tt[campaign_mask]
 
-    tt = tt.groupby(['date']).sum()
+    tt = tt.groupby('date').sum()
     tt = calc_base_values(tt)
     tt.index = pd.to_datetime(tt.index)
     basicdyn = BasicDynamics(tt, what, plot_ev_per_click, vert_lines)

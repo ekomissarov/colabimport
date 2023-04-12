@@ -2882,7 +2882,7 @@ class GroupsVerticalCommon:
     tags = [
         {"descr": 'ipoteka', "fltrs": ["_ipoteka_"]},
         {"descr": 'nov', "fltrs": ["_nov_"]},
-        {"descr": 'own', "fltrs": ["_b2b_own_", "_b2b_compet_", "_ocenka_own_", "_sdaisnimi_", "_findagent_own_"]},
+        {"descr": 'own', "fltrs": ["_b2b_own_", "_b2b_compet_", "_ocenka_own_", "_sdaisnimi_", "_findagent_own_", "_own_"]},
         {"descr": 'commerce', "fltrs": ["_com_", "_cwrk_", "_cwrkcom_", "_gbcom_", "_iapcom_", "_rentcom_", "_salecom_"]},
         {"descr": 'salesub', "fltrs": ["_sub_", "_salesub_",]},
         {"descr": 'rentsub', "fltrs": ["_rentsub_"]},
