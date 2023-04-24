@@ -716,7 +716,7 @@ def resample_df(df, dimension="campaignname", resample_period="M"):
     df['date'] = pd.to_datetime(df['date'])
     result = pd.DataFrame()
     for labels, data in df.groupby(dimension):
-        data = data.groupby('date').sum(numeric_only=True).resample(resample_period).sum().reset_index(numeric_only=True)
+        data = data.groupby('date').sum(numeric_only=True).resample(resample_period).sum(numeric_only=True).reset_index()
         if type(labels) is not tuple:
             labels = [labels, ]
         if type(dimension) is not list:
