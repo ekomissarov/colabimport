@@ -461,7 +461,7 @@ def plot_basic_dynamics(df, what=None,
             campaign_mask = campaign_mask | (tt.campaignname.str.contains(i))
         tt = tt[campaign_mask]
 
-    tt = tt.groupby('date').sum()
+    tt = tt.groupby('date').sum(numeric_only=True)
     tt = calc_base_values(tt)
     tt.index = pd.to_datetime(tt.index)
     basicdyn = BasicDynamics(tt, what, plot_ev_per_click, vert_lines)
@@ -631,7 +631,7 @@ def plotly_compare_base(data, y_value, group_by_plot, plot_set,
             campaign_mask = campaign_mask | (data.campaignname.str.contains(i))
         data = data[campaign_mask]
 
-    tt = data.groupby([group_by_plot] + ['date']).sum()
+    tt = data.groupby([group_by_plot] + ['date']).sum(numeric_only=True)
     tt = calc_base_values(tt)
     tt = calc_base_values_with_assisted(tt)
     if system_filters and system_filters[0] == "y" and len(system_filters) == 1:
@@ -676,7 +676,7 @@ def plot_compare_base(data, y_value, group_by_plot, plot_set,
             campaign_mask = campaign_mask | (data.campaignname.str.contains(i))
         data = data[campaign_mask]
 
-    tt = data.groupby([group_by_plot] + ['date']).sum()
+    tt = data.groupby([group_by_plot] + ['date']).sum(numeric_only=True)
     tt = calc_base_values(tt)
     tt = calc_base_values_with_assisted(tt)
     if system_filters and system_filters[0] == "y" and len(system_filters) == 1:
@@ -716,7 +716,7 @@ def resample_df(df, dimension="campaignname", resample_period="M"):
     df['date'] = pd.to_datetime(df['date'])
     result = pd.DataFrame()
     for labels, data in df.groupby(dimension):
-        data = data.groupby('date').sum().resample(resample_period).sum().reset_index()
+        data = data.groupby('date').sum(numeric_only=True).resample(resample_period).sum().reset_index()
         if type(labels) is not tuple:
             labels = [labels, ]
         if type(dimension) is not list:
