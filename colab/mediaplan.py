@@ -1282,6 +1282,7 @@ class MP:
         # Пакет: rentsec #######################################################################
         ######################################################################################
         {"descr": 'rf_dailyrentsec_mix_search_bdg', "fltrs": ["b2c_rf_general_null_dailyrentsec_mix_search", ]},
+        {"descr": 'rf_dailytentsec_rtg_network_bdg', "fltrs": ["b2c_rf_rtg_site_dailyrentsec_mix_network", ]},
 
         {"descr": 'msk_rentsec_mix_search_bdg', "fltrs": ["b2c_(dmo|bmo|msk)_general_(null|geo|subreg)_rentsec_mix_search", ]},
         {"descr": 'spb_rentsec_mix_search_bdg', "fltrs": ["b2c_spb_general_(null|subreg)_rentsec_mix_search", ]},
