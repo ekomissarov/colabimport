@@ -2762,6 +2762,7 @@ class MP:
         {"descr": 'all_other_nov_bdg', "fltrs": ["_nov_",]},
         {"descr": 'all_other_ipoteka_bdg', "fltrs": ["_ipoteka_", ]},
         {"descr": 'all_other_own_bdg', "fltrs": ["_own_", ]},
+        {"descr": 'all_other_com_bdg', "fltrs": ["com_", ]},
 
     ]
 
