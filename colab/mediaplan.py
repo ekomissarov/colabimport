@@ -687,6 +687,7 @@ class MP:
         {"descr": 'omskcity_sub_mk_media_network_bdg', "fltrs": ["b2c_omsk_media_null_sub_mix_network", ]},
         {"descr": 'ekb_sub_mk_media_network_bdg', "fltrs": ["b2c_ekb_media_null_sub_mix_network", ]},
         {"descr": 'krasnodar_sub_mk_media_network_bdg', "fltrs": ["b2c_krasnodar_media_null_sub_mix_network", ]},
+        {"descr": 'sochi_sub_mk_media_network_bdg', "fltrs": ["b2c_sochi_media_null_sub_mix_network", ]},
 
         ######################################################################################
         # Пакет: DRTG  #########################################################################
