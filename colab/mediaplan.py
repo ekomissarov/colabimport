@@ -358,7 +358,7 @@ class MP:
         {"descr": 'msk_dailyrentsec_mk_network_bdg', "fltrs": ["b2c_msk_mk_daily_rentsec_mix_network", ]},
 
         {"descr": 'rf_dailyrentsec_mix_search_bdg', "fltrs": ["b2c_rf_general_null_dailyrentsec_mix_search", ]},
-        {"descr": 'rf_dailytentsec_rtg_network_bdg', "fltrs": ["b2c_rf_rtg_site_dailyrentsec_mix_network", ]},
+        {"descr": 'rf_dailyrentsec_rtg_network_bdg', "fltrs": ["b2c_rf_rtg_site_dailyrentsec_mix_network", ]},
 
 
 
