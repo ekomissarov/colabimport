@@ -1036,6 +1036,36 @@ class GroupsRegions:
         return df
 
 
+class GenralGroupsVerticalCommon:
+    filter_column = "vertical_class"
+    classificator_column_name = "vertical_general_class"
+    tags = [
+        {"descr": 'other', "fltrs": ["ipoteka", "nov", "own", "commerce", ]},
+        {"descr": 'daily', "fltrs": ["daily"]},
+        {"descr": 'secondary', "fltrs": ["salesub", "rentsub", "rentsec", "salesec", "brand_cian", "competitors"]},
+    ]
+
+    def __init__(self):
+        for i in self.tags:
+            i['fltrs'] = [re.compile(j) for j in i['fltrs']]
+
+    def search(self, item):
+        if item:
+            for i in self.tags:
+                for j in i['fltrs']:
+                    if j.search(item):
+                        return i['descr']  # поиск до первого совпадения
+
+        return False
+
+    def join_classificator(self, df):
+        mapping = []
+        for i in set(df[self.filter_column].unique()):
+            mapping.append({self.filter_column: i, self.classificator_column_name: self.search(i)})
+        df = pd.merge(df, pd.DataFrame(mapping), on=self.filter_column)
+        return df
+
+
 class GroupsVerticalCommon:
     filter_column = "budget_class"
     classificator_column_name = "vertical_class"
@@ -1044,12 +1074,17 @@ class GroupsVerticalCommon:
         {"descr": 'nov', "fltrs": ["_nov_"]},
         {"descr": 'own', "fltrs": ["_b2b_own_", "_b2b_compet_", "_ocenka_own_", "_sdaisnimi_", "_findagent_own_", "_own_"]},
         {"descr": 'commerce', "fltrs": ["_com_", "_cwrk_", "_cwrkcom_", "_gbcom_", "_iapcom_", "_rentcom_", "_salecom_"]},
+
         {"descr": 'salesub', "fltrs": ["_sub_", "_salesub_",]},
         {"descr": 'rentsub', "fltrs": ["_rentsub_"]},
+
+        {"descr": 'daily', "fltrs": ["daily"]},
         {"descr": 'dailyrentsub', "fltrs": ["_dailyrentsub_"]},
         {"descr": 'dailyrentsec', "fltrs": ["_dailyrentsec_"]},
+
         {"descr": 'rentsec', "fltrs": ["_rentsec_"]},
         {"descr": 'salesec', "fltrs": ["_salesec_"]},
+
         {"descr": 'brand_cian', "fltrs": ["_brand_cian"]},
         {"descr": 'competitors', "fltrs": ["competitors", "brand", "compet"]},
 
@@ -1080,14 +1115,15 @@ class SearchOrNetwork:
     filter_column = "campaignname"
     classificator_column_name = "network_class"
     tags = [
+        {"descr": 'mkbyndx_network', "fltrs": ["_mkb_.*search", "_mkb_.*network"]},
+
         {"descr": 'search', "fltrs": ["_search"]},
-        {"descr": 'ci_network', "fltrs": ["_ci_"]},
-        {"descr": 'lal_network', "fltrs": ["lal", "_custlal_", "smartlal", "audiencelal"]},
         {"descr": 'drtg_network', "fltrs": ["_drtg_", "_rtg_smart"]},
-        {"descr": 'pmax_network', "fltrs": ["_pmax_"]},
-        {"descr": 'rtg_network', "fltrs": ["_rtg_"]},
-        {"descr": 'other_network', "fltrs": ["_network"]},
-        {"descr": 'discovery', "fltrs": ["discovery"]},
+        {"descr": 'mk_network', "fltrs": ["_pmax_", "_mk_.*_network"]},
+        {"descr": 'lal_network', "fltrs": ["lal", "_custlal_", "smartlal", "audiencelal"]},
+
+        {"descr": 'simplertg_network', "fltrs": ["_rtg_"]},
+        {"descr": 'other_network', "fltrs": ["_network", "_ci_", "discovery"]},
     ]
 
     def __init__(self):
@@ -1115,7 +1151,7 @@ def all_classificators_join(data):
     data = concat_empty_columns(data, ["region"])
     data["region"] = data["campaignname"].str.split("_").str.get(1)
 
-    for classificator in (MP(), GroupsRegions(), GroupsVerticalCommon(), SearchOrNetwork(),):
+    for classificator in (MP(), GroupsRegions(), GroupsVerticalCommon(), SearchOrNetwork(), GenralGroupsVerticalCommon()):
         data = classificator.join_classificator(data)
     return data
 
