@@ -1078,9 +1078,9 @@ class GroupsVerticalCommon:
         {"descr": 'salesub', "fltrs": ["_sub_", "_salesub_",]},
         {"descr": 'rentsub', "fltrs": ["_rentsub_"]},
 
-        {"descr": 'daily', "fltrs": ["daily"]},
         {"descr": 'dailyrentsub', "fltrs": ["_dailyrentsub_"]},
         {"descr": 'dailyrentsec', "fltrs": ["_dailyrentsec_"]},
+        {"descr": 'daily', "fltrs": ["daily"]},
 
         {"descr": 'rentsec', "fltrs": ["_rentsec_"]},
         {"descr": 'salesec', "fltrs": ["_salesec_"]},
