@@ -689,10 +689,18 @@ def plot_compare_base(data, y_value, group_by_plot, plot_set,
         tt['top_is'] = tt['search_top_is'] / tt['eligible_impressions']
         tt['abstop_is'] = tt['search_abs_top_is'] / tt['eligible_impressions']
 
+    lbls=[]
+    if len(y_value) > 1:
+        lbls.extend([f"{j} {group_by_plot}: {i}" for j in y_value for i in plot_set])
+    else:
+        lbls.extend([f"{group_by_plot}: {i}" for i in plot_set])
+
+    lbls.reverse()
+
     for j in y_value:
         plotdata = pd.DataFrame({i: tt.loc[i][j] for i in plot_set})
         for i in plotdata:
-            plotdata[i].plot(label="{}: {}".format(group_by_plot, i))
+            plotdata[i].plot(label=lbls.pop())
 
     if ymax is not None:
         #plt.xlim(right=xmax)  # xmax is your value
