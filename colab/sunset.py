@@ -237,7 +237,7 @@ def calc_base_values_with_assisted(tt):
 
 def triad(item):
     t = [
-        {"vol": "clicks", "conv": "1", "cost_per": "cpc"},
+        {"vol": "clicks", "conv": "ctr", "cost_per": "cpc"},
         {"vol": "events", "conv": "ev_per_click", "cost_per": "cpa"},
         {"vol": "ev_contacts", "conv": "contacts_per_click", "cost_per": "cp_contact"},
         {"vol": "events_ss", "conv": "ev_ss_per_click", "cost_per": "cpa_ss"},
