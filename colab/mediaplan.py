@@ -25,6 +25,7 @@ class MP:
         # {"descr": 'media_banner_bdg', "fltrs": ["_media_", "_banner_"]},
 
         {"descr": 'msk_salesec_mix_search_newacc_bdg', "fltrs": ["_msk_.*salesec.*search_testbnsacc", ]},
+        {"descr": 'msk_dailyrentsec_mix_search_newacc_bdg', "fltrs": ["_msk_.*daily.*search_testbnsacc", ]},
 
         ######################################################################################
         # Пакет: brand_cian ##################################################################
