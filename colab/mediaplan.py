@@ -27,6 +27,8 @@ class MP:
         {"descr": 'msk_salesec_mix_search_newacc_bdg', "fltrs": ["_msk_.*salesec.*search_testbnsacc", ]},
         {"descr": 'msk_dailyrentsec_mix_search_newacc_bdg', "fltrs": ["_msk_.*daily.*search_testbnsacc", ]},
 
+        {"descr": 'rf_multiapp_network_bdg', "fltrs": ["_multiapp", ]},
+
         ######################################################################################
         # Пакет: brand_cian ##################################################################
         ######################################################################################
@@ -920,7 +922,7 @@ class MP:
 
         {"descr": 'all_other_nov_bdg', "fltrs": ["_nov_",]},
         {"descr": 'all_other_ipoteka_bdg', "fltrs": ["_ipoteka_", ]},
-        {"descr": 'all_other_own_bdg', "fltrs": ["_own_", ]},
+        {"descr": 'all_other_own_bdg', "fltrs": ["_own_", "_rentown_", "_saleown_", ]},
         {"descr": 'all_other_com_bdg', "fltrs": ["com_", ]},
 
     ]
