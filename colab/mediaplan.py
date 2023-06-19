@@ -24,9 +24,9 @@ class MP:
         # {"descr": 'test_group_bdg', "fltrs": ["_testgrp"]},
         # {"descr": 'media_banner_bdg', "fltrs": ["_media_", "_banner_"]},
 
+        {"descr": 'msk_dailyrentsec_mix_search_newacc_bdg', "fltrs": ["_msk_.*daily.*search_testbnsacc", ]},
         {"descr": 'msk_salesec_mix_search_newacc_bdg', "fltrs": ["_msk_.*salesec.*search_testbnsacc", ]},
         {"descr": 'msk_rentsec_mix_search_newacc_bdg', "fltrs": ["_msk_.*rentsec.*search_testbnsacc", ]},
-        {"descr": 'msk_dailyrentsec_mix_search_newacc_bdg', "fltrs": ["_msk_.*daily.*search_testbnsacc", ]},
 
         {"descr": 'rf_multiapp_network_bdg', "fltrs": ["_multiapp", ]},
 
