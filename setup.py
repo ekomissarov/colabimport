@@ -12,7 +12,7 @@ setuptools.setup(
     description="Colab functions base",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://ekomissarov@bitbucket.org/ekomissarov/colabimport.git",
+    url="https://github.com/ekomissarov/colabimport.git",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
