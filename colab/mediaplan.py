@@ -30,6 +30,7 @@ class MP:
         {"descr": 'msk_salesec_mix_search_newacc_bdg', "fltrs": ["_msk_.*salesec.*search_testbnsacc", ]},
         {"descr": 'msk_rentsec_mix_search_newacc_bdg', "fltrs": ["_msk_.*rentsec.*search_testbnsacc", ]},
 
+        {"descr": 'rf_multiapp_mkb_network_bdg', "fltrs": ["_mkb_.*multiapp", ]},
         {"descr": 'rf_multiapp_network_bdg', "fltrs": ["_multiapp", ]},
 
         ######################################################################################
