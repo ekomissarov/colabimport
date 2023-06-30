@@ -1048,7 +1048,8 @@ class GenralGroupsVerticalCommon:
     filter_column = "vertical_class"
     classificator_column_name = "vertical_general_class"
     tags = [
-        {"descr": 'other', "fltrs": ["ipoteka", "nov", "own", "commerce", "realweb"]},
+        {"descr": 'other', "fltrs": ["ipoteka", "nov", "own", "commerce", ]},
+        {"descr": 'realweb', "fltrs": ["realweb"]},
         {"descr": 'daily', "fltrs": ["daily"]},
         {"descr": 'secondary', "fltrs": ["salesub", "rentsub", "rentsec", "salesec", "brand_cian", "competitors"]},
     ]
