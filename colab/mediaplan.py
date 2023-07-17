@@ -461,7 +461,8 @@ class MP:
         ######################################################################################
         # Пакет: salesec #######################################################################
         ######################################################################################
-        {"descr": 'msk_salesec_mix_search_bdg', "fltrs": ["b2c_(bmo|dmo|msk)_general_(null|geo|subreg)_salesec_mix_search", ]},
+        {"descr": 'msk_salesec_mix_search_bdg', "fltrs": ["b2c_(bmo|dmo|msk)_general_(null|geo|subreg)_salesec_mix_search",
+                                                          "b2c_msk_general_metro_salesec_mix_search_qeep"]},
         {"descr": 'spb_salesec_mix_search_bdg', "fltrs": ["b2c_spb_general_null_salesec_mix_search", ]},
         {"descr": 'ekb_salesec_mix_search_bdg', "fltrs": ["b2c_ekb_general_null_salesec_mix_search", ]},
         {"descr": 'novosibirsk_salesec_mix_search_bdg', "fltrs": ["b2c_novosibirsk_general_null_salesec_mix_search", ]},
