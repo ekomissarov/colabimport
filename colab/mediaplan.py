@@ -1085,13 +1085,10 @@ class GroupsVerticalCommon:
         {"descr": 'nov', "fltrs": ["_nov_"]},
         {"descr": 'own', "fltrs": ["_b2b_own_", "_b2b_compet_", "_ocenka_own_", "_sdaisnimi_", "_findagent_own_", "_own_"]},
         {"descr": 'commerce', "fltrs": ["_com_", "_cwrk_", "_cwrkcom_", "_gbcom_", "_iapcom_", "_rentcom_", "_salecom_"]},
+        {"descr": 'daily', "fltrs": ["daily"]},
 
         {"descr": 'salesub', "fltrs": ["_sub_", "_salesub_",]},
         {"descr": 'rentsub', "fltrs": ["_rentsub_"]},
-
-        {"descr": 'dailyrentsub', "fltrs": ["_dailyrentsub_"]},
-        {"descr": 'dailyrentsec', "fltrs": ["_dailyrentsec_"]},
-        {"descr": 'daily', "fltrs": ["daily"]},
 
         {"descr": 'rentsec', "fltrs": ["_rentsec_"]},
         {"descr": 'salesec', "fltrs": ["_salesec_"]},
