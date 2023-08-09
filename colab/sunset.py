@@ -285,7 +285,7 @@ class BasicDynamics:
                     "events_commercial", "events_salesub", "events_rentsub", "events_saleflats", "events_rentflats",
                     "events_applications",
                     "conv_agg_full", "conv_agg_owners",
-                    "impressions"}
+                    "impressions", "colocalls"}
 
     def run_plot(self):
         if "events" in self.what:
@@ -341,6 +341,11 @@ class BasicDynamics:
             self._plt_basic_dyn(ev="impressions", cpa="cpm", ev_per_click="ctr",
                            item_labels=["impressions", "cpm", "ctr"])
 
+        if "colocalls" in self.what:
+            self.data['cp_colocall'] = self.data['cost_rur']/self.data['colocalls']
+            self.data['colocall_per_click'] = self.data['colocalls']/self.data['clicks']
+            self._plt_basic_dyn(ev="colocalls", cpa="cp_colocall", ev_per_click="colocall_per_click",
+                                item_labels=["impressions", "cpm", "ctr"])
         if "common" in self.what:
             cost_rur = self.data.loc[:, "cost_rur"]
             cpc = self.data.loc[:, "cpc"]
