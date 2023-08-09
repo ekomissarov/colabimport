@@ -345,7 +345,7 @@ class BasicDynamics:
             self.data['cp_colocall'] = self.data['cost_rur']/self.data['colocalls']
             self.data['colocall_per_click'] = self.data['colocalls']/self.data['clicks']
             self._plt_basic_dyn(ev="colocalls", cpa="cp_colocall", ev_per_click="colocall_per_click",
-                                item_labels=["impressions", "cpm", "ctr"])
+                                item_labels=["colobok calls", "cp call", "calls per click"])
         if "common" in self.what:
             cost_rur = self.data.loc[:, "cost_rur"]
             cpc = self.data.loc[:, "cpc"]
