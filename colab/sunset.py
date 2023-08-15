@@ -773,7 +773,7 @@ def cell_plotly_dimension(df, metrics, dimension = 'vertical_class', exclude_gra
             plot_set = set(df[dimension].unique()) - plot_set_excl,
             vert_lines=vert_lines)
 
-def cell_dimension(df, metrics, dimension = 'vertical_class', exclude_graphs = None, vert_lines=None):
+def cell_dimension(df, metrics, dimension = 'vertical_class', exclude_graphs = None, vert_lines=None, ymax=None):
     """
     metrics example: ["cpa", "events"]
     exclude_graphs example: {"cpa": {"ipoteka", "Undefined"}
@@ -789,4 +789,5 @@ def cell_dimension(df, metrics, dimension = 'vertical_class', exclude_graphs = N
             y_value = i,
             group_by_plot = dimension,
             plot_set = set(df[dimension].unique()) - plot_set_excl,
-            vert_lines=vert_lines)
+            vert_lines=vert_lines,
+            ymax=ymax)
