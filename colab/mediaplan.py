@@ -250,10 +250,10 @@ class MP:
         ######################################################################################
         # Пакет: rentsec #######################################################################
         ######################################################################################
-        {"descr": 'msk_rentsec_mix_search_bdg', "fltrs": ["b2c_msk_general_null_rentsec_mix_search", ]},
         {"descr": 'msk_rentsec_qeepmetro_search_bdg', "fltrs": ["b2c_msk_general_metro_rentsec_mix_search_qeep", ]},
         {"descr": 'msk_rentsec_qeepstreets_search_bdg', "fltrs": ["b2c_msk_general_streets_rentsec_mix_search_qeep", ]},
         {"descr": 'msk_rentsec_qeepmoreg_search_bdg', "fltrs": ["b2c_msk_general_subreg_rentsec_mix_search_qeep", ]},
+        {"descr": 'msk_rentsec_mix_search_bdg', "fltrs": ["b2c_(dmo|bmo|msk)_general_(null|geo|subreg)_rentsec_mix_search", ]},
         {"descr": 'spb_rentsec_mix_search_bdg', "fltrs": ["b2c_spb_general_(null|subreg)_rentsec_mix_search", ]},
         {"descr": 'ekb_rentsec_mix_search_bdg', "fltrs": ["b2c_ekb_general_null_rentsec_mix_search", ]},
         {"descr": 'novosibirsk_rentsec_mix_search_bdg', "fltrs": ["b2c_novosibirsk_general_null_rentsec_mix_search", ]},
@@ -341,11 +341,11 @@ class MP:
         ######################################################################################
         # Пакет: salesec #######################################################################
         ######################################################################################
-        {"descr": 'msk_salesec_mix_search_bdg', "fltrs": ["b2c_msk_general_null_salesec_mix_search", ]},
         {"descr": 'msk_salesec_info_search_bdg', "fltrs": ["b2c_msk_general_info_salesec_mix_search", ]},
         {"descr": 'msk_salesec_qeepmetro_search_bdg', "fltrs": ["b2c_msk_general_metro_salesec_mix_search_qeep", ]},
         {"descr": 'msk_salesec_qeepstreets_search_bdg', "fltrs": ["b2c_msk_general_streets_salesec_mix_search_qeep", ]},
         {"descr": 'msk_salesec_qeepmoreg_search_bdg', "fltrs": ["b2c_msk_general_subreg_salesec_mix_search_qeep", ]},
+        {"descr": 'msk_salesec_mix_search_bdg', "fltrs": ["b2c_(bmo|dmo|msk)_general_(null|geo|subreg)_salesec_mix_search", ]},
         {"descr": 'spb_salesec_mix_search_bdg', "fltrs": ["b2c_spb_general_null_salesec_mix_search", ]},
         {"descr": 'ekb_salesec_mix_search_bdg', "fltrs": ["b2c_ekb_general_null_salesec_mix_search", ]},
         {"descr": 'novosibirsk_salesec_mix_search_bdg', "fltrs": ["b2c_novosibirsk_general_null_salesec_mix_search", ]},
