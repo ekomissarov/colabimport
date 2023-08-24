@@ -346,6 +346,8 @@ class MP:
         {"descr": 'msk_salesec_qeepstreets_search_bdg', "fltrs": ["b2c_msk_general_streets_salesec_mix_search_qeep", ]},
         {"descr": 'msk_salesec_qeepmoreg_search_bdg', "fltrs": ["b2c_msk_general_subreg_salesec_mix_search_qeep", ]},
         {"descr": 'msk_salesec_mix_search_bdg', "fltrs": ["b2c_(bmo|dmo|msk)_general_(null|geo|subreg)_salesec_mix_search", ]},
+        {"descr": 'msk_salesec_tovarnaya_network_bdg', "fltrs": ["b2c_msk_tovarnaya_subreg_salesec_mix_network", ]},
+
         {"descr": 'spb_salesec_mix_search_bdg', "fltrs": ["b2c_spb_general_null_salesec_mix_search", ]},
         {"descr": 'ekb_salesec_mix_search_bdg', "fltrs": ["b2c_ekb_general_null_salesec_mix_search", ]},
         {"descr": 'novosibirsk_salesec_mix_search_bdg', "fltrs": ["b2c_novosibirsk_general_null_salesec_mix_search", ]},
@@ -489,6 +491,7 @@ class MP:
         {"descr": 'novosibirsk_rentsub_merchand_network_bdg', "fltrs": ["b2c_novosibirsk_merchand_feed_rentsub_mix_network", ]},
         {"descr": 'omskcity_rentsub_merchand_network_bdg', "fltrs": ["b2c_omsk_merchand_feed_rentsub_mix_network", ]},
 
+        {"descr": 'msk_salesub_qeepmoreg_search_bdg', "fltrs": ["b2c_msk_general_subreg_salesub_mix_search_qeep", ]},
         {"descr": 'msk_salesub_mix_search_bdg', "fltrs": ["b2c_(bmo|dmo|msk)_general_(null_salesub|geo_sub)_mix_search", ]},
         {"descr": 'spb_salesub_mix_search_bdg', "fltrs": ["b2c_spb_general_null_salesub_mix_search", ]},
         {"descr": 'ekb_salesub_mix_search_bdg', "fltrs": ["b2c_ekb_general_null_salesub_mix_search", ]},
