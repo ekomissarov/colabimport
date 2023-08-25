@@ -793,6 +793,6 @@ def cell_dimension(df, metrics, dimension = 'vertical_class', exclude_graphs = N
         plot_compare_base(df,
             y_value = i,
             group_by_plot = dimension,
-            plot_set = set(df[dimension].unique()) - plot_set_excl,
+            plot_set = plot_set_order,
             vert_lines=vert_lines,
             ymax=ymax)
