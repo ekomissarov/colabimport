@@ -773,7 +773,7 @@ def cell_plotly_dimension(df, metrics, dimension = 'vertical_class', exclude_gra
             plot_set = set(df[dimension].unique()) - plot_set_excl,
             vert_lines=vert_lines)
 
-def cell_dimension(df, metrics, dimension = 'vertical_class', exclude_graphs = None, vert_lines=None, ymax=None):
+def cell_dimension(df, metrics, dimension = 'vertical_class', exclude_graphs = None, vert_lines=None, ymax=None, plot_set_order=None):
     """
     metrics example: ["cpa", "events"]
     exclude_graphs example: {"cpa": {"ipoteka", "Undefined"}
@@ -785,6 +785,11 @@ def cell_dimension(df, metrics, dimension = 'vertical_class', exclude_graphs = N
         plot_set_excl = set()
         if exclude_graphs and i in exclude_graphs:
             plot_set_excl = exclude_graphs[i]
+        if plot_set_order is None:
+            plot_set_order = set(df[dimension].unique()) - plot_set_excl
+        else:
+            tmp = set(df[dimension].unique()) - plot_set_excl
+            plot_set_order = [j for j in plot_set_order if j in tmp] + list(tmp - set(plot_set_order))
         plot_compare_base(df,
             y_value = i,
             group_by_plot = dimension,
