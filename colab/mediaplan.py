@@ -254,6 +254,8 @@ class MP:
         {"descr": 'msk_rentsec_qeepstreets_search_bdg', "fltrs": ["b2c_msk_general_streets_rentsec_mix_search_qeep", ]},
         {"descr": 'msk_rentsec_qeepmoreg_search_bdg', "fltrs": ["b2c_msk_general_subreg_rentsec_mix_search_qeep", ]},
         {"descr": 'msk_rentsec_mix_search_bdg', "fltrs": ["b2c_(dmo|bmo|msk)_general_(null|geo|subreg)_rentsec_mix_search", ]},
+        {"descr": 'msk_rentsec_tovarnaya_network_bdg', "fltrs": ["b2c_msk_tovarnaya_subreg_rentsec_mix_network", ]},
+
         {"descr": 'spb_rentsec_mix_search_bdg', "fltrs": ["b2c_spb_general_(null|subreg)_rentsec_mix_search", ]},
         {"descr": 'ekb_rentsec_mix_search_bdg', "fltrs": ["b2c_ekb_general_null_rentsec_mix_search", ]},
         {"descr": 'novosibirsk_rentsec_mix_search_bdg', "fltrs": ["b2c_novosibirsk_general_null_rentsec_mix_search", ]},
