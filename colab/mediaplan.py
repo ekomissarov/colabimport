@@ -344,6 +344,7 @@ class MP:
         # Пакет: salesec #######################################################################
         ######################################################################################
         {"descr": 'msk_salesec_info_search_bdg', "fltrs": ["b2c_msk_general_info_salesec_mix_search", ]},
+        {"descr": 'msk_salesec_rlsainfo_search_bdg', "fltrs": ["b2c_msk_rlsa_info_salesec_mix_search", ]},
         {"descr": 'msk_salesec_qeepmetro_search_bdg', "fltrs": ["b2c_msk_general_metro_salesec_mix_search_qeep", ]},
         {"descr": 'msk_salesec_qeepstreets_search_bdg', "fltrs": ["b2c_msk_general_streets_salesec_mix_search_qeep", ]},
         {"descr": 'msk_salesec_qeepmoreg_search_bdg', "fltrs": ["b2c_msk_general_subreg_salesec_mix_search_qeep", ]},
