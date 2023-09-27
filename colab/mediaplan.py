@@ -566,12 +566,14 @@ class MP:
                                                            ]},
 
 
-        {"descr": 'msk_sub_network_bdg', "fltrs": ["b2c_msk_general_null_sub_mix_network", ]},
+        {"descr": 'msk_sub_network_bdg', "fltrs": ["b2c_msk_general_null_sub_mix_network",
+                                                   "b2c_msk_rsya_sub_all_mix_network", ]},
         {"descr": 'spb_sub_network_bdg', "fltrs": ["b2c_spb_general_null_sub_mix_network", ]},
         {"descr": 'novosibirsk_sub_network_bdg', "fltrs": ["b2c_novosibirsk_general_null_sub_mix_network", ]},
         {"descr": 'omskcity_sub_network_bdg', "fltrs": ["b2c_omsk_general_null_sub_mix_network", ]},
         {"descr": 'ekb_sub_network_bdg', "fltrs": ["b2c_ekb_general_null_sub_mix_network", ]},
-        {"descr": 'krasnodar_sub_network_bdg', "fltrs": ["b2c_krasnodar_general_null_sub_mix_network", ]},
+        {"descr": 'krasnodar_sub_network_bdg', "fltrs": ["b2c_krasnodar_general_null_sub_mix_network",
+                                                         "b2c_msk_rsya_sub_all_mix_network", ]},
 
 
         {"descr": 'msk_sub_mkb_search_bdg', "fltrs": ["b2c_msk_general_mkb_sub_mix_search", ]},
