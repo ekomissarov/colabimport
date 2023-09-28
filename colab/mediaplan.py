@@ -246,6 +246,7 @@ class MP:
         {"descr": 'krasnodar_compet_network_bdg', "fltrs": ["b2c_krasnodar_(compet_main|rsya_compet)_all_mix_network", ]},
 
         {"descr": 'msk_general_network_bdg', "fltrs": ["b2c_msk_rsya_general_all_mix_network", ]},
+        {"descr": 'msk_interests_network_bdg', "fltrs": ["b2c_msk_rsya_interests_all_mix_network", ]},
 
         ######################################################################################
         # Пакет: rentsec #######################################################################
