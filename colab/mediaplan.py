@@ -857,7 +857,7 @@ class GroupsRegions:
         {"descr": 'msk', "fltrs": ["_msk_", "_mo_", "_dmo_", "_bmo_", "_mskmo_", "_cap_"]},
         {"descr": 'spb', "fltrs": ["_spb_", "_spblo_"]},
         {"descr": 'krasnodar', "fltrs": ["_krasnodar_", "_sochi_"]},
-        {"descr": 'neo', "fltrs": ["_ekb_", "_novosibirsk_", "_omsk_", ]},
+        {"descr": 'neo', "fltrs": ["_ekb_", "_novosibirsk_", "_omsk_", "_nsk_"]},
         {"descr": 'oth', "fltrs": ['_kazan_',
                                    '_nn_',
                                    '_krasnoyarsk_',
