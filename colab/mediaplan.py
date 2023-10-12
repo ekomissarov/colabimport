@@ -996,6 +996,7 @@ class GroupsVerticalCommon:
     filter_column = "budget_class"
     classificator_column_name = "vertical_class"
     tags = [
+        {"descr": 'realweb', "fltrs": ["_realweb_", ]},
         {"descr": 'ipoteka', "fltrs": ["_ipoteka_"]},
         {"descr": 'nov', "fltrs": ["_nov_"]},
         {"descr": 'own', "fltrs": ["_b2b_own_", "_b2b_compet_", "_ocenka_own_", "_sdaisnimi_", "_findagent_own_", "_own_"]},
@@ -1010,8 +1011,6 @@ class GroupsVerticalCommon:
 
         {"descr": 'brand_cian', "fltrs": ["_brand_cian"]},
         {"descr": 'competitors', "fltrs": ["competitors", "brand", "compet"]},
-
-        {"descr": 'realweb', "fltrs": ["_realweb_", ]},
     ]
 
     def __init__(self):
