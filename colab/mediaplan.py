@@ -46,8 +46,8 @@ class MP:
         {"descr": 'omskcity_realweb_other_bdg', "fltrs": ["omsk_.*_rw", ]},
         {"descr": 'all_realweb_other_bdg', "fltrs": ["_rw", ]},
 
-        {"descr": 'all_other_realweb_bdg', "fltrs": ["_search_rw", "_network_rw" ]},
         {"descr": 'all_dailyrent_bdg', "fltrs": ["daily", ]},
+
         {"descr": 'rf_multiapp_mkb_network_bdg', "fltrs": ["_mkb_.*multiapp", ]},
         {"descr": 'rf_multiapp_network_bdg', "fltrs": ["_multiapp", ]},
 
