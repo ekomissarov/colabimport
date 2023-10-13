@@ -843,6 +843,8 @@ class MP:
                                                            "b2c_spb_rtg_withlead_rentsec_mix_network"
                                                            ]},
 
+        {"descr": 'capitals_other_nov_bdg', "fltrs": ["_msk_.*_nov_", "_spb_.*_nov"]},
+        {"descr": 'all_other_nov_bdg', "fltrs": ["_nov_",]},
         {"descr": 'all_other_nov_bdg', "fltrs": ["_nov_",]},
         {"descr": 'all_other_ipoteka_bdg', "fltrs": ["_ipoteka_", ]},
         {"descr": 'all_other_own_bdg', "fltrs": ["_own_", "_rentown_", "_saleown_", ]},
@@ -1042,7 +1044,7 @@ class SearchOrNetwork:
 
         {"descr": 'search', "fltrs": ["_search"]},
         {"descr": 'drtg_network', "fltrs": ["_drtg_", "_rtg_smart"]},
-        {"descr": 'mk_network', "fltrs": ["_pmax_", "_mk_.*_network"]},
+        {"descr": 'mk_network', "fltrs": ["_pmax_", "_mk_.*_network", "_tovarnaya_"]},
         {"descr": 'lal_network', "fltrs": ["lal", "_custlal_", "smartlal", "audiencelal"]},
 
         {"descr": 'simplertg_network', "fltrs": ["_rtg_"]},
