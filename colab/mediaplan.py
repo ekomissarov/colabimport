@@ -845,7 +845,6 @@ class MP:
 
         {"descr": 'capitals_other_nov_bdg', "fltrs": ["_msk_.*_nov_", "_spb_.*_nov"]},
         {"descr": 'all_other_nov_bdg', "fltrs": ["_nov_",]},
-        {"descr": 'all_other_nov_bdg', "fltrs": ["_nov_",]},
         {"descr": 'all_other_ipoteka_bdg', "fltrs": ["_ipoteka_", ]},
         {"descr": 'all_other_own_bdg', "fltrs": ["_own_", "_rentown_", "_saleown_", ]},
         {"descr": 'all_other_com_bdg', "fltrs": ["com_", ]},
