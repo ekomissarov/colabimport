@@ -649,7 +649,10 @@ class MP:
         ######################################################################################
         # Пакет: DRTG salesec ################################################################
         ######################################################################################
-        {"descr": 'msk_sbyndx_salesec_bdg', "fltrs": ["b2c_msk_rtg_smart_salesec_mix_network", ]},
+        {"descr": 'msk_sbyndx_salesec_experimental_bdg', "fltrs": ["b2c_msk_rtg_smart_salesec_mix_network$",
+                                                                   "b2c_msk_rtg_smart_salesec_mix_network_wmfeed_fullml$",
+                                                                   "b2c_msk_rtg_smart_salesec_mix_network_yrfeed$", ]},
+        {"descr": 'msk_sbyndx_salesec_bdg', "fltrs": ["b2c_msk_rtg_smart_salesec_mix_network_wmfeed$", ]},
         {"descr": 'msk_sbyndxlal_salesec_bdg', "fltrs": ["b2c_msk_rtg_smartlal_salesec_mix_network", ]},
         {"descr": 'spb_sbyndx_salesec_bdg', "fltrs": ["b2c_spb_rtg_smart_salesec_mix_network", ]},
         {"descr": 'spb_sbyndxlal_salesec_bdg', "fltrs": ["b2c_spb_rtg_smartlal_salesec_mix_network", ]},
