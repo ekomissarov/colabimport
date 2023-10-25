@@ -55,7 +55,7 @@ class MP:
         # Пакет: brand_cian ##################################################################
         ######################################################################################
         {"descr": 'msk_brand_cian_experimental_bdg', "fltrs": ["b2c_msk_brand_cian_all_mix_search_ongoing[bc]", ]},
-        {"descr": 'msk_brand_cian_bdg', "fltrs": ["b2c_(dmo|bmo|mo|msk)_brand_cian_all_mix_search_ongoinga", ]},
+        {"descr": 'msk_brand_cian_bdg', "fltrs": ["b2c_(dmo|bmo|mo|msk)_brand_cian_all_mix_search", ]},
         {"descr": 'spb_brand_cian_bdg', "fltrs": ["b2c_spb_brand_cian_all_mix_search", ]},
         {"descr": 'ekb_brand_cian_bdg', "fltrs": ["b2c_ekb_brand_cian_all_mix_search", ]},
         {"descr": 'novosibirsk_brand_cian_bdg', "fltrs": ["b2c_novosibirsk_brand_cian_all_mix_search", ]},
