@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import plotly.express as px
 from plotly.subplots import make_subplots
 import plotly.graph_objects as go
-from datetime import date, timedelta, strptime
+from datetime import date, timedelta, datetime
 from calendar import monthrange
 import warnings
 
@@ -805,15 +805,15 @@ def PoPperiod(p1, p2, resampleflag='W'):
     p2_fd, p2_ld_curr, p2_ld = 0, 0, 0
 
     if type(p1) is str:
-        p1 = strptime(p1, "%Y-%m-%d").date()
+        p1 = datetime.strptime(p1, "%Y-%m-%d").date()
     if type(p2) is str:
-        p2 = strptime(p2, "%Y-%m-%d").date()
+        p2 = datetime.strptime(p2, "%Y-%m-%d").date()
 
     if resampleflag=="W":
-        p1_fd = strptime(f'{p1.isocalendar().year}-{p1.isocalendar().week}-1', "%Y-%W-%w").date()
+        p1_fd = datetime.strptime(f'{p1.isocalendar().year}-{p1.isocalendar().week}-1', "%Y-%W-%w").date()
         p1_ld = p1_fd + timedelta(days=6.9)
 
-        p2_fd = strptime(f'{p2.isocalendar().year}-{p2.isocalendar().week}-1', "%Y-%W-%w").date()
+        p2_fd = datetime.strptime(f'{p2.isocalendar().year}-{p2.isocalendar().week}-1', "%Y-%W-%w").date()
         p2_ld = p2_fd + timedelta(days=6.9)
         if p1_ld == p2_ld:
             raise ValueError(f"periods {p1_ld} and {p2_ld} is equal")
@@ -831,11 +831,11 @@ def PoPperiod(p1, p2, resampleflag='W'):
             raise ValueError(f"periods {p1_ld} and {p2_ld} is equal")
     elif resampleflag=="W*":
         p2_ld_curr = date.today() - timedelta(1)
-        p2_fd = strptime(f'{p2_ld_curr.isocalendar().year}-{p2_ld_curr.isocalendar().week}-1', "%Y-%W-%w").date()
+        p2_fd = datetime.strptime(f'{p2_ld_curr.isocalendar().year}-{p2_ld_curr.isocalendar().week}-1', "%Y-%W-%w").date()
         p2_ld = p2_fd + timedelta(days=6.9)
 
-        p1_fd = strptime(f'{p1.isocalendar().year}-{p1.isocalendar().week}-1', "%Y-%W-%w").date()
-        p1_ld_curr = strptime(f'{p1.isocalendar().year}-{p1.isocalendar().week}-{p2_ld_curr.isocalendar().weekday%7}', "%Y-%W-%w").date()
+        p1_fd = datetime.strptime(f'{p1.isocalendar().year}-{p1.isocalendar().week}-1', "%Y-%W-%w").date()
+        p1_ld_curr = datetime.strptime(f'{p1.isocalendar().year}-{p1.isocalendar().week}-{p2_ld_curr.isocalendar().weekday%7}', "%Y-%W-%w").date()
         p1_ld = p1_fd + timedelta(days=6.9)
 
     elif resampleflag=="M*":
