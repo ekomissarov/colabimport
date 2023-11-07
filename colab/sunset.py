@@ -6,7 +6,10 @@ import matplotlib.pyplot as plt
 import plotly.express as px
 from plotly.subplots import make_subplots
 import plotly.graph_objects as go
-from datetime import date
+from datetime import date, timedelta, strptime
+from calendar import monthrange
+import warnings
+
 
 def scale_plot_size(x, y):
     #default_figsize = mpl.rcParamsDefault['figure.figsize']
@@ -796,3 +799,115 @@ def cell_dimension(df, metrics, dimension = 'vertical_class', exclude_graphs = N
             plot_set = plot_set_order,
             vert_lines=vert_lines,
             ymax=ymax)
+
+def PoPperiod(p1, p2, resampleflag='W'):
+    p1_fd, p1_ld_curr, p1_ld = 0, 0, 0
+    p2_fd, p2_ld_curr, p2_ld = 0, 0, 0
+
+    if type(p1) is str:
+        p1 = strptime(p1, "%Y-%m-%d").date()
+    if type(p2) is str:
+        p2 = strptime(p2, "%Y-%m-%d").date()
+
+    if resampleflag=="W":
+        p1_fd = strptime(f'{p1.isocalendar().year}-{p1.isocalendar().week}-1', "%Y-%W-%w").date()
+        p1_ld = p1_fd + timedelta(days=6.9)
+
+        p2_fd = strptime(f'{p2.isocalendar().year}-{p2.isocalendar().week}-1', "%Y-%W-%w").date()
+        p2_ld = p2_fd + timedelta(days=6.9)
+        if p1_ld == p2_ld:
+            raise ValueError(f"periods {p1_ld} and {p2_ld} is equal")
+    elif resampleflag=="D":
+        p1_fd = p1_ld = p1
+        p2_fd = p2_ld = p2
+        if p1_ld == p2_ld:
+            raise ValueError(f"periods {p1_ld} and {p2_ld} is equal")
+    elif resampleflag=="M":
+        p1_fd = date(p1.year, p1.month, 1)
+        p2_fd = date(p2.year, p2.month, 1)
+        p1_ld = date(p1.year, p1.month, monthrange(p1.year, p1.month)[1])
+        p2_ld = date(p2.year, p2.month, monthrange(p2.year, p2.month)[1])
+        if p1_ld == p2_ld:
+            raise ValueError(f"periods {p1_ld} and {p2_ld} is equal")
+    elif resampleflag=="W*":
+        p2_ld_curr = date.today() - timedelta(1)
+        p2_fd = strptime(f'{p2_ld_curr.isocalendar().year}-{p2_ld_curr.isocalendar().week}-1', "%Y-%W-%w").date()
+        p2_ld = p2_fd + timedelta(days=6.9)
+
+        p1_fd = strptime(f'{p1.isocalendar().year}-{p1.isocalendar().week}-1', "%Y-%W-%w").date()
+        p1_ld_curr = strptime(f'{p1.isocalendar().year}-{p1.isocalendar().week}-{p2_ld_curr.isocalendar().weekday%7}', "%Y-%W-%w").date()
+        p1_ld = p1_fd + timedelta(days=6.9)
+
+    elif resampleflag=="M*":
+        p2_ld_curr = date.today() - timedelta(1)
+        p2_fd = date(p2_ld_curr.year, p2_ld_curr.month, 1)
+        p2_ld = date(p2_ld_curr.year, p2_ld_curr.month, monthrange(p2_ld_curr.year, p2_ld_curr.month)[1])
+
+        p1_fd = date(p1.year, p1.month, 1)
+        p1_ld_curr = date(p1_fd.year, p1_fd.month, p2_ld_curr.day)
+        p1_ld = date(p1.year, p1.month, monthrange(p1.year, p1.month)[1])
+
+    p1_ld_curr = p1_ld if p1_ld_curr == 0 else p1_ld_curr
+    p2_ld_curr = p2_ld if p2_ld_curr == 0 else p2_ld_curr
+    return (p1_fd, p1_ld_curr, p1_ld), (p2_fd, p2_ld_curr, p2_ld)
+
+def PoP(data, p1, p2, resampleflag='W', metrics=['ev_contacts', 'cost_rur', 'cp_contact']):
+    pop_period = PoPperiod(p1, p2, resampleflag)
+    p1_fd, p1_ld_curr, p1_ld = pop_period[0]
+    p2_fd, p2_ld_curr, p2_ld = pop_period[1]
+    print("first date pointer:", p1_fd, p1_ld_curr, p1_ld)
+    print("second date pointer:", p2_fd, p2_ld_curr, p2_ld)
+
+    tmp = data[
+        ((data.date>=p1_fd)&(data.date<=p1_ld_curr))
+        |((data.date>=p2_fd)&(data.date<=p2_ld_curr))
+    ].copy()
+    tmp['date'] = pd.to_datetime(tmp['date'])
+    tmp = calc_base_values(tmp.groupby('date').sum(numeric_only=True).resample(resampleflag[0]).sum(numeric_only=True).reset_index())
+
+    #display_df(tmp)
+    tmp = tmp[tmp.date.isin([p1_ld, p2_ld])][["date", *metrics]].sort_values('date').reset_index(drop=True)
+    for i in metrics:
+        try:
+            with warnings.catch_warnings():
+                warnings.filterwarnings("ignore",category=RuntimeWarning)
+                tmp.loc["diff,%", i] = np.round((tmp.iloc[1][i]/tmp.iloc[0][i] -1)*100, 2)
+        except IndexError:
+            continue
+    return tmp
+
+
+def PoPdim(data, p1, p2, resampleflag='W', dimension='vertical_class', metrics=['ev_contacts', 'cost_rur', 'cp_contact']):
+    pop_period = PoPperiod(p1, p2, resampleflag)
+    p1_fd, p1_ld_curr, p1_ld = pop_period[0]
+    p2_fd, p2_ld_curr, p2_ld = pop_period[1]
+    print("first date pointer:", p1_fd, p1_ld_curr, p1_ld)
+    print("second date pointer:", p2_fd, p2_ld_curr, p2_ld)
+
+    tmp = data[
+        ((data.date>=p1_fd)&(data.date<=p1_ld_curr))
+        |((data.date>=p2_fd)&(data.date<=p2_ld_curr))
+    ].copy()
+    tmp['date'] = pd.to_datetime(tmp['date'])
+
+    result = pd.DataFrame()
+    for i in tmp[dimension].unique():
+        dim_segm = tmp[tmp[dimension]==i].copy()
+        dim_segm = calc_base_values(dim_segm.groupby('date').sum(numeric_only=True).resample(resampleflag[0]).sum(numeric_only=True).reset_index())
+        dim_segm = dim_segm[dim_segm.date.isin([p1_ld, p2_ld])][["date", *metrics]].sort_values('date').reset_index(drop=True)
+        dim_segm["date"] = dim_segm["date"].dt.date
+        for j in metrics:
+            try:
+                with warnings.catch_warnings():
+                    warnings.filterwarnings("ignore",category=RuntimeWarning)
+                    dim_segm.loc["diff,%", j] = np.round((dim_segm.iloc[1][j]/dim_segm.iloc[0][j] -1)*100, 2);
+                    dim_segm.loc["diff,%", "date"] = "diff,%"
+            except IndexError:
+                continue
+
+        dim_segm[dimension] = i
+        result = pd.concat([result, dim_segm])
+
+    result = result.pivot_table(index=dimension, values=metrics, columns='date', aggfunc="first")
+    result = result.sort_values([("ev_contacts", result.columns.levels[1][0]), ], ascending=False)
+    return result
