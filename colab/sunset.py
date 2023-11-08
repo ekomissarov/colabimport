@@ -830,7 +830,7 @@ def PoPperiod(p1, p2, resampleflag='W'):
         if p1_ld == p2_ld:
             raise ValueError(f"periods {p1_ld} and {p2_ld} is equal")
     elif resampleflag=="W*":
-        p2_ld_curr = date.today() - timedelta(1)
+        p2_ld_curr = p2
         p2_fd = datetime.strptime(f'{p2_ld_curr.isocalendar().year}-{p2_ld_curr.isocalendar().week}-1', "%Y-%W-%w").date()
         p2_ld = p2_fd + timedelta(days=6.9)
 
