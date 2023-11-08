@@ -858,7 +858,7 @@ def PoPperiod(p1, p2, resampleflag='W'):
         p2_ld = date(p2_ld_curr.year, 12, 31)
 
         p1_fd = date(p1.year, 1, 1)
-        p1_ld_curr = date(p1_fd.year, p2_ld.month, p2_ld_curr.day)
+        p1_ld_curr = date(p1_fd.year, p2_ld_curr.month, p2_ld_curr.day)
         p1_ld = date(p1.year, 12, 31)
 
     p1_ld_curr = p1_ld if p1_ld_curr == 0 else p1_ld_curr
@@ -923,5 +923,5 @@ def PoPdim(data, p1, p2, resampleflag='W', dimension='vertical_class', metrics=[
         result = pd.concat([result, dim_segm])
 
     result = result.pivot_table(index=dimension, values=metrics, columns='date', aggfunc="first")
-    result = result.sort_values([("ev_contacts", result.columns.levels[1][0]), ], ascending=False)
+    result = result.sort_values([(metrics[0], result.columns.levels[1][0]), ], ascending=False)
     return result
