@@ -829,6 +829,13 @@ def PoPperiod(p1, p2, resampleflag='W'):
         p2_ld = date(p2.year, p2.month, monthrange(p2.year, p2.month)[1])
         if p1_ld == p2_ld:
             raise ValueError(f"periods {p1_ld} and {p2_ld} is equal")
+    elif resampleflag == "Y":
+            p1_fd = date(p1.year, 1, 1)
+            p2_fd = date(p2.year, 1, 1)
+            p1_ld = date(p1.year, 12, 31)
+            p2_ld = date(p2.year, 12, 31)
+            if p1_ld == p2_ld:
+                raise ValueError(f"periods {p1_ld} and {p2_ld} is equal")
     elif resampleflag=="W*":
         p2_ld_curr = p2
         p2_fd = datetime.strptime(f'{p2_ld_curr.isocalendar().year}-{p2_ld_curr.isocalendar().week}-1', "%Y-%W-%w").date()
@@ -837,15 +844,22 @@ def PoPperiod(p1, p2, resampleflag='W'):
         p1_fd = datetime.strptime(f'{p1.isocalendar().year}-{p1.isocalendar().week}-1', "%Y-%W-%w").date()
         p1_ld_curr = datetime.strptime(f'{p1.isocalendar().year}-{p1.isocalendar().week}-{p2_ld_curr.isocalendar().weekday%7}', "%Y-%W-%w").date()
         p1_ld = p1_fd + timedelta(days=6.9)
-
     elif resampleflag=="M*":
-        p2_ld_curr = date.today() - timedelta(1)
+        p2_ld_curr = p2
         p2_fd = date(p2_ld_curr.year, p2_ld_curr.month, 1)
         p2_ld = date(p2_ld_curr.year, p2_ld_curr.month, monthrange(p2_ld_curr.year, p2_ld_curr.month)[1])
 
         p1_fd = date(p1.year, p1.month, 1)
         p1_ld_curr = date(p1_fd.year, p1_fd.month, p2_ld_curr.day)
         p1_ld = date(p1.year, p1.month, monthrange(p1.year, p1.month)[1])
+    elif resampleflag=="Y*":
+        p2_ld_curr = p2
+        p2_fd = date(p2_ld_curr.year, 1, 1)
+        p2_ld = date(p2_ld_curr.year, 12, 31)
+
+        p1_fd = date(p1.year, 1, 1)
+        p1_ld_curr = date(p1_fd.year, p2_ld.month, p2_ld_curr.day)
+        p1_ld = date(p1.year, 12, 31)
 
     p1_ld_curr = p1_ld if p1_ld_curr == 0 else p1_ld_curr
     p2_ld_curr = p2_ld if p2_ld_curr == 0 else p2_ld_curr
