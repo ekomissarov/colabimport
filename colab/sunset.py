@@ -9,7 +9,11 @@ import plotly.graph_objects as go
 from datetime import date, timedelta, datetime
 from calendar import monthrange
 import warnings
+from scipy import special
+import seaborn as sns
 
+
+CURRENT_MONTH = date(*date.today().timetuple()[0:2], 1)
 
 def scale_plot_size(x, y):
     #default_figsize = mpl.rcParamsDefault['figure.figsize']
@@ -925,3 +929,211 @@ def PoPdim(data, p1, p2, resampleflag='W', dimension='vertical_class', metrics=[
     result = result.pivot_table(index=dimension, values=metrics, columns='date', aggfunc="first")
     result = result.sort_values([(metrics[0], result.columns.levels[1][0]), ], ascending=False)
     return result
+
+
+def cell_yg_system(tmp, cma, vert_lines=[CURRENT_MONTH]):
+    for i in cma:
+        plot_compare_base(
+            tmp, y_value = i,
+            group_by_plot = 'system',
+            plot_set=tmp.system.unique(),
+            vert_lines=vert_lines)
+
+    plot_avg_position_yandex(tmp, vert_lines=vert_lines)
+    plot_top_is_position_google(tmp, vert_lines=vert_lines)
+
+    plot_compare_base(tmp,
+      y_value='impr_pos',
+      group_by_plot='region_class',
+      plot_set=tmp[(tmp.system=="y")&(tmp.network_class=="search")].region_class.unique(),
+      system_filters=["y"],
+      vert_lines=vert_lines)
+
+    plot_compare_base(tmp,
+      y_value='top_is',
+      group_by_plot='region_class',
+      plot_set=tmp[(tmp.system=="g")&(tmp.network_class=="search")].region_class.unique(),
+      system_filters=["g"],
+      vert_lines=vert_lines)
+
+def cell_budget_class_lite(tmp, cma, excl = None, vert_lines=[CURRENT_MONTH], level=1):
+    tmp.loc[tmp.budget_class==False, "budget_class"] = "Undefined"
+    if level == 1:
+        tmp["budget_class_lite"] = tmp["budget_class"].str.replace("^(.*?_)", "..._", regex=True)
+    elif level == 2:
+        tmp["budget_class_lite"] = tmp["budget_class"].str.replace("^(.*?_.*?_)", "..._", regex=True)
+    cell_dimension(tmp,
+                          metrics=cma, dimension = 'budget_class_lite',
+                          exclude_graphs = excl, vert_lines=vert_lines)
+
+def cell_plotly_budget_class_lite(tmp, cma, excl = None, vert_lines=[CURRENT_MONTH], level=1):
+    tmp.loc[tmp.budget_class==False, "budget_class"] = "Undefined"
+    if level == 1:
+        tmp["budget_class_lite"] = tmp["budget_class"].str.replace("^(.*?_)", "..._", regex=True)
+    elif level == 2:
+        tmp["budget_class_lite"] = tmp["budget_class"].str.replace("^(.*?_.*?_)", "..._", regex=True)
+    cell_plotly_dimension(tmp,
+                          metrics=cma, dimension = 'budget_class_lite',
+                          exclude_graphs = excl, vert_lines=vert_lines)
+
+def cell_crossconversions(bzz, grp="vertical_class"):
+    bzz = bzz.groupby(grp).sum(numeric_only=True).reset_index()
+    bzz = calc_base_values(bzz)
+    tmp1 = bzz[[grp, 'cost_rur', 'events', 'chats',  'events_fdv', 'events_commercial', "events_salesub",
+               "events_rentsub", "events_saleflats", "events_rentflats", 'events_ss',
+               "ct", "ads", "ipotek", "events_applications"]].copy()
+    tmp1.iloc[:, 1:] = tmp1.iloc[:, 1:].astype(np.int64)
+    tmp1 = tmp1.set_index(grp)
+    display(tmp1)
+    display(sns.heatmap(tmp1.loc[:, "chats":], linewidths=.004,))
+    print("\n")
+
+    tmp2 = bzz[[grp, 'cost_rur', 'events', 'chats', 'assisted_conv_phones', 'assisted_conv_ads',
+               "assisted_conv_mortgage", "assisted_conv_ss",
+               "assisted_conv_ct", "assisted_conv_reappl"]].copy()
+    tmp2.iloc[:, 1:] = tmp2.iloc[:, 1:].astype(np.int64)
+    tmp2 = tmp2.set_index(grp)
+    display(tmp2)
+    #display(sns.heatmap(tmp.loc[:, "events_fdv":]))
+    return tmp1, tmp2
+
+def ab_calc(data, conversions='ev_contacts', base_group='base', p_value=0.8, rigidity=1, proportion=None):
+    #https://yandex.ru/adv/statvalue
+    data = data.copy()
+    if proportion is None:
+        data['segm%'] = data['impressions'] / data.impressions.sum()*100
+    else:
+        data['segm%'] = proportion
+    data['cpa'] = data['cost_rur'] / data[conversions]
+    data['ctr%'] = data['clicks'] / data['impressions']
+    data['conv%'] = data[conversions] / data['clicks']
+    data[f'cost_to_{base_group}'] = data.apply(lambda x: x['cost_rur']*data.loc[base_group]['segm%']/(x['segm%']*data.loc[base_group]['cost_rur']), axis=1) *100
+    data[f'conv_to_{base_group}'] = data.apply(lambda x: x[conversions]*data.loc[base_group]['segm%']/(x['segm%']*data.loc[base_group][conversions]), axis=1) *100
+    data[f'clicks_to_{base_group}'] = data.apply(lambda x: x['clicks']*data.loc[base_group]['segm%']/(x['segm%']*data.loc[base_group]['clicks']), axis=1) *100
+    data[f'cpa_to_{base_group}'] = data['cpa']/data.loc[base_group]['cpa'] *100
+    data['relative_cost_error%'] = 1.5*np.sqrt(1/data['clicks'])*100
+    data['relative_conv_error%'] = np.sqrt(1/data[conversions])*100
+    data['profit'] = data.apply(lambda x:
+                        -x['cost_rur']+rigidity*data.loc[base_group]['cpa']*x[conversions],
+                     axis=1)
+    data['relative_profit'] = data.apply(lambda x: x['profit']/data.loc[base_group]['profit']*data.loc[base_group]['segm%']/x['segm%'], axis=1) *100
+    data['relative_profit_error%'] = data.apply(lambda x:
+                np.sqrt(
+                ((x['cost_rur'] * x['relative_cost_error%'])**2 \
+                + rigidity**2 * data.loc[base_group]['cpa']**2 \
+                *(x[conversions] * x['relative_conv_error%'])**2)) / x['profit'], axis=1
+            )
+    data['sigmas_deviation'] = data.apply(lambda x:
+                                  (x['relative_profit'] - data.loc[base_group]['relative_profit']) \
+                                  /np.sqrt(x['relative_profit_error%']**2 * x['relative_profit']**2 / data.loc[base_group]['relative_profit']**2 + data.loc[base_group]['relative_profit_error%']**2)
+                               , axis=1)
+    data[f'P_better_than_{base_group}'] = data.apply(lambda x:
+                                            0.5*(1+special.erf(x['sigmas_deviation']/np.sqrt(2))),
+                                            axis=1)
+    data['implement_flag'] = data.apply(lambda x: "NO" if x[f'P_better_than_{base_group}']<p_value else "YES", axis=1)
+
+    ############################
+    data.loc[base_group, 'implement_flag'] = '-'
+    for i in ('segm%', 'cpa', f'cost_to_{base_group}', f'conv_to_{base_group}',
+              f'clicks_to_{base_group}', f'cpa_to_{base_group}', 'profit',
+              'relative_profit', 'relative_profit_error%'):
+        data[i] = np.round(data[i], 2)
+    for i in ('ctr%', 'conv%', 'relative_cost_error%', 'relative_conv_error%',
+              f'P_better_than_{base_group}'):
+        data[i] = np.round(data[i], 4)
+
+    return data
+
+
+def run_ab_output(abdata, experiment_groups, proportion, date_start, compare_metrics, p_value, rigidity, dynamics_resample="D"):
+    tmp = abdata[abdata.date>=date_start].copy()
+
+    DATE_EVENTS = {
+        date_start: "точка старта",
+        CURRENT_MONTH: "текищий месяц",
+    }
+
+    tmp['experiment_group'] = 'undefined group'
+    for mask, name in experiment_groups.items():
+        tmp.loc[tmp.campaignname.str.contains(mask), 'experiment_group'] = name
+
+    bzz = calc_base_values(tmp)
+    bzz = bzz.groupby('experiment_group')[['impressions','cost_rur', 'ev_contacts', 'clicks']].sum()
+    general_groupname = list(experiment_groups.values())[0]
+    print(f"define general group as: {general_groupname}")
+    ab_result = ab_calc(data=bzz,
+                        conversions='ev_contacts', base_group=general_groupname,
+                        p_value=p_value, rigidity=rigidity, proportion=proportion)
+    display(ab_result)
+
+    display(ab_result[['segm%', 'cost_rur', 'ev_contacts', 'clicks', 'ctr%', 'conv%', 'cpa',
+                      f'P_better_than_{list(experiment_groups.values())[0]}',
+                      'implement_flag']])
+
+
+    bzz = calc_base_values(tmp)
+    result = pd.DataFrame()
+    for i in sorted(bzz.date.unique()):
+        qq=bzz[bzz.date<=i].pivot_table(index=['experiment_group',],
+                            #columns=[''],
+                            values=['cost_rur', 'ev_contacts', 'clicks'],
+                            aggfunc=np.sum)
+        qq['date'] = i
+        result = pd.concat([result, qq])
+
+    result = result.reset_index().groupby(['experiment_group', 'date']).sum()
+    result['cp_contact'] = result['cost_rur']/result['ev_contacts']
+    result['contacts_per_click'] = result['ev_contacts']/result['clicks']
+
+    fig, ax1 = plt.subplots(figsize=(9, 4))  #figsize=(20, 3)
+    plt.xticks(rotation = 45)
+    #ax2 = ax1.twinx()
+    #ax1.plot(result['cp_contact'].loc[general_groupname].index, result['cp_contact'].loc[general_groupname], )
+    for i in experiment_groups.values():
+        ax1.plot(result['cp_contact'].loc[i].index, result['cp_contact'].loc[i])
+    ax1.legend(list(experiment_groups.values()))
+    ax1.set_ylabel('cost per contact, cumulative total - daily')
+    plt.show()
+
+    fig, ax1 = plt.subplots(figsize=(9, 4))  #figsize=(20, 3)
+    plt.xticks(rotation = 45)
+    #ax2 = ax1.twinx()
+    #ax1.plot(result['contacts_per_click'].loc[general_groupname].index, result['contacts_per_click'].loc[general_groupname] )
+    for i in experiment_groups.values():
+        ax1.plot(result['contacts_per_click'].loc[i].index, result['contacts_per_click'].loc[i])
+    ax1.legend(list(experiment_groups.values()))
+    ax1.set_ylabel('contact per click, cumulative total - daily')
+    plt.show()
+
+
+
+    with mpl.rc_context({"figure.figsize": (9,3)}): # use for set figsize with context manager
+      cell_dimension(resample_df(tmp, dimension='experiment_group', resample_period=dynamics_resample),
+                          metrics=compare_metrics, dimension = 'experiment_group',
+                          exclude_graphs = None, vert_lines=DATE_EVENTS, plot_set_order=experiment_groups.values())
+
+
+def twix_plot(data, a, b, resample=None, vert_lines=None):
+    data['date'] = pd.to_datetime(data['date'])
+    data = data.groupby('date').sum(numeric_only=True)
+    if resample:
+        data = data.resample(resample).sum(numeric_only=True)
+    #data = data.reset_index()
+    data = calc_base_values(data)
+    data = calc_base_values_with_assisted(data)
+
+    fig, ax1 = plt.subplots(figsize=(10, 4))  #figsize=(20, 3)
+    plt.xticks(rotation = 45)
+
+    ax2 = ax1.twinx()
+    ax1.plot(data.index, data[a], color="#1f77b4")
+    ax2.plot(data.index, data[b], color="#ff7f0e")
+
+    ax1.set_xlabel(f"date - {resample}")
+    ax1.set_ylabel(f"{a}", color="#1f77b4")
+    ax2.set_ylabel(f"{b}", color="#ff7f0e")
+    if vert_lines:
+        for j in vert_lines:
+            ax1.axvline(x=j, color='gray')
+    plt.show()
+
